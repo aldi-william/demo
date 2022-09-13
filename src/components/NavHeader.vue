@@ -18,9 +18,6 @@
           <li class="mx-4" :class="route.name === 'BursaMobil' || route.name === 'BursaMobilDetail' ? 'bg-tertier px-4 py-2 rounded':'px-4 py-2'">
             <router-link to="/dashboard/bursamobil">Bursa Mobil</router-link>
           </li>
-          <li class="mx-4" :class="route.name === 'Berlangsung' ? 'bg-tertier px-4 py-2 rounded':'px-4 py-2'">
-            <router-link to="/dashboard/berlangsung">Berlangsung</router-link>
-          </li>
           <li class="mx-4" :class="route.name === 'Favorit' ? 'bg-tertier px-4 py-2 rounded':'px-4 py-2'">
             <router-link to="/dashboard/favorit">Favorit</router-link>
           </li>

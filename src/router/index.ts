@@ -27,11 +27,6 @@ const routes = [
                 ]   
             },
             {
-                path:'berlangsung',
-                name:'Berlangsung',
-                component:()=>import('../pages/Dashboard/Berlangsung.vue')
-            },
-            {
                 path:'favorit',
                 name:'Favorit',
                 component:()=>import('../pages/Dashboard/Favorit.vue')

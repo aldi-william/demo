@@ -12,7 +12,8 @@ module.exports = {
         tertier:'#FBBC05',
         abu_abu:'#838383',
         biru:'#87BEFF',
-        biru_fb:'#f0f2f5'
+        biru_fb:'#f0f2f5',
+        abu_abu_pucat:'#F2F2F2'
       }
     },
   },

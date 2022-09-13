@@ -92,7 +92,7 @@
          </select>
          <img :src="image_filter" alt="location" class="w-4 h-4 absolute left-2 top-3 flex items-center justify-end"/>
     </div>
-    <div class="col-span-4 z-10" v-for="i in 16" :key="i">
+    <div class="col-span-4 z-10 bg-white" v-for="i in 15" :key="i">
       <div class="rounded shadow-2xl p-4">
          <div class="relative overflow-hidden">
           <div class="absolute bg-primary rounded text-white top-3 left-3">#143779</div>

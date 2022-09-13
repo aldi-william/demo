@@ -1,3 +1,87 @@
+<script setup lang="ts">
+  import bg_image from '../../assets/images/favorit_bg.png';
+  import image_star from '../../assets/images/star.png';
+  import image_star_empty from '../../assets/images/star_empty.png';
+  import image_car from '../../assets/images/car.png';
+  import image_hammer from '../../assets/images/hammer.png';
+  import image_users from '../../assets/images/users.png';
+  import image_lonceng from '../../assets/images/lonceng.png';
+  import { useRouter } from 'vue-router';
+  import { ref } from 'vue';
+  const router = useRouter();
+  const isFavorit = ref([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
+  const isEmpty = ref(true);
+</script>
 <template>
-  Favorit
+  <div class="container-xl pb-20" v-if="isEmpty">
+      <h1 class="mt-4 text-xl font-bold">Favoritku</h1>
+      <div class="border-b-4 border-blue-400 w-24 mb-4"></div>
+      <img :src="bg_image" alt="bg" class="w-4/12 mx-auto"/>
+      <div class="text-3xl font-bold text-center my-4">
+        <p>Buah Alpukat Buah Kedondong</p>
+        <p>Mobil Favorit Masih kosong</p>
+      </div>
+      <div class="text-md text-center">Yuk Mulai Tambahkan Mobil Favorit kamu, Masuk Dari Menu Navigasi</div>
+      <div class="flex justify-center my-4">
+        <button @click="router.push('/dashboard/bursamobil')" class="bg-tertier text-black border-black border-2 px-4 py-2 shadow-2x rounded-lg">Pergi ke Bursa Mobil</button>
+      </div>
+  </div>
+  <div class="container-xl grid grid-cols-12 gap-2 py-3" v-else>
+    <div class="col-span-4 z-10 bg-white" v-for="i in 15" :key="i">
+      <div class="rounded shadow-2xl p-4">
+         <div class="relative overflow-hidden">
+          <div class="absolute bg-primary rounded text-white top-3 left-3">#143779</div>
+          <img :src="isFavorit[i] ? image_star : image_star_empty" alt="star" class="w-8 h-8 absolute right-3 top-3" @click="isFavorit[i] = !isFavorit[i]"/>
+          <div class="bg-red-600 absolute bottom-0 right-0 px-4 py-0 rounded-tl-full text-white flex items-start">
+            Berlangsung
+          </div>
+          <img :src="image_car" alt="car" class="w-full z-10" @click="$router.push(`/dashboard/bursamobil/detail/${i}`);"/>
+         </div>
+         <div class="flex flex-row justify-between">
+          <div class="w-1/2 flex flex-row my-4">
+                <div class="relative mr-4">
+                    <img :src="image_hammer" alt="hammer" class="w-16"/>
+                    <div class="text-white mx-2 absolute top-1 -right-1">100</div>
+                </div>
+                <div class="relative">
+                    <img :src="image_users" alt="users" class="w-16"/>
+                    <div class="text-white mx-2 absolute top-1 right-0">100</div>
+                </div>
+          </div>
+          <div class="px-2 py-1 my-4 flex items-center justify-center bg-primary text-white rounded-lg">
+              <h1 class="text-sm w-12 text-center">TAV</h1>
+          </div>
+         </div>
+         <div class="my-1">
+            <div class="flex flex-row items-center justify-between">
+              <h1 class="font-bold text-xl">Suzuki Ertiga Sport</h1>
+              <img :src="image_lonceng" alt="lonceng" class="w-6 h-6"/>
+            </div>
+            <p>2019 | Matic | 30.000 KM | Semarang </p>
+         </div>
+         <div class="flex flex-row my-1 justify-between items-center">
+          <div>
+            <h1>Harga Mulai</h1>
+            <h1 class="text-2xl font-bold">Rp. 90.000.000</h1>
+          </div>
+          <div>
+            <button class="bg-yellow-500 px-4 py-2 shadow-xl">Buat Penawaran</button>
+          </div>
+         </div>
+      </div>
+      <div class="bg-blue-500">
+         <div class="flex flex-row justify-between items-center p-4 shadow-xl">
+            <h1 class="text-white">9 September 2022</h1>
+            <h1 class="text-white">01:30:20</h1>
+         </div>
+      </div>      
+    </div>
+  </div>
 </template>
+<style>
+  .container-xl{
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+  }
+</style>
