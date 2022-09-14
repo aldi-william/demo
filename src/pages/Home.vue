@@ -52,11 +52,11 @@
     <p class="text-center my-4 font-bold">Berburu mobil bekas Murah & Berkualitas</p>
   </div>
   <div class="w-full h-full flex flex-col justify-center py-32 bg-biru_fb" :class="isAbsolute ? 'absolute':''">
-     <div class="mx-auto w-3/12 p-8 rounded-xl bg-white shadow-2xl">
+     <div class="mx-auto w-9/12 sm:w-3/12 md:w-3/12 lg:w-3/12 xl:w-3/12 2xl:w-3/12 p-8 rounded-xl bg-white shadow-2xl">
           <h1 class="text-center text-3xl font-bold mb-2">Selamat Datang</h1>
           <p class="text-center mb-6 text-lg">Platform LELANG MENANG Mobil Bekas Berkualitas</p>
           <div class="w-full mx-auto">
-              <p class="text-left">Nomor WA</p>
+              <p class="text-left">Nomor WhatsApp</p>
               <input placeholder="Masukan Nomor WhatsApp Anda" class="px-4 py-2 rounded border border-gray w-full" v-model="no_wa" type="number"/>
           </div>
      
@@ -71,7 +71,7 @@
           </div>
 
           <button class="bg-primary text-white px-4 py-2 w-full mx-auto rounded mb-12" @click="logintodashboard()">Masuk</button>
-          <div class="text-center">Belum Memiliki akun ? Silahkan <a href="#" class="hover:text-blue-500 text-blue-400">daftar disini</a></div>
+          <div class="text-center">Belum Memiliki akun ? Silahkan <a href="https://docs.google.com/forms/d/e/1FAIpQLSeUmuz7mHM__fyJl9WazOxum0_NLmT4-IPHWFqmroCQe2CWdw/viewform" class="hover:text-blue-500 text-blue-400">daftar disini</a></div>
           <div class="text-center">Ada kendala ? <a href="https://wa.me/6289668303824" class="text-blue-400 hover:text-blue-500">Hubungi Customer Service Lelang</a></div>
         
     </div>

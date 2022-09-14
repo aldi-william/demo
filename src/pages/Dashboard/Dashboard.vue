@@ -3,5 +3,8 @@
 </script>
 <template>
    <NavHeader />
+   <div class="pt-20">
+      
+   </div>
    <router-view></router-view>
 </template>

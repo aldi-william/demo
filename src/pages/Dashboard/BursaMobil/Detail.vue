@@ -13,9 +13,34 @@
     import {FreeMode,Navigation,Thumbs} from 'swiper';
 
     import image_arrow from '../../../assets/images/left_arrow.png';
+    import image_arrow_down from '../../../assets/images/arrow_down.png';
     import image_car from '../../../assets/images/car.png';
     import image_star from '../../../assets/images/star.png';
     import image_person from '../../../assets/images/person.png';
+    import image_mobil_biru from '../../../assets/images/mobil_biru.png';
+    import image_mobil_putih from '../../../assets/images/mobil_putih.png';
+    import image_sofa_biru from '../../../assets/images/sofa_biru.png';
+    import image_sofa_putih from '../../../assets/images/sofa_putih.png';
+    import image_spedo_biru from '../../../assets/images/spedo_biru.png';
+    import image_spedo_putih from '../../../assets/images/spedo_putih.png';
+    import image_tank_biru from '../../../assets/images/tank_biru.png';
+    import image_tank_putih from '../../../assets/images/tank_putih.png';
+    import image_teko_biru from '../../../assets/images/teko_biru.png';
+    import image_teko_putih from '../../../assets/images/teko_putih.png';
+    import image_terompet_biru from '../../../assets/images/terompet_biru.png';
+    import image_terompet_putih from '../../../assets/images/terompet_putih.png';
+    import image_tri_speedo_biru from '../../../assets/images/tri_speedo_biru.png';
+    import image_tri_speedo_putih from '../../../assets/images/tri_speedo_putih.png';
+    import image_buku_biru from '../../../assets/images/buku_biru.png';
+    import image_buku_putih from '../../../assets/images/buku_putih.png';
+    import image_bintang_biru from '../../../assets/images/bintang_biru.png';
+    import image_bintang_putih from '../../../assets/images/bintang_putih.png';
+    import image_gear_biru from '../../../assets/images/gear_biru.png';
+    import image_gear_putih from '../../../assets/images/gear_putih.png';
+    import image_checklist_merah from '../../../assets/images/checklist_merah.png';
+    import image_checklist_hijau from '../../../assets/images/checklist_hijau.png';
+    import image_info_biru from '../../../assets/images/info_biru.png';
+    import image_setir from '../../../assets/images/setir.png';
  
     const modules = [FreeMode, Navigation, Thumbs];
     const historyback = () => {
@@ -32,10 +57,22 @@
     const showModal = () => {
       modal.value = true;
     }
+
+    const menu = ref('testdrive');
+    const open = ref(false);
+    const openswitchlampu = ref(false);
+    const openswitchwiper = ref(false);
+    const openkapmesin = ref(false);
+    const opensabukpengaman = ref(false);
+    const openlampudepan = ref(false);
+    const opendiscbrake = ref(false);
+    const openairradiator = ref(false);
+    const opensuaramesin = ref(false);
+    const openpowerwindow = ref(false);
 </script>
 <template>
   <div class="container-xl pb-20">
-       <modal-component v-show="modal" @close="modal = false"></modal-component>
+       <ModalComponent v-show="modal" @close="modal = false"/>
        <div class="flex items-center cursor-pointer my-8" @click="historyback">
           <img :src="image_arrow" class="w-4 h-4"/>
           <p class="mx-2">Kembali</p>
@@ -80,10 +117,10 @@
         </div>
         <div class="col-span-5">
              <div class="flex flex-row items-center">
-              <img :src="image_star" class="w-12 h-12"/>
-              <h1 class="text-3xl font-bold">#143779</h1>
+              <img :src="image_star" class="w-8 h-8"/>
+              <h1 class="text-xl font-bold">#143779</h1>
              </div>
-             <div class="text-3xl font-bold py-4">
+             <div class="text-3xl font-bold py-1">
                Suzuki Ertiga Sport 2019
              </div>
              <div>
@@ -91,41 +128,41 @@
               <p class="text-2xl font-bold">Rp 90.000.000</p>
              </div>
              <div class="grid grid-cols-12 rounded-lg p-4 border-gray border-2 my-4">
-                <div class="col-span-12 font-bold text-xl">Detail Kendaraan</div>
-                <div class="col-span-6 my-2">
+                <div class="col-span-12 font-bold text-md">Detail Kendaraan</div>
+                <div class="col-span-6 my-1">
                   <p>Lokasi</p>
                   <p class="font-bold">Semarang</p>
                 </div>
-                <div class="col-span-6 my-2">
+                <div class="col-span-6 my-1">
                   <p>Warna Asli - Saat Ini</p>
                   <p class="font-bold">Putih - Putih</p>
                 </div>
-                <div class="col-span-6 my-2">
+                <div class="col-span-6 my-1">
                   <p>Jarak tempuh saat ini</p>
                   <p class="font-bold">16.000 KM</p>
                 </div>
-                <div class="col-span-6 my-2">
+                <div class="col-span-6 my-1">
                   <p>Pajak</p>
                   <p class="font-bold">Hidup</p>
                 </div>
-                <div class="col-span-6 my-2">
+                <div class="col-span-6 my-1">
                   <p>Jenis Bahan Bakar</p>
                   <p class="font-bold">Bensin</p>
                 </div>
-                <div class="col-span-6 my-2">
+                <div class="col-span-6 my-1">
                   <p>Kepemilikan</p>
                   <p class="font-bold">Pribadi</p>
                 </div>
-                <div class="col-span-6 my-2">
+                <div class="col-span-6 my-1">
                   <p>Kunci Serep</p>
                   <p class="font-bold">Ada</p>
                 </div>
-                <div class="col-span-6 my-2">
+                <div class="col-span-6 my-1">
                   <p>Transmisi</p>
                   <p class="font-bold">Matic</p>
                 </div>
              </div>
-             <button @click="showModal" class="bg-tertier px-4 py-2 rounded-xl text-white w-full text-3xl font-bold">Ikuti Lelang Ini</button>
+             <button @click="showModal" class="bg-tertier px-4 py-2 rounded-xl text-black w-full text-xl font-bold">Ikuti Lelang Ini</button>
         </div>
         <div class="col-span-7">
             <div class="font-bold px-4 py-2 bg-gray-200 rounded-lg mb-4">History Arus Lelang</div>
@@ -227,7 +264,851 @@
           <div class="text-center text-3xl font-bold mb-4">
             Rp 120.000.000
           </div>
-          <button @click="showModal" class="bg-tertier px-4 py-2 rounded-xl text-white w-full text-3xl font-bold">Tambah Tawaran</button>
+          <button @click="showModal" class="bg-tertier px-4 py-2 rounded-xl text-black w-full text-xl font-bold">Tambah Tawaran</button>
+        </div>
+        <div class="col-span-12">
+          <div class="text-3xl font-bold flex items-center">Detail Laporan Kendaraan<img :src="image_info_biru" class="mx-2 w-6 h-6"/></div>
+          <div class="flex flex-row">
+            <div class="bg-primary my-12 p-8 flex flex-col rounded-lg h-screen w-4/12">
+                <button @click="menu = 'testdrive'" :class="menu === 'testdrive' ? 'text-primary bg-white':'text-white bg-primary'" class="px-4 py-2  rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <img :src="menu === 'testdrive' ? image_mobil_biru : image_mobil_putih" class="w-6 mx-2"/>Test Drive(8)
+                </button>
+                <button @click="menu = 'dashboard'" :class="menu === 'dashboard'? 'text-primary bg-white':'text-white bg-primary'" class="px-4 py-2  rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <img :src="menu === 'dashboard' ? image_spedo_biru: image_spedo_putih " class="w-6 mx-2" />Dashboard(9)
+                </button>
+                <button @click="menu = 'instrumen'" :class="menu === 'instrumen' ? 'text-primary bg-white':'text-white bg-primary'" class="px-4 py-2  rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <img :src="menu === 'instrumen' ? image_tri_speedo_biru: image_tri_speedo_putih" class="w-6 mx-2" />Instrumen(6)
+                </button>
+                <button @click="menu = 'jok-trim'" :class="menu === 'jok-trim' ? 'text-primary bg-white':'text-white bg-primary'" class="px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <img :src="menu === 'jok-trim' ? image_sofa_biru : image_sofa_putih" class="w-6 mx-2" />Jok & Trim(10)
+                </button>
+                <button @click="menu = 'kaca-lampu'" :class="menu === 'kaca-lampu' ? 'text-primary bg-white':'text-white bg-primary'" class="px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <img :src="menu === 'kaca-lampu' ? image_terompet_biru : image_terompet_putih " class="w-6 mx-2" />Kaca & Lampu(8)
+                </button>
+                <button @click="menu = 'underbody'" :class="menu === 'underbody' ? 'text-primary bg-white':'text-white bg-primary'" class="px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <img :src="menu === 'underbody' ? image_tank_biru : image_tank_putih" class="w-6 mx-2" />Under Body(12)
+                </button>
+                <button @click="menu = 'oli-cairan'" :class="menu === 'oli-cairan' ? 'text-primary bg-white':'text-white bg-primary'" class="px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <img :src="menu === 'oli-cairan' ? image_teko_biru : image_teko_putih" class="w-6 mx-2" />Oli & Cairan(5)
+                </button>
+                <button @click="menu = 'ruangmesin'" :class="menu === 'ruangmesin' ? 'text-primary bg-white':'text-white bg-primary'" class="px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <img :src="menu === 'ruangmesin' ? image_gear_biru : image_gear_putih " class="w-6 mx-2" />Ruang Mesin(19)
+                </button>
+                <button @click="menu = 'fitur'" :class="menu === 'fitur' ? 'text-primary bg-white':'text-white bg-primary'" class="px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <img :src="menu === 'fitur' ? image_bintang_biru : image_bintang_putih " class="w-6 mx-2" />Fitur(8)
+                </button>
+                <button @click="menu = 'dokumen'" :class="menu === 'dokumen' ? 'text-primary bg-white':'text-white bg-primary'" class="px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <img :src="menu === 'dokumen' ? image_buku_biru : image_buku_putih " class="w-6 mx-2" />Dokumen(4)
+                </button>
+            </div>
+            <div v-if="menu === 'testdrive'" class="my-12 ml-8 w-full">
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Performa Kopling</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Sistem Pengereman</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Performa Suspensi</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4 cursor-pointer" @click="open = !open">
+                <div class="flex flex-row justify-between">
+                  <div class="flex items-center">
+                    <h1 class="font-bold text-md" >Performa Setir</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2"/>
+                  </div>
+                  <img :src="image_checklist_merah" class="w-6 mt-2"/>
+                </div>
+                <div class="flex justify-around my-4" v-show="open"><img :src="image_setir" class="w-40"/></div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Perpindahan Transmisi</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Setir Lurus / Balance</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Bunyi Getaran</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+                
+              <div>
+                Catatan Test Drive : Performa setir tidak berfungsi dengan baik
+              </div>
+            </div>
+            <div v-if="menu === 'dashboard'" class="my-12 ml-8 w-full">
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Diagnosis Komputer</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Setir</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Performa Suspensi</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Panel Indikator</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4 cursor-pointer" @click="openswitchlampu = !openswitchlampu">
+                <div class="flex flex-row justify-between">
+                  <div class="flex items-center">
+                    <h1 class="font-bold text-md">Switch Lampu</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2"/>
+                  </div>
+                  <img :src="image_checklist_merah" class="w-6 mt-2"/>
+                </div>
+                <div class="flex justify-around my-4" v-show="openswitchlampu"><img :src="image_setir" class="w-40"/></div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Lampu Plafon</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Klakson</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4 cursor-pointer" @click="openswitchwiper = !openswitchwiper">
+                <div class="flex flex-row justify-between">
+                  <div class="flex items-center">
+                    <h1 class="font-bold text-md">Switch Wiper</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2"/>
+                  </div>
+                  <img :src="image_checklist_merah" class="w-6 mt-2"/>
+                </div>
+                <div class="flex justify-around my-4" v-show="openswitchwiper"><img :src="image_setir" class="w-40"/></div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Lampu Hazard</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Panel Dashboard</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+               
+              <div>
+                Catatan Dashboard : Switch Lampu dan Wiper tidak berfungsi dengan baik
+              </div>
+
+            </div>
+            <div v-if="menu === 'instrumen'" class="my-12 ml-8 w-full">
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Rem Tangan</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Spion Tengah</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Pembuka Bagasi</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Sun Visor</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4 cursor-pointer" @click="openkapmesin = !openkapmesin">
+                <div class="flex flex-row justify-between">
+                  <div class="flex items-center">
+                    <h1 class="font-bold text-md">Pembuka Kap Mesin</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2"/>
+                  </div>
+                  <img :src="image_checklist_merah" class="w-6 mt-2"/>
+                </div>
+                <div class="flex justify-around my-4" v-show="openkapmesin"><img :src="image_setir" class="w-40"/></div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Pembuka Tangki Mesin</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div>Catatan Instrumen : Pembuka kap mobil tidak berfungsi dengan baik</div>
+                
+            </div>
+            <div v-if="menu === 'jok-trim'" class="my-12 ml-8 w-full">
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Jok Depan</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Jok Belakang</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4 cursor-pointer" @click="opensabukpengaman = !opensabukpengaman">
+                <div class="flex flex-row justify-between">
+                  <div class="flex items-center">
+                    <h1 class="font-bold text-md">Sabuk Pengaman</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2"/>
+                  </div>
+                  <img :src="image_checklist_merah" class="w-6 mt-2"/>
+                </div>
+                <div class="flex justify-around my-4" v-show="opensabukpengaman"><img :src="image_setir" class="w-40"/></div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Trim Interior</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Handle Pintu</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Karpet Dasar</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Console Box</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Kaca Film</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Plafon</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Bau Interior</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div>Catatan Jok & Trim : Sabuk Pengaman tidak berfungsi dengan baik</div>
+                
+            </div>
+            <div v-if="menu === 'kaca-lampu'" class="my-12 ml-8 w-full">
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Daun Wiper</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Kaca Jendela</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Spion Kanan</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Spion Kiri</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Kaca Depan</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Kaca Belakang</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4 cursor-pointer" @click="openlampudepan = !openlampudepan">
+                <div class="flex flex-row justify-between">
+                  <div class="flex items-center">
+                    <h1 class="font-bold text-md">Lampu Depan</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2"/>
+                  </div>
+                  <img :src="image_checklist_merah" class="w-6 mt-2"/>
+                </div>
+                <div class="flex justify-around my-4" v-show="openlampudepan"><img :src="image_setir" class="w-40"/></div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Lampu Belakang</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div>Catatan Kaca & Lampu:</div>
+
+            </div>
+            <div v-if="menu === 'underbody'" class="my-12 ml-8 w-full">
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Ban</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Velg</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4 cursor-pointer" @click="opendiscbrake = !opendiscbrake">
+                <div class="flex flex-row justify-between">
+                  <div class="flex items-center">
+                    <h1 class="font-bold text-md">Lampu Depan</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2"/>
+                  </div>
+                  <img :src="image_checklist_merah" class="w-6 mt-2"/>
+                </div>
+                <div class="flex justify-around my-4" v-show="opendiscbrake"><img :src="image_setir" class="w-40"/></div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Brake Pad</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Master Rem</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Kaca Depan</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Shockbreaker</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Link Stabilizer</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Upper-Lower Arm</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Karet Boot</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Crossmember</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Ball Joint</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Knalpot</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div>Catatan Jok & Trim : Muncul suara berdecit pada rem cakram  </div>
+
+            </div>
+            <div v-if="menu === 'oli-cairan'" class="my-12 ml-8 w-full">
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Oli Mesin</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Oli Rem</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Oli Transmisi AT</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Oli Power Steering</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4 cursor-pointer" @click="openairradiator = !openairradiator">
+                <div class="flex flex-row justify-between">
+                  <div class="flex items-center">
+                    <h1 class="font-bold text-md">Air Radiator</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2"/>
+                  </div>
+                  <img :src="image_checklist_merah" class="w-6 mt-2"/>
+                </div>
+                <div class="flex justify-around my-4" v-show="openairradiator"><img :src="image_setir" class="w-40"/></div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div>Catatan Oli & Cairan : Kebocoran pada air pendingin radiator</div>
+
+            </div>
+            <div v-if="menu === 'ruangmesin'" class="my-12 ml-8 w-full">
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Cover Clap</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Transmisi</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Water Pump</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Dinamo Starter</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Belt</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Radiator</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Selang</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Getaran Mesin</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Stabil (Tidak Pincang)</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Gardan</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Cover Timing Chain</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Pompa Power Steering</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Alternator / Pengisian Accu</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Kompresor AC</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Fan</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Kondensor</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Kabel</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              
+
+              <div class="mb-4 cursor-pointer" @click="opensuaramesin = !opensuaramesin">
+                <div class="flex flex-row justify-between">
+                  <div class="flex items-center">
+                    <h1 class="font-bold text-md">Suara Mesin</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2"/>
+                  </div>
+                  <img :src="image_checklist_merah" class="w-6 mt-2"/>
+                </div>
+                <div class="flex justify-around my-4" v-show="opensuaramesin"><img :src="image_setir" class="w-40"/></div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Karter Oil</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div>Catatan Oli & Cairan : Kebocoran pada air pendingin radiator</div>
+
+            </div>
+            <div v-if="menu === 'fitur'" class="my-12 ml-8 w-full">
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Air Bag</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Sistem Audio</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4 cursor-pointer" @click="openpowerwindow = !openpowerwindow">
+                <div class="flex flex-row justify-between">
+                  <div class="flex items-center">
+                    <h1 class="font-bold text-md">Power Window</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2"/>
+                  </div>
+                  <img :src="image_checklist_merah" class="w-6 mt-2"/>
+                </div>
+                <div class="flex justify-around my-4" v-show="openpowerwindow"><img :src="image_setir" class="w-40"/></div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Power Steering</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Sistem AC</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Central Lock</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Electric Mirror</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Rem ABS</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div>Catatan Fitur : Power window tidak berfungsi dengan baik</div>
+
+            </div>
+            <div v-if="menu === 'dokumen'" class="my-12 ml-8 w-full">
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Dokumen STNK</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Dokumen Faktur</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Dokumen BPKB</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div class="mb-4">
+                <div class="flex flex-row justify-between">
+                  <h1 class="font-bold text-md">Dokumen Fisik</h1>
+                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
+                </div>
+                <div class="border-b border-black w-11/12"></div>
+              </div>
+
+              <div>Catatan Dokumen : Semua dokumen sudah lengkap</div>
+
+            </div>
+          </div>
         </div>
        </div>
   </div>
@@ -285,12 +1166,12 @@
 }
 
 .mySwiper2 {
-  height: 80%;
+  height: 70%;
   width: 100%;
 }
 
 .mySwiper {
-  height: 20%;
+  height: 15%;
   box-sizing: border-box;
   padding: 10px 0;
 }

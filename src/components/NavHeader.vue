@@ -11,7 +11,7 @@
   console.log(route.name);
 </script>
 <template>
-  <div class="bg-primary">
+  <div class="bg-primary fixed z-20 w-full">
       <div class="flex flex-row justify-between container-xl py-4 items-center">
         <img :src="logo_putih" alt="logo" class="h-12 w-20"/>
         <ul class="flex flex-row text-white">

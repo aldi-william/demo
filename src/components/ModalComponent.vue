@@ -2,7 +2,7 @@
   import button_plus from '../assets/images/btn_plus.png';
   import button_minus from '../assets/images/btn_minus.png';
   import checklist from '../assets/images/checklist.png';
-  import { ref, defineEmits } from 'vue';
+  import { ref } from 'vue';
   const harga = ref(500000);
   const handle_decrement = () => {
     if(harga.value <= 500000){

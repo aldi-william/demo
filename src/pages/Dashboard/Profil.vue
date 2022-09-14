@@ -12,7 +12,7 @@ const password = ref('');
     <div class="text-center font-bold text-3xl my-12">
         Informasi Profil
     </div>
-    <div class="border-2 border-gray rounded-lg w-8/12 mx-auto">
+    <div class="border-2 border-gray rounded-lg w-11/12 sm:w-8/12 md:w-8/12 lg:w-8/12 xl:w-8/12 2xl:w-8/12 mx-auto">
         <div class="flex justify-center my-12">
             <img :src="profile" alt="profile" class="w-40"/>
         </div>

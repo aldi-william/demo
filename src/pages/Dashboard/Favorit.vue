@@ -37,20 +37,18 @@
           </div>
           <img :src="image_car" alt="car" class="w-full z-10" @click="$router.push(`/dashboard/bursamobil/detail/${i}`);"/>
          </div>
-         <div class="flex flex-row justify-between">
-          <div class="w-1/2 flex flex-row my-4">
-                <div class="relative mr-4">
-                    <img :src="image_hammer" alt="hammer" class="w-16"/>
-                    <div class="text-white mx-2 absolute top-1 -right-1">100</div>
-                </div>
-                <div class="relative">
-                    <img :src="image_users" alt="users" class="w-16"/>
-                    <div class="text-white mx-2 absolute top-1 right-0">100</div>
-                </div>
-          </div>
-          <div class="px-2 py-1 my-4 flex items-center justify-center bg-primary text-white rounded-lg">
-              <h1 class="text-sm w-12 text-center">TAV</h1>
-          </div>
+         <div class="grid grid-cols-12 my-2 gap-2">
+            <div class="col-span-3 bg-abu_abu relative flex px-2 py-1 rounded items-center">
+              <img :src="image_hammer" alt="hammer" class="w-6 h-6"/>
+              <div class="text-white mx-2 right-0 relative">1000</div>
+            </div>
+            <div class="col-span-3 bg-abu_abu relative flex px-2 py-1 rounded items-center">
+              <img :src="image_users" alt="users" class="w-6 h-6"/>
+              <div class="text-white mx-2">1000</div>
+            </div>
+            <div class="col-span-6">
+                <h1 class="text-sm text-center bg-primary text-white rounded-lg px-2 py-1 w-20 float-right">TAV</h1>
+            </div>
          </div>
          <div class="my-1">
             <div class="flex flex-row items-center justify-between">
