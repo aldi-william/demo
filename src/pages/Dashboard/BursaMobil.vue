@@ -1,16 +1,16 @@
 <script setup lang="ts">
   import { ref } from 'vue';
-  import image_rentang_harga from '../../../assets/images/icon_rentang_harga.png';
-  import image_search from '../../../assets/images/icon_search.png';
-  import image_calender from '../../../assets/images/icon_calender.png';
-  import image_location from '../../../assets/images/icon_location.png';
-  import image_filter from '../../../assets/images/icon_filter.png';
-  import image_car from '../../../assets/images/car.png';
-  import image_hammer from '../../../assets/images/hammer.png';
-  import image_users from '../../../assets/images/users.png';
-  import image_lonceng from '../../../assets/images/lonceng.png';
-  import image_star from '../../../assets/images/star.png';
-  import image_star_empty from '../../../assets/images/star_empty.png';
+  import image_rentang_harga from '../../assets/images/icon_rentang_harga.png';
+  import image_search from '../../assets/images/icon_search.png';
+  import image_calender from '../../assets/images/icon_calender.png';
+  import image_location from '../../assets/images/icon_location.png';
+  import image_filter from '../../assets/images/icon_filter.png';
+  import image_car from '../../assets/images/car.png';
+  import image_hammer from '../../assets/images/hammer.png';
+  import image_users from '../../assets/images/users.png';
+  import image_lonceng from '../../assets/images/lonceng.png';
+  import image_star from '../../assets/images/star.png';
+  import image_star_empty from '../../assets/images/star_empty.png';
   const range_harga = ref(false);
   const range_tahun = ref(false);
   const isFavorit = ref([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
@@ -20,16 +20,18 @@
 <template>
   <div class="bg-biru_fb">
   <div class="container-xl grid grid-cols-12 gap-2 py-3">
-    <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 px-4 py-2 border-2 border-gray flex justify-center items-center bg-white fixed sm:relative md:relative lg:relative xl:relative 2xl:relative z-20 sm:z-0 md:z-0 lg:z-0 xl:z-0 2xl:z-0 w-10/12 sm:w-full mx-auto sm:mx-0 left-0 right-0">
+    <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 sm:px-4 sm:bg-white py-2 flex justify-center items-center z-20 sm:z-0 md:z-0 lg:z-0 xl:z-0 2xl:z-0">
+      <div class="bg-white w-full fixed sm:relative px-4 sm:px-0 py-2 sm:py-0">
         <div class="grid grid-cols-12">
-          <p class="col-span-6 text-2xl font-bold">
+          <p class="col-span-6 text-sm sm:text-2xl font-bold">
             <span class="text-blue-500">Status Lelang</span></p>
-          <p class="col-span-6 text-2xl font-bold">:&nbsp;<span class="text-red-500">Berlangsung</span></p>
-          <p class="col-span-6 text-2xl font-bold"><span class="text-blue-500">Sisa Waktu</span></p>
-          <p class="col-span-6 text-2xl font-bold">:&nbsp;<span class="text-red-500">01:30:20</span></p>
+          <p class="col-span-6 text-sm sm:text-2xl font-bold">:&nbsp;<span class="text-red-500">Berlangsung</span></p>
+          <p class="col-span-6 text-sm sm:text-2xl font-bold"><span class="text-blue-500">Sisa Waktu</span></p>
+          <p class="col-span-6 text-sm sm:text-2xl font-bold">:&nbsp;<span class="text-red-500">01:30:20</span></p>
         </div>
+      </div> 
     </div>
-    <div class="col-span-12 sm:col-span-3 md:col-span-3 lg:col-span-3 xl:col-span-3 2xl:col-span-3 bg-white mt-24 sm:mt-0">
+    <div class="col-span-12 sm:col-span-3 md:col-span-3 lg:col-span-3 xl:col-span-3 2xl:col-span-3 bg-white mt-16 sm:mt-0">
       <div class="px-4 py-2 border-2 border-gray rounded">
         <div class="flex flex-col py-2">
           <p class="text-center">1. Sesi Pagi : 09.00 - 11.00 WIB</p>
@@ -113,7 +115,7 @@
           <div class="bg-red-600 absolute bottom-0 right-0 px-4 py-0 rounded-tl-full text-white flex items-start">
             Berlangsung
           </div>
-          <img :src="image_car" alt="car" class="w-full z-10" @click="$router.push(`/dashboard/bursamobil/detail/${i}`);"/>
+          <img :src="image_car" alt="car" class="w-full z-10" @click="$router.push(`/dashboard/detail/${i}`);"/>
          </div>
          <div class="grid grid-cols-12 my-2 gap-2">
             <div class="col-span-3 bg-abu_abu relative flex px-2 py-1 rounded items-center">
@@ -152,11 +154,11 @@
          </div>
       </div>      
     </div>
-    <div class="col-span-12">
+    <div class="col-span-12 mb-24 mt-4">
          <div class="flex flex-row justify-center">
-            <div class="px-4 py-2 rounded border border-gray cursor-pointer bg-white">Sebelumnya</div>
+            <div class="px-4 py-2 rounded border border-gray cursor-pointer bg-white hidden sm:flex">Sebelumnya</div>
             <div class="px-4 py-2 rounded border border-gray hover:bg-primary hover:text-white cursor-pointer bg-white" v-for="i in 5" :key="i">{{ i }}</div>
-            <div class="px-4 py-2 rounded border border-gray cursor-pointer bg-white">Selanjutnya</div>
+            <div class="px-4 py-2 rounded border border-gray cursor-pointer bg-white hidden sm:flex">Selanjutnya</div>
          </div>
     </div>
   </div>

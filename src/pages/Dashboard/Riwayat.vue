@@ -84,7 +84,7 @@
                         <div class="bg-green-600 absolute bottom-0 right-0 px-4 py-0 rounded-tl-full text-white flex items-start">
                           Anda Menang
                         </div>
-                        <img :src="image_car" alt="car" class="w-full z-10" @click="$router.push(`/dashboard/bursamobil/detail/${i}`);"/>
+                        <img :src="image_car" alt="car" class="w-full z-10" @click="$router.push(`/dashboard/detail/${i}`);"/>
                       </div>
                       <div class="grid grid-cols-12 gap-2 my-2">
                               <div class="col-span-3 bg-abu_abu relative flex px-2 py-1 rounded items-center">

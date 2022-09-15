@@ -11,20 +11,14 @@ const routes = [
         component:()=>import('../pages/Dashboard/Dashboard.vue'),
         children:[
             {
-                path:'bursamobil',
-                component:()=>import('../pages/Dashboard/BursaMobil/index.vue'),
-                children:[
-                  {
-                    path:'',
-                    name:"BursaMobil",
-                    component:()=>import('../pages/Dashboard/BursaMobil/BursaMobil.vue'),   
-                  },
-                  {
-                    path:'detail/:id',
-                    name:"BursaMobilDetail",
-                    component:()=>import('../pages/Dashboard/BursaMobil/Detail.vue'),   
-                  }
-                ]   
+              path:'bursamobil',
+              name:"BursaMobil",
+              component:()=>import('../pages/Dashboard/BursaMobil.vue'),   
+            },
+            {
+               path:'detail/:id',
+               name:"BursaMobilDetail",
+               component:()=>import('../pages/Dashboard/Detail.vue'),   
             },
             {
                 path:'favorit',

@@ -1,7 +1,7 @@
 <script setup lang="ts">
     import { ref } from 'vue';
     import { Swiper, SwiperSlide } from 'swiper/vue';
-    import ModalComponent from '../../../components/ModalComponent.vue'; 
+    import ModalComponent from '../../components/ModalComponent.vue'; 
 
     // Import Swiper styles
     import 'swiper/css';
@@ -12,35 +12,35 @@
     // import required modules
     import {FreeMode,Navigation,Thumbs} from 'swiper';
 
-    import image_arrow from '../../../assets/images/left_arrow.png';
-    import image_arrow_down from '../../../assets/images/arrow_down.png';
-    import image_car from '../../../assets/images/car.png';
-    import image_star from '../../../assets/images/star.png';
-    import image_person from '../../../assets/images/person.png';
-    import image_mobil_biru from '../../../assets/images/mobil_biru.png';
-    import image_mobil_putih from '../../../assets/images/mobil_putih.png';
-    import image_sofa_biru from '../../../assets/images/sofa_biru.png';
-    import image_sofa_putih from '../../../assets/images/sofa_putih.png';
-    import image_spedo_biru from '../../../assets/images/spedo_biru.png';
-    import image_spedo_putih from '../../../assets/images/spedo_putih.png';
-    import image_tank_biru from '../../../assets/images/tank_biru.png';
-    import image_tank_putih from '../../../assets/images/tank_putih.png';
-    import image_teko_biru from '../../../assets/images/teko_biru.png';
-    import image_teko_putih from '../../../assets/images/teko_putih.png';
-    import image_terompet_biru from '../../../assets/images/terompet_biru.png';
-    import image_terompet_putih from '../../../assets/images/terompet_putih.png';
-    import image_tri_speedo_biru from '../../../assets/images/tri_speedo_biru.png';
-    import image_tri_speedo_putih from '../../../assets/images/tri_speedo_putih.png';
-    import image_buku_biru from '../../../assets/images/buku_biru.png';
-    import image_buku_putih from '../../../assets/images/buku_putih.png';
-    import image_bintang_biru from '../../../assets/images/bintang_biru.png';
-    import image_bintang_putih from '../../../assets/images/bintang_putih.png';
-    import image_gear_biru from '../../../assets/images/gear_biru.png';
-    import image_gear_putih from '../../../assets/images/gear_putih.png';
-    import image_checklist_merah from '../../../assets/images/checklist_merah.png';
-    import image_checklist_hijau from '../../../assets/images/checklist_hijau.png';
-    import image_info_biru from '../../../assets/images/info_biru.png';
-    import image_setir from '../../../assets/images/setir.png';
+    import image_arrow from '../../assets/images/left_arrow.png';
+    import image_arrow_down from '../../assets/images/arrow_down.png';
+    import image_car from '../../assets/images/car.png';
+    import image_star from '../../assets/images/star.png';
+    import image_person from '../../assets/images/person.png';
+    import image_mobil_biru from '../../assets/images/mobil_biru.png';
+    import image_mobil_putih from '../../assets/images/mobil_putih.png';
+    import image_sofa_biru from '../../assets/images/sofa_biru.png';
+    import image_sofa_putih from '../../assets/images/sofa_putih.png';
+    import image_spedo_biru from '../../assets/images/spedo_biru.png';
+    import image_spedo_putih from '../../assets/images/spedo_putih.png';
+    import image_tank_biru from '../../assets/images/tank_biru.png';
+    import image_tank_putih from '../../assets/images/tank_putih.png';
+    import image_teko_biru from '../../assets/images/teko_biru.png';
+    import image_teko_putih from '../../assets/images/teko_putih.png';
+    import image_terompet_biru from '../../assets/images/terompet_biru.png';
+    import image_terompet_putih from '../../assets/images/terompet_putih.png';
+    import image_tri_speedo_biru from '../../assets/images/tri_speedo_biru.png';
+    import image_tri_speedo_putih from '../../assets/images/tri_speedo_putih.png';
+    import image_buku_biru from '../../assets/images/buku_biru.png';
+    import image_buku_putih from '../../assets/images/buku_putih.png';
+    import image_bintang_biru from '../../assets/images/bintang_biru.png';
+    import image_bintang_putih from '../../assets/images/bintang_putih.png';
+    import image_gear_biru from '../../assets/images/gear_biru.png';
+    import image_gear_putih from '../../assets/images/gear_putih.png';
+    import image_checklist_merah from '../../assets/images/checklist_merah.png';
+    import image_checklist_hijau from '../../assets/images/checklist_hijau.png';
+    import image_info_biru from '../../assets/images/info_biru.png';
+    import image_setir from '../../assets/images/setir.png';
  
     const modules = [FreeMode, Navigation, Thumbs];
     const historyback = () => {
