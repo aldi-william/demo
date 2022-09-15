@@ -11,6 +11,9 @@
   import image_lonceng from '../../assets/images/lonceng.png';
   import image_star from '../../assets/images/star.png';
   import image_star_empty from '../../assets/images/star_empty.png';
+  import image_api from '../../assets/images/icon_api.png';
+  import image_mobil from '../../assets/images/icon_mobil.png';
+  import image_tergenang from '../../assets/images/icon_tergenang.png';
   const range_harga = ref(false);
   const range_tahun = ref(false);
   const isFavorit = ref([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
@@ -129,6 +132,11 @@
             <div class="col-span-4">
                 <h1 class="text-sm text-center bg-primary text-white rounded-lg px-2 py-1 w-20 float-right">TAV</h1>
             </div>
+            <div class="col-span-6 flex">
+               <img :src="image_mobil" class="w-12 h-6"/>
+               <img  :src="image_tergenang" class="w-12 h-6 mx-4"/>
+               <img  :src="image_api" class="w-12 h-6"/>
+            </div>
          </div>
          <div class="my-1">
             <div class="flex flex-row items-center justify-between">
@@ -139,7 +147,7 @@
          </div>
          <div class="flex flex-row my-1 justify-between items-center">
           <div>
-            <h1>Harga Mulai</h1>
+            <h1>Harga Mulai :</h1>
             <h1 class="text-2xl font-bold">Rp. 1.090.000.000</h1>
           </div>
           <div>

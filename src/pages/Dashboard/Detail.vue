@@ -116,10 +116,6 @@
           </swiper>
         </div>
         <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0">
-             <div class="flex flex-row items-center">
-              <img :src="image_star" class="w-8 h-8"/>
-              <h1 class="text-xl font-bold">#143779</h1>
-             </div>
              <div class="text-3xl font-bold py-1">
                Suzuki Ertiga Sport 2019
              </div>
@@ -138,7 +134,7 @@
                   <p class="font-bold">Putih - Putih</p>
                 </div>
                 <div class="col-span-6 my-1">
-                  <p>Jarak tempuh saat ini</p>
+                  <p>Jarak tempuh</p>
                   <p class="font-bold">16.000 KM</p>
                 </div>
                 <div class="col-span-6 my-1">
@@ -175,7 +171,6 @@
                   </div>
                   <div class="font-bold flex flex-row items-center">
                     <p class="mx-2">Rp 95.000.000</p>
-                    <p class="mx-2">10.35 WIB</p>
                   </div>
               </div>
               <div class="col-span-12 flex flex-row justify-between">
@@ -186,7 +181,6 @@
                   </div>
                   <div class="font-bold flex flex-row items-center">
                     <p class="mx-2">Rp 95.000.000</p>
-                    <p class="mx-2">10.35 WIB</p>
                   </div>
               </div>
               <div class="col-span-12 flex flex-row justify-between">
@@ -197,62 +191,52 @@
                   </div>
                   <div class="font-bold flex flex-row items-center">
                     <p class="mx-2">Rp 95.000.000</p>
-                    <p class="mx-2">10.35 WIB</p>
+                    
                   </div>
               </div>
               <div class="col-span-12 flex flex-row justify-between">
                   <div class="flex flex-row items-center">
                     <img :src="image_person" class="w-4 h-4"/>
-                    <p class="font-bold mx-4">....................</p>
-                    
+                    <p class="font-bold mx-4">....................</p>                    
                   </div>
                   <div class="font-bold flex flex-row items-center">
                     <p class="mx-2">Rp 95.000.000</p>
-                    <p class="mx-2">10.35 WIB</p>
                   </div>
               </div>
               <div class="col-span-12 flex flex-row justify-between">
                   <div class="flex flex-row items-center">
                     <img :src="image_person" class="w-4 h-4"/>
-                    <p class="font-bold mx-4">....................</p>
-                    
+                    <p class="font-bold mx-4">....................</p>                    
                   </div>
                   <div class="font-bold flex flex-row items-center">
-                    <p class="mx-2">Rp 95.000.000</p>
-                    <p class="mx-2">10.35 WIB</p>
+                    <p class="mx-2">Rp 95.000.000</p>                   
                   </div>
               </div>
               <div class="col-span-12 flex flex-row justify-between">
                   <div class="flex flex-row items-center">
                     <img :src="image_person" class="w-4 h-4"/>
-                    <p class="font-bold mx-4">....................</p>
-                    
+                    <p class="font-bold mx-4">....................</p>                    
                   </div>
                   <div class="font-bold flex flex-row items-center">
-                    <p class="mx-2">Rp 95.000.000</p>
-                    <p class="mx-2">10.35 WIB</p>
+                    <p class="mx-2">Rp 95.000.000</p>                   
                   </div>
               </div>
               <div class="col-span-12 flex flex-row justify-between">
                   <div class="flex flex-row items-center">
                     <img :src="image_person" class="w-4 h-4"/>
-                    <p class="font-bold mx-4">....................</p>
-                    
+                    <p class="font-bold mx-4">....................</p>                   
                   </div>
                   <div class="font-bold flex flex-row items-center">
-                    <p class="mx-2">Rp 95.000.000</p>
-                    <p class="mx-2">10.35 WIB</p>
+                    <p class="mx-2">Rp 95.000.000</p>                   
                   </div>
               </div>
               <div class="col-span-12 flex flex-row justify-between">
                   <div class="flex flex-row items-center">
                     <img :src="image_person" class="w-4 h-4"/>
-                    <p class="font-bold mx-4">....................</p>
-                    
+                    <p class="font-bold mx-4">....................</p>                    
                   </div>
                   <div class="font-bold flex flex-row items-center">
-                    <p class="mx-2">Rp 95.000.000</p>
-                    <p class="mx-2">10.35 WIB</p>
+                    <p class="mx-2">Rp 95.000.000</p>                   
                   </div>
               </div>
             </div>

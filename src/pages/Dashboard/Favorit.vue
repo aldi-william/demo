@@ -6,6 +6,9 @@
   import image_hammer from '../../assets/images/hammer.png';
   import image_users from '../../assets/images/users.png';
   import image_lonceng from '../../assets/images/lonceng.png';
+  import image_api from '../../assets/images/icon_api.png';
+  import image_mobil from '../../assets/images/icon_mobil.png';
+  import image_tergenang from '../../assets/images/icon_tergenang.png';
   import { useRouter } from 'vue-router';
   import { ref } from 'vue';
   const router = useRouter();
@@ -38,16 +41,21 @@
           <img :src="image_car" alt="car" class="w-full z-10" @click="$router.push(`/dashboard/detail/${i}`);"/>
          </div>
          <div class="grid grid-cols-12 my-2 gap-2">
-            <div class="col-span-3 bg-abu_abu relative flex px-2 py-1 rounded items-center">
+            <div class="col-span-4 bg-abu_abu relative flex px-2 py-1 rounded items-center">
               <img :src="image_hammer" alt="hammer" class="w-6 h-6"/>
               <div class="text-white mx-2 right-0 relative">1000</div>
             </div>
-            <div class="col-span-3 bg-abu_abu relative flex px-2 py-1 rounded items-center">
+            <div class="col-span-4 bg-abu_abu relative flex px-2 py-1 rounded items-center">
               <img :src="image_users" alt="users" class="w-6 h-6"/>
               <div class="text-white mx-2">1000</div>
             </div>
-            <div class="col-span-6">
+            <div class="col-span-4">
                 <h1 class="text-sm text-center bg-primary text-white rounded-lg px-2 py-1 w-20 float-right">TAV</h1>
+            </div>
+            <div class="col-span-6 flex">
+               <img :src="image_mobil" class="w-12 h-6"/>
+               <img  :src="image_tergenang" class="w-12 h-6 mx-4"/>
+               <img  :src="image_api" class="w-12 h-6"/>
             </div>
          </div>
          <div class="my-1">
@@ -59,11 +67,11 @@
          </div>
          <div class="flex flex-row my-1 justify-between items-center">
           <div>
-            <h1>Harga Mulai</h1>
-            <h1 class="text-2xl font-bold">Rp. 90.000.000</h1>
+            <h1>Harga Mulai :</h1>
+            <h1 class="text-2xl font-bold">Rp. 1.090.000.000</h1>
           </div>
           <div>
-            <button class="bg-yellow-500 px-4 py-2 shadow-xl">Buat Penawaran</button>
+            <button class="bg-tertier px-4 py-2 shadow-xl text-sm">Tawar</button>
           </div>
          </div>
       </div>

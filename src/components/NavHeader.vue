@@ -17,9 +17,9 @@
   <div class="bg-blue-500 fixed z-20 w-full">
       <div class="flex justify-between pt-4 h-12 sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden">
         <div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
-        <img :src="logo_putih" alt="logo" class="h-12 w-20"/>
+        <img :src="logo_putih" alt="logo" class="h-12 w-28"/>
         <div class="text-right">
-          <button @click="showLogout = true" class="bg-primary text-white px-4 py-2 rounded"><img :src="logout" class="w-6 h-6"></button>
+          <button @click="showLogout = true" class="text-white px-4 py-2 rounded"><img :src="logout" class="w-6 h-6"></button>
         </div>
       </div>
       <div class="flex flex-row justify-between container-xl py-4 items-center">
@@ -42,7 +42,7 @@
           </li>
         </ul>
         <div class="hidden sm:flex md:flex lg:flex xl:flex 2xl:flex">
-          <button @click="showLogout = true" class="bg-primary text-white px-4 py-2 rounded">Keluar</button>
+          <button @click="showLogout = true" class="text-white px-4 py-2 rounded">Keluar</button>
         </div>
       </div>
   </div>

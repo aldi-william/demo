@@ -33,7 +33,7 @@
   const emit = defineEmits(['close'])
 </script>
 <template>
-  <div class="bg-gray-200 fixed w-4/12 mx-auto left-0 right-0 z-10 px-8 py-2 border border-black rounded-lg">
+  <div class="bg-gray-200 fixed w-11/12 sm:w-4/12 mx-auto left-0 right-0 z-10 px-8 py-2 border border-black rounded-lg">
     <div v-if="isTawar === 'awal'" class="relative">
       <div @click="emit('close')" class="absolute px-4 m-0 cursor-pointer -right-8 -top-8 font-bold">X</div>
       <h1 class="text-xl font-bold mt-8 text-center">Penawaran Lelang</h1>  

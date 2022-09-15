@@ -76,7 +76,7 @@
                       <option value="1">1 Tahun Terakhir</option>
                     </select>
                   </div>
-                  <div class="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-6 xl:col-span-6 2xl:col-span-6 z-10 bg-white border-white border" v-for="i in 9" :key="i">
+                  <div class="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-6 xl:col-span-6 2xl:col-span-6 z-10 bg-white" v-for="i in 9" :key="i">
                     <div class="rounded shadow-2xl p-4">
                       <div class="relative overflow-hidden">
                         <div class="absolute bg-primary rounded text-white top-3 left-3">#143779</div>
@@ -86,20 +86,23 @@
                         </div>
                         <img :src="image_car" alt="car" class="w-full z-10" @click="$router.push(`/dashboard/detail/${i}`);"/>
                       </div>
-                      <div class="grid grid-cols-12 gap-2 my-2">
-                              <div class="col-span-3 bg-abu_abu relative flex px-2 py-1 rounded items-center">
-                                  <img :src="image_hammer" alt="hammer" class="w-6 h-6"/>
-                                  <div class="text-white mx-2 right-0 relative">1000</div>
-                              </div>
-                              <div class="col-span-3 bg-abu_abu relative flex px-1 py-1 rounded items-center">
-                                  <img :src="image_users" alt="users" class="w-6 h-6"/>
-                                  <div class="text-white mx-2">1000</div>
-                              </div>
-                              <div class="col-span-6 flex justify-end">
-                                <img :src="image_mobil" alt="mobil" class="w-12"/>
-                                <img :src="image_api" alt="api" class="w-12 mx-2"/>
-                                <img :src="image_tergenang" alt="tergenang" class="w-12"/>
-                              </div>   
+                      <div class="grid grid-cols-12 my-2 gap-2">
+                          <div class="col-span-4 bg-abu_abu relative flex px-2 py-1 rounded items-center">
+                            <img :src="image_hammer" alt="hammer" class="w-6 h-6"/>
+                            <div class="text-white mx-2 right-0 relative">1000</div>
+                          </div>
+                          <div class="col-span-4 bg-abu_abu relative flex px-2 py-1 rounded items-center">
+                            <img :src="image_users" alt="users" class="w-6 h-6"/>
+                            <div class="text-white mx-2">1000</div>
+                          </div>
+                          <div class="col-span-4">
+                              <h1 class="text-sm text-center bg-primary text-white rounded-lg px-2 py-1 w-20 float-right">TAV</h1>
+                          </div>
+                          <div class="col-span-6 flex">
+                            <img :src="image_mobil" class="w-12 h-6"/>
+                            <img  :src="image_tergenang" class="w-12 h-6 mx-4"/>
+                            <img  :src="image_api" class="w-12 h-6"/>
+                          </div>
                       </div>
                       <div class="my-1">
                           <div class="flex flex-row items-center justify-between">
@@ -110,12 +113,9 @@
                       </div>
                       <div class="flex flex-row my-1 justify-between items-center">
                         <div>
-                          <h1>Harga Mulai</h1>
-                          <h1 class="text-2xl font-bold">Rp. 90.000.000</h1>
-                        </div> 
-                        <div class="col-span-3 px-2 py-1 my-4 bg-primary text-white rounded-lg">
-                            <h1 class="text-sm w-12 text-center">TAV</h1>
-                        </div>                       
+                          <h1>Harga Mulai :</h1>
+                          <h1 class="text-2xl font-bold">Rp. 1.090.000.000</h1>
+                        </div>
                       </div>
                     </div>
                     <div class="bg-blue-500">
