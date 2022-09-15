@@ -33,28 +33,28 @@
           <div class="col-span-12 bg-primary mt-6 sm:my-12 md:my-12 lg:my-12 xl:my-12 2xl:my-12 p-4 sm:p-8 md:p-8 lg:p-8 xl:p-8 2xl:p-8 rounded-lg sm:h-screen w-full sm:w-4/12 md:w-4/12 lg:w-4/12 xl:w-4/12 2xl:w-4/12">
             <div class="flex sm:flex-col overflow-x-scroll sm:w-full sm:overflow-visible md:overflow-visible lg:overflow-visible xl:overflow-visible 2xl:overflow-visible">
              <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                    <button @click="menu = 'semua'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2 text-primary bg-white rounded-lg mb-4 text-sm font-bold">Semua (9)</button>
+                    <button @click="menu = 'semua'" :class="menu === 'semua' ? 'bg-white text-primary':'text-white bg-primary'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2  rounded-lg mb-4 text-sm font-bold">Semua (9)</button>
              </div>
              <div class="w-96 sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                    <button @click="menu = 'menang'" class="w-60 mr-4 sm:mr-0 px-4 py-2 text-primary bg-white rounded-lg mb-4 text-sm font-bold">Menang (3)</button>
+                    <button @click="menu = 'menang'" :class="menu === 'menang' ? 'bg-white text-primary':'text-white bg-primary'" class="w-60 mr-4 sm:mr-0 px-4 py-2 text-primary bg-white rounded-lg mb-4 text-sm font-bold">Menang (3)</button>
              </div>
              <div class="w-96 sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                    <button @click="menu = 'kalah'" class="w-60 mr-4 sm:mr-0 px-4 py-2 text-primary bg-white rounded-lg mb-4 text-sm font-bold">Kalah (3)</button>
+                    <button @click="menu = 'kalah'" :class="menu === 'kalah' ? 'bg-white text-primary':'text-white bg-primary'" class="w-60 mr-4 sm:mr-0 px-4 py-2 text-primary bg-white rounded-lg mb-4 text-sm font-bold">Kalah (3)</button>
              </div>
              <div class="w-96 sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                    <button @click="menu = 'ditolak'" class="w-60 mr-4 sm:mr-0 px-4 py-2 text-primary bg-white rounded-lg mb-4 text-sm font-bold">Penawaran Ditolak (3)</button>
+                    <button @click="menu = 'ditolak'" :class="menu === 'ditolak' ? 'bg-white text-primary':'text-white bg-primary'" class="w-60 mr-4 sm:mr-0 px-4 py-2 text-primary bg-white rounded-lg mb-4 text-sm font-bold">Penawaran Ditolak (3)</button>
              </div>
              <div class="w-96 sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                   <button @click="menu = 'diterima'" class="w-60 mr-4 sm:mr-0 md:mr-0 lg:mr-0 xl:mr-0 2xl:mr-0 px-4 py-2 text-primary bg-white rounded-lg mb-4 text-sm font-bold">Penawaran Diterima (0)</button>
+                   <button @click="menu = 'diterima'" :class="menu === 'diterima' ? 'bg-white text-primary':'text-white bg-primary'" class="w-60 mr-4 sm:mr-0 md:mr-0 lg:mr-0 xl:mr-0 2xl:mr-0 px-4 py-2 text-primary bg-white rounded-lg mb-4 text-sm font-bold">Penawaran Diterima (0)</button>
              </div>
              <div class="w-96 sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                   <button @click="menu = 'proses'" class="w-60 mr-4 sm:mr-0 md:mr-0 lg:mr-0 xl:mr-0 2xl:mr-0 px-4 py-2 text-primary bg-white rounded-lg mb-4 text-sm font-bold">Dalam Proses (0)</button>
+                   <button @click="menu = 'proses'" :class="menu === 'proses' ? 'bg-white text-primary':'text-white bg-primary'" class="w-60 mr-4 sm:mr-0 md:mr-0 lg:mr-0 xl:mr-0 2xl:mr-0 px-4 py-2 text-primary bg-white rounded-lg mb-4 text-sm font-bold">Dalam Proses (0)</button>
              </div>
              <div class="w-96 sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'siap'" class="w-60 mr-4 sm:mr-0 px-4 py-2 text-primary bg-white rounded-lg mb-4 text-sm font-bold">Siap Diambil(0)</button>
+                  <button @click="menu = 'siap'" :class="menu === 'siap' ? 'bg-white text-primary':'text-white bg-primary'" class="w-60 mr-4 sm:mr-0 px-4 py-2 text-primary bg-white rounded-lg mb-4 text-sm font-bold">Siap Diambil(0)</button>
              </div>
              <div class="w-96 sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                 <button @click="menu = 'sudah'" class="w-60 px-4 py-2 text-primary bg-white rounded-lg mb-4 text-sm font-bold">Sudah Diambil(0)</button>
+                 <button @click="menu = 'sudah'" :class="menu === 'sudah' ? 'bg-white text-primary':'text-white bg-primary'" class="w-60 px-4 py-2 text-primary bg-white rounded-lg mb-4 text-sm font-bold">Sudah Diambil(0)</button>
              </div>
              
             </div>
@@ -133,16 +133,16 @@
           <div class="col-span-12 bg-primary mt-6 sm:my-12 md:my-12 lg:my-12 xl:my-12 2xl:my-12 p-4 sm:p-8 md:p-8 lg:p-8 xl:p-8 2xl:p-8 rounded-lg sm:h-screen w-full sm:w-4/12 md:w-4/12 lg:w-4/12 xl:w-4/12 2xl:w-4/12">
               <div class="flex sm:flex-col overflow-x-scroll sm:w-full sm:overflow-visible md:overflow-visible lg:overflow-visible xl:overflow-visible 2xl:overflow-visible">
               <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'semua'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2 text-primary bg-white rounded-lg mb-4 text-sm font-bold">7 Hari Terakhir</button>            
+                  <button @click="menu = 'semua'" :class="menu === 'semua' ? 'bg-white text-primary':'text-white bg-primary'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2 text-primary bg-white rounded-lg mb-4 text-sm font-bold">7 Hari Terakhir</button>            
               </div>
               <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                 <button @click="menu = 'menang'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2 text-primary bg-white rounded-lg mb-4 text-sm font-bold">30 Hari Terakhir</button>
+                 <button @click="menu = 'menang'" :class="menu === 'menang' ? 'bg-white text-primary':'text-white bg-primary'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2 text-primary bg-white rounded-lg mb-4 text-sm font-bold">30 Hari Terakhir</button>
               </div>
               <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                 <button @click="menu = 'kalah'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2 text-primary bg-white rounded-lg mb-4 text-sm font-bold">3 Bulan Terakhir</button>
+                 <button @click="menu = 'kalah'" :class="menu === 'kalah' ? 'bg-white text-primary':'text-white bg-primary'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2 text-primary bg-white rounded-lg mb-4 text-sm font-bold">3 Bulan Terakhir</button>
               </div>
               <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                 <button @click="menu = 'ditolak'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2 text-primary bg-white rounded-lg mb-4 text-sm font-bold">1 Tahun Terakhir</button>
+                 <button @click="menu = 'ditolak'" :class="menu === 'ditolak' ? 'bg-white text-primary':'text-white bg-primary'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2 text-primary bg-white rounded-lg mb-4 text-sm font-bold">1 Tahun Terakhir</button>
               </div>
             </div>
           </div>

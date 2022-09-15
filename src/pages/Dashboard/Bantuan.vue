@@ -12,11 +12,11 @@
             <div class="flex sm:flex-col overflow-x-scroll sm:w-full sm:overflow-visible md:overflow-visible lg:overflow-visible xl:overflow-visible 2xl:overflow-visible">
 
               <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'tentang'" class="w-60 px-4 py-2 text-primary bg-white rounded-lg mb-4 text-xl font-bold">Tentang Lelang</button>
+                  <button @click="menu = 'tentang'" :class="menu === 'tentang' ? 'bg-white text-primary':'text-white bg-primary'" class="w-60 px-4 py-2 text-primary bg-white rounded-lg mb-4 text-xl font-bold">Tentang Lelang</button>
               </div>
 
               <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                   <button @click="menu = 'syarat'" class="w-60 px-4 py-2 text-primary bg-white rounded-lg mb-4 text-xl font-bold">Syarat & Kebijakan</button>
+                   <button @click="menu = 'syarat'" :class="menu === 'syarat' ? 'bg-white text-primary':'text-white bg-primary'" class="w-60 px-4 py-2 text-primary bg-white rounded-lg mb-4 text-xl font-bold">Syarat & Kebijakan</button>
               </div>
 
             </div>

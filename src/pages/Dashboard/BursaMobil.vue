@@ -22,7 +22,7 @@
 </script>
 <template>
   <div class="bg-biru_fb">
-  <div class="container-xl grid grid-cols-12 gap-2 py-3">
+  <div class="container-xl grid grid-cols-12 sm:gap-2 py-3">
     <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 sm:px-4 sm:bg-white py-2 flex justify-center items-center z-20 sm:z-0 md:z-0 lg:z-0 xl:z-0 2xl:z-0">
       <div class="bg-white w-full fixed sm:relative px-4 sm:px-0 py-2 sm:py-0">
         <div class="grid grid-cols-12">
@@ -34,7 +34,7 @@
         </div>
       </div> 
     </div>
-    <div class="col-span-12 sm:col-span-3 md:col-span-3 lg:col-span-3 xl:col-span-3 2xl:col-span-3 bg-white mt-16 sm:mt-0">
+    <div class="col-span-12 sm:col-span-3 md:col-span-3 lg:col-span-3 xl:col-span-3 2xl:col-span-3 bg-white mt-6 sm:mt-0">
       <div class="px-4 py-2 border-2 border-gray rounded">
         <div class="flex flex-col py-2">
           <p class="text-center">1. Sesi Pagi : 09.00 - 11.00 WIB</p>
@@ -151,7 +151,7 @@
             <h1 class="text-2xl font-bold">Rp. 1.090.000.000</h1>
           </div>
           <div>
-            <button class="bg-tertier px-4 py-2 shadow-xl text-sm">Tawar</button>
+            <button @click="$router.push(`/dashboard/detail/${i}`);" class="bg-tertier px-4 py-2 shadow-xl text-sm hover:bg-blue-500 hover:text-white">Lihat</button>
           </div>
          </div>
       </div>
