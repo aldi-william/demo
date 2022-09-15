@@ -1204,6 +1204,13 @@
   width: 100%;
 }
 
+@media only screen and (max-width: 600px) {
+  .mySwiper2 {
+    height: 84%;
+    width: 100%;
+  }
+}
+
 .mySwiper {
   height: 15%;
   box-sizing: border-box;
