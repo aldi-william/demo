@@ -14,7 +14,7 @@
 </script>
 <template>
   <ModalLogoutComponent v-show="showLogout" @logout="logoutdulu" @close="showLogout = false"/>
-  <div class="bg-primary fixed z-20 w-full">
+  <div class="bg-blue-500 fixed z-20 w-full">
       <div class="flex justify-end pt-4 h-12 sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden">
         <img :src="logo_putih" alt="logo" class="h-12 w-20"/>
         <div class="text-right w-52">

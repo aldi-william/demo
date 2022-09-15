@@ -20,8 +20,8 @@
 <template>
   <div class="bg-biru_fb">
   <div class="container-xl grid grid-cols-12 gap-2 py-3">
-    <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 px-4 py-2 border-2 border-gray flex justify-center items-center bg-white fixed sm:relative md:relative lg:relative xl:relative 2xl:relative z-20 sm:z-0 md:z-0 lg:z-0 xl:z-0 2xl:z-0 w-11/12 sm:w-full mx-auto sm:mx-0 left-0 right-0">
-        <div class="grid grid-cols-12 ">
+    <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 px-4 py-2 border-2 border-gray flex justify-center items-center bg-white fixed sm:relative md:relative lg:relative xl:relative 2xl:relative z-20 sm:z-0 md:z-0 lg:z-0 xl:z-0 2xl:z-0 w-10/12 sm:w-full mx-auto sm:mx-0 left-0 right-0">
+        <div class="grid grid-cols-12">
           <p class="col-span-6 text-2xl font-bold">
             <span class="text-blue-500">Status Lelang</span></p>
           <p class="col-span-6 text-2xl font-bold">:&nbsp;<span class="text-red-500">Berlangsung</span></p>
@@ -46,7 +46,7 @@
          <input placeholder="Cari Merek, Model Mobil atau lainnya" class="pl-8 pr-4 py-2 w-full border-2 border-gray"/>
          <img :src="image_search" alt="search" class="w-4 h-4 absolute left-2 top-3 flex items-center justify-end"/>
     </div>
-    <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative bg-white">
+    <div class="col-span-12 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative bg-white">
          <button class="pl-8 pr-4 py-2 w-full border-2 border-gray text-left" @click="range_harga = !range_harga">Range Harga</button>
          <img :src="image_rentang_harga" alt="rentang harga" class="w-4 h-4 absolute left-2 top-3 flex items-center justify-end"/>
          <div class="absolute border bg-white shadow-xl p-4 z-20" v-show="range_harga">
@@ -62,7 +62,7 @@
              <button class="text-white bg-primary px-4 py-2 w-full rounded">Terapkan</button>
          </div>
     </div>
-    <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative bg-white">
+    <div class="col-span-12 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative bg-white">
          <button placeholder="Tahun" class="pl-8 pr-4 py-2 w-full border-2 border-gray text-left" @click="range_tahun = !range_tahun">Tahun</button>
          <img :src="image_calender" alt="calendar" class="w-4 h-4 absolute left-2 top-3 flex items-center justify-end"/>
          <div class="absolute border bg-white shadow-xl p-4 z-20" v-show="range_tahun">
@@ -84,7 +84,7 @@
              <button class="text-white bg-primary px-4 py-2 w-full rounded">Terapkan</button>
          </div>
     </div>
-    <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative">
+    <div class="col-span-12 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative">
          <select placeholder="Kota" class="pl-8 pr-4 py-2 w-full border-2 border-gray">
             <option value="1">Semarang</option>
             <option value="2">Jakarta</option>
@@ -92,7 +92,7 @@
          </select>
          <img :src="image_location" alt="location" class="w-4 h-4 absolute left-2 top-3 flex items-center justify-end"/>
     </div>
-    <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative">
+    <div class="col-span-12 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative">
       
          <button @click="items = 'Kilometer'" class="pl-8 pr-4 py-2 w-full border-2 border-gray bg-white text-left">
              Kilometer
