@@ -73,12 +73,12 @@
 <template>
   <div class="container-xl pb-20">
        <ModalComponent v-show="modal" @close="modal = false"/>
-       <div class="flex items-center cursor-pointer my-8" @click="historyback">
+       <div class="flex items-center cursor-pointer my-4 sm:my-8 md:my-8 lg:my-8 xl:my-8 2xl:my-8" @click="historyback">
           <img :src="image_arrow" class="w-4 h-4"/>
           <p class="mx-2">Kembali</p>
        </div>
-       <div class="grid grid-cols-12 gap-8">
-        <div class="col-span-7">
+       <div class="grid grid-cols-12 sm:gap-8 md:gap-8 lg:gap-8 xl:gap-8 2xl:gap-8">
+        <div class="col-span-12 sm:col-span-7 md:col-span-7 lg:col-span-7 xl:col-span-7 2xl:col-span-7">
           <swiper
             style="
               --swiper-navigation-color: #fff;
@@ -115,7 +115,7 @@
           <swiper-slide><img :src="image_car"></swiper-slide>
           </swiper>
         </div>
-        <div class="col-span-5">
+        <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0">
              <div class="flex flex-row items-center">
               <img :src="image_star" class="w-8 h-8"/>
               <h1 class="text-xl font-bold">#143779</h1>
@@ -164,7 +164,7 @@
              </div>
              <button @click="showModal" class="bg-tertier px-4 py-2 rounded-xl text-black w-full text-xl font-bold">Ikuti Lelang Ini</button>
         </div>
-        <div class="col-span-7">
+        <div class="col-span-12 sm:col-span-7 md:col-span-7 lg:col-span-7 xl:col-span-7 2xl:col-span-7 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0">
             <div class="font-bold px-4 py-2 bg-gray-200 rounded-lg mb-4">History Arus Lelang</div>
             <div class="grid grid-cols-12 bg-gray-200 rounded-lg px-4 py-2 overflow-y-auto h-40">
               <div class="col-span-12 flex flex-row justify-between">
@@ -257,7 +257,7 @@
               </div>
             </div>
         </div>
-        <div class="col-span-5 border-2 border-gray py-8 px-4">
+        <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 border-2 border-gray py-8 px-4 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0">
           <div class="text-center mb-4">
             Tawaran Terakhir Anda :
           </div>
@@ -268,40 +268,74 @@
         </div>
         <div class="col-span-12">
           <div class="text-3xl font-bold flex items-center">Detail Laporan Kendaraan<img :src="image_info_biru" class="mx-2 w-6 h-6"/></div>
-          <div class="flex flex-row">
-            <div class="bg-primary my-12 p-8 flex flex-col rounded-lg h-screen w-4/12">
-                <button @click="menu = 'testdrive'" :class="menu === 'testdrive' ? 'text-primary bg-white':'text-white bg-primary'" class="px-4 py-2  rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
-                  <img :src="menu === 'testdrive' ? image_mobil_biru : image_mobil_putih" class="w-6 mx-2"/>Test Drive(8)
-                </button>
-                <button @click="menu = 'dashboard'" :class="menu === 'dashboard'? 'text-primary bg-white':'text-white bg-primary'" class="px-4 py-2  rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
-                  <img :src="menu === 'dashboard' ? image_spedo_biru: image_spedo_putih " class="w-6 mx-2" />Dashboard(9)
-                </button>
-                <button @click="menu = 'instrumen'" :class="menu === 'instrumen' ? 'text-primary bg-white':'text-white bg-primary'" class="px-4 py-2  rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
-                  <img :src="menu === 'instrumen' ? image_tri_speedo_biru: image_tri_speedo_putih" class="w-6 mx-2" />Instrumen(6)
-                </button>
-                <button @click="menu = 'jok-trim'" :class="menu === 'jok-trim' ? 'text-primary bg-white':'text-white bg-primary'" class="px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
-                  <img :src="menu === 'jok-trim' ? image_sofa_biru : image_sofa_putih" class="w-6 mx-2" />Jok & Trim(10)
-                </button>
-                <button @click="menu = 'kaca-lampu'" :class="menu === 'kaca-lampu' ? 'text-primary bg-white':'text-white bg-primary'" class="px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
-                  <img :src="menu === 'kaca-lampu' ? image_terompet_biru : image_terompet_putih " class="w-6 mx-2" />Kaca & Lampu(8)
-                </button>
-                <button @click="menu = 'underbody'" :class="menu === 'underbody' ? 'text-primary bg-white':'text-white bg-primary'" class="px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
-                  <img :src="menu === 'underbody' ? image_tank_biru : image_tank_putih" class="w-6 mx-2" />Under Body(12)
-                </button>
-                <button @click="menu = 'oli-cairan'" :class="menu === 'oli-cairan' ? 'text-primary bg-white':'text-white bg-primary'" class="px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
-                  <img :src="menu === 'oli-cairan' ? image_teko_biru : image_teko_putih" class="w-6 mx-2" />Oli & Cairan(5)
-                </button>
-                <button @click="menu = 'ruangmesin'" :class="menu === 'ruangmesin' ? 'text-primary bg-white':'text-white bg-primary'" class="px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
-                  <img :src="menu === 'ruangmesin' ? image_gear_biru : image_gear_putih " class="w-6 mx-2" />Ruang Mesin(19)
-                </button>
-                <button @click="menu = 'fitur'" :class="menu === 'fitur' ? 'text-primary bg-white':'text-white bg-primary'" class="px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
-                  <img :src="menu === 'fitur' ? image_bintang_biru : image_bintang_putih " class="w-6 mx-2" />Fitur(8)
-                </button>
-                <button @click="menu = 'dokumen'" :class="menu === 'dokumen' ? 'text-primary bg-white':'text-white bg-primary'" class="px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
-                  <img :src="menu === 'dokumen' ? image_buku_biru : image_buku_putih " class="w-6 mx-2" />Dokumen(4)
-                </button>
+          <div class="grid grid-cols-12 sm:flex md:flex lg:flex xl:flex 2xl:flex sm:flex-row md:flex-row lg:flex-row xl:flex-row 2xl:flex-row">
+            <div class="col-span-12 bg-primary mt-6 sm:my-12 md:my-12 lg:my-12 xl:my-12 2xl:my-12 p-4 sm:p-8 md:p-8 lg:p-8 xl:p-8 2xl:p-8 rounded-lg sm:h-screen w-full sm:w-4/12 md:w-4/12 lg:w-4/12 xl:w-4/12 2xl:w-4/12">
+              <div class="flex sm:flex-col overflow-x-scroll sm:w-full sm:overflow-visible md:overflow-visible lg:overflow-visible xl:overflow-visible 2xl:overflow-visible">
+              
+                <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
+                  <button @click="menu = 'testdrive'" :class="menu === 'testdrive' ? 'text-primary bg-white':'text-white bg-primary'" class="w-60 px-4 py-2  rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                    <img :src="menu === 'testdrive' ? image_mobil_biru : image_mobil_putih" class="w-6 mx-2"/>Test Drive(8)
+                  </button>
+                </div>
+
+                <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
+                  <button @click="menu = 'dashboard'" :class="menu === 'dashboard'? 'text-primary bg-white':'text-white bg-primary'" class="w-60 px-4 py-2  rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                    <img :src="menu === 'dashboard' ? image_spedo_biru: image_spedo_putih " class="w-6 mx-2" />Dashboard(9)
+                  </button>
+                </div>
+
+                <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
+                  <button @click="menu = 'instrumen'" :class="menu === 'instrumen' ? 'text-primary bg-white':'text-white bg-primary'" class="w-60 px-4 py-2  rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                    <img :src="menu === 'instrumen' ? image_tri_speedo_biru: image_tri_speedo_putih" class="w-6 mx-2" />Instrumen(6)
+                  </button>
+                </div>
+
+                <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
+                  <button @click="menu = 'jok-trim'" :class="menu === 'jok-trim' ? 'text-primary bg-white':'text-white bg-primary'" class="w-60 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                    <img :src="menu === 'jok-trim' ? image_sofa_biru : image_sofa_putih" class="w-6 mx-2" />Jok & Trim(10)
+                  </button>
+                </div>
+
+                <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
+                  <button @click="menu = 'kaca-lampu'" :class="menu === 'kaca-lampu' ? 'text-primary bg-white':'text-white bg-primary'" class="w-60 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                    <img :src="menu === 'kaca-lampu' ? image_terompet_biru : image_terompet_putih " class="w-6 mx-2" />Kaca & Lampu(8)
+                  </button>
+                </div>
+
+                <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
+                  <button @click="menu = 'underbody'" :class="menu === 'underbody' ? 'text-primary bg-white':'text-white bg-primary'" class="w-60 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                    <img :src="menu === 'underbody' ? image_tank_biru : image_tank_putih" class="w-6 mx-2" />Under Body(12)
+                  </button>
+                </div>
+
+                <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
+                  <button @click="menu = 'oli-cairan'" :class="menu === 'oli-cairan' ? 'text-primary bg-white':'text-white bg-primary'" class="w-60 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                    <img :src="menu === 'oli-cairan' ? image_teko_biru : image_teko_putih" class="w-6 mx-2" />Oli & Cairan(5)
+                  </button>
+                </div>
+
+                <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
+                  <button @click="menu = 'ruangmesin'" :class="menu === 'ruangmesin' ? 'text-primary bg-white':'text-white bg-primary'" class="w-60 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                    <img :src="menu === 'ruangmesin' ? image_gear_biru : image_gear_putih " class="w-6 mx-2" />Ruang Mesin(19)
+                  </button>
+                </div>
+
+                <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
+                  <button @click="menu = 'fitur'" :class="menu === 'fitur' ? 'text-primary bg-white':'text-white bg-primary'" class="w-60 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                    <img :src="menu === 'fitur' ? image_bintang_biru : image_bintang_putih " class="w-6 mx-2" />Fitur(8)
+                  </button>
+                </div>
+
+                <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
+                  <button @click="menu = 'dokumen'" :class="menu === 'dokumen' ? 'text-primary bg-white':'text-white bg-primary'" class="w-60 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                    <img :src="menu === 'dokumen' ? image_buku_biru : image_buku_putih " class="w-6 mx-2" />Dokumen(4)
+                  </button>
+                </div>
+
+                </div>
+       
             </div>
-            <div v-if="menu === 'testdrive'" class="my-12 ml-8 w-full">
+            <div v-if="menu === 'testdrive'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
               <div class="mb-4">
                 <div class="flex flex-row justify-between">
                   <h1 class="font-bold text-md">Performa Kopling</h1>
@@ -366,7 +400,7 @@
                 Catatan Test Drive : Performa setir tidak berfungsi dengan baik
               </div>
             </div>
-            <div v-if="menu === 'dashboard'" class="my-12 ml-8 w-full">
+            <div v-if="menu === 'dashboard'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
               <div class="mb-4">
                 <div class="flex flex-row justify-between">
                   <h1 class="font-bold text-md">Diagnosis Komputer</h1>
@@ -460,7 +494,7 @@
               </div>
 
             </div>
-            <div v-if="menu === 'instrumen'" class="my-12 ml-8 w-full">
+            <div v-if="menu === 'instrumen'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
               <div class="mb-4">
                 <div class="flex flex-row justify-between">
                   <h1 class="font-bold text-md">Rem Tangan</h1>
@@ -516,7 +550,7 @@
               <div>Catatan Instrumen : Pembuka kap mobil tidak berfungsi dengan baik</div>
                 
             </div>
-            <div v-if="menu === 'jok-trim'" class="my-12 ml-8 w-full">
+            <div v-if="menu === 'jok-trim'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
               <div class="mb-4">
                 <div class="flex flex-row justify-between">
                   <h1 class="font-bold text-md">Jok Depan</h1>
@@ -604,7 +638,7 @@
               <div>Catatan Jok & Trim : Sabuk Pengaman tidak berfungsi dengan baik</div>
                 
             </div>
-            <div v-if="menu === 'kaca-lampu'" class="my-12 ml-8 w-full">
+            <div v-if="menu === 'kaca-lampu'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
               <div class="mb-4">
                 <div class="flex flex-row justify-between">
                   <h1 class="font-bold text-md">Daun Wiper</h1>
@@ -677,7 +711,7 @@
               <div>Catatan Kaca & Lampu:</div>
 
             </div>
-            <div v-if="menu === 'underbody'" class="my-12 ml-8 w-full">
+            <div v-if="menu === 'underbody'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
               <div class="mb-4">
                 <div class="flex flex-row justify-between">
                   <h1 class="font-bold text-md">Ban</h1>
@@ -790,7 +824,7 @@
               <div>Catatan Jok & Trim : Muncul suara berdecit pada rem cakram  </div>
 
             </div>
-            <div v-if="menu === 'oli-cairan'" class="my-12 ml-8 w-full">
+            <div v-if="menu === 'oli-cairan'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
               <div class="mb-4">
                 <div class="flex flex-row justify-between">
                   <h1 class="font-bold text-md">Oli Mesin</h1>
@@ -838,7 +872,7 @@
               <div>Catatan Oli & Cairan : Kebocoran pada air pendingin radiator</div>
 
             </div>
-            <div v-if="menu === 'ruangmesin'" class="my-12 ml-8 w-full">
+            <div v-if="menu === 'ruangmesin'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
               <div class="mb-4">
                 <div class="flex flex-row justify-between">
                   <h1 class="font-bold text-md">Cover Clap</h1>
@@ -1000,7 +1034,7 @@
               <div>Catatan Oli & Cairan : Kebocoran pada air pendingin radiator</div>
 
             </div>
-            <div v-if="menu === 'fitur'" class="my-12 ml-8 w-full">
+            <div v-if="menu === 'fitur'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
               <div class="mb-4">
                 <div class="flex flex-row justify-between">
                   <h1 class="font-bold text-md">Air Bag</h1>
@@ -1072,7 +1106,7 @@
               <div>Catatan Fitur : Power window tidak berfungsi dengan baik</div>
 
             </div>
-            <div v-if="menu === 'dokumen'" class="my-12 ml-8 w-full">
+            <div v-if="menu === 'dokumen'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
               <div class="mb-4">
                 <div class="flex flex-row justify-between">
                   <h1 class="font-bold text-md">Dokumen STNK</h1>
@@ -1198,6 +1232,7 @@
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
+  height: 10px;
 }
 
 /* Track */

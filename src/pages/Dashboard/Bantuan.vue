@@ -7,12 +7,21 @@
 </script>
 <template>
   <div class="container-xl">
-      <div class="flex flex-row">
-          <div class="bg-primary my-12 p-8 flex flex-col rounded-lg h-screen w-3/12">
-              <button @click="menu = 'tentang'" class="px-4 py-2 text-primary bg-white rounded-lg mb-4 text-xl font-bold">Tentang Lelang</button>
-              <button @click="menu = 'syarat'" class="px-4 py-2 text-primary bg-white rounded-lg mb-4 text-xl font-bold">Syarat & Kebijakan</button>
-          </div>
-          <div v-if="menu === 'tentang'" class="my-12 px-8 w-9/12">
+      <div class="grid grid-cols-12 sm:flex md:flex lg:flex xl:flex 2xl:flex sm:flex-row md:flex-row lg:flex-row xl:flex-row 2xl:flex-row">
+          <div class="col-span-12 bg-primary mt-6 sm:my-12 md:my-12 lg:my-12 xl:my-12 2xl:my-12 p-4 sm:p-8 md:p-8 lg:p-8 xl:p-8 2xl:p-8 rounded-lg sm:h-screen w-full sm:w-4/12 md:w-4/12 lg:w-4/12 xl:w-4/12 2xl:w-4/12">
+            <div class="flex sm:flex-col overflow-x-scroll sm:w-full sm:overflow-visible md:overflow-visible lg:overflow-visible xl:overflow-visible 2xl:overflow-visible">
+
+              <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
+                  <button @click="menu = 'tentang'" class="w-60 px-4 py-2 text-primary bg-white rounded-lg mb-4 text-xl font-bold">Tentang Lelang</button>
+              </div>
+
+              <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
+                   <button @click="menu = 'syarat'" class="w-60 px-4 py-2 text-primary bg-white rounded-lg mb-4 text-xl font-bold">Syarat & Kebijakan</button>
+              </div>
+
+            </div>
+          </div>    
+          <div v-if="menu === 'tentang'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
                <h1 class="text-xl mb-4 font-bold">Pertanyaan Disclaimer</h1>
                <p class="text-justify">1. Dengan Membeli Kendaraan Melalui Platfrom TAV, Pembeli dianggap telah meninjau dan setuju untuk membeli kendaraan berdasarkan deskripsi.</p>
                <p class="text-justify">2. Deskripsi dan kondisi Kendaraan (termasuk tetapi tidak terbatas pada jarak) artinya seperti kondisi kendaraan pada tanggal pemeriksaan kendaraan dan seperti yang dinyatakan dalam platfrom TAV.</p>
@@ -106,7 +115,7 @@
                </div>
                
           </div>
-          <div v-else-if="menu === 'syarat'" class="my-12 px-8 w-9/12">
+          <div v-else-if="menu === 'syarat'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
                <h1 class="text-xl mb-4 font-bold">Syarat Pengguna</h1>
                <p>TAV Mobil ingin mengucapkan terimakasih telah mempercayakan penjualan mobil Anda pada kami. Sebelum Anda mengirimkan data-data mobil Anda, kami ingin Anda membaca dan menyetujui syarat-syarat dan ketentuan-ketentuan dibawah ini : </p>
                <div>
@@ -138,4 +147,29 @@
     width: 90%;
     margin: 0 auto;
   }
+
+  /* SCROLL BAR */
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #bfbfbf; 
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: gray; 
+}
 </style>

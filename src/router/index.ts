@@ -37,9 +37,9 @@ const routes = [
                 component:()=>import('../pages/Dashboard/Riwayat.vue')
             },
             {
-                path:'profil',
-                name:'Profil',
-                component:()=>import('../pages/Dashboard/Profil.vue')
+                path:'akun',
+                name:'Akun',
+                component:()=>import('../pages/Dashboard/Akun.vue')
             },
             {
                 path:'bantuan',

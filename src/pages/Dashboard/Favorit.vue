@@ -10,13 +10,13 @@
   import { ref } from 'vue';
   const router = useRouter();
   const isFavorit = ref([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
-  const isEmpty = ref(true);
+  const isEmpty = ref(false);
 </script>
 <template>
   <div class="container-xl pb-20" v-if="isEmpty">
       <h1 class="mt-4 text-xl font-bold">Favoritku</h1>
       <div class="border-b-4 border-blue-400 w-24 mb-4"></div>
-      <img :src="bg_image" alt="bg" class="w-4/12 mx-auto"/>
+      <img :src="bg_image" alt="bg" class="w-8/12 sm:w-4/12 md:w-4/12 lg:w-4/12 xl:w-4/12 2xl:w-4/12 mx-auto"/>
       <div class="text-3xl font-bold text-center my-4">
         <p>Buah Alpukat Buah Kedondong</p>
         <p>Mobil Favorit Masih kosong</p>
@@ -27,7 +27,7 @@
       </div>
   </div>
   <div class="container-xl grid grid-cols-12 gap-2 py-3" v-else>
-    <div class="col-span-4 z-10 bg-white" v-for="i in 15" :key="i">
+    <div class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white" v-for="i in 15" :key="i">
       <div class="rounded shadow-2xl p-4">
          <div class="relative overflow-hidden">
           <div class="absolute bg-primary rounded text-white top-3 left-3">#143779</div>
