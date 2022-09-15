@@ -15,9 +15,10 @@
 <template>
   <ModalLogoutComponent v-show="showLogout" @logout="logoutdulu" @close="showLogout = false"/>
   <div class="bg-blue-500 fixed z-20 w-full">
-      <div class="flex justify-end pt-4 h-12 sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden">
+      <div class="flex justify-between pt-4 h-12 sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden">
+        <div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
         <img :src="logo_putih" alt="logo" class="h-12 w-20"/>
-        <div class="text-right w-52">
+        <div class="text-right">
           <button @click="showLogout = true" class="bg-primary text-white px-4 py-2 rounded"><img :src="logout" class="w-6 h-6"></button>
         </div>
       </div>
