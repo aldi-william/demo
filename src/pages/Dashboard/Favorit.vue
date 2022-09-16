@@ -33,7 +33,7 @@
     <div class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white" v-for="i in 15" :key="i">
       <div class="rounded shadow-2xl p-4">
          <div class="relative overflow-hidden">
-          <div class="absolute bg-primary rounded text-white top-3 left-3">#143779</div>
+          <div class="absolute bg-blue-500 rounded text-white top-3 left-3">#143779</div>
           <img :src="isFavorit[i] ? image_star : image_star_empty" alt="star" class="w-8 h-8 absolute right-3 top-3" @click="isFavorit[i] = !isFavorit[i]"/>
           <div class="bg-red-600 absolute bottom-0 right-0 px-4 py-0 rounded-tl-full text-white flex items-start">
             Berlangsung
@@ -50,7 +50,7 @@
               <div class="text-white mx-2">1000</div>
             </div>
             <div class="col-span-4">
-                <h1 class="text-sm text-center bg-primary text-white rounded-lg px-2 py-1 w-20 float-right">TAV</h1>
+                <h1 class="text-sm text-center bg-blue-500 text-white rounded-lg px-2 py-1 w-20 float-right">TAV</h1>
             </div>
             <div class="col-span-6 flex">
                <img :src="image_mobil" class="w-12 h-6"/>
@@ -71,7 +71,7 @@
             <h1 class="text-2xl font-bold">Rp. 1.090.000.000</h1>
           </div>
           <div>
-            <button class="bg-tertier px-4 py-2 shadow-xl text-sm">Tawar</button>
+            <button class="bg-tertier px-4 py-2 shadow-xl text-sm">Lihat</button>
           </div>
          </div>
       </div>

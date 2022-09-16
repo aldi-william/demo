@@ -38,7 +38,7 @@ const password_konfirmasi = ref('');
         <div class="m-8">
           <p>Password</p>
           <input type="password" class="px-4 py-2 rounded w-full border border-gray" v-model="password">
-          <p>Masukan Password Anda Untuk Melakukan Perubahan</p>
+          <p class="text-sm">Masukan Password Anda Untuk Melakukan Perubahan</p>
         </div>
         <div class="m-8">
           <button class="px-4 py-2 rounded bg-blue-400 text-white w-full">Simpan</button>
@@ -48,7 +48,7 @@ const password_konfirmasi = ref('');
     <div class="text-center font-bold text-3xl my-12">
         Ganti Password
     </div>
-    <div class="border-2 border-gray rounded-lg w-11/12 sm:w-8/12 md:w-8/12 lg:w-8/12 xl:w-8/12 2xl:w-8/12 mx-auto">
+    <div class="border-2 border-gray rounded-lg w-11/12 sm:w-8/12 md:w-8/12 lg:w-8/12 xl:w-8/12 2xl:w-8/12 mx-auto mb-24">
         <div class="m-8">
           <p>Password Saat ini</p>
           <input type="password" class="px-4 py-2 rounded w-full border border-gray" v-model="password_saat_ini" placeholder="Password saat ini">

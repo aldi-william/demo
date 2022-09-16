@@ -16,7 +16,7 @@
   <div class="fixed bottom-0 left-0 right-0 w-full z-10 flex sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden">
     <div class="flex w-full justify-between">
       <router-link to="/dashboard/bursamobil" class="w-1/5">
-        <div class="flex flex-col w-full py-2" :class="route.name === 'BursaMobil' || route.name === 'BursaMobilDetail' ? 'bg-primary':'bg-gray-300'">
+        <div class="flex flex-col w-full py-2" :class="route.name === 'BursaMobil' || route.name === 'BursaMobilDetail' ? 'bg-blue-500':'bg-gray-300'">
           <div class="flex flex-row justify-center">
             <img :src="route.name === 'BursaMobil' || route.name === 'BursaMobilDetail' ? icon_bursa_lelang_putih : icon_bursa_lelang_hitam" class="w-4 h-4"/>
           </div>
@@ -25,7 +25,7 @@
       </router-link>
       
       <router-link to="/dashboard/favorit" class="w-1/5">
-        <div class="flex flex-col w-full py-2" :class="route.name === 'Favorit' ? 'bg-primary':'bg-gray-300'">
+        <div class="flex flex-col w-full py-2" :class="route.name === 'Favorit' ? 'bg-blue-500':'bg-gray-300'">
           <div class="flex flex-row justify-center">
             <img :src="route.name === 'Favorit' ? icon_favorit_putih : icon_favorit_hitam" class="w-4 h-4"/>
           </div>
@@ -34,7 +34,7 @@
       </router-link>
        
       <router-link to="/dashboard/riwayat" class="w-1/5">
-        <div class="flex flex-col w-full py-2" :class="route.name === 'Riwayat' ? 'bg-primary':'bg-gray-300'">
+        <div class="flex flex-col w-full py-2" :class="route.name === 'Riwayat' ? 'bg-blue-500':'bg-gray-300'">
           <div class="flex flex-row justify-center">
             <img :src="route.name === 'Riwayat' ? icon_riwayat_putih : icon_riwayat_hitam" class="w-4 h-4"/>
           </div>
@@ -43,7 +43,7 @@
       </router-link>
       
       <router-link to="/dashboard/akun" class="w-1/5">
-        <div class="flex flex-col w-full py-2" :class="route.name === 'Akun' ? 'bg-primary':'bg-gray-300'">
+        <div class="flex flex-col w-full py-2" :class="route.name === 'Akun' ? 'bg-blue-500':'bg-gray-300'">
           <div class="flex flex-row justify-center">
             <img :src="route.name === 'Akun' ? icon_akun_putih : icon_akun_hitam" class="w-4 h-4"/>
           </div>
@@ -52,7 +52,7 @@
       </router-link>
 
       <router-link to="/dashboard/bantuan" class="w-1/5">
-        <div class="flex flex-col w-full py-2" :class="route.name === 'Bantuan' ? 'bg-primary':'bg-gray-300'">
+        <div class="flex flex-col w-full py-2" :class="route.name === 'Bantuan' ? 'bg-blue-500':'bg-gray-300'">
           <div class="flex flex-row justify-center">
             <img :src="route.name === 'Bantuan' ? icon_bantuan_putih : icon_bantuan_hitam" class="w-2 h-4"/>
           </div>

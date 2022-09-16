@@ -51,7 +51,7 @@
          <input placeholder="Cari Merek, Model Mobil atau lainnya" class="pl-8 pr-4 py-2 w-full border-2 border-gray"/>
          <img :src="image_search" alt="search" class="w-4 h-4 absolute left-2 top-3 flex items-center justify-end"/>
     </div>
-    <div class="col-span-12 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative bg-white">
+    <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative bg-white">
          <button class="pl-8 pr-4 py-2 w-full border-2 border-gray text-left" @click="range_harga = !range_harga">Range Harga</button>
          <img :src="image_rentang_harga" alt="rentang harga" class="w-4 h-4 absolute left-2 top-3 flex items-center justify-end"/>
          <div class="absolute border bg-white shadow-xl p-4 z-20" v-show="range_harga">
@@ -64,11 +64,11 @@
              <div class="flex flex-row my-4">
                 <div class="bg-biru rounded-l px-4 py-2 border border-black">Rp</div><input placeholder="harga tertinggi" class="px-4 py-2 border border-black rounded-r"/>
              </div>
-             <button class="text-white bg-primary px-4 py-2 w-full rounded">Terapkan</button>
+             <button class="text-white bg-blue-500 px-4 py-2 w-full rounded">Terapkan</button>
          </div>
     </div>
-    <div class="col-span-12 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative bg-white">
-         <button placeholder="Tahun" class="pl-8 pr-4 py-2 w-full border-2 border-gray text-left" @click="range_tahun = !range_tahun">Tahun</button>
+    <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative bg-white">
+         <button placeholder="Tahun" class="pl-8 pr-4 py-2 w-full border-2 border-gray text-left" @click="range_tahun = !range_tahun">Range Tahun</button>
          <img :src="image_calender" alt="calendar" class="w-4 h-4 absolute left-2 top-3 flex items-center justify-end"/>
          <div class="absolute border bg-white shadow-xl p-4 z-20" v-show="range_tahun">
              <div class="mb-2">
@@ -86,10 +86,10 @@
                 </div>
              </div>
              
-             <button class="text-white bg-primary px-4 py-2 w-full rounded">Terapkan</button>
+             <button class="text-white bg-blue-500 px-4 py-2 w-full rounded">Terapkan</button>
          </div>
     </div>
-    <div class="col-span-12 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative">
+    <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative">
          <select placeholder="Kota" class="pl-8 pr-4 py-2 w-full border-2 border-gray">
             <option value="1">Semarang</option>
             <option value="2">Jakarta</option>
@@ -97,7 +97,7 @@
          </select>
          <img :src="image_location" alt="location" class="w-4 h-4 absolute left-2 top-3 flex items-center justify-end"/>
     </div>
-    <div class="col-span-12 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative">
+    <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative">
       
          <button @click="items = 'Kilometer'" class="pl-8 pr-4 py-2 w-full border-2 border-gray bg-white text-left">
              Kilometer
@@ -113,7 +113,7 @@
     <div class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white" v-for="i in 15" :key="i">
       <div class="rounded shadow-2xl p-4">
          <div class="relative overflow-hidden">
-          <div class="absolute bg-primary rounded text-white top-3 left-3">#143779</div>
+          <div class="absolute bg-blue-500 rounded text-white top-3 left-3">#143779</div>
           <img :src="isFavorit[i] ? image_star : image_star_empty" alt="star" class="w-8 h-8 absolute right-3 top-3" @click="isFavorit[i] = !isFavorit[i]"/>
           <div class="bg-red-600 absolute bottom-0 right-0 px-4 py-0 rounded-tl-full text-white flex items-start">
             Berlangsung
@@ -130,7 +130,7 @@
               <div class="text-white mx-2">1000</div>
             </div>
             <div class="col-span-4">
-                <h1 class="text-sm text-center bg-primary text-white rounded-lg px-2 py-1 w-20 float-right">TAV</h1>
+                <h1 class="text-sm text-center bg-blue-500 text-white rounded-lg px-2 py-1 w-20 float-right">TAV</h1>
             </div>
             <div class="col-span-6 flex">
                <img :src="image_mobil" class="w-12 h-6"/>
@@ -165,7 +165,7 @@
     <div class="col-span-12 mb-24 mt-4">
          <div class="flex flex-row justify-center">
             <div class="px-4 py-2 rounded border border-gray cursor-pointer bg-white hidden sm:flex">Sebelumnya</div>
-            <div class="px-4 py-2 rounded border border-gray hover:bg-primary hover:text-white cursor-pointer bg-white" v-for="i in 5" :key="i">{{ i }}</div>
+            <div class="px-4 py-2 rounded border border-gray hover:bg-blue-500 hover:text-white cursor-pointer bg-white" v-for="i in 5" :key="i">{{ i }}</div>
             <div class="px-4 py-2 rounded border border-gray cursor-pointer bg-white hidden sm:flex">Selanjutnya</div>
          </div>
     </div>

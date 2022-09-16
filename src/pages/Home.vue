@@ -46,7 +46,7 @@
   
   <div class="w-full h-full bg-secondary py-20 absolute" :class="isAnimated ? 'hidden':''">
     <img :src="logo" alt="tav logo" class="w-64 mx-auto my-4"/>
-    <pre class="text-primary text-3xl tracking-normal sm:tracking-widest md:tracking-widest lg:tracking-widest xl:tracking-widest 2xl:tracking-widest text-center my-4">LELANG MENANG</pre>
+    <pre class="text-blue-500 text-3xl tracking-normal sm:tracking-widest md:tracking-widest lg:tracking-widest xl:tracking-widest 2xl:tracking-widest text-center my-4">LELANG MENANG</pre>
     <img :src="star" alt="tav star" class="w-20 mx-auto my-4" />
     <img :src="image" alt="tav image" class="w-96 mx-auto my-4">
     <p class="text-center my-4 font-bold">Berburu mobil bekas Murah & Berkualitas</p>
@@ -70,7 +70,7 @@
             <a href="#" class="text-blue-400 hover:text-blue-500" @click="showModal = true">Lupa Password ?</a>
           </div>
 
-          <button class="bg-primary text-white px-4 py-2 w-full mx-auto rounded mb-12" @click="logintodashboard()">Masuk</button>
+          <button class="bg-blue-500 text-white px-4 py-2 w-full mx-auto rounded mb-12" @click="logintodashboard()">Masuk</button>
           <div class="text-center">Belum Memiliki akun ? Silahkan <a href="https://docs.google.com/forms/d/e/1FAIpQLSeUmuz7mHM__fyJl9WazOxum0_NLmT4-IPHWFqmroCQe2CWdw/viewform" class="hover:text-blue-500 text-blue-400">daftar disini</a></div>
           <div class="text-center">Ada kendala ? <a href="https://wa.me/6289668303824" class="text-blue-400 hover:text-blue-500">Hubungi Customer Service Lelang</a></div>
         
