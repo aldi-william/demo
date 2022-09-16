@@ -253,65 +253,65 @@
         <div class="col-span-12">
           <div class="text-3xl font-bold flex items-center">Detail Laporan Kendaraan<img :src="image_info_biru" class="mx-2 w-6 h-6"/></div>
           <div class="grid grid-cols-12 sm:flex md:flex lg:flex xl:flex 2xl:flex sm:flex-row md:flex-row lg:flex-row xl:flex-row 2xl:flex-row">
-            <div class="col-span-12 bg-blue-500 mt-6 sm:my-12 md:my-12 lg:my-12 xl:my-12 2xl:my-12 p-4 sm:p-8 md:p-8 lg:p-8 xl:p-8 2xl:p-8 rounded-lg sm:h-screen w-full sm:w-4/12 md:w-4/12 lg:w-4/12 xl:w-4/12 2xl:w-4/12">
+            <div class="col-span-12 bg-blue-500 mt-6 sm:my-12 md:my-12 lg:my-12 xl:my-12 2xl:my-12 p-4 sm:p-8 md:p-8 lg:p-8 xl:p-8 2xl:p-8 rounded-lg sm:h-screen w-full sm:w-3/12 md:w-3/12 lg:w-3/12 xl:w-3/12 2xl:w-3/12">
               <div class="flex sm:flex-col overflow-x-scroll sm:w-full sm:overflow-visible md:overflow-visible lg:overflow-visible xl:overflow-visible 2xl:overflow-visible">
               
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'testdrive'" :class="menu === 'testdrive' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-60 px-4 py-2  rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <button @click="menu = 'testdrive'" :class="menu === 'testdrive' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2  rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
                     <img :src="menu === 'testdrive' ? image_mobil_biru : image_mobil_putih" class="w-6 mx-2"/>Test Drive(8)
                   </button>
                 </div>
 
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'dashboard'" :class="menu === 'dashboard'? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-60 px-4 py-2  rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <button @click="menu = 'dashboard'" :class="menu === 'dashboard'? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2  rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
                     <img :src="menu === 'dashboard' ? image_spedo_biru: image_spedo_putih " class="w-6 mx-2" />Dashboard(9)
                   </button>
                 </div>
 
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'instrumen'" :class="menu === 'instrumen' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-60 px-4 py-2  rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <button @click="menu = 'instrumen'" :class="menu === 'instrumen' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2  rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
                     <img :src="menu === 'instrumen' ? image_tri_speedo_biru: image_tri_speedo_putih" class="w-6 mx-2" />Instrumen(6)
                   </button>
                 </div>
 
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'jok-trim'" :class="menu === 'jok-trim' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-60 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <button @click="menu = 'jok-trim'" :class="menu === 'jok-trim' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
                     <img :src="menu === 'jok-trim' ? image_sofa_biru : image_sofa_putih" class="w-6 mx-2" />Jok & Trim(10)
                   </button>
                 </div>
 
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'kaca-lampu'" :class="menu === 'kaca-lampu' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-60 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <button @click="menu = 'kaca-lampu'" :class="menu === 'kaca-lampu' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
                     <img :src="menu === 'kaca-lampu' ? image_terompet_biru : image_terompet_putih " class="w-6 mx-2" />Kaca & Lampu(8)
                   </button>
                 </div>
 
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'underbody'" :class="menu === 'underbody' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-60 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <button @click="menu = 'underbody'" :class="menu === 'underbody' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
                     <img :src="menu === 'underbody' ? image_tank_biru : image_tank_putih" class="w-6 mx-2" />Under Body(12)
                   </button>
                 </div>
 
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'oli-cairan'" :class="menu === 'oli-cairan' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-60 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <button @click="menu = 'oli-cairan'" :class="menu === 'oli-cairan' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
                     <img :src="menu === 'oli-cairan' ? image_teko_biru : image_teko_putih" class="w-6 mx-2" />Oli & Cairan(5)
                   </button>
                 </div>
 
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'ruangmesin'" :class="menu === 'ruangmesin' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-60 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <button @click="menu = 'ruangmesin'" :class="menu === 'ruangmesin' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
                     <img :src="menu === 'ruangmesin' ? image_gear_biru : image_gear_putih " class="w-6 mx-2" />Ruang Mesin(19)
                   </button>
                 </div>
 
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'fitur'" :class="menu === 'fitur' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-60 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <button @click="menu = 'fitur'" :class="menu === 'fitur' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
                     <img :src="menu === 'fitur' ? image_bintang_biru : image_bintang_putih " class="w-6 mx-2" />Fitur(8)
                   </button>
                 </div>
 
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'dokumen'" :class="menu === 'dokumen' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-60 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <button @click="menu = 'dokumen'" :class="menu === 'dokumen' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
                     <img :src="menu === 'dokumen' ? image_buku_biru : image_buku_putih " class="w-6 mx-2" />Dokumen(4)
                   </button>
                 </div>

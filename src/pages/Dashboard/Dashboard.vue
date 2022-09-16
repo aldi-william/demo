@@ -4,7 +4,10 @@
 </script>
 <template>
    <NavHeader />
-   <div class="pt-20">
+   <div class="pt-2">
+
+   </div>
+   <div class="pt-16">
       
    </div>
    <router-view></router-view>

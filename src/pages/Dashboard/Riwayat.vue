@@ -20,7 +20,7 @@
 </script>
 <template>
   <div class="container-xl">
-      <h1 class="my-4 text-3xl">Riwayat Lelang</h1>
+      <h1 class="my-4 text-3xl font-bold">Riwayat Lelang</h1>
       <div class="grid grid-cols-12">
         <div @click="riwayat_menu = 'penawaran'" class="col-span-6 cursor-pointer" :class="riwayat_menu === 'penawaran' ? 'border-b-4 border-blue-400':'border-b-2 border-gray-400'">
              <h1 class="text-2xl text-center py-2">Riwayat Penawaran</h1>

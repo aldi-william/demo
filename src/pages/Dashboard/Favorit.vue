@@ -30,6 +30,10 @@
       </div>
   </div>
   <div class="container-xl grid grid-cols-12 gap-2 py-3" v-else>
+    <div class="col-span-12">
+      <h1 class="mt-4 text-3xl font-bold">Favoritku</h1>
+    </div>
+    
     <div class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white" v-for="i in 15" :key="i">
       <div class="rounded shadow-2xl p-4">
          <div class="relative overflow-hidden">
@@ -71,7 +75,7 @@
             <h1 class="text-2xl font-bold">Rp. 1.090.000.000</h1>
           </div>
           <div>
-            <button class="bg-tertier px-4 py-2 shadow-xl text-sm">Lihat</button>
+            <button  @click="$router.push(`/dashboard/detail/${i}`);" class="bg-tertier px-4 py-2 shadow-xl text-sm">Lihat</button>
           </div>
          </div>
       </div>
