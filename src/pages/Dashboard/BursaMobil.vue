@@ -44,7 +44,7 @@
     </div>
     <div class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 bg-white">
       <div class="flex items-center justify-center py-6 sm:pt-8">
-        <div class="text-center">Hari ini : Rabu 7 September 2022</div> 
+        <div class="text-center">Hari ini : Rabu, 7 September 2022</div> 
       </div>
     </div>
     <div class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 relative bg-white">
@@ -70,7 +70,7 @@
     <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative bg-white">
          <button placeholder="Tahun" class="pl-8 pr-4 py-2 w-full border-2 border-gray text-left" @click="range_tahun = !range_tahun">Range Tahun</button>
          <img :src="image_calender" alt="calendar" class="w-4 h-4 absolute left-2 top-3 flex items-center justify-end"/>
-         <div class="absolute border bg-white shadow-xl p-4 z-20" v-show="range_tahun">
+         <div class="absolute border bg-white shadow-xl p-4 z-20 right-0" v-show="range_tahun">
              <div class="mb-2">
               Tahun 
              </div>
