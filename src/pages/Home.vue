@@ -5,13 +5,15 @@
     import image from '../assets/images/splashscreen.png';
     import logo from '../assets/images/logo.png';
     import star from '../assets/images/star.png';
-
+    import LoginService from '../services/UserService';
     const router = useRouter();
     const isAnimated = ref(false);
     const isAbsolute = ref(false);
     const showModal = ref(false);
-    const no_wa = ref('');
-    const password = ref('');
+    const dataLogin = ref({
+        no_whatsapp: '',
+        password: ''
+    });
     const showAnimated = () => {
         setTimeout(()=>{
           isAnimated.value = true;
@@ -26,13 +28,15 @@
     showAnimated();
 
     const logintodashboard = () => {
-        if(no_wa.value == '123' && password.value == '123'){
-            localStorage.setItem('isLogin', 'true');
+        LoginService.login(dataLogin.value).then((response:any) => {
+          if(response.data.status === 'OK'){
+            localStorage.setItem('isLogin', response.data.data.token);
+            localStorage.setItem('user', JSON.stringify(response.data.data.user));
             router.push('/dashboard/bursamobil');
-        }else {
-            alert('Nomer Whatsapp atau Password Anda Salah');
-        }
-        
+          }
+        }).catch((error:any) => {
+            console.log(error)
+        })   
     }
 </script>
 <template>
@@ -57,12 +61,12 @@
           <p class="text-center mb-6 text-lg">Platform LELANG MENANG Mobil Bekas Berkualitas</p>
           <div class="w-full mx-auto">
               <p class="text-left">Username</p>
-              <input placeholder="Masukan No. WhatsApp" class="px-4 py-2 rounded border border-gray w-full" v-model="no_wa" type="number"/>
+              <input placeholder="Masukan No. WhatsApp" class="px-4 py-2 rounded border border-gray w-full" v-model="dataLogin.no_whatsapp" type="number"/>
           </div>
      
           <div class="w-full mx-auto my-4">
             <p class="text-left">Password</p>
-            <input placeholder="Masukan Password" class="px-4 py-2 rounded border border-gray w-full" v-model="password" />
+            <input placeholder="Masukan Password" class="px-4 py-2 rounded border border-gray w-full" v-model="dataLogin.password" type="password"/>
           </div>
      
           <div class="w-full mx-auto mb-4 flex flex-row justify-between">

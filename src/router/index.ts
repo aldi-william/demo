@@ -53,7 +53,7 @@ router.beforeEach((to, from) => {
   const isLogin = localStorage.getItem('isLogin');
   if (
     // make sure the user is authenticated
-    isLogin === 'false' &&
+    JSON.stringify(isLogin).length === 99 && isLogin !== null && isLogin !== undefined && isLogin !== '' && 
     // ❗️ Avoid an infinite redirect
     to.name !== 'Home'
   ){
