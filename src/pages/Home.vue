@@ -6,11 +6,12 @@
     import logo from '../assets/images/logo.png';
     import star from '../assets/images/star.png';
     import LoginService from '../services/UserService';
+    import { IDataLogin } from '../Interface/IDataLogin';
     const router = useRouter();
     const isAnimated = ref(false);
     const isAbsolute = ref(false);
     const showModal = ref(false);
-    const dataLogin = ref({
+    const dataLogin = ref<IDataLogin>({
         no_whatsapp: '',
         password: ''
     });
