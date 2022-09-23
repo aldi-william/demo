@@ -6,8 +6,8 @@ class LoginService {
     return http.post("/users/login", data)
   }
 
-  test(){
-    return http.get("/test")
+  kirimOTP(data:any) {
+    return http.post("/users/kirimOTP", data)
   }
 }
 

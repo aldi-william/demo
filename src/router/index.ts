@@ -7,6 +7,11 @@ const routes = [
         component:()=>import('../pages/Home.vue')
     },
     {
+        path:'/changepassword/:token',
+        name:"ChangePassword",
+        component:()=>import('../pages/ChangePassword.vue')
+    },
+    {
         path:'/dashboard',
         component:()=>import('../pages/Dashboard/Dashboard.vue'),
         children:[
@@ -49,17 +54,16 @@ const router = createRouter({
     routes
 })
 
-router.beforeEach((to, from) => {
+router.beforeEach((to, from, next) => {
   const isLogin = localStorage.getItem('isLogin');
-  if (
-    // make sure the user is authenticated
-    JSON.stringify(isLogin).length === 99 && isLogin !== null && isLogin !== undefined && isLogin !== '' && 
-    // ❗️ Avoid an infinite redirect
-    to.name !== 'Home'
-  ){
-    // redirect the user to the login page
-    return { name: 'Home' }
-  } 
+  if( to.name  == 'ChangePassword'){
+    next()
+  }else if (to.name !== 'Home' && !isLogin){
+    next({ name: 'Home' })
+  }else {
+    next()
+  }
+    
 })
 
 export default router

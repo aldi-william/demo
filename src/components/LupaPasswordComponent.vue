@@ -1,19 +1,26 @@
 <script setup lang="ts">
-import VOtpInput from 'vue3-otp-input';
+import LoginService from '../services/UserService';
 import { ref } from 'vue';
 const emit = defineEmits(['showModal']);
 const event = ref('resetPassword');
 const detik = ref(180);
+const no_wa = ref('');
+
 
 
 const kirimotp = () => {
-  const interval = setInterval(()=>{
-  detik.value = detik.value - 1;
-    if(detik.value <= 0){
-      clearInterval(interval);
-    }
-  }, 1000)
-  event.value = 'verifotp';
+  LoginService.kirimOTP(no_wa.value).then((response:any) => {
+    console.log(response)
+  }).catch((error:any) => {
+    console.log(error)
+  })
+  // const interval = setInterval(()=>{
+  // detik.value = detik.value - 1;
+  //   if(detik.value <= 0){
+  //     clearInterval(interval);
+  //   }
+  // }, 1000)
+  // event.value = 'verifotp';
 }
 
 const handleOnComplete =  () => {
@@ -30,11 +37,11 @@ const exit = () => {
       <p class="float-right cursor-pointer" @click="emit('showModal')">X</p>
       <h1 class="text-left text-blue-500 text-3xl font-bold my-4">Reset Password</h1>
       <p class="text-justify my-4">Masukan Nomer WhatsApp yang terhubung dengan akun TAV Mobil Anda. Kami akan mengirimkan tautan ke nomor WhatsApp Anda untuk melakukan reset password</p>
-      <input placeholder="Nomer WhatsApp" class="px-4 py-2 border border-gray w-full rounded"/>
+      <input placeholder="Nomer WhatsApp" class="px-4 py-2 border border-gray w-full rounded" v-model="no_wa"/>
       <p class="text-red-600 text-left mb-4">Nomor yang Anda masukan tidak valid</p>
       <button class="bg-blue-500 text-white px-4 py-2 rounded w-full" @click="kirimotp()">Kirim</button>
     </div>
-    <div v-else-if="event ==='verifotp'">
+    <!-- <div v-else-if="event ==='verifotp'">
         <h1 class="text-2xl text-blue-500">Verifikasi OTP Anda</h1>
         <p class="mb-6">Masukan kode OTP yang telah dikirimkan ke nomor WhatsApp Anda :</p>
         <v-otp-input 
@@ -44,12 +51,12 @@ const exit = () => {
         separator="-"
         @on-complete="handleOnComplete"/>
         <div class="mt-6">Belum dapat kode OTP ? Coba kirim ulang {{ detik }} detik</div>
-    </div>
-    <div v-else-if="event === 'passwordbaru'" class="flex flex-col">
+    </div> -->
+    <!-- <div v-else-if="event === 'passwordbaru'" class="flex flex-col">
       <h1 class="text-blue-500 text-2xl font-bold mb-4">Silahkan Masukan Password Baru</h1>
       <input placeholder="Password Baru" class="px-4 py-2 border border-gray rounded mb-4"/>
       <input placeholder="Ulangi Password" class="px-4 py-2 border border-gray rounded mb-4"/>
       <button class="bg-blue-500 text-white px-4 py-2 rounded mb-4" @click="exit">Simpan</button>
-    </div>
+    </div> -->
   </div>
 </template>

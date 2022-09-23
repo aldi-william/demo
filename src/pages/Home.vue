@@ -32,10 +32,10 @@
         LoginService.login(dataLogin.value).then((response:any) => {
           if(response.data.status === 'OK'){
             localStorage.setItem('isLogin', response.data.data.token);
-            localStorage.setItem('user', JSON.stringify(response.data.data.user));
             router.push('/dashboard/bursamobil');
           }
         }).catch((error:any) => {
+            alert("no whatsapp atau password anda salah");
             console.log(error)
         })   
     }
