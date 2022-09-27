@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "http://localhost:8080/api",
+  baseURL: "https://be-lelang.tavmobil.id/api",
   headers: {
     "Content-type": "application/json",
     "x-api-key" : "RAHASIA"
