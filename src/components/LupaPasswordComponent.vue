@@ -4,12 +4,15 @@ import { ref } from 'vue';
 const emit = defineEmits(['showModal']);
 const event = ref('resetPassword');
 const detik = ref(180);
-const no_wa = ref('');
+const data = ref({
+    no_whatsapp: ''
+});
+
 
 
 
 const kirimotp = () => {
-  LoginService.kirimOTP(no_wa.value).then((response:any) => {
+  LoginService.kirimOTP(data.value).then((response:any) => {
     console.log(response)
   }).catch((error:any) => {
     console.log(error)
@@ -37,7 +40,7 @@ const exit = () => {
       <p class="float-right cursor-pointer" @click="emit('showModal')">X</p>
       <h1 class="text-left text-blue-500 text-3xl font-bold my-4">Reset Password</h1>
       <p class="text-justify my-4">Masukan Nomer WhatsApp yang terhubung dengan akun TAV Mobil Anda. Kami akan mengirimkan tautan ke nomor WhatsApp Anda untuk melakukan reset password</p>
-      <input placeholder="Nomer WhatsApp" class="px-4 py-2 border border-gray w-full rounded" v-model="no_wa"/>
+      <input placeholder="Nomer WhatsApp" class="px-4 py-2 border border-gray w-full rounded" v-model="data.no_whatsapp" type="number"/>
       <p class="text-red-600 text-left mb-4">Nomor yang Anda masukan tidak valid</p>
       <button class="bg-blue-500 text-white px-4 py-2 rounded w-full" @click="kirimotp()">Kirim</button>
     </div>

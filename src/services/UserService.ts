@@ -7,7 +7,15 @@ class LoginService {
   }
 
   kirimOTP(data:any) {
-    return http.post("/users/kirimOTP", data)
+    return http.post("/users/forgot-password", data)
+  }
+
+  checkOTP(data:any){
+    return http.post('/users/checkotp', data)
+  }
+
+  changePassword(data:any){
+    return http.post('/users/change-password', data)
   }
 }
 

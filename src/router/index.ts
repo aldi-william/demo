@@ -1,4 +1,5 @@
 import {createRouter, createWebHistory}  from 'vue-router';
+import { useRoute } from 'vue-router';
 
 const routes = [
     {
@@ -7,7 +8,7 @@ const routes = [
         component:()=>import('../pages/Home.vue')
     },
     {
-        path:'/changepassword/:token',
+        path:'/changepassword/:otp',
         name:"ChangePassword",
         component:()=>import('../pages/ChangePassword.vue')
     },
@@ -23,6 +24,7 @@ const routes = [
             {
                path:'detail/:id',
                name:"BursaMobilDetail",
+               
                component:()=>import('../pages/Dashboard/Detail.vue'),   
             },
             {
