@@ -19,9 +19,14 @@
   const isFavorit = ref([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
   const items = ref(''); // untuk kilometer
   const kilometer = ref<number>(0);
+  const closeAll = () => {
+    range_harga.value = false;
+    range_tahun.value = false;
+    items.value = '';
+  };
 </script>
 <template>
-  <div class="bg-biru_fb">
+  <div class="bg-biru_fb" @click.self="closeAll()">
   <div class="container-xl grid grid-cols-12 sm:gap-2 py-3">
     <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 sm:px-4 sm:bg-white py-2 flex justify-center items-center z-20 sm:z-0 md:z-0 lg:z-0 xl:z-0 2xl:z-0">
       <div class="bg-white w-full fixed sm:relative px-4 sm:px-0 py-2 sm:py-0">

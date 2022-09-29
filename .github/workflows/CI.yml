@@ -26,4 +26,5 @@ jobs:
                cd /home/lelang
                git reset --hard
                git pull origin main
+               git status
                sudo pm2 restart 5
