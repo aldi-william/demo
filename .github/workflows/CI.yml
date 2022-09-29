@@ -27,4 +27,4 @@ jobs:
                git reset --hard
                git pull origin main
                git status
-               sudo pm2 restart 5
+               sudo pm2 restart 0
