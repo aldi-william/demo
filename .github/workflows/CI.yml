@@ -19,7 +19,7 @@ jobs:
          with :
             host: ${{ secrets.SSH_HOST }}
             username : ${{ secrets.SSH_USERNAME }}
-            key: ${{ secrets.SSH_KEY_SECRET_ECOMMERCE }}
+            key: ${{ secrets.SSH_KEY_SECRET_LELANG }}
             port: 22
             script: |
                cd ~
