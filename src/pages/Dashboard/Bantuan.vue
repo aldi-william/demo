@@ -25,8 +25,8 @@
                <h1 class="text-xl mb-4 font-bold">Pertanyaan Disclaimer</h1>
                <p class="text-justify">1. Dengan Membeli Kendaraan Melalui Platfrom TAV, Pembeli dianggap telah meninjau dan setuju untuk membeli kendaraan berdasarkan deskripsi.</p>
                <p class="text-justify">2. Deskripsi dan kondisi Kendaraan (termasuk tetapi tidak terbatas pada jarak) artinya seperti kondisi kendaraan pada tanggal pemeriksaan kendaraan dan seperti yang dinyatakan dalam platfrom TAV.</p>
-               <p class="text-justify">3. Pembeli diingatkan untuk memeriksa keadaan kendaraan, terutama sebelum atau selama penyerahan kendaraan dari kami kepada Pembeli(“Serah Terima”) untuk pihak (A) memastikan bahwa kendaraan itu sesuai deskripsi atau pihak (B) segera memberitahu kami sekiranya terdapat percanggahan dalam deskripsi semasa Serah Terima, jika gagal yang dianggap pembeli telah menerima kendaraan sesuai deskripsi atau syarat kendaraan semasa serah terima.</p>
-               <p class="text-justify">4. Kecuali disediakan secara tertulis dan bertulis, kami menolak semua pernyataan atau jaminann lain, yang tersurat atau tersirat berkaitan dengan keadaan ini, termasuk, tanpa batasan, sebarang jaminan mengenai kualiti, roadworthiness, kesesuaian, kemampuan jual-beli, kesesuaian untuk tujuan tertentu atau sebaliknya (tanpa mengira apa jual cara urus niaga atau penggunaan perdagangan)
+               <p class="text-justify">3. Pembeli diingatkan untuk memeriksa keadaan kendaraan, terutama sebelum atau selama penyerahan kendaraan dari kami kepada Pembeli(“Serah Terima”) untuk pihak (A) memastikan bahwa kendaraan itu sesuai deskripsi atau pihak (B) segera memberitahu kami sekiranya terdapat peryanggahan dalam deskripsi semasa Serah Terima, jika gagal yang dianggap pembeli telah menerima kendaraan sesuai deskripsi atau syarat kendaraan semasa serah terima.</p>
+               <p class="text-justify">4. Kecuali disediakan secara tertulis dan bertulis, kami menolak semua pernyataan atau jaminan lain, yang tersurat atau tersirat berkaitan dengan keadaan ini, termasuk, tanpa batasan, sebarang jaminan mengenai kualitas, roadworthiness, kesesuaian, kemampuan jual-beli, kesesuaian untuk tujuan tertentu atau sebaliknya (tanpa mengira apa jual cara urus niaga atau penggunaan perdagangan)
                </p>
                <h1 class="text-xl my-4 font-bold">Transparan Dalam Penawaran </h1>
                <p class="text-justify">1. Semua kendaraan yang telah terdaftar di Marketplace ini telah menjalani pemeriksaan oleh tim AV Mobil.</p>
@@ -119,22 +119,22 @@
                <h1 class="text-xl mb-4 font-bold">Syarat Pengguna</h1>
                <p>TAV Mobil ingin mengucapkan terimakasih telah mempercayakan penjualan mobil Anda pada kami. Sebelum Anda mengirimkan data-data mobil Anda, kami ingin Anda membaca dan menyetujui syarat-syarat dan ketentuan-ketentuan dibawah ini : </p>
                <div>
-                <p class="text-justify">1. Saya pengguna dengan ini setuju untuk memberikan pengelola dan atau pihak terkait lainnya ijin untuk menggunakan data-data saya seperti : nama, kontak, alamat, email, dan lain-lain dengan ketentuan yang akan disebutkan dibawah ini :</p>  
+                <p class="text-justify">1. Saya pengguna dengan ini setuju untuk memberikan pengelola dan atau pihak terkait lainnya penulisan izin untuk menggunakan data-data saya seperti : nama, kontak, alamat, email, dan lain-lain dengan ketentuan yang akan disebutkan dibawah ini :</p>  
                  <ul class="list-disc px-8">
                   <li>a. Data pribadi akan digunakan oleh pengelola guna menghubungkan Pengguna dengan dealer-dealer mobil rekanan Pengelola melalui media komunikasi seperti : email, surat tercatat, SMS dan atau telepon.
                   </li>
-                  <li>b. Tidak menutup kemungkinan Pengelola akan menggunakan Data Pribadi Milik para Pengguna tersebut. Perlu diketahui juga bahwa pihak ketiaga yang dimaksud wajib memenuhi peraturan yang telah dituangkan ke dalam kontrak dengan Pengelola dimana penggunaan Data Pribadi dari Pengguna tidak akan disalahgunakan untuk hal-hal lain selain yang tertuang di dalam kontrak tersebut. </li>
+                  <li>b. Tidak menutup kemungkinan Pengelola akan menggunakan Data Pribadi Milik para Pengguna tersebut. Perlu diketahui juga bahwa pihak ketiga yang dimaksud wajib memenuhi peraturan yang telah dituangkan ke dalam kontrak dengan Pengelola dimana penggunaan Data Pribadi dari Pengguna tidak akan disalah gunakan untuk hal-hal lain selain yang tertuang di dalam kontrak tersebut. </li>
                  </ul>
                </div>
                 <p class="text-justify">2. Pengguna mempunyai hak dan wewenang dari waktu ke waktu untuk :
                 Mencabut ijin penggunaan Data Pribadi
-                Meminta perubahan dan atau pengkinian atas Data Pribadi
+                Meminta perubahan atau pembaruan atas Data Pribadi
                 Menanyakan hal-hal sehubungan penggunaan Data Pribadi-nya dengan menghubungi pengelola.</p>
                 <h1 class="text-xl my-4 font-bold">Kebijakan Pengguna</h1>
                 <p class="text-justify">PEMBERITAHUAN PERLINDUNGAN DATA PRIBADI
                                         Para Pengguna dan Pengunjung yang Kami Hormati,
                                         Pemberitahuan Perlindungan Data Pribadi ini dikeluarkan bagi seluruh Pengguna dan Pengunjung TAV Mobil yang kami hormati sesuai dengan ketentuan peraturan perundang - undangan Republik Indonesia yang berlaku terkait Perlindungan Data Pribadi (“UU PDP”).</p>
-                <p class="text-justify">1. Selama Anda berhubungan dengan kami, kami akan mengumpulkan dan memproses data pribadi Anda untuk tujuan berkomunikasi dengan Anda, menyediakan produk atau layanan kepada Anda, memberi tanggapan, terhadap pertanyaan Anda, memberikan Anda update terkini mengenai produk, layanan dan atau promosi yang ditawarkan oleh TAV Mobil serta tujuan - tujuan lain yang diperlukan untuk mengoperasikan dan mempertahankan usaha kami sepertimana yang tercantum pada Kebijakan Perlindungan Data Pribadi kami (secara bersama - sama disebut sebagai “Tujuan”)
+                <p class="text-justify">1. Selama Anda berhubungan dengan kami, kami akan mengumpulkan dan memproses data pribadi Anda untuk tujuan berkomunikasi dengan Anda, menyediakan produk atau layanan kepada Anda, memberi tanggapan, terhadap pertanyaan Anda, memberikan Anda update terkini mengenai produk, layanan dan atau promosi yang ditawarkan oleh TAV Mobil serta tujuan - tujuan lain yang diperlukan untuk mengoperasikan dan mempertahankan usaha kami seperti halnya yang tercantum pada Kebijakan Perlindungan Data Pribadi kami (secara bersama - sama disebut sebagai “Tujuan”)
                 </p>
                 <p class="text-justify">2. Kami berkomitmen untuk memastikan bahwa data pribadi Anda akan disimpan dengan aman. Anda berhak untuk meminta akses, meminta salinan, meminta untuk memperbarui atau memperbaiki data pribadi Anda yang disimpan oleh kami. Anda mempunyai hak setiap waktu untuk meminta kami membatasi pemrosesan dan penggunaan data pribadi Anda. Permintaan tertulis dapat Anda tujukan kepada Petugas Kepatuhan kami.</p>
           </div>
