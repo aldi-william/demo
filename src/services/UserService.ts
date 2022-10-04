@@ -2,19 +2,19 @@ import http from "../api/http-common";
 
 class LoginService {
 
-  login(data:any) {
-    return http.post("/users/login", data)
+  login(data: any) {
+    return http.post("/login", data)
   }
 
-  kirimOTP(data:any) {
+  kirimOTP(data: any) {
     return http.post("/users/forgot-password", data)
   }
 
-  checkOTP(data:any){
+  checkOTP(data: any) {
     return http.post('/users/checkotp', data)
   }
 
-  changePassword(data:any){
+  changePassword(data: any) {
     return http.post('/users/change-password', data)
   }
 }

@@ -1,9 +1,9 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "https://be-lelang.tavmobil.id/api",
+  baseURL: "https://admin.tavmobil.id/api/lelang",
   headers: {
     "Content-type": "application/json",
-    "x-api-key" : "RAHASIA"
+    "Accept": "application/json"
   }
 });
