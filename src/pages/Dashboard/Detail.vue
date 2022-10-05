@@ -50,7 +50,6 @@
 
     const setThumbsSwiper = (swiper:any) => {
       thumbsSwiper.value = swiper;
-      console.log(swiper)
     }
 
     const modal = ref(false);

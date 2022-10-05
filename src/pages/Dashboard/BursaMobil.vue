@@ -1,5 +1,5 @@
-<script setup lang="ts">
-  import { ref } from 'vue';
+<script setup>
+  import { computed, ref,onMounted } from 'vue';
   import image_rentang_harga from '../../assets/images/icon_rentang_harga.png';
   import image_search from '../../assets/images/icon_search.png';
   import image_calender from '../../assets/images/icon_calender.png';
@@ -18,12 +18,25 @@
   const range_tahun = ref(false);
   const isFavorit = ref([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
   const items = ref(''); // untuk kilometer
-  const kilometer = ref<number>(0);
+  // const kilometer = ref<number>(0);
   const closeAll = () => {
     range_harga.value = false;
     range_tahun.value = false;
     items.value = '';
   };
+
+
+  // pinia
+  import { useBursaStore } from '../../stores/bursa';
+  const store = useBursaStore();
+  
+  const products = computed(() => {
+    return store.data
+  })
+  
+onMounted(() => {
+  store.fetchBursa();
+})
 </script>
 <template>
   <div class="bg-biru_fb" @click.self="closeAll()">
@@ -115,57 +128,60 @@
                     <button class="border bg-blue-500 text-white px-4 py-2 rounded w-full" @click="items = ''">Terapkan</button>
          </div>
     </div>
-    <div class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white" v-for="i in 15" :key="i">
-      <div class="rounded shadow-2xl p-4">
-         <div class="relative overflow-hidden">
-          <div class="absolute bg-blue-500 rounded text-white top-3 left-3">#143779</div>
-          <img :src="isFavorit[i] ? image_star : image_star_empty" alt="star" class="w-8 h-8 absolute right-3 top-3" @click="isFavorit[i] = !isFavorit[i]"/>
-          <div class="bg-red-600 absolute bottom-0 right-0 px-4 py-0 rounded-tl-full text-white flex items-start">
-            Berlangsung
+      <div v-for="product in products" :key="product.id" class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white">
+        <div class="rounded shadow-2xl p-4">
+          <div class="relative overflow-hidden">
+            <div class="absolute bg-blue-500 rounded text-white top-3 left-3">{{product.code}}</div>
+            <img :src="isFavorit[product.id] ? image_star : image_star_empty" alt="star" class="w-8 h-8 absolute right-3 top-3" @click="isFavorit[i] = !isFavorit[i]"/>
+            <div class="bg-red-600 absolute bottom-0 right-0 px-4 py-0 rounded-tl-full text-white flex items-start">
+              Berlangsung
+            </div>
+            <img :src="product.car_detail.image_feature1" alt="car" class="w-full z-10" @click="$router.push(`/dashboard/detail/${i}`);"/>
           </div>
-          <img :src="image_car" alt="car" class="w-full z-10" @click="$router.push(`/dashboard/detail/${i}`);"/>
-         </div>
-         <div class="grid grid-cols-12 my-2 gap-2">
-            <div class="col-span-4 bg-abu_abu relative flex px-2 py-1 rounded items-center">
-              <img :src="image_hammer" alt="hammer" class="w-6 h-6"/>
-              <div class="text-white mx-2 right-0 relative">1000</div>
-            </div>
-            <div class="col-span-4 bg-abu_abu relative flex px-2 py-1 rounded items-center">
-              <img :src="image_users" alt="users" class="w-6 h-6"/>
-              <div class="text-white mx-2">1000</div>
-            </div>
-            <div class="col-span-4">
-                <h1 class="text-sm text-center bg-blue-500 text-white rounded-lg px-2 py-1 w-20 float-right">TAV</h1>
-            </div>
-            <div class="col-span-6 flex">
-               <img :src="image_mobil" class="w-12 h-6"/>
-               <img  :src="image_tergenang" class="w-12 h-6 mx-4"/>
-               <img  :src="image_api" class="w-12 h-6"/>
-            </div>
-         </div>
-         <div class="my-1">
-            <div class="flex flex-row items-center justify-between">
-              <h1 class="font-bold text-xl">Suzuki Ertiga Sport</h1>
-              <img :src="image_lonceng" alt="lonceng" class="w-6 h-6"/>
-            </div>
-            <p>2019 | Matic | 30.000 KM | Semarang </p>
-         </div>
-         <div class="flex flex-row my-1 justify-between items-center">
-          <div>
-            <h1>Harga Mulai :</h1>
-            <h1 class="text-2xl font-bold">Rp. 1.090.000.000</h1>
+          <div class="grid grid-cols-12 my-2 gap-2">
+              <div class="col-span-4 bg-abu_abu relative flex px-2 py-1 rounded items-center">
+                <img :src="image_hammer" alt="hammer" class="w-6 h-6"/>
+                <div class="text-white mx-2 right-0 relative">1000</div>
+              </div>
+              <div class="col-span-4 bg-abu_abu relative flex px-2 py-1 rounded items-center">
+                <img :src="image_users" alt="users" class="w-6 h-6"/>
+                <div class="text-white mx-2">1000</div>
+              </div>
+              <div class="col-span-4">
+                  <h1 class="text-sm text-center bg-blue-500 text-white rounded-lg px-2 py-1 w-20 float-right">TAV</h1>
+              </div>
+              <div class="col-span-6 flex">
+                <img :src="image_mobil" class="w-12 h-6"/>
+                <img  :src="image_tergenang" class="w-12 h-6 mx-4"/>
+                <img  :src="image_api" class="w-12 h-6"/>
+              </div>
           </div>
-          <div>
-            <button @click="$router.push(`/dashboard/detail/${i}`);" class="bg-tertier px-4 py-2 shadow-xl text-sm hover:bg-blue-500 hover:text-white">Lihat</button>
+          <div class="my-1">
+              <div class="flex flex-row items-center justify-between">
+                <h1 class="font-bold text-xl">{{product.car_detail.car_brand.name}} {{product.car_detail.car_merk.name}} {{product.car_detail.car_type.name}}</h1>
+                <img :src="image_lonceng" alt="lonceng" class="w-6 h-6"/>
+              </div>
+              <p>{{product.car_detail.tahun}} | {{product.car_detail.transmisi}} | {{product.car_detail.km_service_terakhir}} KM | {{product.car_detail.kota}} </p>
           </div>
-         </div>
+          <div class="flex flex-row my-1 justify-between items-center">
+            <div>
+              <h1>Harga Mulai :</h1>
+              <h1 class="text-2xl font-bold">Rp. {{formatPrice(product.open_price)}}</h1>
+            </div>
+            <div>
+              <button @click="$router.push(`/dashboard/detail/${i}`);" class="bg-tertier px-4 py-2 shadow-xl text-sm hover:bg-blue-500 hover:text-white">Lihat</button>
+            </div>
+          </div>
+        </div>
+        <div class="bg-blue-500">
+          <div class="flex flex-row justify-between items-center p-4 shadow-xl">
+              <h1 class="text-white">{{formatdate(product.bid_date)}}</h1>
+              <h1 class="text-white">01:30:20</h1>
+          </div>
+        </div>      
       </div>
-      <div class="bg-blue-500">
-         <div class="flex flex-row justify-between items-center p-4 shadow-xl">
-            <h1 class="text-white">9 September 2022</h1>
-            <h1 class="text-white">01:30:20</h1>
-         </div>
-      </div>      
+    <div v-if="products.length < 1" class="col-span-12">
+      data belum ada
     </div>
     <div class="col-span-12 mb-24 mt-4">
          <div class="flex flex-row justify-center">
