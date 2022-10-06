@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, onMounted } from 'vue';
+import { computed, ref, onMounted, reactive } from 'vue';
 import image_rentang_harga from '../../assets/images/icon_rentang_harga.png';
 import image_search from '../../assets/images/icon_search.png';
 import image_calender from '../../assets/images/icon_calender.png';
@@ -34,13 +34,14 @@ const products = computed(() => {
   return store.data
 })
 
-const searchProduct = ref(null)
+const filterBursa = reactive({
+  search: "",
+  lowPrice: "",
+  heightPrice: "",
+})
 
-function searchQuery() {
-  if (searchProduct == "") {
-    console.log('ok');
-  }
-  store.searchBursa(searchProduct.value);
+function filterQuery() {
+  store.filterBursa(filterBursa);
 }
 
 onMounted(() => {
@@ -78,7 +79,7 @@ onMounted(() => {
         </div>
       </div>
       <div class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 relative bg-white">
-        <input type="text" v-model="searchProduct" @keyup="searchQuery"
+        <input type="text" v-model="filterBursa.search" @keyup="filterQuery"
           placeholder="Cari Merek, Model Mobil atau lainnya" class="pl-8 pr-4 py-2 w-full border-2 border-gray" />
         <img :src="image_search" alt="search" class="w-4 h-4 absolute left-2 top-3 flex items-center justify-end" />
       </div>
@@ -93,11 +94,11 @@ onMounted(() => {
           </div>
           <div class="flex flex-row my-4">
             <div class="bg-biru rounded-l px-4 py-2 border border-black">Rp</div><input placeholder="harga terendah"
-              class="px-4 py-2 border border-black rounded-r" />
+              class="px-4 py-2 border border-black rounded-r" v-model="filterBursa.lowPrice" @keyup="filterQuery" />
           </div>
           <div class="flex flex-row my-4">
             <div class="bg-biru rounded-l px-4 py-2 border border-black">Rp</div><input placeholder="harga tertinggi"
-              class="px-4 py-2 border border-black rounded-r" />
+              class="px-4 py-2 border border-black rounded-r" v-model="filterBursa.heightPrice" @keyup="filterQuery" />
           </div>
           <button class="text-white bg-blue-500 px-4 py-2 w-full rounded">Terapkan</button>
         </div>

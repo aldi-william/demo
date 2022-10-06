@@ -5,7 +5,7 @@ export const useBursaStore = defineStore({
   id: "bursa",
   state: () => ({
     data: [],
-    car_detail: {}
+    car_detail: {},
   }),
   getters: {},
   actions: {
@@ -15,8 +15,8 @@ export const useBursaStore = defineStore({
           this.data = resp.data.data.data
         })
     },
-    async searchBursa(query) {
-      await http.get(`/daftar-lelang?q=${query}`)
+    async filterBursa(query) {
+      await http.get(`/daftar-lelang?q=${query.search}&low=${query.lowPrice}&height=${query.heightPrice}`)
         .then(resp => {
           this.data = resp.data.data.data
         })
