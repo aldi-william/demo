@@ -187,7 +187,7 @@ onMounted(() => {
               <img :src="image_lonceng" alt="lonceng" class="w-6 h-6" />
             </div>
             <p>{{product.car_detail.tahun}} | {{product.car_detail.transmisi}} |
-              {{product.car_detail.km_service_terakhir}} KM | {{product.car_detail.kota}} </p>
+              {{product.car_detail.km_service_terakhir}} KM | {{textCapitalize(product.car_detail.kota)}} </p>
           </div>
           <div class="flex flex-row my-1 justify-between items-center">
             <div>
