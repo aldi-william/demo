@@ -93,12 +93,12 @@ onMounted(() => {
             Harga
           </div>
           <div class="flex flex-row my-4">
-            <div class="bg-biru rounded-l px-4 py-2 border border-black">Rp</div><input placeholder="harga terendah"
-              class="px-4 py-2 border border-black rounded-r" v-model="filterBursa.lowPrice" @keyup="filterQuery" />
-          </div>
-          <div class="flex flex-row my-4">
             <div class="bg-biru rounded-l px-4 py-2 border border-black">Rp</div><input placeholder="harga tertinggi"
               class="px-4 py-2 border border-black rounded-r" v-model="filterBursa.heightPrice" @keyup="filterQuery" />
+          </div>
+          <div class="flex flex-row my-4">
+            <div class="bg-biru rounded-l px-4 py-2 border border-black">Rp</div><input placeholder="harga terendah"
+              class="px-4 py-2 border border-black rounded-r" v-model="filterBursa.lowPrice" @keyup="filterQuery" />
           </div>
           <button class="text-white bg-blue-500 px-4 py-2 w-full rounded">Terapkan</button>
         </div>
