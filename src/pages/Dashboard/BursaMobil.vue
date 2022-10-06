@@ -38,6 +38,8 @@ const filterBursa = reactive({
   search: "",
   lowPrice: "",
   heightPrice: "",
+  minYear: "",
+  maxYear: "",
 })
 
 function filterQuery() {
@@ -93,14 +95,14 @@ onMounted(() => {
             Harga
           </div>
           <div class="flex flex-row my-4">
-            <div class="bg-biru rounded-l px-4 py-2 border border-black">Rp</div><input placeholder="harga tertinggi"
+            <div class="bg-biru rounded-l px-4 py-2 border border-black">Rp</div><input type="number" placeholder="harga tertinggi"
               class="px-4 py-2 border border-black rounded-r" v-model="filterBursa.heightPrice" @keyup="filterQuery" />
           </div>
           <div class="flex flex-row my-4">
-            <div class="bg-biru rounded-l px-4 py-2 border border-black">Rp</div><input placeholder="harga terendah"
+            <div class="bg-biru rounded-l px-4 py-2 border border-black">Rp</div><input type="number" placeholder="harga terendah"
               class="px-4 py-2 border border-black rounded-r" v-model="filterBursa.lowPrice" @keyup="filterQuery" />
           </div>
-          <button class="text-white bg-blue-500 px-4 py-2 w-full rounded">Terapkan</button>
+          <button class="text-white bg-blue-500 px-4 py-2 w-full rounded" @click="filterQuery">Terapkan</button>
         </div>
       </div>
       <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative bg-white">
@@ -114,16 +116,16 @@ onMounted(() => {
           <div class="flex flex-row items-center justify-between shadow-xl">
             <div class="flex flex-col mb-4 w-20">
               <p>dari</p>
-              <input placeholder="2010" class="px-4 py-2 border border-black rounded" />
+              <input type="number" v-model="filterBursa.minYear" @keyup="filterQuery" placeholder="2010" class="px-4 py-2 border border-black rounded" />
             </div>
             <div class="text-center mx-4">-</div>
             <div class="flex flex-col mb-4 w-20">
               <p>hingga</p>
-              <input placeholder="2022" class="px-4 py-2 border border-black rounded" />
+              <input type="number" v-model="filterBursa.maxYear" @keyup="filterQuery" placeholder="2022" class="px-4 py-2 border border-black rounded" />
             </div>
           </div>
 
-          <button class="text-white bg-blue-500 px-4 py-2 w-full rounded">Terapkan</button>
+          <button class="text-white bg-blue-500 px-4 py-2 w-full rounded" @click="filterQuery">Terapkan</button>
         </div>
       </div>
       <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative">
