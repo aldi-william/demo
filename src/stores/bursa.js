@@ -14,6 +14,12 @@ export const useBursaStore = defineStore({
         .then(resp => {
           this.data = resp.data.data.data
         })
-    }
+    },
+    async searchBursa(query) {
+      await http.get(`/daftar-lelang?q=${query}`)
+        .then(resp => {
+          this.data = resp.data.data.data
+        })
+    },
   }
 })
