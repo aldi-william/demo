@@ -28,19 +28,19 @@
         <router-link to="/dashboard/bursamobil"><img :src="logo_putih" alt="logo" class="h-8 w-20 hidden sm:flex md:flex lg:flex xl:flex 2xl:flex"/></router-link>
         <ul class="flex-row text-white hidden sm:flex md:flex lg:flex xl:flex 2xl:flex">
           <li class="mx-4" :class="route.name === 'BursaMobil' || route.name === 'BursaMobilDetail' ? 'bg-tertier px-4 py-2 rounded':'px-4 py-2'">
-            <router-link to="/dashboard/bursamobil">Bursa Mobil</router-link>
+            <router-link to="/dashboard/bursamobil" class="hover:border-b-4 hover:border-tertier">Bursa Mobil</router-link>
           </li>
           <li class="mx-4" :class="route.name === 'Favorit' ? 'bg-tertier px-4 py-2 rounded':'px-4 py-2'">
-            <router-link to="/dashboard/favorit">Favorit</router-link>
+            <router-link to="/dashboard/favorit" class="hover:border-b-4 hover:border-tertier">Favorit</router-link>
           </li>
           <li class="mx-4" :class="route.name === 'Riwayat' ? 'bg-tertier px-4 py-2 rounded':'px-4 py-2'">
-            <router-link to="/dashboard/riwayat">Riwayat</router-link>
+            <router-link to="/dashboard/riwayat" class="hover:border-b-4 hover:border-tertier">Riwayat</router-link>
           </li>
           <li class="mx-4" :class="route.name === 'Akun' ? 'bg-tertier px-4 py-2 rounded':'px-4 py-2'">
-            <router-link to="/dashboard/akun">Akun</router-link>
+            <router-link to="/dashboard/akun" class="hover:border-b-4 hover:border-tertier">Akun</router-link>
           </li>
           <li class="mx-4" :class="route.name === 'Bantuan' ? 'bg-tertier px-4 py-2 rounded':'px-4 py-2'">
-            <router-link to="/dashboard/bantuan">Bantuan</router-link>
+            <router-link to="/dashboard/bantuan" class="hover:border-b-4 hover:border-tertier">Bantuan</router-link>
           </li>
         </ul>
         <div class="hidden sm:flex md:flex lg:flex xl:flex 2xl:flex">

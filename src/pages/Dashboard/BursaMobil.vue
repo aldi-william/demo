@@ -225,12 +225,12 @@ getDataKota();
             </div>
           </div>
         </div>
-        <div class="bg-blue-500">
+        <!-- <div class="bg-blue-500">
           <div class="flex flex-row justify-between items-center p-4 shadow-xl">
             <h1 class="text-white">{{formatdate(product.bid_date)}}</h1>
             <h1 class="text-white">01:30:20</h1>
           </div>
-        </div>
+        </div> -->
       </div>
       <div v-if="products.length < 1" class="col-span-12">
         data belum ada
