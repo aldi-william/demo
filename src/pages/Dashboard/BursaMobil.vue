@@ -178,7 +178,7 @@ getDataKota();
         class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white">
         <div class="rounded shadow-2xl p-4">
           <div class="relative overflow-hidden">
-            <div class="absolute bg-blue-500 rounded text-white top-3 left-3">{{product.code}}</div>
+            <div class="absolute bg-blue-500 rounded text-white top-3 left-3 px-2">{{product.code}}</div>
             <img :src="isFavorit[product.id] ? image_star : image_star_empty" alt="star"
               class="w-8 h-8 absolute right-3 top-3" @click="isFavorit[i] = !isFavorit[i]" />
             <div class="bg-red-600 absolute bottom-0 right-0 px-4 py-0 rounded-tl-full text-white flex items-start">
