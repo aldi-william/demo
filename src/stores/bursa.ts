@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import http from "../api/http-common";
+import { IDataFilter } from "../interface/IDataFilter";
 
 export const useBursaStore = defineStore({
   id: "bursa",
@@ -15,7 +16,7 @@ export const useBursaStore = defineStore({
           this.data = resp.data.data.data
         })
     },
-    async filterBursa(query) {
+    async filterBursa(query: IDataFilter) {
       await http.get(`/daftar-lelang?q=${query.search}&low=${query.lowPrice}&height=${query.heightPrice}&minYear=${query.minYear}&maxYear=${query.maxYear}`)
         .then(resp => {
           this.data = resp.data.data.data

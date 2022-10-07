@@ -1,5 +1,5 @@
-<script setup>
-import { computed, ref, onMounted, reactive } from 'vue';
+<script setup lang="ts">
+import { computed, ref, onMounted, reactive, watch } from 'vue';
 import image_rentang_harga from '../../assets/images/icon_rentang_harga.png';
 import image_search from '../../assets/images/icon_search.png';
 import image_calender from '../../assets/images/icon_calender.png';
@@ -14,11 +14,19 @@ import image_star_empty from '../../assets/images/star_empty.png';
 import image_api from '../../assets/images/icon_api.png';
 import image_mobil from '../../assets/images/icon_mobil.png';
 import image_tergenang from '../../assets/images/icon_tergenang.png';
+import { useBursaStore } from '../../stores/bursa';
+import { formatdate, formatPrice, textCapitalize } from '../../mixins';
+import VueNumberFormat from 'vue-number-format';
+import GetFilterService from '../../services/GetService';
+import { IDataKota } from '../../Interface/IDataKota';
+
+
+
 const range_harga = ref(false);
 const range_tahun = ref(false);
 const isFavorit = ref([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
 const items = ref(''); // untuk kilometer
-// const kilometer = ref<number>(0);
+const kilometer = ref<number>(0);
 const closeAll = () => {
   range_harga.value = false;
   range_tahun.value = false;
@@ -27,19 +35,19 @@ const closeAll = () => {
 
 
 // pinia
-import { useBursaStore } from '../../stores/bursa';
 const store = useBursaStore();
 
-const products = computed(() => {
+const products:any = computed(() => {
   return store.data
 })
 
 const filterBursa = reactive({
   search: "",
-  lowPrice: "",
-  heightPrice: "",
-  minYear: "",
-  maxYear: "",
+  lowPrice: 0,
+  heightPrice: 0,
+  minYear: 0,
+  maxYear: 0,
+  city:''
 })
 
 function filterQuery() {
@@ -49,6 +57,35 @@ function filterQuery() {
 onMounted(() => {
   store.fetchBursa();
 })
+
+const dataKota = ref<IDataKota[]>([{
+  id: 0,
+  name: ''
+}]);
+
+const arrayKota = ref<string[]>([]);
+
+const getDataKota = () => {
+  GetFilterService.getFilter().then((response:any) => {
+    dataKota.value = response.data.data;
+    dataKota.value.map((item:any) => {
+      arrayKota.value.push(item.name.toLowerCase().replace('kabupaten', ''));
+    })
+  }).catch((error:any) => {
+    console.log(error)
+  })
+}
+
+watch(filterBursa,() =>
+  GetFilterService.getFilterMobil(filterBursa).then((response:any) => {
+    products.value = response.data.data;
+    console.log(response.data.data);
+  }).catch((error:any) => {
+    console.log(error)
+  })
+);
+
+getDataKota();
 </script>
 <template>
   <div class="bg-biru_fb" @click.self="closeAll()">
@@ -82,7 +119,7 @@ onMounted(() => {
       </div>
       <div class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 relative bg-white">
         <input type="text" v-model="filterBursa.search" @keyup="filterQuery"
-          placeholder="Cari Merek, Model Mobil atau lainnya" class="pl-8 pr-4 py-2 w-full border-2 border-gray" />
+          placeholder="Cari merek atau model mobil" class="pl-8 pr-4 py-2 w-full border-2 border-gray" />
         <img :src="image_search" alt="search" class="w-4 h-4 absolute left-2 top-3 flex items-center justify-end" />
       </div>
       <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative bg-white">
@@ -95,12 +132,12 @@ onMounted(() => {
             Harga
           </div>
           <div class="flex flex-row my-4">
-            <div class="bg-biru rounded-l px-4 py-2 border border-black">Rp</div><input type="number" placeholder="harga tertinggi"
-              class="px-4 py-2 border border-black rounded-r" v-model="filterBursa.heightPrice" @keyup="filterQuery" />
+            <div class="bg-biru rounded-l px-4 py-2 border border-black">Rp</div>
+              <VueNumberFormat v-model:value="filterBursa.heightPrice" :options="{ precision: 0, decimal: ',', thousand: '.', prefix: '', isInteger: true }" class="px-4 py-2 border border-black"></VueNumberFormat>  
           </div>
           <div class="flex flex-row my-4">
-            <div class="bg-biru rounded-l px-4 py-2 border border-black">Rp</div><input type="number" placeholder="harga terendah"
-              class="px-4 py-2 border border-black rounded-r" v-model="filterBursa.lowPrice" @keyup="filterQuery" />
+            <div class="bg-biru rounded-l px-4 py-2 border border-black">Rp</div>
+              <VueNumberFormat v-model:value="filterBursa.lowPrice" :options="{ precision: 0, decimal: ',', thousand: '.', prefix: '', isInteger: true }" class="px-4 py-2 border border-black"></VueNumberFormat> 
           </div>
           <button class="text-white bg-blue-500 px-4 py-2 w-full rounded" @click="filterQuery">Terapkan</button>
         </div>
@@ -129,11 +166,10 @@ onMounted(() => {
         </div>
       </div>
       <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative">
-        <select placeholder="Kota" class="pl-8 pr-4 py-2 w-full border-2 border-gray">
+        <!-- <select placeholder="Kota" class="">
           <option value="1">Semarang</option>
-          <option value="2">Jakarta</option>
-          <option value="3">Bandung</option>
-        </select>
+        </select> -->
+        <v-select :options="arrayKota" label="name" class="bg-white px-2 py-1 outline:none" v-model="filterBursa.city" @change="filterQuery"></v-select>
         <img :src="image_location" alt="location" class="w-4 h-4 absolute left-2 top-3 flex items-center justify-end" />
       </div>
       <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative">
@@ -149,7 +185,7 @@ onMounted(() => {
           <button class="border bg-blue-500 text-white px-4 py-2 rounded w-full" @click="items = ''">Terapkan</button>
         </div>
       </div>
-      <div v-for="product in products" :key="product.id"
+      <div v-for="(product,i) in products" :key="i+'products'"
         class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white">
         <div class="rounded shadow-2xl p-4">
           <div class="relative overflow-hidden">
@@ -159,7 +195,7 @@ onMounted(() => {
             <div class="bg-red-600 absolute bottom-0 right-0 px-4 py-0 rounded-tl-full text-white flex items-start">
               Berlangsung
             </div>
-            <img :src="product.car_detail.image_feature1" alt="car" class="w-full z-10"
+            <img :src="product.car_detail.image_feature1" alt="car" class="w-full h-64 z-10"
               @click="$router.push(`/dashboard/detail/${i}`);" />
           </div>
           <div class="grid grid-cols-12 my-2 gap-2">

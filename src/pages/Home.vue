@@ -7,10 +7,17 @@
     import star from '../assets/images/star.png';
     import LoginService from '../services/UserService';
     import { IDataLogin } from '../Interface/IDataLogin';
+    import Loading from 'vue-loading-overlay';
+    import 'vue-loading-overlay/dist/vue-loading.css';
+    import Swal from 'sweetalert2'
+    
     const router = useRouter();
     const isAnimated = ref(false);
+    const isAnimated2 = ref(false);
     const isAbsolute = ref(false);
     const showModal = ref(false);
+    const isLoading = ref(false);
+    const fullPage = ref(true);
     const dataLogin = ref<IDataLogin>({
         no_whatsapp: '',
         password: ''
@@ -18,7 +25,10 @@
     const showAnimated = () => {
         setTimeout(()=>{
           isAnimated.value = true;
-        }, 3000)  
+        }, 3000)
+        setTimeout(()=>{
+          isAnimated2.value = true;
+        }, 6000) 
     }
     const showAbsolute = () => {
         setTimeout(()=>{
@@ -29,24 +39,43 @@
     showAnimated();
 
     const logintodashboard = () => {
+        isLoading.value = true;
         LoginService.login(dataLogin.value).then((response:any) => {
           if(response.data.status === 'OK'){
             localStorage.setItem('isLogin', response.data.data.token);
             router.push('/dashboard/bursamobil');
           }
         }).catch((error:any) => {
-            alert("no whatsapp atau password anda salah");
+            isLoading.value = false;
+            Swal.fire({
+              title: 'Invalid!',
+              text: 'Mohon Maaf Username atau Password Anda SALAH / Belum Terdaftar',
+              icon: 'error',
+              confirmButtonText: 'Cool'
+            })
             console.log(error)
+        }).finally(() => {
+          isLoading.value = false;
         })   
+    }
+
+    const onCancel = () => {
+        isLoading.value = false;
     }
 </script>
 <template>
+  <div>
+    <loading v-model:active="isLoading"
+                 :can-cancel="true"
+                 :on-cancel="onCancel"
+                 :is-full-page="fullPage"/>
+  </div>
   <div>
     <LupaPasswordComponent v-show="showModal" @show-modal="showModal = false"/>
   </div>
   <div class="welcome">
     <span id="splash-overlay" :class="isAnimated ? 'splash':''"></span>
-    <span :id="isAnimated ?'welcome':''" class="z-depth-4"></span>
+    <span :id="isAnimated ? 'welcome':''" class="z-depth-4"></span>
   </div> 
   
   <div class="w-full h-full bg-secondary py-20 absolute" :class="isAnimated ? 'hidden':''">
@@ -76,10 +105,16 @@
           </div>
 
           <button class="bg-blue-500 text-white px-4 py-2 w-full mx-auto rounded mb-12" @click="logintodashboard()">Masuk</button>
-          <div class="text-center">Belum Memiliki akun ? Silahkan <a href="https://docs.google.com/forms/d/e/1FAIpQLSeUmuz7mHM__fyJl9WazOxum0_NLmT4-IPHWFqmroCQe2CWdw/viewform" class="hover:text-blue-500 text-blue-400">daftar disini</a></div>
+          <div class="text-center">Belum memiliki Akun ? Silahkan <a href="https://docs.google.com/forms/d/e/1FAIpQLSeUmuz7mHM__fyJl9WazOxum0_NLmT4-IPHWFqmroCQe2CWdw/viewform" class="hover:text-blue-500 text-blue-400">daftar disini</a></div>
           <div class="text-center">Ada kendala ? <a href="https://wa.me/6289668303824" class="text-blue-400 hover:text-blue-500">Hubungi Customer Service Lelang</a></div>
         
     </div>
+  </div>
+  <div class="w-full bg-white fixed bottom-0 py-4 text-center" v-show="isAnimated2">
+    &#169; 2022 | PT. TAV Mobil Indonesia
+  </div>
+  <div class="w-1/12 fixed top-0 py-4 text-center" v-show="isAnimated2">
+    <img :src="logo" class="w-40">
   </div>
 </template>
 <style>

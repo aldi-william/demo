@@ -1,10 +1,11 @@
-const mixins = {
-  methods: {
-    formatPrice(value) {
+
+  
+export function formatPrice(value:number) {
       let val = (value / 1).toFixed(0).replace('.', ',')
       return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
-    },
-    formatdate(value) {
+}
+
+export function formatdate(value:number) {
       let monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
       let date = new Date(value);
       let year = date.getFullYear();
@@ -12,11 +13,12 @@ const mixins = {
       let dt = date.getDate();
 
       if (dt < 10) {
-        dt = '0' + dt;
+        dt = 0 + dt;
       }
       return dt + ' ' + monthNames[month] + ' ' + year
-    },
-    textCapitalize(str) {
+    }
+
+export function textCapitalize(str:string) {
       var splitStr = str.toLowerCase().split(' ');
       for (var i = 0; i < splitStr.length; i++) {
         // You do not need to check if i is larger than splitStr length, as your for does that for you
@@ -25,7 +27,4 @@ const mixins = {
       }
       // Directly return the joined string
       return splitStr.join(' ');
-    }
-  }
 }
-export default mixins
