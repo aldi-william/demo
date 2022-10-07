@@ -20,8 +20,6 @@ import VueNumberFormat from 'vue-number-format';
 import GetFilterService from '../../services/GetService';
 import { IDataKota } from '../../Interface/IDataKota';
 
-
-
 const range_harga = ref(false);
 const range_tahun = ref(false);
 const isFavorit = ref([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
@@ -75,15 +73,6 @@ const getDataKota = () => {
     console.log(error)
   })
 }
-
-watch(filterBursa,() =>
-  GetFilterService.getFilterMobil(filterBursa).then((response:any) => {
-    products.value = response.data.data;
-    console.log(response.data.data);
-  }).catch((error:any) => {
-    console.log(error)
-  })
-);
 
 getDataKota();
 </script>
