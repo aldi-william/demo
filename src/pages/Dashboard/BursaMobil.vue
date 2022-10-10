@@ -61,6 +61,18 @@ const dataKota = ref<IDataKota[]>([{
   name: ''
 }]);
 
+let tanggal = ref('');
+let session_end = ref('');
+let status = ref('');
+let hours = ref('');
+let minutes = ref('');
+let seconds = ref('');
+let millisecondHours = ref(0);
+let millisecondMinutes = ref(0);
+let millisecondSeconds = ref(0);
+let totalmilliseconds = ref(0);
+let timeToCountdown = ref('');
+
 const arrayKota = ref<string[]>([]);
 
 const getDataKota = () => {
@@ -74,6 +86,46 @@ const getDataKota = () => {
   })
 }
 
+
+
+const getDataSession = () => {
+   GetFilterService.getSession().then((response:any) => {
+      tanggal.value = response.data.data.date;
+      session_end.value = response.data.data.session_end;
+      status.value = response.data.data.status;
+      hours.value = session_end.value.split(':')[0];
+      minutes.value = session_end.value.split(':')[1];
+      seconds.value = session_end.value.split(':')[2];
+      millisecondHours.value = parseInt(hours.value) * 60 * 60 * 1000;
+      millisecondMinutes.value = parseInt(minutes.value) * 60 * 1000;
+      millisecondSeconds.value = parseInt(seconds.value) * 1000;
+      totalmilliseconds.value = millisecondHours.value + millisecondMinutes.value + millisecondSeconds.value;
+   }).catch((error:any) => {
+      console.log(error)
+   })
+}
+
+const myfunc = setInterval(function() {
+  var now = new Date();
+  var hours = now.getHours();
+  var minutes = now.getMinutes();
+  var seconds = now.getSeconds();
+  var millisecondHours = hours * 60 * 60 * 1000;
+  var millisecondMinutes = minutes * 60 * 1000;
+  var millisecondSeconds = seconds * 1000;
+  var total = millisecondHours + millisecondMinutes + millisecondSeconds;
+  var timeleft = totalmilliseconds.value - total;
+
+  let secondsLeft = Math.floor(timeleft / 1000);
+  let minutesLeft = Math.floor(secondsLeft / 60);
+  let hoursLeft = Math.floor(minutesLeft / 60);
+  secondsLeft = secondsLeft % 60;
+  minutesLeft = minutesLeft % 60;
+  hoursLeft = hoursLeft % 24;
+  timeToCountdown.value = hoursLeft + ':' + minutesLeft + ':' + secondsLeft;
+}, 1000)
+
+getDataSession();
 getDataKota();
 </script>
 <template>
@@ -86,9 +138,9 @@ getDataKota();
             <p class="col-span-6 text-sm sm:text-2xl font-bold">
               <span class="text-blue-500">Status Lelang</span>
             </p>
-            <p class="col-span-6 text-sm sm:text-2xl font-bold">:&nbsp;<span class="text-red-500">Berlangsung</span></p>
+            <p class="col-span-6 text-sm sm:text-2xl font-bold">:&nbsp;<span class="text-red-500">{{ status }}</span></p>
             <p class="col-span-6 text-sm sm:text-2xl font-bold"><span class="text-blue-500">Sisa Waktu</span></p>
-            <p class="col-span-6 text-sm sm:text-2xl font-bold">:&nbsp;<span class="text-red-500">01:30:20</span></p>
+            <p class="col-span-6 text-sm sm:text-2xl font-bold">:&nbsp;<span class="text-red-500">{{timeToCountdown}}</span></p>
           </div>
         </div>
       </div>
@@ -103,7 +155,7 @@ getDataKota();
       </div>
       <div class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 bg-white">
         <div class="flex items-center justify-center py-6 sm:pt-8">
-          <div class="text-center">Hari ini : Rabu, 7 September 2022</div>
+          <div class="text-center">Hari ini : {{ tanggal }}</div>
         </div>
       </div>
       <div class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 relative bg-white">
