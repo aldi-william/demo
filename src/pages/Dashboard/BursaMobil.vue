@@ -123,6 +123,10 @@ const myfunc = setInterval(function() {
   minutesLeft = minutesLeft % 60;
   hoursLeft = hoursLeft % 24;
   timeToCountdown.value = hoursLeft + ':' + minutesLeft + ':' + secondsLeft;
+  if(timeToCountdown.value == '0:0:0') {
+    clearInterval(myfunc)
+    getDataSession();
+  }
 }, 1000)
 
 getDataSession();
