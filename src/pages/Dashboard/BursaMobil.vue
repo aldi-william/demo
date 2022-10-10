@@ -45,7 +45,8 @@ const filterBursa = reactive({
   heightPrice: 0,
   minYear: 0,
   maxYear: 0,
-  city:''
+  city:'',
+  km:0,
 })
 
 function filterQuery() {
@@ -225,9 +226,9 @@ getDataKota();
         <img :src="image_filter" alt="location" class="w-4 h-4 absolute left-2 top-3 flex items-center justify-end" />
         <div v-if="items === 'Kilometer'" class="border bg-white p-4 absolute z-20">
           <h1>Kilometer</h1>
-          <input type="range" min="1" max="10" v-model="kilometer">
-          Kurang Dari {{ kilometer * 10000 }} km
-          <button class="border bg-blue-500 text-white px-4 py-2 rounded w-full" @click="items = ''">Terapkan</button>
+          <input type="range" min="1" max="10" v-model="filterBursa.km">
+          Kurang Dari {{ filterBursa.km * 10000 }} km
+          <button class="border bg-blue-500 text-white px-4 py-2 rounded w-full" @click="filterQuery()">Terapkan</button>
         </div>
       </div>
       <div v-for="(product,i) in products" :key="i+'products'"

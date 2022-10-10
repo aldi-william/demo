@@ -17,7 +17,7 @@ export const useBursaStore = defineStore({
         })
     },
     async filterBursa(query: IDataFilter) {
-      await http.get(`/daftar-lelang?q=${query.search}&low=${query.lowPrice}&height=${query.heightPrice}&minYear=${query.minYear}&maxYear=${query.maxYear}&city=${query.city}`)
+      await http.get(`/daftar-lelang?q=${query.search}&low=${query.lowPrice}&height=${query.heightPrice}&minYear=${query.minYear}&maxYear=${query.maxYear}&city=${query.city}&range${(query.km*1000)}`)
         .then(resp => {
           this.data = resp.data.data.data
         })

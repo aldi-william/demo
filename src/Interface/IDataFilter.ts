@@ -5,4 +5,5 @@ export interface IDataFilter {
     minYear: number;
     maxYear: number;
     city: string;
+    km: number;
 }
