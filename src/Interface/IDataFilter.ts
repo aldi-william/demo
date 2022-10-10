@@ -6,4 +6,5 @@ export interface IDataFilter {
     maxYear: number;
     city: string;
     km: number;
+    page: number;
 }

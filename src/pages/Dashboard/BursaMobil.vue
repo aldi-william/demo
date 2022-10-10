@@ -19,6 +19,7 @@ import { formatdate, formatPrice, textCapitalize } from '../../mixins';
 import VueNumberFormat from 'vue-number-format';
 import GetFilterService from '../../services/GetService';
 import { IDataKota } from '../../Interface/IDataKota';
+import { filter } from 'dom7';
 
 const range_harga = ref(false);
 const range_tahun = ref(false);
@@ -47,6 +48,9 @@ const filterBursa = reactive({
   maxYear: 0,
   city:'',
   km:0,
+  page:1,
+  currentPage:1,
+  totalPage:1
 })
 
 function filterQuery() {
@@ -130,8 +134,38 @@ const myfunc = setInterval(function() {
   }
 }, 1000)
 
+// const decrement = () => {
+//   if(filterBursa.page < 2){
+//     filterBursa.page = 1;
+//   }else {
+//     filterBursa.page = filterBursa.page - 1;
+//   }
+//   filterBursa.currentPage = filterBursa.page
+//   filterQuery();
+// }
+
+
+
+// const increment = () => {
+//   if(filterBursa.page >= store.totalPage){
+//     filterBursa.page = store.totalPage
+//   }else{
+//     filterBursa.page = filterBursa.page + 1;
+//   }
+//   filterBursa.currentPage = filterBursa.page
+//   filterQuery();
+// }
+
+const ganti = (index) => {
+  filterBursa.page = index;
+  filterQuery();
+}
+
+const tahun = ref([2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 2000, 1999, 1998, 1997, 1996, 1995, 1994, 1993, 1992, 1991, 1990]);
+
 getDataSession();
 getDataKota();
+
 </script>
 <template>
   <div class="bg-biru_fb" @click.self="closeAll()">
@@ -175,11 +209,14 @@ getDataKota();
           class="w-4 h-4 absolute left-2 top-3 flex items-center justify-end" />
         <div class="absolute border bg-white shadow-xl p-4 z-20" v-show="range_harga">
           <div>
-            Harga
+            Harga Tertinggi
           </div>
           <div class="flex flex-row my-4">
             <div class="bg-biru rounded-l px-4 py-2 border border-black">Rp</div>
               <VueNumberFormat v-model:value="filterBursa.heightPrice" :options="{ precision: 0, decimal: ',', thousand: '.', prefix: '', isInteger: true }" class="px-4 py-2 border border-black"></VueNumberFormat>  
+          </div>
+          <div>
+            Harga Terendah
           </div>
           <div class="flex flex-row my-4">
             <div class="bg-biru rounded-l px-4 py-2 border border-black">Rp</div>
@@ -199,12 +236,16 @@ getDataKota();
           <div class="flex flex-row items-center justify-between shadow-xl">
             <div class="flex flex-col mb-4 w-20">
               <p>dari</p>
-              <input type="number" v-model="filterBursa.minYear" @keyup="filterQuery" placeholder="2010" class="px-4 py-2 border border-black rounded" />
+              <select v-model="filterBursa.minYear" @keyup="filterQuery()" class="px-1 py-2 border border-black rounded">
+                <option v-for="n in tahun" :value="n">{{n}}</option>
+              </select>
             </div>
             <div class="text-center mx-4">-</div>
             <div class="flex flex-col mb-4 w-20">
               <p>hingga</p>
-              <input type="number" v-model="filterBursa.maxYear" @keyup="filterQuery" placeholder="2022" class="px-4 py-2 border border-black rounded" />
+              <select v-model="filterBursa.maxYear" @keyup="filterQuery()" class="px-1 py-2 border border-black rounded">
+                <option v-for="n in tahun" :value="n">{{n}}</option>
+              </select>
             </div>
           </div>
 
@@ -240,7 +281,7 @@ getDataKota();
             <div class="bg-red-600 absolute bottom-0 right-0 px-4 py-0 rounded-tl-full text-white flex items-start">
               Berlangsung
             </div>
-            <img :src="product.car_detail.image_feature1" alt="car" class="w-full h-64 z-10"
+            <img :src="product.car_detail.image_feature1" alt="car" class="w-full h-64 z-10 cursor-pointer"
               @click="$router.push(`/dashboard/detail/${i}`);" />
           </div>
           <div class="grid grid-cols-12 my-2 gap-2">
@@ -293,10 +334,10 @@ getDataKota();
       </div>
       <div class="col-span-12 mb-24 mt-4">
         <div class="flex flex-row justify-center">
-          <div class="px-4 py-2 rounded border border-gray cursor-pointer bg-white hidden sm:flex">Sebelumnya</div>
-          <div class="px-4 py-2 rounded border border-gray hover:bg-blue-500 hover:text-white cursor-pointer bg-white"
-            v-for="i in 5" :key="i">{{ i }}</div>
-          <div class="px-4 py-2 rounded border border-gray cursor-pointer bg-white hidden sm:flex">Selanjutnya</div>
+          <!-- <button @click="decrement()" class="px-4 py-2 rounded border border-gray cursor-pointer bg-white hidden sm:flex">Sebelumnya</button> -->
+          <div :class="i === filterBursa.page ? 'bg-blue-500 text-white':''" class="px-4 py-2 rounded border border-gray hover:bg-blue-500 hover:text-white cursor-pointer bg-white"
+            v-for="i in store.totalPage" :key="i" @click="ganti(i)">{{ i }}</div>
+          <!-- <button @click="increment()" class="px-4 py-2 rounded border border-gray cursor-pointer bg-white hidden sm:flex">Selanjutnya</button> -->
         </div>
       </div>
     </div>

@@ -79,12 +79,12 @@
           </div>
          </div>
       </div>
-      <div class="bg-blue-500">
+      <!-- <div class="bg-blue-500">
          <div class="flex flex-row justify-between items-center p-4 shadow-xl">
             <h1 class="text-white">9 September 2022</h1>
             <h1 class="text-white">01:30:20</h1>
          </div>
-      </div>      
+      </div>       -->
     </div>
   </div>
 </template>

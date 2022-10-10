@@ -41,6 +41,8 @@
     import image_checklist_hijau from '../../assets/images/checklist_hijau.png';
     import image_info_biru from '../../assets/images/info_biru.png';
     import image_setir from '../../assets/images/setir.png';
+    import GetFilterService from '../../services/GetService';
+    import LightBox from 'vue-image-lightbox'
  
     const modules = [FreeMode, Navigation, Thumbs];
     const historyback = () => {
@@ -68,9 +70,68 @@
     const openairradiator = ref(false);
     const opensuaramesin = ref(false);
     const openpowerwindow = ref(false);
+    let status = ref('');
+    let tanggal = ref('');
+    let session_end = ref('');
+    let hours = ref('');
+    let minutes = ref('');
+    let seconds = ref('');
+    let millisecondHours = ref(0);
+    let millisecondMinutes = ref(0);
+    let millisecondSeconds = ref(0);
+    let totalmilliseconds = ref(0);
+    let timeToCountdown = ref('');
+
+    const getDataSession = () => {
+        GetFilterService.getSession().then((response:any) => {
+            tanggal.value = response.data.data.date;
+            session_end.value = response.data.data.session_end;
+            status.value = response.data.data.status;
+            console.log(status.value)
+            hours.value = session_end.value.split(':')[0];
+            minutes.value = session_end.value.split(':')[1];
+            seconds.value = session_end.value.split(':')[2];
+            millisecondHours.value = parseInt(hours.value) * 60 * 60 * 1000;
+            millisecondMinutes.value = parseInt(minutes.value) * 60 * 1000;
+            millisecondSeconds.value = parseInt(seconds.value) * 1000;
+            totalmilliseconds.value = millisecondHours.value + millisecondMinutes.value + millisecondSeconds.value;
+        }).catch((error:any) => {
+            console.log(error)
+        })
+   }
+
+const myfunc = setInterval(function() {
+  var now = new Date();
+  var hours = now.getHours();
+  var minutes = now.getMinutes();
+  var seconds = now.getSeconds();
+  var millisecondHours = hours * 60 * 60 * 1000;
+  var millisecondMinutes = minutes * 60 * 1000;
+  var millisecondSeconds = seconds * 1000;
+  var total = millisecondHours + millisecondMinutes + millisecondSeconds;
+  var timeleft = totalmilliseconds.value - total;
+
+  let secondsLeft = Math.floor(timeleft / 1000);
+  let minutesLeft = Math.floor(secondsLeft / 60);
+  let hoursLeft = Math.floor(minutesLeft / 60);
+  secondsLeft = secondsLeft % 60;
+  minutesLeft = minutesLeft % 60;
+  hoursLeft = hoursLeft % 24;
+  timeToCountdown.value = hoursLeft + ':' + minutesLeft + ':' + secondsLeft;
+  if(timeToCountdown.value == '0:0:0') {
+    clearInterval(myfunc)
+    getDataSession();
+  }
+}, 1000)
+
+getDataSession();
 </script>
 <template>
   <div class="container-xl pb-20">
+       <!-- <LightBox :media="image_car"></LightBox> -->
+       <div class="bg-gray-200 py-2">
+        <div class="text-3xl text-center">Status Lelang : <span class="text-red-500 font-bold">{{ status }}</span>  || Sisa Waktu : <span class="text-red-500 font-bold">{{ timeToCountdown }}</span></div>
+       </div>
        <ModalComponent v-show="modal" @close="modal = false"/>
        <div class="flex items-center cursor-pointer my-4 sm:my-8 md:my-8 lg:my-8 xl:my-8 2xl:my-8" @click="historyback">
           <img :src="image_arrow" class="w-4 h-4"/>

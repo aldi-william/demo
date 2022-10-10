@@ -7,19 +7,41 @@ export const useBursaStore = defineStore({
   state: () => ({
     data: [],
     car_detail: {},
+    page:1,
+    totalPage:0,
+    currentPage:1,
   }),
   getters: {},
   actions: {
+    // async decrementPage() {
+    //   if(this.page < 2){
+    //     this.page = 1;
+    //   }else {
+    //     this.page = this.page - 1;
+    //   }
+      
+    // },
+    // async incrementPage() {
+    //   if(this.page > this.totalPage){
+    //     this.page = this.totalPage
+    //   }else{
+    //     this.page = this.page + 1;
+    //   }
+    // },
     async fetchBursa() {
       await http.get("/daftar-lelang")
         .then(resp => {
           this.data = resp.data.data.data
+          this.totalPage = resp.data.data.total % resp.data.data.per_page === 0 ? resp.data.data.total / resp.data.data.per_page : Math.floor(resp.data.data.total / resp.data.data.per_page + 1)
+          this.currentPage = resp.data.data.current_page
         })
     },
     async filterBursa(query: IDataFilter) {
-      await http.get(`/daftar-lelang?q=${query.search}&low=${query.lowPrice}&height=${query.heightPrice}&minYear=${query.minYear}&maxYear=${query.maxYear}&city=${query.city}&range${(query.km*1000)}`)
+      await http.get(`/daftar-lelang?q=${query.search}&low=${query.lowPrice}&height=${query.heightPrice}&minYear=${query.minYear}&maxYear=${query.maxYear}&city=${query.city}&range${(query.km*1000)}&page=${query.page}`)
         .then(resp => {
-          this.data = resp.data.data.data
+          this.data = resp.data.data.data;
+          this.totalPage = resp.data.data.total % resp.data.data.per_page === 0 ? resp.data.data.total / resp.data.data.per_page : Math.floor(resp.data.data.total / resp.data.data.per_page + 1)
+          this.currentPage = resp.data.data.current_page
         })
     },
   }
