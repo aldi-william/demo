@@ -237,6 +237,7 @@ getDataKota();
             <div class="flex flex-col mb-4 w-20">
               <p>dari</p>
               <select v-model="filterBursa.minYear" @keyup="filterQuery()" class="px-1 py-2 border border-black rounded">
+                <option value="0">Pilih</option>
                 <option v-for="n in tahun" :value="n">{{n}}</option>
               </select>
             </div>
@@ -244,6 +245,7 @@ getDataKota();
             <div class="flex flex-col mb-4 w-20">
               <p>hingga</p>
               <select v-model="filterBursa.maxYear" @keyup="filterQuery()" class="px-1 py-2 border border-black rounded">
+                <option value="0">Pilih</option>
                 <option v-for="n in tahun" :value="n">{{n}}</option>
               </select>
             </div>
