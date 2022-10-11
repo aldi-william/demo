@@ -38,8 +38,7 @@
       <div class="rounded shadow-2xl p-4">
          <div class="relative overflow-hidden">
           <div class="absolute bg-blue-500 rounded text-white top-3 left-3">#143779</div>
-          <img :src="isFavorit[i] ? image_star : image_star_empty" alt="star" class="w-8 h-8 absolute right-3 top-3" @click="isFavorit[i] = !isFavorit[i]"/>
-          <div class="bg-red-600 absolute bottom-0 right-0 px-4 py-0 rounded-tl-full text-white flex items-start">
+         <div class="bg-red-600 absolute bottom-0 right-0 px-4 py-0 rounded-tl-full text-white flex items-start">
             Berlangsung
           </div>
           <img :src="image_car" alt="car" class="w-full z-10" @click="$router.push(`/dashboard/detail/${i}`);"/>
@@ -65,7 +64,8 @@
          <div class="my-1">
             <div class="flex flex-row items-center justify-between">
               <h1 class="font-bold text-xl">Suzuki Ertiga Sport</h1>
-              <img :src="image_lonceng" alt="lonceng" class="w-6 h-6"/>
+              <img :src="isFavorit[i] ? image_star : image_star_empty" alt="star" class="w-8 h-8" @click="isFavorit[i] = !isFavorit[i]"/>
+              <!-- <img :src="image_lonceng" alt="lonceng" class="w-6 h-6"/> -->
             </div>
             <p>2019 | Matic | 30.000 KM | Semarang </p>
          </div>

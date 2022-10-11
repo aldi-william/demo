@@ -24,10 +24,10 @@
       <h1 class="py-4 text-3xl font-bold">Riwayat Lelang</h1>
       <div class="grid grid-cols-12">
         <div @click="riwayat_menu = 'penawaran'" class="col-span-6 cursor-pointer" :class="riwayat_menu === 'penawaran' ? 'border-b-4 border-blue-400':'border-b-2 border-gray-400'">
-             <h1 class="text-2xl text-center py-2">Riwayat Penawaran</h1>
+             <h1 class="sm:text-2xl text-center py-2">Riwayat Penawaran</h1>
         </div>
         <div @click="riwayat_menu = 'transaksi'" class="col-span-6 cursor-pointer" :class="riwayat_menu === 'transaksi' ? 'border-b-4 border-blue-400':'border-b-2 border-gray-400'">
-             <h1 class="text-2xl text-center py-2">Riwayat Transaksi</h1>
+             <h1 class="sm:text-2xl text-center py-2">Riwayat Transaksi</h1>
         </div>
       </div>
       <div class="grid grid-cols-12 sm:flex md:flex lg:flex xl:flex 2xl:flex sm:flex-row md:flex-row lg:flex-row xl:flex-row 2xl:flex-row" v-if="riwayat_menu === 'penawaran'">
@@ -81,7 +81,7 @@
                     <div class="rounded shadow-2xl p-4">
                       <div class="relative overflow-hidden">
                         <div class="absolute bg-blue-500 rounded text-white top-3 left-3">#143779</div>
-                        <img :src="isFavorit[i] ? image_star : image_star_empty" alt="star" class="w-8 h-8 absolute right-3 top-3" @click="isFavorit[i] = !isFavorit[i]"/>
+                        
                         <div class="bg-green-600 absolute bottom-0 right-0 px-4 py-0 rounded-tl-full text-white flex items-start">
                           Anda Menang
                         </div>
@@ -108,7 +108,8 @@
                       <div class="my-1">
                           <div class="flex flex-row items-center justify-between">
                             <h1 class="font-bold text-xl">Suzuki Ertiga Sport</h1>
-                            <img :src="image_lonceng" alt="lonceng" class="w-6 h-6"/>
+                            <img :src="isFavorit[i] ? image_star : image_star_empty" alt="star" class="w-8 h-8" @click="isFavorit[i] = !isFavorit[i]"/>
+                            <!-- <img :src="image_lonceng" alt="lonceng" class="w-6 h-6"/> -->
                           </div>
                           <p>2019 | Matic | 30.000 KM | Semarang </p>
                       </div>

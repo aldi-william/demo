@@ -171,7 +171,7 @@ getDataKota();
     <div class="container-xl grid grid-cols-12 sm:gap-2 py-3">
       <div
         class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 sm:px-4 sm:bg-white py-2 flex justify-center items-center z-20 sm:z-0 md:z-0 lg:z-0 xl:z-0 2xl:z-0">
-        <div class="bg-white w-full fixed sm:relative px-4 sm:px-0 py-2 sm:py-0">
+        <div class="bg-white w-full fixed sm:relative px-4 sm:px-0 py-2 mt-8 sm:mt-0 sm:py-0">
           <div class="grid grid-cols-12">
             <p class="col-span-6 text-sm sm:text-2xl font-bold">
               <span class="text-blue-500">Status Lelang</span>
@@ -221,7 +221,7 @@ getDataKota();
             <div class="bg-biru rounded-l px-4 py-2 border border-black">Rp</div>
               <VueNumberFormat v-model:value="filterBursa.lowPrice" :options="{ precision: 0, decimal: ',', thousand: '.', prefix: '', isInteger: true }" class="px-4 py-2 border border-black"></VueNumberFormat> 
           </div>
-          <button class="text-white bg-blue-500 px-4 py-2 w-full rounded" @click="filterQuery">Terapkan</button>
+          <button class="text-white bg-blue-500 px-4 py-2 w-full rounded" @click="filterQuery(); range_harga = false;">Terapkan</button>
         </div>
       </div>
       <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative bg-white">
@@ -250,7 +250,7 @@ getDataKota();
             </div>
           </div>
 
-          <button class="text-white bg-blue-500 px-4 py-2 w-full rounded" @click="filterQuery">Terapkan</button>
+          <button class="text-white bg-blue-500 px-4 py-2 w-full rounded" @click="filterQuery(); range_tahun = false;">Terapkan</button>
         </div>
       </div>
       <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative">
@@ -269,7 +269,7 @@ getDataKota();
           <h1>Kilometer</h1>
           <input type="range" min="1" max="10" v-model="filterBursa.km">
           Kurang Dari {{ formatPrice(filterBursa.km * 10000) }} km
-          <button class="border bg-blue-500 text-white px-4 py-2 rounded w-full" @click="filterQuery()">Terapkan</button>
+          <button class="border bg-blue-500 text-white px-4 py-2 rounded w-full" @click="filterQuery(); items ='';">Terapkan</button>
         </div>
       </div>
       <div v-for="(product,i) in products" :key="i+'products'"
@@ -277,8 +277,7 @@ getDataKota();
         <div class="rounded shadow-2xl p-4">
           <div class="relative overflow-hidden">
             <div class="absolute bg-blue-500 rounded text-white top-3 left-3 px-2">{{product.code}}</div>
-            <img :src="isFavorit[product.id] ? image_star : image_star_empty" alt="star"
-              class="w-8 h-8 absolute right-3 top-3" @click="isFavorit[i] = !isFavorit[i]" />
+            
             <div class="bg-red-600 absolute bottom-0 right-0 px-4 py-0 rounded-tl-full text-white flex items-start">
               Berlangsung
             </div>
@@ -307,7 +306,9 @@ getDataKota();
             <div class="flex flex-row items-center justify-between">
               <h1 class="font-bold text-xl">{{product.car_detail.car_brand.name}} {{product.car_detail.car_merk.name}}
                 {{product.car_detail.car_type.name}}</h1>
-              <img :src="image_lonceng" alt="lonceng" class="w-6 h-6" />
+                <img :src="isFavorit[product.id] ? image_star : image_star_empty" alt="star"
+              class="w-8 h-8" @click="isFavorit[i] = !isFavorit[i]" />
+              <!-- <img :src="image_lonceng" alt="lonceng" class="w-6 h-6" /> -->
             </div>
             <p>{{product.car_detail.tahun}} | {{product.car_detail.transmisi}} |
               {{formatPrice(product.car_detail.km_service_terakhir)}} KM | {{textCapitalize(product.car_detail.kota)}} </p>

@@ -148,8 +148,8 @@ getDetailData();
   <div class="bg-biru_fb">
     <div class="container-xl pb-20">
        <!-- <LightBox :media="image_car"></LightBox> -->
-       <div class="bg-gray-200 py-2">
-        <div class="text-3xl text-center">Status Lelang : <span class="text-red-500 font-bold">{{ status }}</span>  || Sisa Waktu : <span class="text-red-500 font-bold">{{ timeToCountdown }}</span></div>
+       <div class="bg-white py-2">
+        <div class="sm:text-3xl text-center">Status Lelang : <span class="text-red-500 font-bold">{{ status }}</span>  || Sisa Waktu : <span class="text-red-500 font-bold">{{ timeToCountdown }}</span></div>
        </div>
        <ModalComponent v-show="modal" @close="modal = false"/>
        <div class="flex items-center cursor-pointer my-4 sm:my-8 md:my-8 lg:my-8 xl:my-8 2xl:my-8" @click="historyback">
@@ -195,14 +195,14 @@ getDetailData();
           </swiper>
         </div>
         <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0">
-             <div class="text-3xl font-bold py-1">
+             <div class="text-3xl font-bold py-1 bg-white p-4">
                {{detailInspection.car_detail.car_brand.name }} {{ detailInspection.car_detail.car_merk.name }} {{ detailInspection.car_detail.car_type.name }}
              </div>
-             <div>
+             <div class="bg-white p-4">
               <p>Harga mulai :</p>
-              <p class="text-2xl font-bold">{{formatPrice(detailInspection.car_detail.harga_cash)}}</p>
+              <p class="text-2xl font-bold">Rp {{formatPrice(detailInspection.car_detail.harga_cash)}}</p>
              </div>
-             <div class="grid grid-cols-12 rounded-lg p-4 border-gray border-2 my-4">
+             <div class="grid grid-cols-12 rounded-lg p-4 border-gray border-2 my-4 bg-white">
                 <div class="col-span-12 font-bold text-md">Detail Kendaraan</div>
                 <div class="col-span-6 my-1">
                   <p>Lokasi</p>
@@ -240,8 +240,8 @@ getDetailData();
              <button @click="showModal" class="bg-tertier px-4 py-2 rounded-xl text-black w-full text-xl font-bold">Ikuti Lelang Ini</button>
         </div>
         <div class="col-span-12 sm:col-span-7 md:col-span-7 lg:col-span-7 xl:col-span-7 2xl:col-span-7 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0">
-            <div class="font-bold px-4 py-2 bg-gray-200 rounded-lg mb-4">History Arus Lelang</div>
-            <div class="grid grid-cols-12 bg-gray-200 rounded-lg px-4 py-2 overflow-y-auto h-40">
+            <div class="font-bold px-4 py-2 bg-white rounded-lg mb-4">History Arus Lelang</div>
+            <div class="grid grid-cols-12 bg-white rounded-lg px-4 py-2 overflow-y-auto h-40">
               <div class="col-span-12 flex flex-row justify-between">
                   <div class="flex flex-row items-center">
                     <img :src="image_person" class="w-4 h-4"/>
@@ -320,7 +320,7 @@ getDetailData();
               </div>
             </div>
         </div>
-        <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 border-2 border-gray py-8 px-4 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0">
+        <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 border-2 border-gray py-8 px-4 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0 bg-white">
           <div class="text-center mb-4">
             Tawaran Terakhir Anda :
           </div>
@@ -398,7 +398,7 @@ getDetailData();
                 </div>
        
             </div>
-            <div v-if="menu === 'testdrive'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
+            <div v-if="menu === 'testdrive'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
               <div class="mb-4">
                 <div class="flex flex-row justify-between">
                   <h1 class="font-bold text-md">Performa Kopling</h1>
@@ -463,7 +463,7 @@ getDetailData();
                 Catatan Test Drive : Performa setir tidak berfungsi dengan baik
               </div>
             </div>
-            <div v-if="menu === 'dashboard'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
+            <div v-if="menu === 'dashboard'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
               <div class="mb-4">
                 <div class="flex flex-row justify-between">
                   <h1 class="font-bold text-md">Diagnosis Komputer</h1>
@@ -557,7 +557,7 @@ getDetailData();
               </div>
 
             </div>
-            <div v-if="menu === 'instrumen'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
+            <div v-if="menu === 'instrumen'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
               <div class="mb-4">
                 <div class="flex flex-row justify-between">
                   <h1 class="font-bold text-md">Rem Tangan</h1>
@@ -613,7 +613,7 @@ getDetailData();
               <div>Catatan Instrumen : Pembuka kap mobil tidak berfungsi dengan baik</div>
                 
             </div>
-            <div v-if="menu === 'jok-trim'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
+            <div v-if="menu === 'jok-trim'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
               <div class="mb-4">
                 <div class="flex flex-row justify-between">
                   <h1 class="font-bold text-md">Jok Depan</h1>
@@ -701,7 +701,7 @@ getDetailData();
               <div>Catatan Jok & Trim : Sabuk Pengaman tidak berfungsi dengan baik</div>
                 
             </div>
-            <div v-if="menu === 'kaca-lampu'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
+            <div v-if="menu === 'kaca-lampu'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
               <div class="mb-4">
                 <div class="flex flex-row justify-between">
                   <h1 class="font-bold text-md">Daun Wiper</h1>
@@ -774,7 +774,7 @@ getDetailData();
               <div>Catatan Kaca & Lampu:</div>
 
             </div>
-            <div v-if="menu === 'underbody'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
+            <div v-if="menu === 'underbody'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
               <div class="mb-4">
                 <div class="flex flex-row justify-between">
                   <h1 class="font-bold text-md">Ban</h1>
@@ -887,7 +887,7 @@ getDetailData();
               <div>Catatan Jok & Trim : Muncul suara berdecit pada rem cakram  </div>
 
             </div>
-            <div v-if="menu === 'oli-cairan'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
+            <div v-if="menu === 'oli-cairan'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
               <div class="mb-4">
                 <div class="flex flex-row justify-between">
                   <h1 class="font-bold text-md">Oli Mesin</h1>
@@ -935,7 +935,7 @@ getDetailData();
               <div>Catatan Oli & Cairan : Kebocoran pada air pendingin radiator</div>
 
             </div>
-            <div v-if="menu === 'ruangmesin'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
+            <div v-if="menu === 'ruangmesin'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
               <div class="mb-4">
                 <div class="flex flex-row justify-between">
                   <h1 class="font-bold text-md">Cover Clap</h1>
@@ -1097,7 +1097,7 @@ getDetailData();
               <div>Catatan Oli & Cairan : Kebocoran pada air pendingin radiator</div>
 
             </div>
-            <div v-if="menu === 'fitur'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
+            <div v-if="menu === 'fitur'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
               <div class="mb-4">
                 <div class="flex flex-row justify-between">
                   <h1 class="font-bold text-md">Air Bag</h1>
@@ -1169,7 +1169,7 @@ getDetailData();
               <div>Catatan Fitur : Power window tidak berfungsi dengan baik</div>
 
             </div>
-            <div v-if="menu === 'dokumen'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
+            <div v-if="menu === 'dokumen'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
               <div class="mb-4">
                 <div class="flex flex-row justify-between">
                   <h1 class="font-bold text-md">Dokumen STNK</h1>

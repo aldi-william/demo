@@ -22,7 +22,7 @@
 
             </div>
           </div>    
-          <div v-if="menu === 'tentang'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
+          <div v-if="menu === 'tentang'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
                <div class="text-xl my-4 font-bold">PENDAFTARAN MITRA</div>
 <p>1.	Mitra lelang sebelum memiliki akun username dan password wajib mengisi form pendaftaran dan pembayaran saldo di TAV Lelang</p>
 <p>2.	Pengisian form dapat di isi via online melalui Google Form</p>
@@ -129,7 +129,7 @@
                </div>
                
           </div>
-          <div v-else-if="menu === 'syarat'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
+          <div v-else-if="menu === 'syarat'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
                <h1 class="text-xl mb-4 font-bold">Syarat Pengguna</h1>
                <p>TAV Mobil ingin mengucapkan terimakasih telah mempercayakan penjualan mobil Anda pada kami. Sebelum Anda mengirimkan data-data mobil Anda, kami ingin Anda membaca dan menyetujui syarat-syarat dan ketentuan-ketentuan dibawah ini : </p>
                <div>
