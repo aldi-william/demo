@@ -99,7 +99,7 @@
             <input placeholder="Masukan Password" class="px-4 py-2 rounded border border-gray w-full" v-model="dataLogin.password" type="password"/>
           </div>
      
-          <div class="w-full mx-auto mb-4 flex flex-row justify-between">
+          <div class="w-full mx-auto mb-4 flex flex-col sm:flex-row justify-between">
             <div><input type="checkbox"/>Ingat Password Saya</div>
             <a href="#" class="text-blue-400 hover:text-blue-500" @click="showModal = true">Lupa Password ?</a>
           </div>
