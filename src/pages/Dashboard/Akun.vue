@@ -35,7 +35,7 @@ const password_konfirmasi = ref('');
         </div>
         <div class="m-8">
           <p>Alamat</p>
-          <textarea class="px-4 py-2 rounded w-full border border-gray">Masukan Alamat Lengkap Anda</textarea>
+          <textarea class="px-4 py-2 rounded w-full border border-gray" placeholder="Masukan Alamat Lengkap Anda"></textarea>
         </div>
         <div class="m-8">
           <p>Password</p>

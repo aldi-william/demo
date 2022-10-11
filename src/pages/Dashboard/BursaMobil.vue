@@ -76,6 +76,7 @@ let millisecondMinutes = ref(0);
 let millisecondSeconds = ref(0);
 let totalmilliseconds = ref(0);
 let timeToCountdown = ref('');
+const isShowKm = ref(false);
 
 const arrayKota = ref<string[]>([]);
 
@@ -83,7 +84,9 @@ const getDataKota = () => {
   GetFilterService.getFilter().then((response:any) => {
     dataKota.value = response.data.data;
     dataKota.value.map((item:any) => {
-      arrayKota.value.push(item.name.toLowerCase().replace('kabupaten', ''));
+      var result = item.name.toLowerCase().replace('kabupaten', '');
+      var capital = result.charAt(0).toUpperCase() + result.slice(1);
+      arrayKota.value.push(capital);
     })
   }).catch((error:any) => {
     console.log(error)
@@ -250,7 +253,7 @@ getDataKota();
             </div>
           </div>
 
-          <button class="text-white bg-blue-500 px-4 py-2 w-full rounded" @click="filterQuery(); range_tahun = false;">Terapkan</button>
+          <button class="text-white bg-blue-500 px-4 py-2 w-full rounded" @click="filterQuery(); range_tahun = false; filterBursa.minYear = 0; filterBursa.maxYear =0;">Terapkan</button>
         </div>
       </div>
       <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative">
@@ -261,15 +264,16 @@ getDataKota();
         <img :src="image_location" alt="location" class="w-4 h-4 absolute left-2 top-3 flex items-center justify-end" />
       </div>
       <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative">
-        <button @click="items = 'Kilometer'" class="pl-8 pr-4 py-2 w-full border-2 border-gray bg-white text-left">
-          Kilometer
+        <button @click="isShowKm = !isShowKm" class="pl-8 pr-4 py-2 w-full border-2 border-gray bg-white text-left">
+          <span v-if="filterBursa.km === 0">Kilometer</span>
+          <span v-else>{{ formatPrice(filterBursa.km * 10000) }}</span>
         </button>
         <img :src="image_filter" alt="location" class="w-4 h-4 absolute left-2 top-3 flex items-center justify-end" />
-        <div v-if="items === 'Kilometer'" class="border bg-white p-4 absolute z-20">
+        <div v-if="isShowKm" class="border bg-white p-4 absolute z-20">
           <h1>Kilometer</h1>
-          <input type="range" min="1" max="10" v-model="filterBursa.km">
+          <input type="range" min="0" max="10" v-model="filterBursa.km">
           Kurang Dari {{ formatPrice(filterBursa.km * 10000) }} km
-          <button class="border bg-blue-500 text-white px-4 py-2 rounded w-full" @click="filterQuery(); items ='';">Terapkan</button>
+          <button class="border bg-blue-500 text-white px-4 py-2 rounded w-full" @click="filterQuery(); isShowKm = false; filterBursa.km = 0;">Terapkan</button>
         </div>
       </div>
       <div v-for="(product,i) in products" :key="i+'products'"
