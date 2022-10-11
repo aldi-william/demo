@@ -19,7 +19,6 @@ import { formatdate, formatPrice, textCapitalize } from '../../mixins';
 import VueNumberFormat from 'vue-number-format';
 import GetFilterService from '../../services/GetService';
 import { IDataKota } from '../../Interface/IDataKota';
-import { filter } from 'dom7';
 
 const range_harga = ref(false);
 const range_tahun = ref(false);
@@ -284,7 +283,7 @@ getDataKota();
               Berlangsung
             </div>
             <img :src="product.car_detail.image_feature1" alt="car" class="w-full h-64 z-10 cursor-pointer"
-              @click="$router.push(`/dashboard/detail/${i}`);" />
+              @click="$router.push(`/dashboard/detail/${product.id}`);" />
           </div>
           <div class="grid grid-cols-12 my-2 gap-2">
             <div class="col-span-4 bg-abu_abu relative flex px-2 py-1 rounded items-center">
@@ -344,7 +343,6 @@ getDataKota();
       </div>
     </div>
   </div>
-
 </template>
 <style>
 .container-xl {

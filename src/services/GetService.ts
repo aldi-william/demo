@@ -11,6 +11,9 @@ class GetFilterService {
     getSession() {
       return http.get("/lelang-session")
     }
+    getDetailData(id:string){
+      return http.get(`/daftar-lelang/${id}`)
+    }
 }
 
 export default new GetFilterService();

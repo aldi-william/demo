@@ -6,7 +6,8 @@
   const menu = ref('tentang');
 </script>
 <template>
-  <div class="container-xl">
+  <div class="bg-biru_fb pb-12">
+    <div class="container-xl">
       <div class="grid grid-cols-12 sm:flex md:flex lg:flex xl:flex 2xl:flex sm:flex-row md:flex-row lg:flex-row xl:flex-row 2xl:flex-row">
           <div class="col-span-12 bg-blue-500 mt-6 sm:my-12 md:my-12 lg:my-12 xl:my-12 2xl:my-12 p-4 sm:p-8 md:p-8 lg:p-8 xl:p-8 2xl:p-8 rounded-lg sm:h-screen w-full sm:w-4/12 md:w-4/12 lg:w-4/12 xl:w-4/12 2xl:w-4/12">
             <div class="flex sm:flex-col overflow-x-scroll sm:w-full sm:overflow-visible md:overflow-visible lg:overflow-visible xl:overflow-visible 2xl:overflow-visible">
@@ -22,34 +23,47 @@
             </div>
           </div>    
           <div v-if="menu === 'tentang'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
-               <h1 class="text-xl mb-4 font-bold">Pertanyaan Disclaimer</h1>
-               <p class="text-justify">1. Dengan Membeli Kendaraan Melalui Platfrom TAV, Pembeli dianggap telah meninjau dan setuju untuk membeli kendaraan berdasarkan deskripsi.</p>
-               <p class="text-justify">2. Deskripsi dan kondisi Kendaraan (termasuk tetapi tidak terbatas pada jarak) artinya seperti kondisi kendaraan pada tanggal pemeriksaan kendaraan dan seperti yang dinyatakan dalam platfrom TAV.</p>
-               <p class="text-justify">3. Pembeli diingatkan untuk memeriksa keadaan kendaraan, terutama sebelum atau selama penyerahan kendaraan dari kami kepada Pembeli(“Serah Terima”) untuk pihak (A) memastikan bahwa kendaraan itu sesuai deskripsi atau pihak (B) segera memberitahu kami sekiranya terdapat peryanggahan dalam deskripsi semasa Serah Terima, jika gagal yang dianggap pembeli telah menerima kendaraan sesuai deskripsi atau syarat kendaraan semasa serah terima.</p>
-               <p class="text-justify">4. Kecuali disediakan secara tertulis dan bertulis, kami menolak semua pernyataan atau jaminan lain, yang tersurat atau tersirat berkaitan dengan keadaan ini, termasuk, tanpa batasan, sebarang jaminan mengenai kualitas, roadworthiness, kesesuaian, kemampuan jual-beli, kesesuaian untuk tujuan tertentu atau sebaliknya (tanpa mengira apa jual cara urus niaga atau penggunaan perdagangan)
-               </p>
-               <h1 class="text-xl my-4 font-bold">Transparan Dalam Penawaran </h1>
-               <p class="text-justify">1. Semua kendaraan yang telah terdaftar di Marketplace ini telah menjalani pemeriksaan oleh tim AV Mobil.</p>
-               <p class="text-justify">2. Tim kami akan memberitahu penjual dalam kurun waktu 24 jam sejak Acara Live Bidding yang sukses, penjualan, pengalihan kepemilikan dan pembayaran akan diatur oleh penawar Harga Penawaran Tertinggi. </p>
-               <p class="text-justify">3. Penawar harus membayar deposit 25% dari harga jual Kendaraan sejak Transaksi dinyatakan berhasil untuk memulai transaksi antara penawar dengan tim AV Mobil.</p>
-               <p class="text-justify">4. Terdapat penambahan waktu 30 detik jika ada tawaran yang masuk 30 detik sebelum berakhirnya sesi Live Bidding, penambahan ini dilakukan untuk penawar lain memasukkan tawaran terakhir mereka. Jika tidak maka otomatis sesi Live Bidding akan selesai.</p>
-               <div>
-                <p class="text-justify">5. Terdapat biaya penanganan setelah transaksi antara AV Mobil dan Penawar dimulai. Berikut rinciannya :</p>
-                <ul class="list-disc px-8">
-                  <li>Untuk kendaraan seharga kurang dari 100 juta, biaya penanganannya adalah 1 juta rupiah.</li>
-                  <li>Untuk kendaraan seharga kurang dari 101 - 125 juta, biaya penanganannya adalah 1,5 juta rupiah.</li>
-                  <li>Untuk kendaraan seharga kurang dari 126 - 150 juta, biaya penanganannya adalah 2 juta rupiah.</li>
-                  <li>Untuk kendaraan seharga kurang dari 151 - 175 juta, biaya penanganannya adalah 2,5 juta rupiah.</li>
-                  <li>Untuk kendaraan seharga kurang dari 176 - 200 juta, biaya penanganannya adalah 3 juta rupiah.</li>
-                  <li>Untuk kendaraan seharga kurang dari 201 - 225 juta, biaya penanganannya adalah 3 juta rupiah.</li>
-                  <li>Untuk kendaraan seharga kurang dari 226 - 250 juta, biaya penanganannya adalah 3,5 juta rupiah.</li>
-                  <li>Untuk kendaraan seharga kurang dari 251 - 275 juta, biaya penanganannya adalah 4 juta rupiah.</li>
-                  <li>Untuk kendaraan seharga kurang dari 276 - 300 juta, biaya penanganannya adalah 4,5 juta rupiah.</li>
-                  <li>Untuk kendaraan seharga lebih dari 300 juta, biaya penanganannya adalah 5 juta rupiah.</li>
-                </ul> 
-               </div>
-               <p class="text-justify">6. Penawar bertanggung jawab atas semua biaya alih kepemilikan kendaraan (transportasi, derek, parkir, tol, alih kepemilikan dan lain-lain).</p>
-               <p class="text-justify">Catatan : Panduan Marketplace ini merujuk pada perjanjian kerja sama antara AV Mobil dan Penawar. Jika terjadi pertentangan antara rincian dalam Panduan ini dan Perjanjian Kerjasama, yang terakhir akan berlaku. Silahkan hubungi Perwakilan Tim Bisnis AV dan jika anda memiliki pertanyaan terkait dengan Panduan Marketplace ini </p>
+               <div class="text-xl my-4 font-bold">PENDAFTARAN MITRA</div>
+<p>1.	Mitra lelang sebelum memiliki akun username dan password wajib mengisi form pendaftaran dan pembayaran saldo di TAV Lelang</p>
+<p>2.	Pengisian form dapat di isi via online melalui Google Form</p>
+<p>3.	Setelah mengirim form pendaftaran, maka mitra wajib membayaran biaya pendaftaran sebesar Rp. 2.000.000, 00 (Dua Juta Rupiah) di transfer ke nomor rekening BCA xxxxxxx an PT. TAV Mobil Indonesia untuk menjadi saldo mitra sebagai jaminan menjadi peserta lelang</p>
+<p>4.	Konfirmasi pendaftaran dan pembayaran kepada admin TAV yang mana masing-masing mitra memiliki pemandu lelang</p>
+<p>5.	Setelah pembayaran dan pendaftaran terverifikasi maka mitra berhak mendapatkan akun username dan password untuk masuk ke web lelang.tavmobil.id</p>
+<div class="text-xl my-4 font-bold">PROSES MENGIKUTI LELANG</div>
+
+<p>1.	Mitra harus login ke web lelang.tavmobil.id</p>
+<p>2.	Setelah berhasil login, mitra bisa melihat bursa mobil yang di lelangkan baik yang sedang menunggu atau sedang berlangung</p>
+<p>3.	Mobil yang dilelangkan telah melewati inspeksi yang ketat oleh tim inspektur TAV</p>
+<p>4.	Mitra berhak mengikuti lelang dengan cara klik tombol IKUTI LELANG dan menentukan nilai bidding</p>
+<p>5.	Mitra berhak mengikuti dan memenangkan lelang lebih dari 1 mobil</p>
+<p>6.	Jika sesi lelang telah berakhir, maka akan terdapat pertambahan waktu 20 detik setiap ada mitra masih melakukan klik tombol bidding dan terus berlanjut sampai tidak ada lagi yang klik bidding</p>
+<p>7.	Setelah memenangkan mobil, maka mitra wajib membayarkan dari 50% harga mobil kepada PT. TAV Mobil Indonesia via transfer dengan dibuktikan bukti transfer yang dikirimkan kepada pemandu lelang</p>
+<p>8.	Setelah berhasil membayar 50% maka Tim TAV akan memfollowup unit dari penjual untuk diproses</p>
+<p>9.	Setelah selesai diproses oleh tim TAV dari pihak penjual, maka mobil tersebut akan dibawa ke garasi TAV dan mitra bisa melihat serta melunasi mobil tersebut secara transfer ke PT. TAV Mobil Indonesia</p>
+<div>10.	Biaya adminstrasi yang dibebankan kepada mitra diluar harga yang dimenangkan oleh mitra adalah sebagai berikut :
+  <ul class="pl-4">
+    <li>a.	Biaya Admin 1 jt : mobil dengan harga dibawah 100 jt</li>
+    <li>b.	Biaya Admin 2 jt : mobil dengan harga  100 jt – 200 jt</li>
+    <li>c.	Biaya Admin 3 jt : mobil dengan harga 200 jt – 400 jt</li>
+    <li>d.	Biaya Admin 4 jt : mobil dengan harga 400 jt – 600 jt</li>
+    <li>e.	Biaya Admin 5 jt : mobil dengan harga diatas 600 jt</li>
+  </ul>
+    Biaya admin tersebut tidak termasuk biaya parkir, toll, derek, akomodasi, pengalihan kepemilikan, dan lain sebagainya
+</div>
+<p>11.	Apabila mitra telah memenangkan mobil dan ternyata mobil yang dimenangkan tidak jadi di bayar 50%, maka secara otomatis saldo mitra di TAV Lelang berkurang 1 jt untuk 1 unit mobil yang telah dibatalkan </p>
+<p>12.	Jika saldo mitra ternyata sudah habis karena 2x memenangkan mobil tetapi tidak melanjutkan pembayaran mobil tanpa alasan yang jelas dan bukti alasan yang nyata, maka otomatis saldo 2 jt berubah menjadi 0 dan mitra wajib membayar topup saldo ulang 3 jt jika ingin mengikuti lelang kembali dengan cara konfirmasi kepada pemandu lelang (tanpa registrasi ulang seperti di awal)</p>
+<p>13.	Masa aktif akun mitra adalah 1 tahun sejak menerima akun username dan password</p>
+<p>14.	Setelah masa aktif selesai, maka mitra wajib melakukan perpanjang senilai 1 jt yang dibayarkan kepada PT. TAV Mobil Indonesia, biaya tersebut tidak mengurangi / menambah saldo di akun mitra lelang</p>
+<p>15.	Jika lebih dari 7 hari akun tidak diperpanjang maka secara otomatis saldo akun akan dikembalikan 100% kepada mitra lelang
+</p>
+<div class="text-xl my-4 font-bold">
+  DISKLAIMER
+</div>
+
+<p>1.	Mitra wajib melihat mobil di platform dengan cermat</p>
+<p>2.	Setelah memenangkan lelang, dan sebelum mobil tersebut di ambil serta tanda tangan serah terima mobil, mitra wajib mengecek ulang kondisi mobil secara langsung dan disesuaikan dengan yang ada di platform TAV</p>
+<p>3.	Jika terdapat ketidak cocokan dengan tingkatan yang cukup fatal maka mitra berhak untuk mengembalikan menolak dan biaya yang sudah dibayarkan dikembalikan 100% kepada mitra</p>
+<p>4.	Jika terdapat ketidak cocokan yang tidak begitu fatal, maka bisa di diskusikan lebih lanjut</p>
                <h1 class="text-xl my-4 font-bold">Pemahaman Dasar</h1>
                <div class="grid grid-cols-12">
                     <div class="col-span-8">
@@ -139,7 +153,9 @@
                 <p class="text-justify">2. Kami berkomitmen untuk memastikan bahwa data pribadi Anda akan disimpan dengan aman. Anda berhak untuk meminta akses, meminta salinan, meminta untuk memperbarui atau memperbaiki data pribadi Anda yang disimpan oleh kami. Anda mempunyai hak setiap waktu untuk meminta kami membatasi pemrosesan dan penggunaan data pribadi Anda. Permintaan tertulis dapat Anda tujukan kepada Petugas Kepatuhan kami.</p>
           </div>
       </div>
+    </div>
   </div>
+  
 </template>
 <style>
   .container-xl{

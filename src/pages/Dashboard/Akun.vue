@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import profile from '../../assets/images/profil.png';
+import Footer from '../../components/Footer.vue';
 import { ref } from 'vue';
 
 const nama = ref('');
@@ -11,11 +12,12 @@ const password_baru = ref('');
 const password_konfirmasi = ref('');
 </script>
 <template>
-  <div class="container-xl">
-    <div class="text-center font-bold text-3xl my-12">
+  <div class="bg-biru_fb pb-24 pt-12">
+    <div class="container-xl">
+    <div class="text-center font-bold text-3xl mb-12">
         Informasi Profil
     </div>
-    <div class="border-2 border-gray rounded-lg w-11/12 sm:w-8/12 md:w-8/12 lg:w-8/12 xl:w-8/12 2xl:w-8/12 mx-auto">
+    <div class="border-2 border-gray rounded-lg w-11/12 sm:w-8/12 md:w-8/12 lg:w-8/12 xl:w-8/12 2xl:w-8/12 mx-auto bg-white">
         <div class="flex justify-center my-12">
             <img :src="profile" alt="profile" class="w-40"/>
         </div>
@@ -45,10 +47,10 @@ const password_konfirmasi = ref('');
         </div>
     </div>
 
-    <div class="text-center font-bold text-3xl my-12">
+    <div class="text-center font-bold text-3xl py-12">
         Ganti Password
     </div>
-    <div class="border-2 border-gray rounded-lg w-11/12 sm:w-8/12 md:w-8/12 lg:w-8/12 xl:w-8/12 2xl:w-8/12 mx-auto mb-24">
+    <div class="border-2 border-gray rounded-lg w-11/12 sm:w-8/12 md:w-8/12 lg:w-8/12 xl:w-8/12 2xl:w-8/12 mx-auto bg-white">
         <div class="m-8">
           <p>Password Saat ini</p>
           <input type="password" class="px-4 py-2 rounded w-full border border-gray" v-model="password_saat_ini" placeholder="Password saat ini">
@@ -66,5 +68,7 @@ const password_konfirmasi = ref('');
         </div>
     </div>
     
+    </div>
   </div>
+  
 </template>

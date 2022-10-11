@@ -43,6 +43,11 @@
     import image_setir from '../../assets/images/setir.png';
     import GetFilterService from '../../services/GetService';
     import LightBox from 'vue-image-lightbox'
+    import GetService from '../../services/GetService';
+    import { useRoute } from 'vue-router';
+    import { formatPrice } from '../../mixins';
+    const route = useRoute();
+    const params = route.params.id as string;
  
     const modules = [FreeMode, Navigation, Thumbs];
     const historyback = () => {
@@ -70,6 +75,7 @@
     const openairradiator = ref(false);
     const opensuaramesin = ref(false);
     const openpowerwindow = ref(false);
+    const detailInspection:any = ref([]);
     let status = ref('');
     let tanggal = ref('');
     let session_end = ref('');
@@ -124,10 +130,23 @@ const myfunc = setInterval(function() {
   }
 }, 1000)
 
+const getDetailData = async() => {
+   await GetService.getDetailData(params).then((response:any) => {  
+
+      detailInspection.value = response.data.data;
+      console.log(detailInspection.value);
+
+   }).catch((error:any) => {
+      console.log(error)
+   })
+}
+
 getDataSession();
+getDetailData();
 </script>
 <template>
-  <div class="container-xl pb-20">
+  <div class="bg-biru_fb">
+    <div class="container-xl pb-20">
        <!-- <LightBox :media="image_car"></LightBox> -->
        <div class="bg-gray-200 py-2">
         <div class="text-3xl text-center">Status Lelang : <span class="text-red-500 font-bold">{{ status }}</span>  || Sisa Waktu : <span class="text-red-500 font-bold">{{ timeToCountdown }}</span></div>
@@ -177,37 +196,37 @@ getDataSession();
         </div>
         <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0">
              <div class="text-3xl font-bold py-1">
-               Suzuki Ertiga Sport 2019
+               {{detailInspection.car_detail.car_brand.name }} {{ detailInspection.car_detail.car_merk.name }} {{ detailInspection.car_detail.car_type.name }}
              </div>
              <div>
               <p>Harga mulai :</p>
-              <p class="text-2xl font-bold">Rp 90.000.000</p>
+              <p class="text-2xl font-bold">{{formatPrice(detailInspection.car_detail.harga_cash)}}</p>
              </div>
              <div class="grid grid-cols-12 rounded-lg p-4 border-gray border-2 my-4">
                 <div class="col-span-12 font-bold text-md">Detail Kendaraan</div>
                 <div class="col-span-6 my-1">
                   <p>Lokasi</p>
-                  <p class="font-bold">Semarang</p>
+                  <p class="font-bold">{{ detailInspection.car_detail.kota }}</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Warna Asli - Saat Ini</p>
-                  <p class="font-bold">Putih - Putih</p>
+                  <p class="font-bold">{{ detailInspection.car_detail.warna_eksterior }} - {{ detailInspection.car_detail.warna_interior }}</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Jarak tempuh</p>
-                  <p class="font-bold">16.000 KM</p>
+                  <p class="font-bold">{{ formatPrice(detailInspection.car_detail.odometer) }} KM</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Pajak</p>
-                  <p class="font-bold">Hidup</p>
+                  <p class="font-bold">{{ detailInspection.car_detail.pajak_berlaku }}</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Jenis Bahan Bakar</p>
-                  <p class="font-bold">Bensin</p>
+                  <p class="font-bold">{{ detailInspection.car_detail.bahan_bakar }}</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Kepemilikan</p>
-                  <p class="font-bold">Pribadi</p>
+                  <p class="font-bold">{{ detailInspection.car_detail.kepemilikan }}</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Kunci Serep</p>
@@ -215,7 +234,7 @@ getDataSession();
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Transmisi</p>
-                  <p class="font-bold">Matic</p>
+                  <p class="font-bold">{{ detailInspection.car_detail.transmisi }}</p>
                 </div>
              </div>
              <button @click="showModal" class="bg-tertier px-4 py-2 rounded-xl text-black w-full text-xl font-bold">Ikuti Lelang Ini</button>
@@ -1189,7 +1208,9 @@ getDataSession();
           </div>
         </div>
        </div>
+    </div>
   </div>
+  
 </template>
 <style>
   .container-xl {
