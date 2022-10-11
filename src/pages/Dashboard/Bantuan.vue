@@ -37,7 +37,7 @@
 <p>4.	Mitra berhak mengikuti lelang dengan cara klik tombol IKUTI LELANG dan menentukan nilai bidding</p>
 <p>5.	Mitra berhak mengikuti dan memenangkan lelang lebih dari 1 mobil</p>
 <p>6.	Jika sesi lelang telah berakhir, maka akan terdapat pertambahan waktu 20 detik setiap ada mitra masih melakukan klik tombol bidding dan terus berlanjut sampai tidak ada lagi yang klik bidding</p>
-<p>7.	Setelah memenangkan mobil, maka mitra wajib membayarkan dari 50% harga mobil kepada PT. TAV Mobil Indonesia via transfer dengan dibuktikan bukti transfer yang dikirimkan kepada pemandu lelang</p>
+<p>7. Setelah dinyatakan menang, maka mitra wajib membayarkan 50% dari harga mobil kepada PT. TAV Mobil Indonesia via transfer dengan dibuktikan bukti transfer dan dikirimkan kepada pemandu lelang</p>
 <p>8.	Setelah berhasil membayar 50% maka Tim TAV akan memfollowup unit dari penjual untuk diproses</p>
 <p>9.	Setelah selesai diproses oleh tim TAV dari pihak penjual, maka mobil tersebut akan dibawa ke garasi TAV dan mitra bisa melihat serta melunasi mobil tersebut secara transfer ke PT. TAV Mobil Indonesia</p>
 <div>10.	Biaya adminstrasi yang dibebankan kepada mitra diluar harga yang dimenangkan oleh mitra adalah sebagai berikut :
