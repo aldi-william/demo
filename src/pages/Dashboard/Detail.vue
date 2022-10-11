@@ -76,6 +76,7 @@
     const opensuaramesin = ref(false);
     const openpowerwindow = ref(false);
     const detailInspection:any = ref([]);
+    const inspection:any = ref([]);
     let status = ref('');
     let tanggal = ref('');
     let session_end = ref('');
@@ -133,7 +134,8 @@ const myfunc = setInterval(function() {
 const getDetailData = async() => {
    await GetService.getDetailData(params).then((response:any) => {  
 
-      detailInspection.value = response.data.data;
+      detailInspection.value = response.data.data.detail;
+      inspection.value = response.data.data.inspection;
       console.log(detailInspection.value);
 
    }).catch((error:any) => {
@@ -169,12 +171,9 @@ getDetailData();
             :thumbs="{ swiper: thumbsSwiper }"
             :modules="modules"
             class="mySwiper2 rounded-xl">
-              <swiper-slide><img :src="image_car"></swiper-slide>
-              <swiper-slide><img :src="image_car"></swiper-slide>
-              <swiper-slide><img :src="image_car"></swiper-slide>
-              <swiper-slide><img :src="image_car"></swiper-slide>
-              <swiper-slide><img :src="image_car"></swiper-slide>
-              <swiper-slide><img :src="image_car"></swiper-slide>
+            <swiper-slide v-for="(item, index) in detailInspection.car_detail.image_cars" :key="index+'image_car'">
+              <img :src="item">
+            </swiper-slide>
           </swiper>
           <swiper
             @swiper="setThumbsSwiper"
@@ -186,12 +185,10 @@ getDetailData();
             :modules="modules"
             class="mySwiper rounded-xl"
           >
-          <swiper-slide><img :src="image_car"></swiper-slide>
-          <swiper-slide><img :src="image_car"></swiper-slide>
-          <swiper-slide><img :src="image_car"></swiper-slide>
-          <swiper-slide><img :src="image_car"></swiper-slide>
-          <swiper-slide><img :src="image_car"></swiper-slide>
-          <swiper-slide><img :src="image_car"></swiper-slide>
+          <swiper-slide v-for="(item, index) in detailInspection.car_detail.image_cars" :key="index+'image_car'">
+            <img :src="item">
+          </swiper-slide>
+          
           </swiper>
         </div>
         <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0">
@@ -209,7 +206,7 @@ getDetailData();
                   <p class="font-bold">{{ detailInspection.car_detail.kota }}</p>
                 </div>
                 <div class="col-span-6 my-1">
-                  <p>Warna Asli - Saat Ini</p>
+                  <p>Warna Exterior - Warna Interior</p>
                   <p class="font-bold">{{ detailInspection.car_detail.warna_eksterior }} - {{ detailInspection.car_detail.warna_interior }}</p>
                 </div>
                 <div class="col-span-6 my-1">
@@ -230,7 +227,10 @@ getDetailData();
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Kunci Serep</p>
-                  <p class="font-bold">Ada</p>
+                  <p class="font-bold">
+                    <span v-if="inspection.kunci_serep === 1">Ada</span>
+                    <span v-else>Tidak Ada</span>
+                  </p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Transmisi</p>
