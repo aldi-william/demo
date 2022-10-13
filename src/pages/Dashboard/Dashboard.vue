@@ -12,6 +12,6 @@
       
    </div>
    <router-view></router-view>
-   <Footer></Footer>
+   <!-- <Footer></Footer> -->
    <NavFooter/>
 </template>

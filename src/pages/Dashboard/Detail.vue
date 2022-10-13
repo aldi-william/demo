@@ -196,7 +196,7 @@ getDetailData();
     <div class="container-xl pb-20">
        <!-- <LightBox :media="image_car"></LightBox> -->
        <div class="bg-white py-2">
-        <div class="sm:text-3xl text-center">Status Lelang : <span class="text-red-500 font-bold">{{ status }}</span>  || Sisa Waktu : <span class="text-red-500 font-bold">{{ timeToCountdown }}</span></div>
+        <div class="sm:text-xl text-center">Status Lelang : <span class="text-red-500 font-bold">{{ status }}</span>  || Sisa Waktu : <span class="text-red-500 font-bold">{{ timeToCountdown }}</span></div>
        </div>
        <ModalComponent v-show="modal" @close="modal = false"/>
        <div class="flex items-center cursor-pointer my-4 sm:my-8 md:my-8 lg:my-8 xl:my-8 2xl:my-8" @click="historyback">
@@ -254,12 +254,16 @@ getDetailData();
                   <p class="font-bold">{{ detailInspection[0].car_detail.kota }}</p>
                 </div>
                 <div class="col-span-6 my-1">
-                  <p>Warna Exterior - Warna Interior</p>
-                  <p class="font-bold">{{ detailInspection[0].car_detail.warna_eksterior }} - {{ detailInspection[0].car_detail.warna_interior }}</p>
+                  <p>Warna Interior</p>
+                  <p class="font-bold">{{ detailInspection[0].car_detail.warna_interior }}</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Jarak tempuh</p>
                   <p class="font-bold">{{ formatPrice(detailInspection[0].car_detail.odometer) }} KM</p>
+                </div>
+                <div class="col-span-6 my-1">
+                  <p>Warna Exterior</p>
+                  <p class="font-bold">{{ detailInspection[0].car_detail.warna_eksterior }}</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Pajak</p>
@@ -724,6 +728,7 @@ getDetailData();
 
 .mySwiper2 {
   height: 70%;
+  max-height: 350px;
   width: 100%;
 }
 
@@ -736,6 +741,7 @@ getDetailData();
 
 .mySwiper {
   height: 20%;
+  max-height: 200px;
   box-sizing: border-box;
   padding: 10px 0;
 }
