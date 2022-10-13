@@ -39,8 +39,6 @@ const products:any = computed(() => {
   return store.data
 })
 
-console.log(products)
-
 const filterBursa = reactive({
   search: "",
   lowPrice: 0,
@@ -281,9 +279,16 @@ getDataKota();
               <h1 class="text-sm text-center bg-blue-500 text-white rounded-lg px-2 py-1 w-20 float-right">TAV</h1>
             </div>
             <div class="col-span-6 flex">
-              <img :src="image_mobil" class="w-12 h-6"/>
-              <img :src="image_tergenang" class="w-12 h-6 mx-4"/>
-              <img :src="image_api" class="w-12 h-6"/>
+              <div v-if="product.car_detail.car_inspection">
+                <img :src="image_mobil" class="w-12 h-6" v-if="product.car_detail.car_inspection.accident_free ==='1'"/>
+              </div>
+              <div v-if="product.car_detail.car_inspection">
+                <img :src="image_tergenang" class="w-12 h-6 mx-4" v-if="product.car_detail.car_inspection.flood_free ==='1'"/>
+              </div>
+              <div v-if="product.car_detail.car_inspection">
+                <img :src="image_api" class="w-12 h-6" v-if="product.car_detail.car_inspection.fire_free ==='1'"/>
+              </div>
+              
             </div>
           </div>
           <div class="my-1">
@@ -303,7 +308,7 @@ getDataKota();
               <h1 class="text-2xl font-bold">Rp. {{formatPrice(product.open_price)}}</h1>
             </div>
             <div>
-              <button @click="$router.push(`/dashboard/detail/${i}`);"
+              <button @click="$router.push(`/dashboard/detail/${product.id}`);"
                 class="bg-tertier px-4 py-2 shadow-xl text-sm hover:bg-blue-500 hover:text-white">Lihat</button>
             </div>
           </div>

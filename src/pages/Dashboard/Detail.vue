@@ -378,9 +378,9 @@ getDetailData();
           <button @click="showModal" class="bg-tertier px-4 py-2 rounded-xl text-black w-full text-xl font-bold">Tambah Tawaran</button>
         </div>
         <div class="col-span-12">
-          <div class="text-3xl font-bold flex flex-col sm:flex-row items-center justify-between">
+          <div class="text-xl sm:text-3xl font-bold flex flex-col sm:flex-row items-center justify-between">
           <div class="flex items-center">
-              <span>Detail Laporan Kendaraan</span>
+              <span class="">Detail Laporan Kendaraan</span>
               <img :src="image_info_biru" class="mx-2 w-6 h-6"/>
           </div> 
           <div class="flex mt-4 sm:mt-0">
@@ -484,7 +484,7 @@ getDetailData();
               </div>
                 
               <div>
-                Catatan Test Drive : {{ testdrive[testdrive.length-1].value }}
+                Catatan Test Drive : {{ testdrive[testdrive.length-1] ? testdrive[testdrive.length-1].value:'-' }}
               </div>
             </div>
             <div v-if="menu === 'dashboard'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
@@ -505,7 +505,7 @@ getDetailData();
               </div>
  
               <div>
-                Catatan Dashboard : {{dashboard[dashboard.length-1].value}}
+                Catatan Dashboard : {{ dashboard[dashboard.length-1] ? dashboard[dashboard.length-1].value : 0 }}
               </div>
 
             </div>
