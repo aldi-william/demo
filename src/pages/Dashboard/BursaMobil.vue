@@ -39,6 +39,8 @@ const products:any = computed(() => {
   return store.data
 })
 
+console.log(products)
+
 const filterBursa = reactive({
   search: "",
   lowPrice: 0,
@@ -135,28 +137,6 @@ const myfunc = setInterval(function() {
     getDataSession();
   }
 }, 1000)
-
-// const decrement = () => {
-//   if(filterBursa.page < 2){
-//     filterBursa.page = 1;
-//   }else {
-//     filterBursa.page = filterBursa.page - 1;
-//   }
-//   filterBursa.currentPage = filterBursa.page
-//   filterQuery();
-// }
-
-
-
-// const increment = () => {
-//   if(filterBursa.page >= store.totalPage){
-//     filterBursa.page = store.totalPage
-//   }else{
-//     filterBursa.page = filterBursa.page + 1;
-//   }
-//   filterBursa.currentPage = filterBursa.page
-//   filterQuery();
-// }
 
 const ganti = (index) => {
   filterBursa.page = index;
@@ -301,9 +281,9 @@ getDataKota();
               <h1 class="text-sm text-center bg-blue-500 text-white rounded-lg px-2 py-1 w-20 float-right">TAV</h1>
             </div>
             <div class="col-span-6 flex">
-              <img :src="image_mobil" class="w-12 h-6" />
-              <img :src="image_tergenang" class="w-12 h-6 mx-4" />
-              <img :src="image_api" class="w-12 h-6" />
+              <img :src="image_mobil" class="w-12 h-6"/>
+              <img :src="image_tergenang" class="w-12 h-6 mx-4"/>
+              <img :src="image_api" class="w-12 h-6"/>
             </div>
           </div>
           <div class="my-1">
@@ -315,7 +295,7 @@ getDataKota();
               <!-- <img :src="image_lonceng" alt="lonceng" class="w-6 h-6" /> -->
             </div>
             <p>{{product.car_detail.tahun}} | {{product.car_detail.transmisi}} |
-              {{formatPrice(product.car_detail.km_service_terakhir)}} KM | {{textCapitalize(product.car_detail.kota)}} </p>
+              {{formatPrice(product.car_detail.km_service_terakhir)}} KM | {{ product.car_detail.kota ? textCapitalize(product.car_detail.kota) : ''}} </p>
           </div>
           <div class="flex flex-row my-1 justify-between items-center">
             <div>

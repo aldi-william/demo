@@ -378,7 +378,27 @@ getDetailData();
           <button @click="showModal" class="bg-tertier px-4 py-2 rounded-xl text-black w-full text-xl font-bold">Tambah Tawaran</button>
         </div>
         <div class="col-span-12">
-          <div class="text-3xl font-bold flex items-center">Detail Laporan Kendaraan<img :src="image_info_biru" class="mx-2 w-6 h-6"/></div>
+          <div class="text-3xl font-bold flex flex-col sm:flex-row items-center justify-between">
+          <div class="flex items-center">
+              <span>Detail Laporan Kendaraan</span>
+              <img :src="image_info_biru" class="mx-2 w-6 h-6"/>
+          </div> 
+          <div class="flex mt-4 sm:mt-0">
+            <div class="flex items-center">
+              <img :src="image_checklist_hijau" class="w-6 h-6 mx-4"/>
+              <span class="text-sm sm:text-xl">Oke</span>
+            </div>
+            <div class="flex items-center">
+              <img :src="image_checklist_kuning" class="w-6 h-6 mx-4"/>
+              <span class="text-sm sm:text-xl">Perlu diperhatikan</span>
+            </div>
+            <div class="flex items-center">
+              <img :src="image_checklist_merah" class="w-6 h-6 mx-4"/>
+              <span class="text-sm sm:text-xl">Tidak tersedia</span>
+            </div>
+          </div>
+          </div>
+
           <div class="grid grid-cols-12 sm:flex md:flex lg:flex xl:flex 2xl:flex sm:flex-row md:flex-row lg:flex-row xl:flex-row 2xl:flex-row">
             <div class="col-span-12 bg-blue-500 mt-6 sm:my-12 md:my-12 lg:my-12 xl:my-12 2xl:my-12 p-4 sm:p-8 md:p-8 lg:p-8 xl:p-8 2xl:p-8 rounded-lg sm:h-screen w-full sm:w-3/12 md:w-3/12 lg:w-3/12 xl:w-3/12 2xl:w-3/12">
               <div class="flex sm:flex-col overflow-x-scroll sm:w-full sm:overflow-visible md:overflow-visible lg:overflow-visible xl:overflow-visible 2xl:overflow-visible">
