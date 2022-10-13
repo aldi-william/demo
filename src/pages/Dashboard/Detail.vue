@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { ref } from 'vue';
+    import { ref, reactive } from 'vue';
     import { Swiper, SwiperSlide } from 'swiper/vue';
     import ModalComponent from '../../components/ModalComponent.vue'; 
 
@@ -37,7 +37,8 @@
     import image_bintang_putih from '../../assets/images/bintang_putih.png';
     import image_gear_biru from '../../assets/images/gear_biru.png';
     import image_gear_putih from '../../assets/images/gear_putih.png';
-    import image_checklist_merah from '../../assets/images/checklist_merah.png';
+    import image_checklist_merah from '../../assets/images/danger.png';
+    import image_checklist_kuning from '../../assets/images/warning.png';
     import image_checklist_hijau from '../../assets/images/checklist_hijau.png';
     import image_info_biru from '../../assets/images/info_biru.png';
     import image_setir from '../../assets/images/setir.png';
@@ -75,7 +76,32 @@
     const openairradiator = ref(false);
     const opensuaramesin = ref(false);
     const openpowerwindow = ref(false);
-    const detailInspection:any = ref([]);
+    let detailInspection = ref([{
+      car_detail:{
+        transmisi:'',
+        kepemilikan:'',
+        bahan_bakar:'',
+        pajak_berlaku:'',
+        warna_eksterior:'',
+        odometer:0,
+        warna_interior:'',
+        kota:'',
+        car_brand:{
+          name: ''
+        },
+        car_merk:{
+          name:''
+        },
+        car_type:{
+          name:''
+        },
+        harga_cash: 0,
+        image_cars:[]
+      }
+    }])
+
+    let image_cars:any = ref([]);
+    
 
     const testdrive:any = ref([]);
     const dashboard:any = ref([]);
@@ -105,7 +131,6 @@
             tanggal.value = response.data.data.date;
             session_end.value = response.data.data.session_end;
             status.value = response.data.data.status;
-            console.log(status.value)
             hours.value = session_end.value.split(':')[0];
             minutes.value = session_end.value.split(':')[1];
             seconds.value = session_end.value.split(':')[2];
@@ -143,9 +168,10 @@ const myfunc = setInterval(function() {
 }, 1000)
 
 const getDetailData = () => {
-   GetService.getDetailData(params).then((response:any) => {  
-
+   GetService.getDetailData(params).then((response:any) => {
+      
       detailInspection.value = response.data.data.detail;
+      image_cars.value = response.data.data.image_car;
       testdrive.value = response.data.data.test_drive;
       dashboard.value = response.data.data.dashboard;
       instrumen.value = response.data.data.instrumen;
@@ -190,9 +216,12 @@ getDetailData();
             :thumbs="{ swiper: thumbsSwiper }"
             :modules="modules"
             class="mySwiper2 rounded-xl">
-            <swiper-slide v-for="(item, index) in detailInspection.car_detail.image_cars" :key="index+'image_car'">
-              <img :src="item">
+
+
+            <swiper-slide v-for="(item, index) in image_cars" :key="index+'image_car'">
+              <img :src="item.image">
             </swiper-slide>
+
           </swiper>
           <swiper
             @swiper="setThumbsSwiper"
@@ -204,45 +233,45 @@ getDetailData();
             :modules="modules"
             class="mySwiper rounded-xl"
           >
-          <swiper-slide v-for="(item, index) in detailInspection.car_detail.image_cars" :key="index+'image_car'">
-            <img :src="item">
+          <swiper-slide v-for="(item, index) in image_cars" :key="index+'image_car'">
+            <img :src="item.image">
           </swiper-slide>
           
           </swiper>
         </div>
         <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0">
              <div class="text-3xl font-bold py-1 bg-white p-4">
-               {{detailInspection.car_detail.car_brand.name }} {{ detailInspection.car_detail.car_merk.name }} {{ detailInspection.car_detail.car_type.name }}
+               {{detailInspection[0].car_detail.car_brand.name }} {{ detailInspection[0].car_detail.car_merk.name }} {{ detailInspection[0].car_detail.car_type.name }}
              </div>
              <div class="bg-white p-4">
               <p>Harga mulai :</p>
-              <p class="text-2xl font-bold">Rp {{formatPrice(detailInspection.car_detail.harga_cash)}}</p>
+              <p class="text-2xl font-bold">Rp {{formatPrice(detailInspection[0].car_detail.harga_cash)}}</p>
              </div>
              <div class="grid grid-cols-12 rounded-lg p-4 border-gray border-2 my-4 bg-white">
                 <div class="col-span-12 font-bold text-md">Detail Kendaraan</div>
                 <div class="col-span-6 my-1">
                   <p>Lokasi</p>
-                  <p class="font-bold">{{ detailInspection.car_detail.kota }}</p>
+                  <p class="font-bold">{{ detailInspection[0].car_detail.kota }}</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Warna Exterior - Warna Interior</p>
-                  <p class="font-bold">{{ detailInspection.car_detail.warna_eksterior }} - {{ detailInspection.car_detail.warna_interior }}</p>
+                  <p class="font-bold">{{ detailInspection[0].car_detail.warna_eksterior }} - {{ detailInspection[0].car_detail.warna_interior }}</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Jarak tempuh</p>
-                  <p class="font-bold">{{ formatPrice(detailInspection.car_detail.odometer) }} KM</p>
+                  <p class="font-bold">{{ formatPrice(detailInspection[0].car_detail.odometer) }} KM</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Pajak</p>
-                  <p class="font-bold">{{ detailInspection.car_detail.pajak_berlaku }}</p>
+                  <p class="font-bold">{{ detailInspection[0].car_detail.pajak_berlaku }}</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Jenis Bahan Bakar</p>
-                  <p class="font-bold">{{ detailInspection.car_detail.bahan_bakar }}</p>
+                  <p class="font-bold">{{ detailInspection[0].car_detail.bahan_bakar }}</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Kepemilikan</p>
-                  <p class="font-bold">{{ detailInspection.car_detail.kepemilikan }}</p>
+                  <p class="font-bold">{{ detailInspection[0].car_detail.kepemilikan }}</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Kunci Serep</p>
@@ -253,7 +282,7 @@ getDetailData();
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Transmisi</p>
-                  <p class="font-bold">{{ detailInspection.car_detail.transmisi }}</p>
+                  <p class="font-bold">{{ detailInspection[0].car_detail.transmisi }}</p>
                 </div>
              </div>
              <button @click="showModal" class="bg-tertier px-4 py-2 rounded-xl text-black w-full text-xl font-bold">Ikuti Lelang Ini</button>
@@ -418,26 +447,16 @@ getDetailData();
        
             </div>
             <div v-if="menu === 'testdrive'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
-              <div v-for="(items, index) in Object.keys(testdrive)" :key="index+'testdrive'">
-                <div class="mb-4" v-if="items !== 'catatan_test_drive'">
-                <div class="flex flex-row justify-between">
-                  <h1 class="font-bold text-md">{{ items }}</h1>
-                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
-                </div>
-                <div class="border-b border-black w-11/12"></div>
-               </div>
-              </div>
-              
 
-              <div class="mb-4 cursor-pointer" @click="open = !open">
+              <div class="mb-4 cursor-pointer" @click="open = !open" v-for="(items, index) in testdrive" :key="index+'testdrive'">
                 <div class="flex flex-row justify-between">
                   <div class="flex items-center">
-                    <h1 class="font-bold text-md" >Performa Setir</h1>
-                    <img :src="image_arrow_down" class="w-4 h-3 mx-2"/>
+                    <h1 class="font-bold text-md" >{{ items.name }}</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
                   </div>
-                  <img :src="image_checklist_merah" class="w-6 mt-2"/>
+                  <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
                 </div>
-                <div class="flex justify-around my-4" v-show="open"><img :src="image_setir" class="w-40"/></div>
+                <div class="flex justify-around my-4" v-show="items.value === 2"><img :src="image_setir" class="w-40"/></div>
                 <div class="border-b border-black w-11/12"></div>
               </div>
                 
@@ -447,28 +466,18 @@ getDetailData();
             </div>
             <div v-if="menu === 'dashboard'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
 
-              <div v-for="(items, index) in Object.keys(dashboard)" :key="index+'dashboard'">
-                <div class="mb-4" v-if="items !== 'catatan_dashboard'">
-                <div class="flex flex-row justify-between">
-                  <h1 class="font-bold text-md">{{ items }}</h1>
-                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
-                </div>
-                <div class="border-b border-black w-11/12"></div>
-               </div>
-              </div>
-
-              <div class="mb-4 cursor-pointer" @click="open = !open">
+              <div class="mb-4 cursor-pointer" @click="items.open = !items.open" v-for="(items, index) in dashboard" :key="index+'dashboard'">
                 <div class="flex flex-row justify-between">
                   <div class="flex items-center">
-                    <h1 class="font-bold text-md" >Performa Setir</h1>
-                    <img :src="image_arrow_down" class="w-4 h-3 mx-2"/>
+                    <h1 class="font-bold text-md" >{{ items.name }}</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
                   </div>
-                  <img :src="image_checklist_merah" class="w-6 mt-2"/>
+                  <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
                 </div>
-                <div class="flex justify-around my-4" v-show="open"><img :src="image_setir" class="w-40"/></div>
+                <div class="flex justify-around my-4" v-show="items.value === 2 && items.open"><img :src="image_setir" class="w-40"/></div>
                 <div class="border-b border-black w-11/12"></div>
               </div>
-               
+ 
               <div>
                 Catatan Dashboard : {{dashboard.catatan_dashboard}}
               </div>
@@ -476,25 +485,15 @@ getDetailData();
             </div>
             <div v-if="menu === 'instrumen'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
 
-              <div v-for="(items, index) in Object.keys(instrumen)" :key="index+'instrumen'">
-                <div class="mb-4" v-if="items !== 'catatan_instrumen'">
-                <div class="flex flex-row justify-between">
-                  <h1 class="font-bold text-md">{{ items }}</h1>
-                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
-                </div>
-                <div class="border-b border-black w-11/12"></div>
-               </div>
-              </div>
-
-              <div class="mb-4 cursor-pointer" @click="open = !open">
+              <div class="mb-4 cursor-pointer" @click="open = !open" v-for="(items, index) in instrumen" :key="index+'istrumen'">
                 <div class="flex flex-row justify-between">
                   <div class="flex items-center">
-                    <h1 class="font-bold text-md" >Performa Setir</h1>
-                    <img :src="image_arrow_down" class="w-4 h-3 mx-2"/>
+                    <h1 class="font-bold text-md" >{{ items.name }}</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
                   </div>
-                  <img :src="image_checklist_merah" class="w-6 mt-2"/>
+                  <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
                 </div>
-                <div class="flex justify-around my-4" v-show="open"><img :src="image_setir" class="w-40"/></div>
+                <div class="flex justify-around my-4" v-show="items.value === 2"><img :src="image_setir" class="w-40"/></div>
                 <div class="border-b border-black w-11/12"></div>
               </div>
 
@@ -502,25 +501,16 @@ getDetailData();
                 
             </div>
             <div v-if="menu === 'jok-trim'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
-              <div v-for="(items, index) in Object.keys(jok_trim)" :key="index+'jok-trim'">
-                <div class="mb-4" v-if="items !== 'catatan_jok_trim'">
-                <div class="flex flex-row justify-between">
-                  <h1 class="font-bold text-md">{{ items }}</h1>
-                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
-                </div>
-                <div class="border-b border-black w-11/12"></div>
-               </div>
-              </div>
 
-              <div class="mb-4 cursor-pointer" @click="open = !open">
+              <div class="mb-4 cursor-pointer" @click="open = !open" v-for="(items, index) in jok_trim" :key="index+'jok_trim'">
                 <div class="flex flex-row justify-between">
                   <div class="flex items-center">
-                    <h1 class="font-bold text-md" >Performa Setir</h1>
-                    <img :src="image_arrow_down" class="w-4 h-3 mx-2"/>
+                    <h1 class="font-bold text-md" >{{ items.name }}</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
                   </div>
-                  <img :src="image_checklist_merah" class="w-6 mt-2"/>
+                  <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
                 </div>
-                <div class="flex justify-around my-4" v-show="open"><img :src="image_setir" class="w-40"/></div>
+                <div class="flex justify-around my-4" v-show="items.value === 2"><img :src="image_setir" class="w-40"/></div>
                 <div class="border-b border-black w-11/12"></div>
               </div>
 
@@ -528,25 +518,15 @@ getDetailData();
                 
             </div>
             <div v-if="menu === 'kaca-lampu'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
-              <div v-for="(items, index) in Object.keys(kaca_lampu)" :key="index+'kaca_lampu'">
-                <div class="mb-4" v-if="items !== 'catatan_kaca_lampu'">
-                <div class="flex flex-row justify-between">
-                  <h1 class="font-bold text-md">{{ items }}</h1>
-                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
-                </div>
-                <div class="border-b border-black w-11/12"></div>
-               </div>
-              </div>
-
-              <div class="mb-4 cursor-pointer" @click="open = !open">
+              <div class="mb-4 cursor-pointer" @click="open = !open" v-for="(items, index) in kaca_lampu" :key="index+'kaca_lampu'">
                 <div class="flex flex-row justify-between">
                   <div class="flex items-center">
-                    <h1 class="font-bold text-md" >Performa Setir</h1>
-                    <img :src="image_arrow_down" class="w-4 h-3 mx-2"/>
+                    <h1 class="font-bold text-md" >{{ items.name }}</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
                   </div>
-                  <img :src="image_checklist_merah" class="w-6 mt-2"/>
+                  <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
                 </div>
-                <div class="flex justify-around my-4" v-show="open"><img :src="image_setir" class="w-40"/></div>
+                <div class="flex justify-around my-4" v-show="items.value === 2"><img :src="image_setir" class="w-40"/></div>
                 <div class="border-b border-black w-11/12"></div>
               </div>
 
@@ -555,25 +535,15 @@ getDetailData();
             </div>
             <div v-if="menu === 'underbody'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
 
-              <div v-for="(items, index) in Object.keys(underbody)" :key="index+'underbody'">
-                <div class="mb-4" v-if="items !== 'catatan_under_body'">
-                <div class="flex flex-row justify-between">
-                  <h1 class="font-bold text-md">{{ items }}</h1>
-                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
-                </div>
-                <div class="border-b border-black w-11/12"></div>
-               </div>
-              </div>
-
-              <div class="mb-4 cursor-pointer" @click="open = !open">
+              <div class="mb-4 cursor-pointer" @click="open = !open" v-for="(items, index) in underbody" :key="index+'underbody'">
                 <div class="flex flex-row justify-between">
                   <div class="flex items-center">
-                    <h1 class="font-bold text-md" >Performa Setir</h1>
-                    <img :src="image_arrow_down" class="w-4 h-3 mx-2"/>
+                    <h1 class="font-bold text-md" >{{ items.name }}</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
                   </div>
-                  <img :src="image_checklist_merah" class="w-6 mt-2"/>
+                  <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
                 </div>
-                <div class="flex justify-around my-4" v-show="open"><img :src="image_setir" class="w-40"/></div>
+                <div class="flex justify-around my-4" v-show="items.value === 2"><img :src="image_setir" class="w-40"/></div>
                 <div class="border-b border-black w-11/12"></div>
               </div>
 
@@ -581,25 +551,15 @@ getDetailData();
 
             </div>
             <div v-if="menu === 'oli-cairan'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
-              <div v-for="(items, index) in Object.keys(oli_cairan)" :key="index+'oli-cairan'">
-                <div class="mb-4" v-if="items !== 'catatan_oli_cairan'">
-                <div class="flex flex-row justify-between">
-                  <h1 class="font-bold text-md">{{ items }}</h1>
-                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
-                </div>
-                <div class="border-b border-black w-11/12"></div>
-               </div>
-              </div>
-
-              <div class="mb-4 cursor-pointer" @click="open = !open">
+              <div class="mb-4 cursor-pointer" @click="open = !open" v-for="(items, index) in oli_cairan" :key="index+'oli_cairan'">
                 <div class="flex flex-row justify-between">
                   <div class="flex items-center">
-                    <h1 class="font-bold text-md" >Performa Setir</h1>
-                    <img :src="image_arrow_down" class="w-4 h-3 mx-2"/>
+                    <h1 class="font-bold text-md" >{{ items.name }}</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
                   </div>
-                  <img :src="image_checklist_merah" class="w-6 mt-2"/>
+                  <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
                 </div>
-                <div class="flex justify-around my-4" v-show="open"><img :src="image_setir" class="w-40"/></div>
+                <div class="flex justify-around my-4" v-show="items.value === 2"><img :src="image_setir" class="w-40"/></div>
                 <div class="border-b border-black w-11/12"></div>
               </div>
 
@@ -607,25 +567,15 @@ getDetailData();
 
             </div>
             <div v-if="menu === 'ruangmesin'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
-              <div v-for="(items, index) in Object.keys(ruangmesin)" :key="index+'ruangmesin'">
-                <div class="mb-4" v-if="items !== 'catatan_ruang_mesin'">
-                <div class="flex flex-row justify-between">
-                  <h1 class="font-bold text-md">{{ items }}</h1>
-                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
-                </div>
-                <div class="border-b border-black w-11/12"></div>
-               </div>
-              </div>
-
-              <div class="mb-4 cursor-pointer" @click="open = !open">
+              <div class="mb-4 cursor-pointer" @click="open = !open" v-for="(items, index) in ruangmesin" :key="index+'ruangmesin'">
                 <div class="flex flex-row justify-between">
                   <div class="flex items-center">
-                    <h1 class="font-bold text-md" >Performa Setir</h1>
-                    <img :src="image_arrow_down" class="w-4 h-3 mx-2"/>
+                    <h1 class="font-bold text-md" >{{ items.name }}</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
                   </div>
-                  <img :src="image_checklist_merah" class="w-6 mt-2"/>
+                  <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
                 </div>
-                <div class="flex justify-around my-4" v-show="open"><img :src="image_setir" class="w-40"/></div>
+                <div class="flex justify-around my-4" v-show="items.value === 2"><img :src="image_setir" class="w-40"/></div>
                 <div class="border-b border-black w-11/12"></div>
               </div>
 
@@ -633,25 +583,15 @@ getDetailData();
 
             </div>
             <div v-if="menu === 'fitur'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
-              <div v-for="(items, index) in Object.keys(fitur)" :key="index+'fitur'">
-                <div class="mb-4" v-if="items !== 'catatan_fitur'">
-                <div class="flex flex-row justify-between">
-                  <h1 class="font-bold text-md">{{ items }}</h1>
-                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
-                </div>
-                <div class="border-b border-black w-11/12"></div>
-               </div>
-              </div>
-
-              <div class="mb-4 cursor-pointer" @click="open = !open">
+              <div class="mb-4 cursor-pointer" @click="open = !open" v-for="(items, index) in fitur" :key="index+'fitur'">
                 <div class="flex flex-row justify-between">
                   <div class="flex items-center">
-                    <h1 class="font-bold text-md" >Performa Setir</h1>
-                    <img :src="image_arrow_down" class="w-4 h-3 mx-2"/>
+                    <h1 class="font-bold text-md" >{{ items.name }}</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
                   </div>
-                  <img :src="image_checklist_merah" class="w-6 mt-2"/>
+                  <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
                 </div>
-                <div class="flex justify-around my-4" v-show="open"><img :src="image_setir" class="w-40"/></div>
+                <div class="flex justify-around my-4" v-show="items.value === 2"><img :src="image_setir" class="w-40"/></div>
                 <div class="border-b border-black w-11/12"></div>
               </div>
 
@@ -659,25 +599,15 @@ getDetailData();
 
             </div>
             <div v-if="menu === 'dokumen'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
-              <div v-for="(items, index) in Object.keys(dokumen)" :key="index+'dokumen'">
-                <div class="mb-4" v-if="items !== 'catatan_dok'">
-                <div class="flex flex-row justify-between">
-                  <h1 class="font-bold text-md">{{ items }}</h1>
-                  <img :src="image_checklist_hijau" class="w-6 mt-2"/>
-                </div>
-                <div class="border-b border-black w-11/12"></div>
-               </div>
-              </div>
-
-              <div class="mb-4 cursor-pointer" @click="open = !open">
+              <div class="mb-4 cursor-pointer" @click="open = !open" v-for="(items, index) in dokumen" :key="index+'dokumen'">
                 <div class="flex flex-row justify-between">
                   <div class="flex items-center">
-                    <h1 class="font-bold text-md" >Performa Setir</h1>
-                    <img :src="image_arrow_down" class="w-4 h-3 mx-2"/>
+                    <h1 class="font-bold text-md" >{{ items.name }}</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
                   </div>
-                  <img :src="image_checklist_merah" class="w-6 mt-2"/>
+                  <img :src="items.value === 1 ? image_checklist_merah: image_checklist_hijau" class="w-6 mt-2"/>
                 </div>
-                <div class="flex justify-around my-4" v-show="open"><img :src="image_setir" class="w-40"/></div>
+                <div class="flex justify-around my-4" v-show="items.value === 2"><img :src="image_setir" class="w-40"/></div>
                 <div class="border-b border-black w-11/12"></div>
               </div>
 
