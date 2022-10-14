@@ -1,7 +1,7 @@
 <script setup lang="ts">
     import { ref, reactive } from 'vue';
     import { Swiper, SwiperSlide } from 'swiper/vue';
-    import ModalComponent from '../../components/ModalComponent.vue'; 
+    import ModalComponent from '../../components/ModalComponent.vue';
 
     // Import Swiper styles
     import 'swiper/css';
@@ -43,7 +43,6 @@
     import image_info_biru from '../../assets/images/info_biru.png';
     import image_setir from '../../assets/images/setir.png';
     import GetFilterService from '../../services/GetService';
-    import LightBox from 'vue-image-lightbox'
     import GetService from '../../services/GetService';
     import { useRoute } from 'vue-router';
     import { formatPrice } from '../../mixins';
@@ -189,10 +188,30 @@ const getDetailData = () => {
    })
 }
 
+const visibleRef = ref(false)
+const indexRef = ref(0) 
+const imgsRef:any = ref([])
+const onHide = () => (visibleRef.value = false)
+const onShow = () => {
+      visibleRef.value = true
+}
+const showImg = (index:number) => {
+      image_cars.value.map((items) => {
+        imgsRef.value.push(items.image)
+      })
+      indexRef.value = index;
+      onShow()
+}
 getDataSession();
 getDetailData();
 </script>
 <template>
+  <vue-easy-lightbox
+      :visible="visibleRef"
+      :imgs="imgsRef"
+      :index="indexRef"
+      @hide="onHide"
+    ></vue-easy-lightbox>
   <div class="bg-biru_fb">
     <div class="container-xl pb-20">
        <!-- <LightBox :media="image_car"></LightBox> -->
@@ -219,7 +238,7 @@ getDetailData();
             class="mySwiper2 rounded-xl">
 
             <swiper-slide v-for="(item, index) in image_cars" :key="index+'image_car'">
-              <img :src="item.image">
+              <img :src="item.image" @click="showImg(index)" class="cursor-pointer">
             </swiper-slide>
 
           </swiper>
@@ -243,51 +262,50 @@ getDetailData();
              <div class="text-3xl font-bold py-1 bg-white p-4">
                {{ detailInspection.car_detail ? detailInspection.car_detail.car_brand.name : '' }} {{ detailInspection.car_detail ?detailInspection.car_detail.car_merk.name: '' }} {{ detailInspection.car_detail ? detailInspection.car_detail.car_type.name : '' }}
              </div>
-             <div class="bg-white p-4">
-              <p>Harga mulai :</p>
-              <p class="text-2xl font-bold">Rp {{ detailInspection.car_detail ? formatPrice(detailInspection.car_detail.harga_cash) : 0}}</p>
+             <div class="bg-white p-4 grid grid-cols-12">
+              <div class="col-span-6">
+                <p>Harga mulai :</p>
+                <p class="text-2xl font-bold">Rp {{ detailInspection.car_detail ? formatPrice(detailInspection.car_detail.harga_cash) : 0}}</p>
+              </div>
+              <div class="col-span-6">
+                <div>Tahun :</div>
+                <div class="font-bold">{{ detailInspection.car_detail ? detailInspection.car_detail.tahun : 0}}</div>
+              </div>     
              </div>
              <div class="grid grid-cols-12 rounded-lg p-4 border-gray border-2 my-4 bg-white">
-                <div class="col-span-12 font-bold text-md">Detail Kendaraan</div>
                 <div class="col-span-6 my-1">
                   <p>Lokasi</p>
                   <p class="font-bold">{{ detailInspection.car_detail.kota }}</p>
-                </div>
-                <div class="col-span-6 my-1">
-                  <p>Warna Interior</p>
-                  <p class="font-bold">{{ detailInspection.car_detail.warna_interior }}</p>
-                </div>
-                <div class="col-span-6 my-1">
-                  <p>Jarak tempuh</p>
-                  <p class="font-bold">{{ formatPrice(detailInspection.car_detail.odometer) }} KM</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Warna Exterior</p>
                   <p class="font-bold">{{ detailInspection.car_detail.warna_eksterior }}</p>
                 </div>
                 <div class="col-span-6 my-1">
-                  <p>Pajak</p>
-                  <p class="font-bold">{{ detailInspection.car_detail.pajak_berlaku }}</p>
+                  <p>Jarak tempuh</p>
+                  <p class="font-bold">{{ formatPrice(detailInspection.car_detail.odometer) }} KM</p>
                 </div>
                 <div class="col-span-6 my-1">
-                  <p>Jenis Bahan Bakar</p>
+                  <p>Warna Interior</p>
+                  <p class="font-bold">{{ detailInspection.car_detail.warna_interior }}</p>
+                </div>
+                <div class="col-span-6 my-1">
+                  <p>Bahan Bakar</p>
                   <p class="font-bold">{{ detailInspection.car_detail.bahan_bakar }}</p>
                 </div>
                 <div class="col-span-6 my-1">
-                  <p>Kepemilikan</p>
-                  <p class="font-bold">{{ detailInspection.car_detail.kepemilikan }}</p>
-                </div>
-                <div class="col-span-6 my-1">
-                  <p>Kunci Serep</p>
-                  <p class="font-bold">
-                    <!-- <span v-if="inspection.kunci_serep === 1">Ada</span>
-                    <span v-else>Tidak Ada</span> -->
-                  </p>
+                  <p>Pajak Berlaku</p>
+                  <p class="font-bold">{{ detailInspection.car_detail.pajak_berlaku }}</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Transmisi</p>
                   <p class="font-bold">{{ detailInspection.car_detail.transmisi }}</p>
                 </div>
+                <div class="col-span-6 my-1">
+                  <p>Kepemilikan</p>
+                  <p class="font-bold">{{ detailInspection.car_detail.kepemilikan }}</p>
+                </div>
+                
              </div>
              <button @click="showModal" class="bg-tertier px-4 py-2 rounded-xl text-black w-full text-xl font-bold">Ikuti Lelang Ini</button>
         </div>

@@ -8,7 +8,8 @@ import VueAxios from 'vue-axios'
 import VueNumberFormat from 'vue-number-format'
 import vSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css';
-import VueLazyLoad from 'vue-lazyload'
+import VueEasyLightbox from 'vue-easy-lightbox'
+
 
 const app = createApp(App)
 
@@ -17,6 +18,7 @@ app.use(router)
 app.use(VueAxios, axios)
 app.use(VueNumberFormat, {prefix: 'US$ ', decimal: ',', thounsand: '.'})
 app.component('v-select', vSelect)
-app.use(VueLazyLoad)
+app.use(VueEasyLightbox)
+
 
 app.mount('#app')

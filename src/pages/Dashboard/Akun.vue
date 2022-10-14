@@ -13,17 +13,30 @@ const data = ref<IDataAccount>({
   password: '',
   address: '',
   image:'',
+  city: 0,
+  province: 0,
+  district: 0,
+  zip_code: 0
 });
 
 const no_whatsapp = ref('');
 const password_saat_ini = ref('');
 const password_baru = ref('');
 const password_konfirmasi = ref('');
+const gambar = ref('');
+const provinsi = ref([]);
+const kota = ref([]);
+const kecamatan = ref([]);
 
 const getData = () => {
   GetAccountService.getAccountData().then((response:any) => {
     console.log(response)
     data.value = response.data.data;
+    provinsi.value = response.data.provinces;
+    kota.value = response.data.cities;
+    console.log(kota.value);
+    kecamatan.value = response.data.districts;
+    gambar.value = response.data.data.image;
     no_whatsapp.value = response.data.data.no_whatsapp;
   }).catch((error:any) => {
     console.log(error)
@@ -39,8 +52,12 @@ const sendDataAccount = () => {
 }
 
 const changeAvatar = (e:any) => {
-  console.log(e.target.files[0])
-  data.value.image = URL.createObjectURL(e.target.files[0]);
+  data.value.image = e.target.files[0];
+  gambar.value = URL.createObjectURL(e.target.files[0]);
+}
+
+const changeKota = () => {
+
 }
 
 
@@ -54,7 +71,7 @@ getData();
     </div>
     <div class="border-2 border-gray rounded-lg w-11/12 sm:w-8/12 md:w-8/12 lg:w-8/12 xl:w-8/12 2xl:w-8/12 mx-auto bg-white">
         <div class="flex justify-center my-12 relative w-1/4 mx-auto">
-            <img :src="data.image" alt="profile" class="w-40 rounded-full"/>
+            <img :src="gambar" alt="profile" class="w-40 rounded-full"/>
           
             <label class="absolute bottom-0 right-4">
                 <input type="file" @change="changeAvatar($event)" accept="image/*"/>
@@ -79,9 +96,41 @@ getData();
           <p>Email</p>
           <input type="text" class="px-4 py-2 rounded w-full border border-gray" v-model="data.email" placeholder="Masukan email Anda">
         </div>
+        <div class="m-8 flex">
+            <div class="w-1/2 mr-2">
+              <p>Provinsi</p>
+              <select class="px-4 py-2 rounded w-full border border-gray">
+                <option v-for="(item,index) in provinsi" :key="index" :value="item.id" @click="changeKota">
+                  {{ item.name }}
+                </option>
+              </select>
+            </div>
+            <div class="w-1/2">
+              <p>Kota</p>
+              <select class="px-4 py-2 rounded w-full border border-gray">
+                <option v-for="(item,index) in kota" :key="index" :value="item.id" @click="changeKota">
+                  {{ item.name }}
+                </option>
+              </select>
+            </div>
+        </div>
+        <div class="m-8 flex">
+          <div class="w-1/2 mr-2">
+            <p>Kecamatan</p>
+            <select class="px-4 py-2 rounded w-full border border-gray">
+              <option v-for="(item,index) in kecamatan" :key="index" :value="item.id">
+                {{ item.name }}
+              </option>
+            </select>
+          </div>
+          <div class="w-1/2">
+            <p>Kode Pos</p>
+            <input type="text" class="px-4 py-2 rounded w-full border border-gray" v-model="data.zip_code" placeholder="Masukan Kode Pos">
+          </div>
+        </div>
         <div class="m-8">
           <p>Alamat</p>
-          <textarea class="px-4 py-2 rounded w-full border border-gray" placeholder="Masukan Alamat Lengkap Anda">
+          <textarea class="px-4 py-2 rounded w-full border border-gray" placeholder="Masukan Alamat Lengkap Anda" v-model="data.address">
             {{ data.address }}
           </textarea>
         </div>

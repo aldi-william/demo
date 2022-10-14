@@ -258,7 +258,7 @@ getDataKota();
         class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white">
         <div class="rounded shadow-2xl p-4">
           <div class="relative overflow-hidden">
-            <div class="absolute bg-blue-500 rounded text-white top-3 left-3 px-2">{{product.code}}</div>
+            <div class="absolute bg-blue-500 rounded text-white top-3 left-3 px-2">{{ product.code }}</div>
             
             <div class="bg-red-600 absolute bottom-0 right-0 px-4 py-0 rounded-tl-full text-white flex items-start">
               Berlangsung
@@ -305,7 +305,7 @@ getDataKota();
           <div class="flex flex-row my-1 justify-between items-center">
             <div>
               <h1>Harga Mulai :</h1>
-              <h1 class="text-2xl font-bold">Rp. {{formatPrice(product.open_price)}}</h1>
+              <h1 class="text-2xl font-bold">Rp. {{ formatPrice(product.open_price) }}</h1>
             </div>
             <div>
               <button @click="$router.push(`/dashboard/detail/${product.id}`);"

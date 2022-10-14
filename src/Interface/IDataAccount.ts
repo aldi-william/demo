@@ -5,4 +5,8 @@ export interface IDataAccount {
    address: string;
    password: string;
    image: string;
+   city: number,
+   province: number,
+   district: number,
+   zip_code: number
 }
