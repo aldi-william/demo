@@ -38,11 +38,11 @@ const sendDataAccount = () => {
   })
 }
 
-// const changeAvatar = ($event: Event) => {
-//   const target = $event.target as HTMLInputElement;
-//   if (target && target.files) {
-//   data.value = target.files[0];
-// }
+const changeAvatar = (e:any) => {
+  console.log(e.target.files[0])
+  data.value.image = URL.createObjectURL(e.target.files[0]);
+}
+
 
 getData();
 </script>

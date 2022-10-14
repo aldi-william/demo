@@ -76,7 +76,7 @@
     const openairradiator = ref(false);
     const opensuaramesin = ref(false);
     const openpowerwindow = ref(false);
-    let detailInspection = ref([{
+    let detailInspection:any = ref([{
       car_detail:{
         transmisi:'',
         kepemilikan:'',
@@ -171,6 +171,7 @@ const getDetailData = () => {
    GetService.getDetailData(params).then((response:any) => {
       
       detailInspection.value = response.data.data.detail;
+      console.log(detailInspection.value);
       image_cars.value = response.data.data.image_car;
       testdrive.value = response.data.data.test_drive;
       dashboard.value = response.data.data.dashboard;
@@ -217,7 +218,6 @@ getDetailData();
             :modules="modules"
             class="mySwiper2 rounded-xl">
 
-
             <swiper-slide v-for="(item, index) in image_cars" :key="index+'image_car'">
               <img :src="item.image">
             </swiper-slide>
@@ -241,41 +241,41 @@ getDetailData();
         </div>
         <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0">
              <div class="text-3xl font-bold py-1 bg-white p-4">
-               {{detailInspection[0].car_detail.car_brand.name }} {{ detailInspection[0].car_detail.car_merk.name }} {{ detailInspection[0].car_detail.car_type.name }}
+               {{ detailInspection.car_detail ? detailInspection.car_detail.car_brand.name : '' }} {{ detailInspection.car_detail ?detailInspection.car_detail.car_merk.name: '' }} {{ detailInspection.car_detail ? detailInspection.car_detail.car_type.name : '' }}
              </div>
              <div class="bg-white p-4">
               <p>Harga mulai :</p>
-              <p class="text-2xl font-bold">Rp {{formatPrice(detailInspection[0].car_detail.harga_cash)}}</p>
+              <p class="text-2xl font-bold">Rp {{ detailInspection.car_detail ? formatPrice(detailInspection.car_detail.harga_cash) : 0}}</p>
              </div>
              <div class="grid grid-cols-12 rounded-lg p-4 border-gray border-2 my-4 bg-white">
                 <div class="col-span-12 font-bold text-md">Detail Kendaraan</div>
                 <div class="col-span-6 my-1">
                   <p>Lokasi</p>
-                  <p class="font-bold">{{ detailInspection[0].car_detail.kota }}</p>
+                  <p class="font-bold">{{ detailInspection.car_detail.kota }}</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Warna Interior</p>
-                  <p class="font-bold">{{ detailInspection[0].car_detail.warna_interior }}</p>
+                  <p class="font-bold">{{ detailInspection.car_detail.warna_interior }}</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Jarak tempuh</p>
-                  <p class="font-bold">{{ formatPrice(detailInspection[0].car_detail.odometer) }} KM</p>
+                  <p class="font-bold">{{ formatPrice(detailInspection.car_detail.odometer) }} KM</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Warna Exterior</p>
-                  <p class="font-bold">{{ detailInspection[0].car_detail.warna_eksterior }}</p>
+                  <p class="font-bold">{{ detailInspection.car_detail.warna_eksterior }}</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Pajak</p>
-                  <p class="font-bold">{{ detailInspection[0].car_detail.pajak_berlaku }}</p>
+                  <p class="font-bold">{{ detailInspection.car_detail.pajak_berlaku }}</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Jenis Bahan Bakar</p>
-                  <p class="font-bold">{{ detailInspection[0].car_detail.bahan_bakar }}</p>
+                  <p class="font-bold">{{ detailInspection.car_detail.bahan_bakar }}</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Kepemilikan</p>
-                  <p class="font-bold">{{ detailInspection[0].car_detail.kepemilikan }}</p>
+                  <p class="font-bold">{{ detailInspection.car_detail.kepemilikan }}</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Kunci Serep</p>
@@ -286,7 +286,7 @@ getDetailData();
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Transmisi</p>
-                  <p class="font-bold">{{ detailInspection[0].car_detail.transmisi }}</p>
+                  <p class="font-bold">{{ detailInspection.car_detail.transmisi }}</p>
                 </div>
              </div>
              <button @click="showModal" class="bg-tertier px-4 py-2 rounded-xl text-black w-full text-xl font-bold">Ikuti Lelang Ini</button>
