@@ -38,13 +38,13 @@ const isFavorit = ref([false, false, false, false, false, false, false, false, f
               <h1 class="text-sm text-center bg-blue-500 text-white rounded-lg px-2 py-1 w-20 float-right">TAV</h1>
             </div>
             <div class="col-span-6 flex">
-              <div v-if="product.car_detail.car_inspection">
+              <div v-if="product.car_detail.car_inspection" v-tippy="{ content: 'Kecelakaan ringan' }">
                 <img :src="image_mobil" class="w-8 h-6" v-if="product.car_detail.car_inspection.accident_free !=='1'"/>
               </div>
-              <div v-if="product.car_detail.car_inspection">
+              <div v-if="product.car_detail.car_inspection" v-tippy="{ content: 'Kecelakaan ringan' }">
                 <img :src="image_tergenang" class="w-8 h-6 mx-4" v-if="product.car_detail.car_inspection.flood_free !=='1'"/>
               </div>
-              <div v-if="product.car_detail.car_inspection">
+              <div v-if="product.car_detail.car_inspection" v-tippy="{ content: 'Kecelakaan ringan' }">
                 <img :src="image_api" class="w-8 h-6" v-if="product.car_detail.car_inspection.fire_free !=='1'"/>
               </div>
               
