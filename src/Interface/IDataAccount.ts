@@ -5,8 +5,14 @@ export interface IDataAccount {
    address: string;
    password: string;
    image: string;
-   city: number,
-   province: number,
-   district: number,
-   zip_code: number
+   city: any,
+   province: any,
+   district: any,
+   zip_code: any
+}
+
+export interface IDataPassword {
+   old_password: string;
+   password: string;
+   password_confirmation: string;
 }

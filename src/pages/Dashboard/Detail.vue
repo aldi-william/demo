@@ -40,6 +40,12 @@
     import image_checklist_merah from '../../assets/images/danger.png';
     import image_checklist_kuning from '../../assets/images/warning.png';
     import image_checklist_hijau from '../../assets/images/checklist_hijau.png';
+    import image_ban_biru from '../../assets/images/ban_biru.png';
+    import image_ban_putih from '../../assets/images/ban_putih.png';
+    import image_body_biru from '../../assets/images/body_biru.png';
+    import image_body_putih from '../../assets/images/body_putih.png';
+    import image_kelengkapan_biru from '../../assets/images/kelengkapan_biru.png';
+    import image_kelengkapan_putih from '../../assets/images/kelengkapan_putih.png';
     import image_info_biru from '../../assets/images/info_biru.png';
     import image_setir from '../../assets/images/setir.png';
     import GetFilterService from '../../services/GetService';
@@ -65,16 +71,6 @@
     }
 
     const menu = ref('testdrive');
-    const open = ref(false);
-    const openswitchlampu = ref(false);
-    const openswitchwiper = ref(false);
-    const openkapmesin = ref(false);
-    const opensabukpengaman = ref(false);
-    const openlampudepan = ref(false);
-    const opendiscbrake = ref(false);
-    const openairradiator = ref(false);
-    const opensuaramesin = ref(false);
-    const openpowerwindow = ref(false);
     let detailInspection:any = ref([{
       car_detail:{
         transmisi:'',
@@ -112,6 +108,9 @@
     const ruangmesin:any = ref([]);
     const fitur:any = ref([]);
     const dokumen:any = ref([]);
+    const ban:any = ref([]);
+    const body:any = ref([]);
+    const kelengkapan:any = ref([]);
 
     let status = ref('');
     let tanggal = ref('');
@@ -182,6 +181,9 @@ const getDetailData = () => {
       ruangmesin.value = response.data.data.ruang_mesin;
       fitur.value = response.data.data.fiture;
       dokumen.value = response.data.data.dokumen;
+      ban.value = response.data.data.ban;
+      body.value = response.data.data.body;
+      kelengkapan.value = response.data.data.kelengkapan;
 
    }).catch((error:any) => {
       console.log(error)
@@ -422,7 +424,7 @@ getDetailData();
           </div>
 
           <div class="grid grid-cols-12 sm:flex md:flex lg:flex xl:flex 2xl:flex sm:flex-row md:flex-row lg:flex-row xl:flex-row 2xl:flex-row">
-            <div class="col-span-12 bg-blue-500 mt-6 sm:my-12 md:my-12 lg:my-12 xl:my-12 2xl:my-12 p-4 sm:p-8 md:p-8 lg:p-8 xl:p-8 2xl:p-8 rounded-lg sm:h-screen w-full sm:w-3/12 md:w-3/12 lg:w-3/12 xl:w-3/12 2xl:w-3/12">
+            <div class="col-span-12 bg-blue-500 mt-6 sm:my-12 md:my-12 lg:my-12 xl:my-12 2xl:my-12 p-4 sm:p-8 md:p-8 lg:p-8 xl:p-8 2xl:p-8 rounded-lg sm:h-full w-full sm:w-3/12 md:w-3/12 lg:w-3/12 xl:w-3/12 2xl:w-3/12">
               <div class="flex sm:flex-col overflow-x-scroll sm:w-full sm:overflow-visible md:overflow-visible lg:overflow-visible xl:overflow-visible 2xl:overflow-visible">
               
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
@@ -485,7 +487,25 @@ getDetailData();
                   </button>
                 </div>
 
+                <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
+                  <button @click="menu = 'ban'" :class="menu === 'ban' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                    <img :src="menu === 'ban' ? image_ban_biru : image_ban_putih " class="w-6 mx-2" />Ban(0)
+                  </button>
                 </div>
+
+                <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
+                  <button @click="menu = 'body'" :class="menu === 'body' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                    <img :src="menu === 'body' ? image_body_biru : image_body_putih " class="w-6 mx-2" />Body(0)
+                  </button>
+                </div>
+
+                <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
+                  <button @click="menu = 'kelengkapan'" :class="menu === 'kelengkapan' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                    <img :src="menu === 'kelengkapan' ? image_kelengkapan_biru : image_kelengkapan_putih " class="w-6 mx-2" />Kelengkapan(0)
+                  </button>
+                </div>
+
+              </div>
        
             </div>
             <div v-if="menu === 'testdrive'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
@@ -668,6 +688,63 @@ getDetailData();
             </div>
             <div v-if="menu === 'dokumen'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
               <div class="mb-4 cursor-pointer" @click="items.open = !items.open" v-for="(items, index) in dokumen" :key="index+'dokumen'">
+                <div v-if="items.name !== 'catatan_dokumen'">
+                    <div class="flex flex-row justify-between">
+                      <div class="flex items-center">
+                        <h1 class="font-bold text-md" >{{ items.name }}</h1>
+                        <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
+                      </div>
+                      <img :src="items.value === 1 ? image_checklist_merah: image_checklist_hijau" class="w-6 mt-2"/>
+                    </div>
+                    <div class="flex justify-around my-4" v-show="items.value === 2 && items.open"><img :src="image_setir" class="w-40"/></div>
+                    <div class="border-b border-black w-11/12"></div>
+                </div>
+                
+              </div>
+
+              <div>Catatan Dokumen : {{ dokumen[dokumen.length-1].value }}</div>
+
+            </div>
+            <div v-if="menu === 'ban'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
+              <div class="mb-4 cursor-pointer" @click="items.open = !items.open" v-for="(items, index) in ban" :key="index+'dokumen'">
+                <div v-if="items.name !== 'catatan_dokumen'">
+                    <div class="flex flex-row justify-between">
+                      <div class="flex items-center">
+                        <h1 class="font-bold text-md" >{{ items.name }}</h1>
+                        <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
+                      </div>
+                      <img :src="items.value === 1 ? image_checklist_merah: image_checklist_hijau" class="w-6 mt-2"/>
+                    </div>
+                    <div class="flex justify-around my-4" v-show="items.value === 2 && items.open"><img :src="image_setir" class="w-40"/></div>
+                    <div class="border-b border-black w-11/12"></div>
+                </div>
+                
+              </div>
+
+              <div>Catatan Dokumen : {{ dokumen[dokumen.length-1].value }}</div>
+
+            </div>
+            <div v-if="menu === 'body'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
+              <div class="mb-4 cursor-pointer" @click="items.open = !items.open" v-for="(items, index) in body" :key="index+'dokumen'">
+                <div v-if="items.name !== 'catatan_dokumen'">
+                    <div class="flex flex-row justify-between">
+                      <div class="flex items-center">
+                        <h1 class="font-bold text-md" >{{ items.name }}</h1>
+                        <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
+                      </div>
+                      <img :src="items.value === 1 ? image_checklist_merah: image_checklist_hijau" class="w-6 mt-2"/>
+                    </div>
+                    <div class="flex justify-around my-4" v-show="items.value === 2 && items.open"><img :src="image_setir" class="w-40"/></div>
+                    <div class="border-b border-black w-11/12"></div>
+                </div>
+                
+              </div>
+
+              <div>Catatan Dokumen : {{ dokumen[dokumen.length-1].value }}</div>
+
+            </div>
+            <div v-if="menu === 'kelengkapan'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
+              <div class="mb-4 cursor-pointer" @click="items.open = !items.open" v-for="(items, index) in kelengkapan" :key="index+'dokumen'">
                 <div v-if="items.name !== 'catatan_dokumen'">
                     <div class="flex flex-row justify-between">
                       <div class="flex items-center">

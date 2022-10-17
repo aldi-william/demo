@@ -1,5 +1,5 @@
 import http from "../api/http-common";
-import { IDataAccount } from "../interface/IDataAccount";
+import { IDataAccount, IDataPassword } from "../interface/IDataAccount";
 
 class GetAccountService {
    getAccountData() {
@@ -15,12 +15,32 @@ class GetAccountService {
       formData.append("email", data.email);
       formData.append("address", data.address);
       formData.append("password", data.password);
+      formData.append("province", data.province);
+      formData.append("city", data.city);
+      formData.append("district", data.district);
+      formData.append("zip_code", data.zip_code);
 
       return http.post("/akun/update-account", formData, {
          headers: {
             "Content-Type": "multipart/form-data"
          }
       });
+   }
+
+   getProvince(){
+      return http.get("/akun/get-province") 
+   }
+
+   postCity(data:any){
+      return http.post("/akun/get-city", data)
+   }
+
+   postDistrict(data:any){
+      return http.post("/akun/get-district", data)
+   }
+
+   postChangePassword(data:IDataPassword){
+      return http.post("/akun/update-password", data)
    }
 }
 

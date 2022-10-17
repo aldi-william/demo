@@ -280,13 +280,13 @@ getDataKota();
             </div>
             <div class="col-span-6 flex">
               <div v-if="product.car_detail.car_inspection">
-                <img :src="image_mobil" class="w-12 h-6" v-if="product.car_detail.car_inspection.accident_free ==='1'"/>
+                <img :src="image_mobil" class="w-12 h-6" v-if="product.car_detail.car_inspection.accident_free !=='1'"/>
               </div>
               <div v-if="product.car_detail.car_inspection">
-                <img :src="image_tergenang" class="w-12 h-6 mx-4" v-if="product.car_detail.car_inspection.flood_free ==='1'"/>
+                <img :src="image_tergenang" class="w-12 h-6 mx-4" v-if="product.car_detail.car_inspection.flood_free !=='1'"/>
               </div>
               <div v-if="product.car_detail.car_inspection">
-                <img :src="image_api" class="w-12 h-6" v-if="product.car_detail.car_inspection.fire_free ==='1'"/>
+                <img :src="image_api" class="w-12 h-6" v-if="product.car_detail.car_inspection.fire_free !=='1'"/>
               </div>
               
             </div>

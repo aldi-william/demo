@@ -53,7 +53,6 @@
               icon: 'error',
               confirmButtonText: 'Cool'
             })
-            console.log(error)
         }).finally(() => {
           isLoading.value = false;
         })   
