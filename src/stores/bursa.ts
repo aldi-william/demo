@@ -37,7 +37,9 @@ export const useBursaStore = defineStore({
         })
     },
     async filterBursa(query: IDataFilter) {
-      await http.get(`/daftar-lelang?q=${query.search}&low=${query.lowPrice}&height=${query.heightPrice}&minYear=${query.minYear}&maxYear=${query.maxYear}&city=${query.city}&range${(query.km*10000)}&page=${query.page}`)
+      const a = `/daftar-lelang?q=${query.search}&low=${query.lowPrice}&height=${query.heightPrice}&minYear=${query.minYear}&maxYear=${query.maxYear}&city=${query.city}&range${(query.km*10000)}&page=${query.page}`;
+      console.log(a);
+      await http.get(`/daftar-lelang?q=${query.search}&low=${query.lowPrice}&height=${query.heightPrice}&minYear=${query.minYear}&maxYear=${query.maxYear}&city=${query.city}&range=${(query.km*10000)}&page=${query.page}`)
         .then(resp => {
           this.data = resp.data.data.data;
           this.totalPage = resp.data.data.total % resp.data.data.per_page === 0 ? resp.data.data.total / resp.data.data.per_page : Math.floor(resp.data.data.total / resp.data.data.per_page + 1)

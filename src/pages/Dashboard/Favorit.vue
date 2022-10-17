@@ -11,9 +11,21 @@
   import image_tergenang from '../../assets/images/icon_tergenang.png';
   import { useRouter } from 'vue-router';
   import { ref } from 'vue';
+  import FavoriteService from '../../services/FavoriteService';
   const router = useRouter();
   const isFavorit = ref([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
   const isEmpty = ref(false);
+  
+  const getDataFavorite = () => {
+    FavoriteService.getFavoriteData().then((response) => {
+      console.log(response)
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
+  getDataFavorite();
+
 </script>
 <template>
   <div class="container-xl pb-20" v-if="isEmpty">

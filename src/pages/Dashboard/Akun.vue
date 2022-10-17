@@ -47,6 +47,7 @@ const password:any = ref({
 const getData = () => {
   GetAccountService.getAccountData().then((response:any) => {
     data.value = response.data.data;
+    console.log(data.value);
     gambar.value = response.data.data.image;
     no_whatsapp.value = response.data.data.no_whatsapp;
   }).catch((error:any) => {
@@ -221,10 +222,12 @@ getDataProvince();
         <div class="m-8">
           <p>Password Baru</p>
           <input type="password" class="px-4 py-2 rounded w-full border border-gray" v-model="password.password" placeholder="Password baru">
+          <p class="text-xs">*Password minimal 8 karakter</p>
         </div>
         <div class="m-8">
           <p>Konfirmasi Password Baru</p>
           <input type="password" class="px-4 py-2 rounded w-full border border-gray" v-model="password.password_confirmation" placeholder="Ulangi password baru">
+          <p class="text-xs">*Password minimal 8 karakter</p>
         </div>
         <div class="m-8">
           <button class="px-4 py-2 rounded bg-blue-400 text-white w-full" @click="changePassword()">Ubah Password</button>

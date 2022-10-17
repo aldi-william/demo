@@ -28,6 +28,7 @@ const kilometer = ref<number>(0);
 const closeAll = () => {
   range_harga.value = false;
   range_tahun.value = false;
+  isShowKm.value = false;
   items.value = '';
 };
 
@@ -54,6 +55,7 @@ const filterBursa = reactive({
 
 function filterQuery() {
   store.filterBursa(filterBursa);
+  console.log(filterBursa);
 }
 
 onMounted(() => {
@@ -238,7 +240,7 @@ getDataKota();
         <!-- <select placeholder="Kota" class="">
           <option value="1">Semarang</option>
         </select> -->
-        <v-select placeholder="   Lokasi"   :options="arrayKota" label="name" class="bg-white px-2 py-1 outline:none" v-model="filterBursa.city" @change="filterQuery"></v-select>
+        <v-select placeholder="   Lokasi"   :options="arrayKota" label="name" class="bg-white px-2 py-1 outline:none" v-model="filterBursa.city" @update:modelValue="filterQuery"></v-select>
         <img :src="image_location" alt="location" class="w-4 h-4 absolute left-2 top-3 flex items-center justify-end" />
       </div>
       <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative">
@@ -251,7 +253,7 @@ getDataKota();
           <h1>Kilometer</h1>
           <input type="range" min="0" max="10" v-model="filterBursa.km">
           Kurang Dari {{ formatPrice(filterBursa.km * 10000) }} km
-          <button class="border bg-blue-500 text-white px-4 py-2 rounded w-full" @click="filterQuery(); isShowKm = false; filterBursa.km = 0;">Terapkan</button>
+          <button class="border bg-blue-500 text-white px-4 py-2 rounded w-full" @click="filterQuery(); isShowKm = false;">Terapkan</button>
         </div>
       </div>
       <div v-for="(product,i) in products" :key="i+'products'"
@@ -280,13 +282,13 @@ getDataKota();
             </div>
             <div class="col-span-6 flex">
               <div v-if="product.car_detail.car_inspection">
-                <img :src="image_mobil" class="w-12 h-6" v-if="product.car_detail.car_inspection.accident_free !=='1'"/>
+                <img :src="image_mobil" class="w-8 h-6" v-if="product.car_detail.car_inspection.accident_free !=='1'"/>
               </div>
               <div v-if="product.car_detail.car_inspection">
-                <img :src="image_tergenang" class="w-12 h-6 mx-4" v-if="product.car_detail.car_inspection.flood_free !=='1'"/>
+                <img :src="image_tergenang" class="w-8 h-6 mx-4" v-if="product.car_detail.car_inspection.flood_free !=='1'"/>
               </div>
               <div v-if="product.car_detail.car_inspection">
-                <img :src="image_api" class="w-12 h-6" v-if="product.car_detail.car_inspection.fire_free !=='1'"/>
+                <img :src="image_api" class="w-8 h-6" v-if="product.car_detail.car_inspection.fire_free !=='1'"/>
               </div>
               
             </div>
