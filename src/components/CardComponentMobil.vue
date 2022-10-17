@@ -1,0 +1,75 @@
+<script setup lang="ts">
+import image_car from '../assets/images/car.png';
+import image_hammer from '../assets/images/hammer.png';
+import image_users from '../assets/images/users.png';
+import image_lonceng from '../assets/images/lonceng.png';
+import image_star from '../assets/images/star.png';
+import image_star_empty from '../assets/images/star_empty.png';
+import image_api from '../assets/images/icon_api.png';
+import image_mobil from '../assets/images/icon_mobil.png';
+import image_tergenang from '../assets/images/icon_tergenang.png';
+import { ref } from 'vue';
+import { formatPrice, textCapitalize } from '../mixins';
+const products = defineProps(['product'])
+const isFavorit = ref([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
+
+</script>
+<template>
+  <div class="rounded shadow-2xl p-4">
+          <div class="relative overflow-hidden">
+            <div class="absolute bg-blue-500 rounded text-white top-3 left-3 px-2">{{ product.code }}</div>
+            
+            <div class="bg-red-600 absolute bottom-0 right-0 px-4 py-0 rounded-tl-full text-white flex items-start">
+              Berlangsung
+            </div>
+            <img :src="product.car_detail.image_feature1" alt="car" class="w-full h-64 z-10 cursor-pointer"
+              @click="$router.push(`/dashboard/detail/${product.id}`);" />
+          </div>
+          <div class="grid grid-cols-12 my-2 gap-2">
+            <div class="col-span-4 bg-abu_abu relative flex px-2 py-1 rounded items-center">
+              <img :src="image_hammer" alt="hammer" class="w-6 h-6" />
+              <div class="text-white mx-2 right-0 relative">1000</div>
+            </div>
+            <div class="col-span-4 bg-abu_abu relative flex px-2 py-1 rounded items-center">
+              <img :src="image_users" alt="users" class="w-6 h-6" />
+              <div class="text-white mx-2">1000</div>
+            </div>
+            <div class="col-span-4">
+              <h1 class="text-sm text-center bg-blue-500 text-white rounded-lg px-2 py-1 w-20 float-right">TAV</h1>
+            </div>
+            <div class="col-span-6 flex">
+              <div v-if="product.car_detail.car_inspection">
+                <img :src="image_mobil" class="w-8 h-6" v-if="product.car_detail.car_inspection.accident_free !=='1'"/>
+              </div>
+              <div v-if="product.car_detail.car_inspection">
+                <img :src="image_tergenang" class="w-8 h-6 mx-4" v-if="product.car_detail.car_inspection.flood_free !=='1'"/>
+              </div>
+              <div v-if="product.car_detail.car_inspection">
+                <img :src="image_api" class="w-8 h-6" v-if="product.car_detail.car_inspection.fire_free !=='1'"/>
+              </div>
+              
+            </div>
+          </div>
+          <div class="my-1">
+            <div class="flex flex-row items-center justify-between">
+              <h1 class="font-bold text-xl">{{product.car_detail.car_brand.name}} {{product.car_detail.car_merk.name}}
+                {{product.car_detail.car_type.name}}</h1>
+                <img :src="isFavorit[product.id] ? image_star : image_star_empty" alt="star"
+              class="w-8 h-8" @click="isFavorit[i] = !isFavorit[i]" />
+              <!-- <img :src="image_lonceng" alt="lonceng" class="w-6 h-6" /> -->
+            </div>
+            <p>{{product.car_detail.tahun}} | {{product.car_detail.transmisi}} |
+              {{formatPrice(product.car_detail.km_service_terakhir)}} KM | {{ product.car_detail.kota ? textCapitalize(product.car_detail.kota) : ''}} </p>
+          </div>
+          <div class="flex flex-row my-1 justify-between items-center">
+            <div>
+              <h1>Harga Mulai :</h1>
+              <h1 class="text-2xl font-bold">Rp. {{ formatPrice(product.open_price) }}</h1>
+            </div>
+            <div>
+              <button @click="$router.push(`/dashboard/detail/${product.id}`);"
+                class="bg-tertier px-4 py-2 shadow-xl text-sm hover:bg-blue-500 hover:text-white">Lihat</button>
+            </div>
+          </div>
+        </div>
+</template>

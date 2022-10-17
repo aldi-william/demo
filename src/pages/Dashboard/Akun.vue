@@ -137,10 +137,10 @@ getDataProvince();
         Informasi Profil
     </div>
     <div class="border-2 border-gray rounded-lg w-11/12 sm:w-8/12 md:w-8/12 lg:w-8/12 xl:w-8/12 2xl:w-8/12 mx-auto bg-white">
-        <div class="flex justify-center my-12 relative w-1/4 mx-auto">
-            <img :src="gambar" alt="profile" class="w-40 rounded-full h-40"/>
+        <div class="flex justify-center my-12 relative w-1/2 sm:w-1/4 mx-auto">
+            <img :src="gambar" alt="profile" class="max-w-lg max-h-40 w-40 rounded-full sm:h-40"/>
           
-            <label class="absolute bottom-0 right-4">
+            <label class="absolute bottom-0 sm:right-4 right-10">
                 <input type="file" @change="changeAvatar($event)" accept="image/*"/>
                 <img :src="upload_image" class="w-12">
             </label>
