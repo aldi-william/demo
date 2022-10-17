@@ -67,7 +67,12 @@ const sendDataAccount = () => {
   data.value.city = kota_id.value.city;
   data.value.district = kecamatan_id.value.district;
   GetAccountService.postAccountData(data.value).then((response:any) => {
-    console.log(response)
+    Swal.fire({
+        title: 'Success!',
+        text: 'Data Berhasil Diubah',
+        icon: 'success',
+        confirmButtonText: 'Cool'
+    })
   }).catch((error:any) => {
     Swal.fire({
               title: 'Error!',
