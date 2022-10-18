@@ -14,12 +14,8 @@ import { useBursaStore } from '../stores/bursa';
 const products = defineProps(['product'])
 const isFavorit = ref([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
 const store = useBursaStore();
-const favorite = (id:any) =>{
-  store.addFavorite(id)
-  .then(()=>{
-    store.fetchBursa();
-  })
-}
+
+
 </script>
 <template>
   <div class="rounded shadow-2xl p-4">
@@ -54,7 +50,6 @@ const favorite = (id:any) =>{
               <div v-if="product.car_detail.car_inspection" v-tippy="{ content: 'Kecelakaan ringan' }">
                 <img :src="image_api" class="w-8 h-6" v-if="product.car_detail.car_inspection.fire_free !=='1'"/>
               </div>
-              
             </div>
           </div>
           <div class="my-1">
@@ -62,7 +57,7 @@ const favorite = (id:any) =>{
               <h1 class="font-bold text-xl">{{product.car_detail.car_brand.name}} {{product.car_detail.car_merk.name}}
                 {{product.car_detail.car_type.name}}</h1>
                 <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star"
-              class="w-8 h-8" @click="favorite(product.id)" />
+              class="w-8 h-8" @click="$emit('addFav', product.id)" />
                 <!-- <img :src="isFavorit[product.id] ? image_star : image_star_empty" alt="star"
               class="w-8 h-8" @click="isFavorit[i] = !isFavorit[i]" /> -->
               <!-- <img :src="image_lonceng" alt="lonceng" class="w-6 h-6" /> -->
