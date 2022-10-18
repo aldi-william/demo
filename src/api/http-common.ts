@@ -6,6 +6,6 @@ export default axios.create({
   headers: {
     "Content-type": "application/json",
     "Accept": "application/json",
-    "Authorization": "Bearer " + (localStorage.getItem('isLogin') || '')
+    // "Authorization": "Bearer " + (localStorage.getItem('isLogin') || '')
   }
 });
