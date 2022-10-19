@@ -489,19 +489,19 @@ getDetailData();
 
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
                   <button @click="menu = 'ban'" :class="menu === 'ban' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
-                    <img :src="menu === 'ban' ? image_ban_biru : image_ban_putih " class="w-6 mx-2" />Ban(0)
+                    <img :src="menu === 'ban' ? image_ban_biru : image_ban_putih " class="w-6 mx-2" />Ban({{Object.keys(ban).length-1}})
                   </button>
                 </div>
 
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
                   <button @click="menu = 'body'" :class="menu === 'body' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
-                    <img :src="menu === 'body' ? image_body_biru : image_body_putih " class="w-6 mx-2" />Body(0)
+                    <img :src="menu === 'body' ? image_body_biru : image_body_putih " class="w-6 mx-2" />Body({{Object.keys(body).length-1}})
                   </button>
                 </div>
 
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
                   <button @click="menu = 'kelengkapan'" :class="menu === 'kelengkapan' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
-                    <img :src="menu === 'kelengkapan' ? image_kelengkapan_biru : image_kelengkapan_putih " class="w-6 mx-2" />Kelengkapan(0)
+                    <img :src="menu === 'kelengkapan' ? image_kelengkapan_biru : image_kelengkapan_putih " class="w-6 mx-2" />Kelengkapan({{Object.keys(kelengkapan).length-1}})
                   </button>
                 </div>
 
@@ -713,7 +713,7 @@ getDetailData();
                         <h1 class="font-bold text-md" >{{ items.name }}</h1>
                         <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
                       </div>
-                      <img :src="items.value === 1 ? image_checklist_merah: image_checklist_hijau" class="w-6 mt-2"/>
+                      <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
                     </div>
                     <div class="flex justify-around my-4" v-show="items.value === 2 && items.open"><img :src="image_setir" class="w-40"/></div>
                     <div class="border-b border-black w-11/12"></div>
@@ -732,7 +732,7 @@ getDetailData();
                         <h1 class="font-bold text-md" >{{ items.name }}</h1>
                         <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
                       </div>
-                      <img :src="items.value === 1 ? image_checklist_merah: image_checklist_hijau" class="w-6 mt-2"/>
+                      <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
                     </div>
                     <div class="flex justify-around my-4" v-show="items.value === 2 && items.open"><img :src="image_setir" class="w-40"/></div>
                     <div class="border-b border-black w-11/12"></div>
