@@ -13,7 +13,7 @@ const store = useBursaStore();
 const products = defineProps(['product'])
 </script>
 <template>
-  <div class="bg-white mt-2 h-full rounded-lg p-2">
+  <div class="bg-white mt-2 h-11/12 rounded-lg p-2">
     <div>
     <div> <img :src="product.car_detail.image_feature1" alt="car" class="w-full h-24 z-10 cursor-pointer"
               @click="$router.push(`/dashboard/detail/${product.id}`);" /></div>
@@ -25,7 +25,7 @@ const products = defineProps(['product'])
         </div>
         <div>
           <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star"
-              class="w-4 h-4" @click="$emit('addFav', product.id)" />
+              class="w-6 h-6" @click="$emit('addFav', product.id)" />
         </div>
     </div>
     <div>
@@ -33,7 +33,7 @@ const products = defineProps(['product'])
                 {{product.car_detail.car_type.name}}</p>
         <div class="flex justify-between">
           <p class="text-xs">
-            {{product.car_detail.transmisi}} {{product.car_detail.tahun}}
+            {{product.car_detail.transmisi}} | {{formatPrice(product.car_detail.km_service_terakhir)}} KM 
           </p>
           <div class="flex items-center">
                 <div v-if="product.car_detail.car_inspection" v-tippy="{ content: 'Kecelakaan ringan' }">
@@ -48,10 +48,10 @@ const products = defineProps(['product'])
           </div>
         </div>
                 
-        <p class="text-xs">{{formatPrice(product.car_detail.km_service_terakhir)}} KM | {{ product.car_detail.kota ? textCapitalize(product.car_detail.kota) : ''}} </p>
+        <p class="text-xs">{{product.car_detail.tahun}} | {{ product.car_detail.kota ? textCapitalize(product.car_detail.kota) : ''}} </p>
         <p class="text-sm font-bold">Rp. {{ formatPrice(product.open_price) }}</p>
     </div>
-    <div class="flex border-t border-gray-300">
+    <div class="flex border-t border-gray-300 items-end">
       <div class="relative flex px-2 py-1 rounded items-center">
         <img :src="image_hammer" alt="hammer" class="w-4 h-4" />
         <div class="text-abu_abu mx-2 right-0 relative text-xs">1000</div>
