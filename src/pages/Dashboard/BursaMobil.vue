@@ -20,7 +20,7 @@ import VueNumberFormat from 'vue-number-format';
 import GetFilterService from '../../services/GetService';
 import { IDataKota } from '../../Interface/IDataKota';
 import CardComponentMobil from '../../components/CardComponentMobil.vue';
-import CardComponentMobilSmartPhone from '../../components/CardComponentMobilSmartPhone.vue';
+import CardComponentMobilSmartPhone2 from '../../components/CardComponentMobilSmartPhone2.vue';
 
 const range_harga = ref(false);
 const range_tahun = ref(false);
@@ -159,7 +159,7 @@ const favorite = (id:any) =>{
 </script>
 <template>
   <div class="bg-biru_fb" @click.self="closeAll()">
-    <div class="container-xl grid grid-cols-12 sm:gap-2 py-3">
+    <div class="container-xl grid grid-cols-12 gap-2 sm:gap-2 py-3">
       <div
         class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 sm:px-4 sm:bg-white py-2 flex justify-center items-center z-20 sm:z-0 md:z-0 lg:z-0 xl:z-0 2xl:z-0">
         <div class="bg-white w-full fixed sm:relative px-4 sm:px-0 py-2 mt-8 sm:mt-0 sm:py-0">
@@ -265,9 +265,9 @@ const favorite = (id:any) =>{
         </div>
       </div>
       <div v-for="(product,i) in products" :key="i+'products'"
-        class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-biru_fb">
+        class="col-span-6 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-biru_fb">
         <CardComponentMobil :product="product" @add-fav="favorite" class="hidden sm:block" />
-        <CardComponentMobilSmartPhone :product="product" @add-fav="favorite" class="block sm:hidden"/>
+        <CardComponentMobilSmartPhone2 :product="product" @add-fav="favorite" class="block sm:hidden"/>
       </div>
       <div v-if="products.length < 1" class="col-span-12">
         data belum ada
@@ -286,7 +286,7 @@ const favorite = (id:any) =>{
 <style>
 .container-xl {
   max-width: 1200px;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
 }
 </style>

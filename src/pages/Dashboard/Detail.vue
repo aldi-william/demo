@@ -169,7 +169,6 @@ const getDetailData = () => {
    GetService.getDetailData(params).then((response:any) => {
       
       detailInspection.value = response.data.data.detail;
-      console.log(detailInspection.value);
       image_cars.value = response.data.data.image_car;
       testdrive.value = response.data.data.test_drive;
       dashboard.value = response.data.data.dashboard;
@@ -182,6 +181,7 @@ const getDetailData = () => {
       fitur.value = response.data.data.fiture;
       dokumen.value = response.data.data.dokumen;
       ban.value = response.data.data.ban;
+
       body.value = response.data.data.body;
       kelengkapan.value = response.data.data.kelengkapan;
 
@@ -238,7 +238,6 @@ getDetailData();
             :thumbs="{ swiper: thumbsSwiper }"
             :modules="modules"
             class="mySwiper2 rounded-xl">
-
             <swiper-slide v-for="(item, index) in image_cars" :key="index+'image_car'">
               <img :src="item.image" @click="showImg(index)" class="cursor-pointer">
             </swiper-slide>
@@ -277,35 +276,35 @@ getDetailData();
              <div class="grid grid-cols-12 rounded-lg p-4 border-gray border-2 my-4 bg-white">
                 <div class="col-span-6 my-1">
                   <p>Lokasi</p>
-                  <p class="font-bold">{{ detailInspection.car_detail.kota }}</p>
+                  <p class="font-bold">{{ detailInspection.car_detail ? detailInspection.car_detail.kota : '' }} </p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Warna Exterior</p>
-                  <p class="font-bold">{{ detailInspection.car_detail.warna_eksterior }}</p>
+                  <p class="font-bold">{{ detailInspection.car_detail ? detailInspection.car_detail.warna_eksterior : '' }}</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Jarak tempuh</p>
-                  <p class="font-bold">{{ formatPrice(detailInspection.car_detail.odometer) }} KM</p>
+                  <p class="font-bold">{{ detailInspection.car_detail ? formatPrice(detailInspection.car_detail.odometer) : 0 }} KM</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Warna Interior</p>
-                  <p class="font-bold">{{ detailInspection.car_detail.warna_interior }}</p>
+                  <p class="font-bold">{{ detailInspection.car_detail ? detailInspection.car_detail.warna_interior : '' }}</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Bahan Bakar</p>
-                  <p class="font-bold">{{ detailInspection.car_detail.bahan_bakar }}</p>
+                  <p class="font-bold">{{ detailInspection.car_detail ? detailInspection.car_detail.bahan_bakar : '' }}</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Pajak Berlaku</p>
-                  <p class="font-bold">{{ detailInspection.car_detail.pajak_berlaku }}</p>
+                  <p class="font-bold">{{ detailInspection.car_detail ? detailInspection.car_detail.pajak_berlaku : '' }}</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Transmisi</p>
-                  <p class="font-bold">{{ detailInspection.car_detail.transmisi }}</p>
+                  <p class="font-bold">{{ detailInspection.car_detail ? detailInspection.car_detail.transmisi : '' }}</p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Kepemilikan</p>
-                  <p class="font-bold">{{ detailInspection.car_detail.kepemilikan }}</p>
+                  <p class="font-bold">{{ detailInspection.car_detail ? detailInspection.car_detail.kepemilikan : '' }}</p>
                 </div>
                 
              </div>
@@ -706,22 +705,22 @@ getDetailData();
 
             </div>
             <div v-if="menu === 'ban'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
-              <div class="mb-4 cursor-pointer" @click="items.open = !items.open" v-for="(items, index) in ban" :key="index+'dokumen'">
-                <div v-if="items.name !== 'catatan_dokumen'">
-                    <div class="flex flex-row justify-between">
-                      <div class="flex items-center">
-                        <h1 class="font-bold text-md" >{{ items.name }}</h1>
-                        <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
-                      </div>
-                      <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
-                    </div>
-                    <div class="flex justify-around my-4" v-show="items.value === 2 && items.open"><img :src="image_setir" class="w-40"/></div>
-                    <div class="border-b border-black w-11/12"></div>
-                </div>
-                
-              </div>
-
-              <div>Catatan Dokumen : {{ dokumen[dokumen.length-1].value }}</div>
+              <table>
+                <thead>
+                  <tr>
+                    <th class="w-1/2">Posisi Ban</th>
+                    <th class="w-1/4">Tipe Velg</th>
+                    <th class="w-1/4">Ketebalan Ban</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="(items, index) in ban" :key="index+'ban'">
+                    <td class="w-1/2">{{ items.name }}</td>
+                    <td class="w-1/4">{{ items.value }} </td>
+                    <td class="w-1/4">{{ items.ketebalan }}</td>
+                  </tr>
+                </tbody>
+              </table>
 
             </div>
             <div v-if="menu === 'body'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
