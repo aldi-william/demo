@@ -91,8 +91,8 @@ const handle_decrement = () => {
           <button><img :src="button_plus" class="h-4 w-4" @click="handle_increment()"/></button>
       </div>
       <div class="flex justify-around my-1">
-        <button @click="isActive = 5" class="px-2 py-1 text-white rounded-lg w-1/3" :class="isActive === 5 ? 'bg-blue-500':'bg-abu_abu_pucat text-gray-400'">Rp 500.000</button>
-        <button @click="isActive = 10" class="px-2 py-1 text-white rounded-lg w-1/3" :class="isActive === 10? 'bg-blue-500':'bg-abu_abu_pucat text-gray-400'">Rp 1.000.000</button>
+        <button @click="isActive = 5" class="px-2 py-1 text-white rounded-lg w-1/3 text-xs" :class="isActive === 5 ? 'bg-blue-500':'bg-abu_abu_pucat text-gray-400'">Rp 500.000</button>
+        <button @click="isActive = 10" class="px-2 py-1 text-white rounded-lg w-1/3 text-xs" :class="isActive === 10? 'bg-blue-500':'bg-abu_abu_pucat text-gray-400'">Rp 1.000.000</button>
       </div>
       <div class="flex justify-center mb-4">
         <button @click="isTawar = 'konfirmasi'" class="bg-tertier px-2 py-1 rounded-xl text-white w-32 font-bold">Mulai Tawar</button>

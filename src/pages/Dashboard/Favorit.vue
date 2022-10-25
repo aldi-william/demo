@@ -106,7 +106,7 @@ getDataSession();
 </script>
 <template>
   <!-- <div class="container-xl pb-20" v-if="isEmpty"> -->
-    <div class="container-xl grid grid-cols-12 bg-white shadow-xl">
+    <div class="container-xl grid grid-cols-12 bg-white shadow-xl mb-12">
       <div
         class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 sm:px-4 sm:bg-white py-2 flex justify-center items-center z-20 sm:z-0 md:z-0 lg:z-0 xl:z-0 2xl:z-0">
         <div class="bg-white w-full fixed sm:relative px-4 sm:px-0 py-2 mt-8 sm:mt-0 sm:py-0">
@@ -137,7 +137,7 @@ getDataSession();
   </div>
   <div class="container-xl grid grid-cols-12 gap-2 py-3" v-else>
     <div class="col-span-12">
-      <h1 class="mt-4 text-3xl font-bold">Favoritku</h1>
+      <h1 class="mt-6 text-3xl font-bold">Favoritku</h1>
     </div>
     
     <div v-for="(product,i) in products" :key="i+'products'"
@@ -206,7 +206,7 @@ getDataSession();
 <style>
   .container-xl{
     max-width: 1200px;
-    width: 100%;
+    width: 98%;
     margin: 0 auto;
   }
 </style>
