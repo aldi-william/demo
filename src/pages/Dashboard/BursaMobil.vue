@@ -150,6 +150,13 @@ const tahun = ref([2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2
 getDataSession();
 getDataKota();
 
+const favorite = (id:any) =>{
+  store.addFavorite(id)
+  .then(()=>{
+    store.fetchBursa();
+  })
+}
+
 </script>
 <template>
   <div class="bg-biru_fb" @click.self="closeAll()">
@@ -259,9 +266,8 @@ getDataKota();
         </div>
       </div>
       <div v-for="(product,i) in products" :key="i+'products'"
-        class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-biru_fb">
-        <CardComponentMobil :product="product" class="hidden sm:block"/>
-        <CardComponentMobilSmartPhone :product="product" class="block sm:hidden"/>
+        class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white">
+        <CardComponentMobil :product="product" @add-fav="favorite" />
       </div>
       <div v-if="products.length < 1" class="col-span-12">
         data belum ada

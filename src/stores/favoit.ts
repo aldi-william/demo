@@ -2,8 +2,8 @@ import { defineStore } from "pinia";
 import http from "../api/http-common";
 import { IDataFilter } from "../interface/IDataFilter";
 
-export const useBursaStore = defineStore({
-  id: "bursa",
+export const useFavoriteStore = defineStore({
+  id: "faforite",
   state: () => ({
     data: [],
     car_detail: {},
@@ -28,24 +28,14 @@ export const useBursaStore = defineStore({
     //     this.page = this.page + 1;
     //   }
     // },
-    async fetchBursa() {
+    async fetchFavorite() {
       const token = localStorage.getItem('isLogin')
 
       //set axios header dengan type Authorization + Bearer token
       http.defaults.headers.common['Authorization'] = `Bearer ${token}`
-      await http.get("/daftar-lelang")
+      await http.get("/akun/get-favorite")
         .then(resp => {
           this.data = resp.data.data.data
-          this.totalPage = resp.data.data.total % resp.data.data.per_page === 0 ? resp.data.data.total / resp.data.data.per_page : Math.floor(resp.data.data.total / resp.data.data.per_page + 1)
-          this.currentPage = resp.data.data.current_page
-        })
-    },
-    async filterBursa(query: IDataFilter) {
-      const a = `/daftar-lelang?q=${query.search}&low=${query.lowPrice}&height=${query.heightPrice}&minYear=${query.minYear}&maxYear=${query.maxYear}&city=${query.city}&range${(query.km * 10000)}&page=${query.page}`;
-      console.log(a);
-      await http.get(`/daftar-lelang?q=${query.search}&low=${query.lowPrice}&height=${query.heightPrice}&minYear=${query.minYear}&maxYear=${query.maxYear}&city=${query.city}&range=${(query.km * 10000)}&page=${query.page}`)
-        .then(resp => {
-          this.data = resp.data.data.data;
           this.totalPage = resp.data.data.total % resp.data.data.per_page === 0 ? resp.data.data.total / resp.data.data.per_page : Math.floor(resp.data.data.total / resp.data.data.per_page + 1)
           this.currentPage = resp.data.data.current_page
         })

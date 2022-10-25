@@ -10,25 +10,46 @@
   import image_mobil from '../../assets/images/icon_mobil.png';
   import image_tergenang from '../../assets/images/icon_tergenang.png';
   import { useRouter } from 'vue-router';
-  import { ref } from 'vue';
+  import { computed, onMounted, ref } from 'vue';
   import FavoriteService from '../../services/FavoriteService';
+  import CardComponentMobil from '../../components/CardComponentMobil.vue';
+import { useFavoriteStore } from '../../stores/favoit';
   const router = useRouter();
   const isFavorit = ref([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
   const isEmpty = ref(false);
   
-  const getDataFavorite = () => {
-    FavoriteService.getFavoriteData().then((response) => {
-      console.log(response)
-    }).catch((error) => {
-      console.log(error);
-    });
-  }
+  // const getDataFavorite = () => {
+  //   FavoriteService.getFavoriteData().then((response) => {
+  //     console.log(response)
+  //   }).catch((error) => {
+  //     console.log(error);
+  //   });
+  // }
 
-  getDataFavorite();
+  // getDataFavorite();
+
+  // pinia
+const store = useFavoriteStore();
+
+const products:any = computed(() => {  
+  return store.data
+})
+
+onMounted(() => {
+  store.fetchFavorite();
+})
+
+const favorite = (id:any) =>{
+  store.addFavorite(id)
+  .then(()=>{
+    store.fetchFavorite();
+  })
+}
 
 </script>
 <template>
-  <div class="container-xl pb-20" v-if="isEmpty">
+  <!-- <div class="container-xl pb-20" v-if="isEmpty"> -->
+  <div class="container-xl pb-20" v-if="products.length < 1">
       <h1 class="mt-4 text-xl font-bold">Favoritku</h1>
       <div class="border-b-4 border-blue-400 w-24 mb-4"></div>
       <img :src="bg_image" alt="bg" class="w-8/12 sm:w-4/12 md:w-4/12 lg:w-4/12 xl:w-4/12 2xl:w-4/12 mx-auto"/>
@@ -46,7 +67,14 @@
       <h1 class="mt-4 text-3xl font-bold">Favoritku</h1>
     </div>
     
-    <div class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white" v-for="i in 15" :key="i">
+    <div v-for="(product,i) in products" :key="i+'products'"
+        class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white">
+        <CardComponentMobil :product="product" @add-fav="favorite" />
+      </div>
+      <!-- <div v-if="products.length < 1" class="col-span-12">
+        data belum ada
+      </div> -->
+    <!-- <div class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white" v-for="i in 15" :key="i">
       <div class="rounded shadow-2xl p-4">
          <div class="relative overflow-hidden">
           <div class="absolute bg-blue-500 rounded text-white top-3 left-3">#143779</div>
@@ -77,10 +105,9 @@
             <div class="flex flex-row items-center justify-between">
               <h1 class="font-bold text-xl">Suzuki Ertiga Sport</h1>
               <img :src="isFavorit[i] ? image_star : image_star_empty" alt="star" class="w-8 h-8" @click="isFavorit[i] = !isFavorit[i]"/>
-              <!-- <img :src="image_lonceng" alt="lonceng" class="w-6 h-6"/> -->
             </div>
             <p>2019 | Matic | 30.000 KM | Semarang </p>
-         </div>
+          </div>
          <div class="flex flex-row my-1 justify-between items-center">
           <div>
             <h1>Harga Mulai :</h1>
@@ -89,15 +116,16 @@
           <div>
             <button  @click="$router.push(`/dashboard/detail/${i}`);" class="bg-tertier px-4 py-2 shadow-xl text-sm">Lihat</button>
           </div>
-         </div>
+        </div>
       </div>
+    </div> -->
+    <!-- <img :src="image_lonceng" alt="lonceng" class="w-6 h-6"/> -->
       <!-- <div class="bg-blue-500">
          <div class="flex flex-row justify-between items-center p-4 shadow-xl">
             <h1 class="text-white">9 September 2022</h1>
             <h1 class="text-white">01:30:20</h1>
          </div>
       </div>       -->
-    </div>
     <div class="mb-20"></div>
   </div>
 </template>
