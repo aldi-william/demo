@@ -15,10 +15,9 @@ const isFavorit = ref([false, false, false, false, false, false, false, false, f
 
 </script>
 <template>
-  <div class="rounded shadow-2xl p-4">
+  <div class="rounded shadow-2xl p-4 h-full">
           <div class="relative overflow-hidden">
             <div class="absolute bg-blue-500 rounded text-white top-3 left-3 px-2">{{ product.code }}</div>
-            
             <div class="bg-red-600 absolute bottom-0 right-0 px-4 py-0 rounded-tl-full text-white flex items-start">
               Berlangsung
             </div>
@@ -55,7 +54,7 @@ const isFavorit = ref([false, false, false, false, false, false, false, false, f
               <h1 class="font-bold text-xl">{{product.car_detail.car_brand.name}} {{product.car_detail.car_merk.name}}
                 {{product.car_detail.car_type.name}}</h1>
                 <img :src="isFavorit[product.id] ? image_star : image_star_empty" alt="star"
-              class="w-8 h-8" @click="isFavorit[i] = !isFavorit[i]" />
+              class="w-8 h-8"  />
               <!-- <img :src="image_lonceng" alt="lonceng" class="w-6 h-6" /> -->
             </div>
             <p>{{product.car_detail.tahun}} | {{product.car_detail.transmisi}} |

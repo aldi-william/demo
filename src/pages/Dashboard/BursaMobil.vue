@@ -20,6 +20,7 @@ import VueNumberFormat from 'vue-number-format';
 import GetFilterService from '../../services/GetService';
 import { IDataKota } from '../../Interface/IDataKota';
 import CardComponentMobil from '../../components/CardComponentMobil.vue';
+import CardComponentMobilSmartPhone from '../../components/CardComponentMobilSmartPhone.vue';
 
 const range_harga = ref(false);
 const range_tahun = ref(false);
@@ -258,8 +259,9 @@ getDataKota();
         </div>
       </div>
       <div v-for="(product,i) in products" :key="i+'products'"
-        class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white">
-        <CardComponentMobil :product="product" />
+        class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-biru_fb">
+        <CardComponentMobil :product="product" class="hidden sm:block"/>
+        <CardComponentMobilSmartPhone :product="product" class="block sm:hidden"/>
       </div>
       <div v-if="products.length < 1" class="col-span-12">
         data belum ada

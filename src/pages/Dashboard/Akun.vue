@@ -149,11 +149,15 @@ getDataProvince();
         </div>
         <div class="m-8">
           <p>Nama Depan</p>
-          <input type="text" class="px-4 py-2 rounded w-full border border-gray" v-model="data.first_name" placeholder="Masukan Nama Depan">
+          <input type="text" class="px-4 py-2 rounded w-full border border-gray" disabled v-model="data.first_name" placeholder="Masukan Nama Depan">
         </div>
         <div class="m-8">
           <p>Nama Belakang</p>
-          <input type="text" class="px-4 py-2 rounded w-full border border-gray" v-model="data.last_name" placeholder="Masukan Nama Belakang">
+          <input type="text" class="px-4 py-2 rounded w-full border border-gray" disabled v-model="data.last_name" placeholder="Masukan Nama Belakang">
+        </div>
+        <div class="m-8">
+          <p>Nama Dealer</p>
+          <input type="text" class="px-4 py-2 rounded w-full border border-gray" disabled>
         </div>
         <div class="m-8">
           <p>Nomor WhatsApp</p>
@@ -161,7 +165,7 @@ getDataProvince();
         </div>
         <div class="m-8">
           <p>Email</p>
-          <input type="text" class="px-4 py-2 rounded w-full border border-gray" v-model="data.email" placeholder="Masukan email Anda">
+          <input type="text" class="px-4 py-2 rounded w-full border border-gray" disabled v-model="data.email" placeholder="Masukan email Anda">
         </div>
         <div class="m-8 flex">
             <div class="w-1/2 mr-2">

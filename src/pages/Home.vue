@@ -51,7 +51,7 @@
               title: 'Invalid!',
               text: 'Mohon Maaf Username atau Password Anda SALAH / Belum Terdaftar',
               icon: 'error',
-              confirmButtonText: 'Cool'
+              confirmButtonText: 'OK'
             })
         }).finally(() => {
           isLoading.value = false;
