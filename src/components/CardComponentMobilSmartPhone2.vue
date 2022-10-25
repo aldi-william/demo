@@ -18,9 +18,11 @@ const products = defineProps(['product'])
     <div> <img :src="product.car_detail.image_feature1" alt="car" class="w-full h-24 z-10 cursor-pointer"
               @click="$router.push(`/dashboard/detail/${product.id}`);" /></div>
     </div>
-    <div class="flex justify-start items-center mt-1">
-        <p class="text-xs px-2 py-1 bg-gray-400 text-white rounded-lg">{{ product.code }}</p>
-        <p class="text-xs px-2 py-1 bg-gray-400 text-white rounded-lg mx-2">TAV</p>
+    <div class="flex justify-between items-center mt-1">
+        <div class="flex">
+          <p class="text-xs px-2 py-1 bg-gray-400 text-white rounded-lg">{{ product.code }}</p>
+          <p class="text-xs px-2 py-1 bg-gray-400 text-white rounded-lg mx-2">TAV</p>
+        </div>
         <div>
           <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star"
               class="w-4 h-4" @click="$emit('addFav', product.id)" />
@@ -29,19 +31,19 @@ const products = defineProps(['product'])
     <div>
         <p class="text-xs font-bold">{{product.car_detail.car_brand.name}} {{product.car_detail.car_merk.name}}
                 {{product.car_detail.car_type.name}}</p>
-        <div>
+        <div class="flex justify-between">
           <p class="text-xs">
             {{product.car_detail.transmisi}} {{product.car_detail.tahun}}
           </p>
           <div class="flex items-center">
                 <div v-if="product.car_detail.car_inspection" v-tippy="{ content: 'Kecelakaan ringan' }">
-                  <img :src="image_mobil" class="w-6 h-3" v-if="product.car_detail.car_inspection.accident_free !=='1'"/>
+                  <img :src="image_mobil" class="w-3 h-3"/>
                 </div>
                 <div v-if="product.car_detail.car_inspection" v-tippy="{ content: 'Kecelakaan ringan' }">
-                  <img :src="image_tergenang" class="w-6 h-3 mx-4" v-if="product.car_detail.car_inspection.flood_free !=='1'"/>
+                  <img :src="image_tergenang" class="w-3 h-3 mx-1"/>
                 </div>
                 <div v-if="product.car_detail.car_inspection" v-tippy="{ content: 'Kecelakaan ringan' }">
-                  <img :src="image_api" class="w-6 h-3" v-if="product.car_detail.car_inspection.fire_free !=='1'"/>
+                  <img :src="image_api" class="w-3 h-3"/>
                 </div>
           </div>
         </div>
