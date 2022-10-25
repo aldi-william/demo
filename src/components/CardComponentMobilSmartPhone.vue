@@ -39,7 +39,7 @@ const isFavorit = ref([false, false, false, false, false, false, false, false, f
       </div>
     </div>
     </div>
-    <div class="flex border border-abu_abu mb-2 shadow-lg">
+    <div class="flex border border-abu_abu shadow-lg">
       <div class="relative flex px-2 py-1 rounded items-center">
         <img :src="image_hammer" alt="hammer" class="w-6 h-6" />
         <div class="text-abu_abu mx-2 right-0 relative">1000</div>
