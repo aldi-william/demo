@@ -15,7 +15,7 @@ const products = defineProps(['product'])
 <template>
   <div class="bg-white mt-2 h-full rounded-lg p-2">
     <div>
-    <div> <img :src="product.car_detail.image_feature1" alt="car" class="w-full h-20 z-10 cursor-pointer"
+    <div> <img :src="product.car_detail.image_feature1" alt="car" class="w-full h-24 z-10 cursor-pointer"
               @click="$router.push(`/dashboard/detail/${product.id}`);" /></div>
     </div>
     <div class="flex justify-start items-center mt-1">
@@ -49,7 +49,7 @@ const products = defineProps(['product'])
         <p class="text-xs">{{formatPrice(product.car_detail.km_service_terakhir)}} KM | {{ product.car_detail.kota ? textCapitalize(product.car_detail.kota) : ''}} </p>
         <p class="text-sm font-bold">Rp. {{ formatPrice(product.open_price) }}</p>
     </div>
-    <div class="flex">
+    <div class="flex border-t border-gray-300">
       <div class="relative flex px-2 py-1 rounded items-center">
         <img :src="image_hammer" alt="hammer" class="w-4 h-4" />
         <div class="text-abu_abu mx-2 right-0 relative text-xs">1000</div>
