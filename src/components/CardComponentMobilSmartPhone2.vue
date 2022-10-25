@@ -37,13 +37,13 @@ const products = defineProps(['product'])
           </p>
           <div class="flex items-center">
                 <div v-if="product.car_detail.car_inspection" v-tippy="{ content: 'Kecelakaan ringan' }">
-                  <img :src="image_mobil" class="w-3 h-3"/>
+                  <img :src="image_mobil" class="w-3 h-3" v-if="product.car_detail.car_inspection.accident_free !=='1'"/>
                 </div>
                 <div v-if="product.car_detail.car_inspection" v-tippy="{ content: 'Kecelakaan ringan' }">
-                  <img :src="image_tergenang" class="w-3 h-3 mx-1"/>
+                  <img :src="image_tergenang" class="w-3 h-3 mx-1" v-if="product.car_detail.car_inspection.flood_free !=='1'"/>
                 </div>
                 <div v-if="product.car_detail.car_inspection" v-tippy="{ content: 'Kecelakaan ringan' }">
-                  <img :src="image_api" class="w-3 h-3"/>
+                  <img :src="image_api" class="w-3 h-3" v-if="product.car_detail.car_inspection.fire_free !=='1'"/>
                 </div>
           </div>
         </div>
