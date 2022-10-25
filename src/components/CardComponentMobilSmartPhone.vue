@@ -6,13 +6,37 @@ import image_users from '../assets/images/user.png';
 import image_api from '../assets/images/icon_api.png';
 import image_mobil from '../assets/images/icon_mobil.png';
 import image_tergenang from '../assets/images/icon_tergenang.png';
+import button_plus from '../assets/images/btn_plus.png';
+import button_minus from '../assets/images/btn_minus.png';
 import { ref } from 'vue';
 import { formatPrice, textCapitalize } from '../mixins';
 import { useBursaStore } from '../stores/bursa';
 const store = useBursaStore();
 const products = defineProps(['product'])
 const isFavorit = ref([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
+const harga = ref(500000);
+const isActive = ref(5);
+const isTawar = ref('awal');
 
+const handle_decrement = () => {
+    if(harga.value <= 500000){
+
+    }else{
+      if(isActive.value === 10 && harga.value !== 1000000){
+        harga.value -= 1000000;
+      }else{
+        harga.value -= 500000;
+      }
+    }
+    
+  }
+  const handle_increment = () => { 
+      if(isActive.value === 5){
+         harga.value += 500000;
+      }else{
+         harga.value += 1000000;
+      } 
+  }
 </script>
 <template>
   <div class="bg-white h-full">
@@ -33,8 +57,8 @@ const isFavorit = ref([false, false, false, false, false, false, false, false, f
       <div>
         <p class="text-xs font-bold">{{product.car_detail.car_brand.name}} {{product.car_detail.car_merk.name}}
                 {{product.car_detail.car_type.name}}</p>
-        <p class="text-xs">{{product.car_detail.transmisi}} {{product.car_detail.tahun}}</p>
-        <p class="text-xs">{{formatPrice(product.car_detail.km_service_terakhir)}} KM | {{ product.car_detail.kota ? textCapitalize(product.car_detail.kota) : ''}} </p>
+        <p class="text-xs">{{product.car_detail.transmisi}} | {{formatPrice(product.car_detail.km_service_terakhir)}} KM</p>
+        <p class="text-xs"> {{product.car_detail.tahun}} | {{ product.car_detail.kota ? textCapitalize(product.car_detail.kota) : ''}} </p>
         <p class="text-lg">Rp. {{ formatPrice(product.open_price) }}</p>
       </div>
     </div>
@@ -58,6 +82,20 @@ const isFavorit = ref([false, false, false, false, false, false, false, false, f
                 <div v-if="product.car_detail.car_inspection" v-tippy="{ content: 'Kecelakaan ringan' }">
                   <img :src="image_api" class="w-6 h-3" v-if="product.car_detail.car_inspection.fire_free !=='1'"/>
                 </div>
+      </div>
+    </div>
+    <div class="bg-gray-300">
+      <div class="flex flex-row justify-around">
+          <button><img :src="button_minus" class="h-4 w-4" @click="handle_decrement()"/></button>
+          <p class="font-bold text-xl">Rp {{ new Intl.NumberFormat().format(harga) }}</p>
+          <button><img :src="button_plus" class="h-4 w-4" @click="handle_increment()"/></button>
+      </div>
+      <div class="flex justify-around my-1">
+        <button @click="isActive = 5" class="px-2 py-1 text-white rounded-lg w-1/3" :class="isActive === 5 ? 'bg-blue-500':'bg-abu_abu_pucat text-gray-400'">Rp 500.000</button>
+        <button @click="isActive = 10" class="px-2 py-1 text-white rounded-lg w-1/3" :class="isActive === 10? 'bg-blue-500':'bg-abu_abu_pucat text-gray-400'">Rp 1.000.000</button>
+      </div>
+      <div class="flex justify-center mb-4">
+        <button @click="isTawar = 'konfirmasi'" class="bg-tertier px-2 py-1 rounded-xl text-white w-32 font-bold">Mulai Tawar</button>
       </div>
     </div>
   </div>
