@@ -57,7 +57,6 @@ const filterBursa = reactive({
 
 function filterQuery() {
   store.filterBursa(filterBursa);
-  console.log(filterBursa);
 }
 
 onMounted(() => {

@@ -16,7 +16,7 @@ const isFavorit = ref([false, false, false, false, false, false, false, false, f
 </script>
 <template>
   <div class="bg-white h-full">
-    <div class="flex border border-abu_abu mt-2 p-2">
+    <div class="flex border-b border-gray-300 mt-2 p-2">
     <div class="w-1/3"> 
       <img :src="product.car_detail.image_feature1" alt="car" class="w-full h-20 z-10 cursor-pointer"
               @click="$router.push(`/dashboard/detail/${product.id}`);" />
@@ -31,7 +31,7 @@ const isFavorit = ref([false, false, false, false, false, false, false, false, f
         </div>
       </div>
       <div>
-        <p class="text-xs">{{product.car_detail.car_brand.name}} {{product.car_detail.car_merk.name}}
+        <p class="text-xs font-bold">{{product.car_detail.car_brand.name}} {{product.car_detail.car_merk.name}}
                 {{product.car_detail.car_type.name}}</p>
         <p class="text-xs">{{product.car_detail.transmisi}} {{product.car_detail.tahun}}</p>
         <p class="text-xs">{{formatPrice(product.car_detail.km_service_terakhir)}} KM | {{ product.car_detail.kota ? textCapitalize(product.car_detail.kota) : ''}} </p>
@@ -39,7 +39,7 @@ const isFavorit = ref([false, false, false, false, false, false, false, false, f
       </div>
     </div>
     </div>
-    <div class="flex border border-abu_abu shadow-lg">
+    <div class="flex shadow-lg">
       <div class="relative flex px-2 py-1 rounded items-center">
         <img :src="image_hammer" alt="hammer" class="w-6 h-6" />
         <div class="text-abu_abu mx-2 right-0 relative">1000</div>
