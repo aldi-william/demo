@@ -8,6 +8,8 @@ import image_mobil from '../assets/images/icon_mobil.png';
 import image_tergenang from '../assets/images/icon_tergenang.png';
 import { ref } from 'vue';
 import { formatPrice, textCapitalize } from '../mixins';
+import { useBursaStore } from '../stores/bursa';
+const store = useBursaStore();
 const products = defineProps(['product'])
 const isFavorit = ref([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
 
@@ -24,8 +26,8 @@ const isFavorit = ref([false, false, false, false, false, false, false, false, f
         <p class="text-xs px-2 py-1 bg-blue-500 text-white rounded-lg">{{ product.code }}</p>
         <p class="text-xs px-2 py-1 bg-blue-500 text-white rounded-lg mx-2">TAV</p>
         <div>
-          <img :src="isFavorit[product.id] ? image_star : image_star_empty" alt="star"
-              class="w-4 h-4"  />
+          <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star"
+              class="w-4 h-4" @click="$emit('addFav', product.id)" />
         </div>
       </div>
       <div>
