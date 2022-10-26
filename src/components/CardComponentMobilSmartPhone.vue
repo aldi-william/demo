@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import image_star from '../assets/images/star.png';
-import image_star_empty from '../assets/images/star_empty.png';
+import image_star from '../assets/images/bintang.png';
+import image_star_empty from '../assets/images/bintang_empty.png';
 import image_hammer from '../assets/images/palu.png';
 import image_users from '../assets/images/user.png';
 import image_api from '../assets/images/icon_api.png';
