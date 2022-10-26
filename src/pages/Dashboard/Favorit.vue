@@ -134,7 +134,7 @@ getDataSession();
           </div>
       </div>
       <div class="container-xl grid grid-cols-12 gap-2 py-3" v-else>
-        <div class="col-span-12 mt-4"></div>
+        <div class="col-span-12 mt-4 sm:mt-0"></div>
         <div v-for="(product,i) in products" :key="i+'products'"
             class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white">
             <CardComponentMobil :product="product" @add-fav="favorite" class="hidden sm:block"/>
