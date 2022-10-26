@@ -15,7 +15,7 @@ const products = defineProps(['product','status'])
 </script>
 <template>
   <div class="rounded-[3px]">
-    <div class="bg-white mt-2 h-full p-2">
+    <div class="bg-white mt-2 h-full p-1">
       <div class="absolute">
             <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star"
                 class="w-6 h-6" @click="$emit('addFav', product.id)" />

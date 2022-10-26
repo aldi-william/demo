@@ -108,14 +108,14 @@ getDataSession();
     <div class="container-xl grid grid-cols-12 bg-white shadow-xl mb-12">
       <div
         class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 sm:px-4 sm:bg-white py-2 flex justify-center items-center z-20 sm:z-0 md:z-0 lg:z-0 xl:z-0 2xl:z-0">
-        <div class="bg-white w-full fixed sm:relative px-4 sm:px-0 py-2 mt-8 sm:mt-0 sm:py-0">
-          <div class="grid grid-cols-12">
-            <p class="col-span-6 text-sm sm:text-2xl font-bold">
-              <span class="text-blue-500">Status Lelang</span>
+        <div class="bg-white w-full fixed sm:relative px-4 sm:px-0 py-2 mt-8 sm:mt-0 sm:py-0 border-b border-black">
+          <div class="grid grid-cols-12 gap-2">
+            <p class="col-span-2 text-sm sm:text-2xl font-bold">
+              <span class="text-blue-500">Status</span>
             </p>
-            <p class="col-span-6 text-sm sm:text-2xl font-bold">:&nbsp;<span class="text-red-500">{{ status }}</span></p>
-            <p class="col-span-6 text-sm sm:text-2xl font-bold"><span class="text-blue-500">Sisa Waktu</span></p>
-            <p class="col-span-6 text-sm sm:text-2xl font-bold">:&nbsp;<span class="text-red-500">{{timeToCountdown}}</span></p>
+            <p class="col-span-4 text-sm sm:text-2xl font-bold">:&nbsp;<span class="text-red-500">{{ status }}</span></p>
+            <p class="col-span-2 text-sm sm:text-2xl font-bold"><span class="text-blue-500">Sisa</span></p>
+            <p class="col-span-4 text-sm sm:text-2xl font-bold">:&nbsp;<span class="text-red-500">{{timeToCountdown}}</span></p>
           </div>
         </div>
       </div>  
@@ -135,10 +135,9 @@ getDataSession();
       </div>
   </div>
   <div class="container-xl grid grid-cols-12 gap-2 py-3" v-else>
-    <div class="col-span-12">
-      <h1 class="mt-6 text-3xl font-bold">Favoritku</h1>
+    <div class="mt-1">
+
     </div>
-    
     <div v-for="(product,i) in products" :key="i+'products'"
         class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white">
         <CardComponentMobil :product="product" @add-fav="favorite" class="hidden sm:block"/>

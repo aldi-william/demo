@@ -5,8 +5,8 @@
     import icon_akun_putih from '../assets/images/icon_akun_putih.png';
     import icon_bantuan_hitam from '../assets/images/icon_bantuan_hitam.png';
     import icon_bantuan_putih from '../assets/images/icon_bantuan_putih.png';
-    import icon_favorit_hitam from '../assets/images/icon_favorit_hitam.png';
-    import icon_favorit_putih from '../assets/images/icon_favorit_putih.png';
+    import icon_favorit_hitam from '../assets/images/icon_star_hitam.png';
+    import icon_favorit_putih from '../assets/images/icon_star_putih.png';
     import icon_riwayat_hitam from '../assets/images/icon_riwayat_hitam.png';
     import icon_riwayat_putih from '../assets/images/icon_riwayat_putih.png';
     import { useRoute } from 'vue-router';

@@ -63,14 +63,14 @@ const handle_decrement = () => {
           </div>
         </div>
     </div>
-    <div class="flex shadow-lg">
+    <div class="flex shadow-lg bg-blue-300">
       <div class="relative flex px-2 py-1 rounded items-center">
         <img :src="image_hammer" alt="hammer" class="w-6 h-6" />
-        <div class="text-abu_abu mx-2 right-0 relative">1000</div>
+        <div class="text-black mx-2 right-0 relative">1000</div>
       </div>
       <div class="relative flex px-2 py-1 rounded items-center">
         <img :src="image_users" alt="users" class="w-6 h-6" />
-        <div class="text-abu_abu mx-2">1000</div>
+        <div class="text-black mx-2">1000</div>
       </div>
       <div class="flex items-center">
                 <div v-if="product.car_detail.car_inspection" v-tippy="{ content: 'Kecelakaan ringan' }">
