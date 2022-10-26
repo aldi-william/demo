@@ -193,6 +193,9 @@ const getDetailData = () => {
 const visibleRef = ref(false)
 const indexRef = ref(0) 
 const imgsRef:any = ref([])
+const harga = ref(500000);
+const isActive = ref(5);
+const isTawar = ref('awal');
 const onHide = () => (visibleRef.value = false)
 const onShow = () => {
       visibleRef.value = true
@@ -204,6 +207,27 @@ const showImg = (index:number) => {
       indexRef.value = index;
       onShow()
 }
+
+const handle_decrement = () => {
+    if(harga.value <= 500000){
+
+    }else{
+      if(isActive.value === 10 && harga.value !== 1000000){
+        harga.value -= 1000000;
+      }else{
+        harga.value -= 500000;
+      }
+    }
+    
+  }
+  const handle_increment = () => { 
+      if(isActive.value === 5){
+         harga.value += 500000;
+      }else{
+         harga.value += 1000000;
+      } 
+  }
+
 getDataSession();
 getDetailData();
 </script>
@@ -216,15 +240,17 @@ getDetailData();
     ></vue-easy-lightbox>
   <div class="bg-biru_fb">
     <div class="container-xl pb-20">
-       <!-- <LightBox :media="image_car"></LightBox> -->
        <div class="bg-white py-2">
         <div class="sm:text-xl text-center">Status Lelang : <span class="text-red-500 font-bold">{{ status }}</span>  || Sisa Waktu : <span class="text-red-500 font-bold">{{ timeToCountdown }}</span></div>
        </div>
+       
        <ModalComponent v-show="modal" @close="modal = false"/>
-       <div class="flex items-center cursor-pointer my-4 sm:my-8 md:my-8 lg:my-8 xl:my-8 2xl:my-8" @click="historyback">
+
+       <div class="flex items-center cursor-pointer my-1" @click="historyback">
           <img :src="image_arrow" class="w-4 h-4"/>
           <p class="mx-2">Kembali</p>
        </div>
+       
        <div class="grid grid-cols-12 sm:gap-8 md:gap-8 lg:gap-8 xl:gap-8 2xl:gap-8">
         <div class="col-span-12 sm:col-span-7 md:col-span-7 lg:col-span-7 xl:col-span-7 2xl:col-span-7">
           <swiper
@@ -265,7 +291,7 @@ getDetailData();
              </div>
              <div class="bg-white p-4 grid grid-cols-12">
               <div class="col-span-6">
-                <p>Harga mulai :</p>
+                <p>Harga penawaran :</p>
                 <p class="text-2xl font-bold">Rp {{ detailInspection.car_detail ? formatPrice(detailInspection.car_detail.harga_cash) : 0}}</p>
               </div>
               <div class="col-span-6">
@@ -308,8 +334,25 @@ getDetailData();
                 </div>
                 
              </div>
-             <button @click="showModal" class="bg-tertier px-4 py-2 rounded-xl text-black w-full text-xl font-bold">Ikuti Lelang Ini</button>
+             <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 border-2 border-gray px-4 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0 bg-gray-200 rounded-lg">
+            <div class="flex items-center p-2 justify-center" v-show="status === 'Berlangsung'">
+                  <div class="flex justify-center w-1/2">
+                      <div class="flex flex-col w-9/12">
+                      <button @click="isActive = 5; handle_increment()" class="px-2 py-1 text-white rounded w-full text-xl mb-1" :class="isActive === 5 ? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">+ Rp 500.000</button>
+                      <button @click="isActive = 10; handle_increment()" class="px-2 py-1 text-white rounded w-full text-xl" :class="isActive === 10? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">+ Rp 1.000.000</button>
+                      </div>
+                  </div>
+                  <div class="flex justify-center w-1/2">
+                    <div class="flex flex-col">
+                      <p class="font-bold text-xl mb-1">Rp {{ new Intl.NumberFormat().format(harga) }}</p>
+                      <button @click="isTawar = 'konfirmasi'" class="bg-tertier px-4 py-2 rounded text-white w-40 font-bold text-sm">Mulai Tawar</button>
+                    </div>
+                  </div>
+        
+            </div>
         </div>
+        </div>
+        
         <div class="col-span-12 sm:col-span-7 md:col-span-7 lg:col-span-7 xl:col-span-7 2xl:col-span-7 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0">
             <div class="font-bold px-4 py-2 bg-white rounded-lg mb-4">History Arus Lelang</div>
             <div class="grid grid-cols-12 bg-white rounded-lg px-4 py-2 overflow-y-auto h-40">
@@ -390,15 +433,6 @@ getDetailData();
                   </div>
               </div>
             </div>
-        </div>
-        <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 border-2 border-gray py-8 px-4 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0 bg-white">
-          <div class="text-center mb-4">
-            Tawaran Terakhir Anda :
-          </div>
-          <div class="text-center text-3xl font-bold mb-4">
-            Rp 120.000.000
-          </div>
-          <button @click="showModal" class="bg-tertier px-4 py-2 rounded-xl text-black w-full text-xl font-bold">Tambah Tawaran</button>
         </div>
         <div class="col-span-12">
           <div class="text-xl sm:text-3xl font-bold flex flex-col sm:flex-row items-center justify-between">

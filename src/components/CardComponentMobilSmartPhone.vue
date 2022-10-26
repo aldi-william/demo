@@ -12,7 +12,8 @@ import { ref } from 'vue';
 import { formatPrice, textCapitalize } from '../mixins';
 import { useBursaStore } from '../stores/bursa';
 const store = useBursaStore();
-const products = defineProps(['product'])
+const products = defineProps(['product','status'])
+
 const isFavorit = ref([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
 const harga = ref(500000);
 const isActive = ref(5);
@@ -84,7 +85,7 @@ const handle_decrement = () => {
                 </div>
       </div>
     </div>
-    <div class="bg-white flex items-center p-2 justify-center">
+    <div class="bg-white flex items-center p-2 justify-center" v-show="status === 'Berlangsung'">
       <div class="flex justify-center w-1/2">
           <div class="flex flex-col w-9/12">
           <button @click="isActive = 5; handle_increment()" class="px-2 py-1 text-white rounded w-full text-xs mb-1" :class="isActive === 5 ? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">+ Rp 500.000</button>

@@ -4,7 +4,7 @@
     import { useRouter } from 'vue-router';
     import image from '../assets/images/splashscreen.png';
     import logo from '../assets/images/logo.png';
-    import star from '../assets/images/star.png';
+    import star from '../assets/images/star_splash_screen.png';
     import LoginService from '../services/UserService';
     import { IDataLogin } from '../Interface/IDataLogin';
     import Loading from 'vue-loading-overlay';

@@ -138,7 +138,7 @@ getDataSession();
         <div v-for="(product,i) in products" :key="i+'products'"
             class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white">
             <CardComponentMobil :product="product" @add-fav="favorite" class="hidden sm:block"/>
-            <CardComponentMobilSmartPhone :product="product" @add-fav="favorite" class="block sm:hidden" />
+            <CardComponentMobilSmartPhone :product="product" @add-fav="favorite" class="block sm:hidden" :status="status" />
         </div>
         <div class="mb-20"></div>
       </div>
