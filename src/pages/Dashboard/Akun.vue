@@ -131,7 +131,8 @@ getData();
 getDataProvince();
 </script>
 <template>
-  <div class="bg-biru_fb pb-24 pt-12">
+  <div class="bg-abu_abu_2 py-6">
+    <div class="bg-white sm:pb-24 sm:pt-12 hidden sm:block">
     <div class="container-xl">
     <div class="text-center font-bold text-3xl mb-12">
         Informasi Profil
@@ -239,6 +240,109 @@ getDataProvince();
     </div>
     
     </div>
+    </div>
+    <div class="block sm:hidden mx-4 mb-2 bg-white pb-2 rounded-lg">
+        <div class="flex items-center">
+          <div class="flex justify-center my-1 relative w-1/2 sm:w-1/4 mx-auto">
+              <img :src="gambar" alt="profile" class="max-w-lg max-h-20 w-20 rounded-full sm:h-40"/>
+              <label class="absolute bottom-0 sm:right-4 right-4">
+                  <input type="file" @change="changeAvatar($event)" accept="image/*"/>
+                  <img :src="upload_image" class="w-6">
+              </label>  
+          </div>
+          <div class="my-8 mx-2">
+            <p class="text-xs">Nama Depan</p>
+            <input type="text" class="px-2 py-1 w-full border-b border-black text-xs" disabled v-model="data.first_name" placeholder="Masukan Nama Depan">
+          </div>
+        </div>
+        <div class="mx-2">
+            <p class="text-xs">Nama Belakang</p>
+            <input type="text" class="px-2 py-1 w-full border-b border-black text-xs" disabled v-model="data.last_name" placeholder="Masukan Nama Belakang">
+        </div>
+        <div class="mx-2">
+            <p class="text-xs">Nama Dealer</p>
+            <input type="text" class="px-2 py-1 w-full border-b border-black text-xs" disabled>
+        </div>
+        <div class="mx-2">
+            <p class="text-xs">Nomor WhatsApp</p>
+            <input type="text" class="px-2 py-1 w-full border-b border-black text-xs" disabled v-model="no_whatsapp" placeholder="Masukan Nomor WhatsApp">
+        </div>
+        <div class="mx-2">
+            <p class="text-xs">Email</p>
+            <input type="text" class="px-2 py-1 w-full border-b border-black text-xs" disabled v-model="data.email" placeholder="Masukan email Anda">
+        </div>
+        <div class="mx-2 flex">
+              <div class="w-1/2 mr-2">
+                <p class="text-xs">Provinsi</p>
+                <select class="px-2 py-1 w-full border-b border-black text-xs" v-model="provinsi_id.province" @change="changeKota()">
+                  <option v-for="(item,index) in provinsi" :key="index" :value="item.id">
+                    {{ item.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="w-1/2">
+                <p class="text-xs">Kota</p>
+                <select class="px-2 py-1 w-full border-b border-black text-xs" v-model="kota_id.city" @change="changeKecamatan()">
+                  <option v-for="(item,index) in kota" :key="index" :value="item.id">
+                    {{ item.name }}
+                  </option>
+                </select>
+              </div>
+        </div>
+        <div class="mx-2 flex">
+            <div class="w-1/2 mr-2">
+              <p class="text-xs">Kecamatan</p>
+              <select class="px-2 py-1 w-full border-b border-black text-xs" v-model="kecamatan_id.district">
+                <option v-for="(item,index) in kecamatan" :key="index" :value="item.id">
+                  {{ item.name }}
+                </option>
+              </select>
+            </div>
+            <div class="w-1/2">
+              <p class="text-xs">Kode Pos</p>
+              <input type="text" class="px-2 py-1 w-full border-b border-black text-xs" v-model="data.zip_code" placeholder="Masukan Kode Pos">
+            </div>
+          </div>
+        <div class="mx-2">
+            <p class="text-xs">Alamat</p>
+            <textarea class="px-2 py-1 w-full border-b border-black text-xs" placeholder="Masukan Alamat Lengkap Anda" v-model="data.address">
+              {{ data.address }}
+            </textarea>
+          </div>
+        <div class="mx-2">
+            <p class="text-xs">Password</p>
+            <input type="password" class="px-2 py-1 w-full border-b border-black text-xs" v-model="data.password">
+            <p class="text-xs">Masukan Password Anda Untuk Melakukan Perubahan</p>
+        </div>
+        <div class="mx-2">
+            <button class="px-2 py-1 rounded bg-blue-400 text-white w-full text-xs" @click="sendDataAccount()">Simpan</button>
+        </div>
+    </div>
+    <div class="text-center font-bold text-3xl mb-2">
+      Ganti Password
+    </div>
+    <div class="block sm:hidden mx-4 bg-white pb-4 rounded-lg">
+      <div class="mx-2">
+          <p class="text-xs">Password Saat ini</p>
+          <input type="password" class="px-2 py-1 w-full border-b border-black text-xs" v-model="password.old_password" placeholder="Password saat ini">
+      </div>
+      <div class="mx-2 flex">
+              <div class="w-1/2 mr-2">
+                <p class="text-xs">Password Baru</p>
+                <input type="password" class="text-xs px-2 py-1 w-full border-b border-black" v-model="password.password" placeholder="Password baru">
+                <p class="text-xs">*Password minimal 8 karakter</p>
+              </div>
+              <div class="w-1/2">
+                <p class="text-xs">Konfirmasi Password</p>
+                <input type="password" class="text-xs px-2 py-1 w-full border-b border-black" v-model="password.password_confirmation" placeholder="Ulangi password baru">
+                <p class="text-xs">*Password minimal 8 karakter</p>
+              </div>
+        </div>
+        <div class="mx-2">
+            <button class="px-2 py-1 rounded bg-blue-400 text-white w-full text-xs" @click="changePassword()">Ubah Password</button>
+        </div>
+    </div>
+    <div class="pb-10"></div>
   </div>
   
 </template>
