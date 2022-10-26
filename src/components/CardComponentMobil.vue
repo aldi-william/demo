@@ -114,7 +114,7 @@ const handle_decrement = () => {
                 <button @click="isActive = 10" class="px-2 py-1 text-white rounded-lg w-1/3 text-xs" :class="isActive === 10? 'bg-blue-500 border border-gray-500':'bg-abu_abu_pucat text-gray-400'">Rp 1.000.000</button>
               </div>
               <div class="flex justify-center pb-2">
-                <button @click="isTawar = 'konfirmasi'" class="bg-tertier px-2 py-1 rounded-xl text-black border border-black w-32 font-bold">Mulai Tawar</button>
+                <button @click="isTawar = 'konfirmasi'; harga=500000;" class="bg-tertier px-2 py-1 rounded-xl text-black border border-black w-32 font-bold">Mulai Tawar</button>
               </div>
           </div>
   </div>
