@@ -131,7 +131,7 @@ getData();
 getDataProvince();
 </script>
 <template>
-  <div class="bg-abu_abu_2 py-6">
+  <div class="bg-abu_abu_2 py-6 sm:py-0">
     <div class="bg-white sm:pb-24 sm:pt-12 hidden sm:block">
     <div class="container-xl">
     <div class="text-center font-bold text-3xl mb-12">
@@ -318,7 +318,7 @@ getDataProvince();
             <button class="px-2 py-1 rounded bg-blue-400 text-white w-full text-xs" @click="sendDataAccount()">Simpan</button>
         </div>
     </div>
-    <div class="text-center font-bold text-3xl mb-2">
+    <div class="block sm:hidden text-center font-bold text-xl mb-2">
       Ganti Password
     </div>
     <div class="block sm:hidden mx-4 bg-white pb-4 rounded-lg">
@@ -342,7 +342,7 @@ getDataProvince();
             <button class="px-2 py-1 rounded bg-blue-400 text-white w-full text-xs" @click="changePassword()">Ubah Password</button>
         </div>
     </div>
-    <div class="pb-10"></div>
+    <div class="pb-10 sm:pb-0"></div>
   </div>
   
 </template>

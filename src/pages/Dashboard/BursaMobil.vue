@@ -156,6 +156,10 @@ const favorite = (id:any) =>{
   })
 }
 
+const scrollToTop = () => {
+    window.scrollTo(0,0);
+}
+
 </script>
 <template>
   <div class="bg-biru_fb" @click.self="closeAll()">
@@ -276,7 +280,7 @@ const favorite = (id:any) =>{
         <div class="flex flex-row justify-center">
           <!-- <button @click="decrement()" class="px-4 py-2 rounded border border-gray cursor-pointer bg-white hidden sm:flex">Sebelumnya</button> -->
           <div :class="i === filterBursa.page ? 'bg-yellow-500 text-white':''" class="px-4 py-2 rounded border border-gray hover:bg-blue-500 hover:text-white cursor-pointer bg-white"
-            v-for="i in store.totalPage" :key="i" @click="ganti(i)">{{ i }}</div>
+            v-for="i in store.totalPage" :key="i" @click="ganti(i); scrollToTop();">{{ i }}</div>
           <!-- <button @click="increment()" class="px-4 py-2 rounded border border-gray cursor-pointer bg-white hidden sm:flex">Selanjutnya</button> -->
         </div>
       </div>
