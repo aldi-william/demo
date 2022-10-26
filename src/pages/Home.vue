@@ -78,10 +78,11 @@
   </div> 
   
   <div class="w-full h-full bg-secondary py-20 absolute" :class="isAnimated ? 'hidden':''">
-    <img :src="logo" alt="tav logo" class="w-64 mx-auto my-4"/>
+    <img :src="logo" alt="tav logo" class="w-64 mx-auto my-4" preload/>
     <pre class="text-blue-500 text-3xl tracking-normal sm:tracking-widest md:tracking-widest lg:tracking-widest xl:tracking-widest 2xl:tracking-widest text-center my-4">LELANG MENANG</pre>
-    <img :src="star" alt="tav star" class="w-20 mx-auto my-4" />
-    <img :src="image" alt="tav image" class="w-96 mx-auto my-4">
+    <img :src="star" alt="tav star" class="w-20 mx-auto my-4" preload/>
+    <img :src="image" alt="tav image" class="w-96 mx-auto my-4" preload>
+    
     <p class="text-center my-4 font-bold">Berburu mobil bekas Murah & Berkualitas</p>
   </div>
   <div class="w-full h-full flex flex-col justify-center py-32 bg-biru_fb" :class="isAbsolute ? 'absolute':''">
