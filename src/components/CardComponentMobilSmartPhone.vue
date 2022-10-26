@@ -40,12 +40,12 @@ const handle_decrement = () => {
   }
 </script>
 <template>
-  <div class="bg-white relative border border-black shadow-xl">
+  <div class="bg-white relative shadow-xl">
     <div class="absolute top-6 left-3">
           <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star"
               class="w-4 h-4" @click="$emit('addFav', product.id)" />
     </div>
-    <div class="flex border-b border-gray-300 mt-2 p-2">
+    <div class="flex border-b border-gray-300 px-2 py-1">
         <div class="w-1/3"> 
           <img :src="product.car_detail.image_feature1" alt="car" class="w-full h-20 z-10 cursor-pointer object-cover"
                   @click="$router.push(`/dashboard/detail/${product.id}`);" />
@@ -95,7 +95,7 @@ const handle_decrement = () => {
       <div class="flex justify-center w-1/2">
         <div class="flex flex-col">
           <p class="font-bold text-[14px] mb-1">Rp {{ new Intl.NumberFormat().format(harga) }}</p>
-          <button @click="isTawar = 'konfirmasi'" class="bg-tertier px-2 py-1 rounded text-white w-24 font-bold text-xs">Mulai Tawar</button>
+          <button @click="isTawar = 'konfirmasi'; harga=500000;" class="bg-tertier px-2 py-1 rounded text-white w-24 font-bold text-xs">Mulai Tawar</button>
         </div>
       </div>
       
