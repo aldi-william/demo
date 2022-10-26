@@ -13,7 +13,8 @@ module.exports = {
         abu_abu:'#838383',
         biru:'#87BEFF',
         biru_fb:'#f0f2f5',
-        abu_abu_pucat:'#F2F2F2'
+        abu_abu_pucat:'#F2F2F2',
+        abu_abu_2: '#F0F2F5'
       }
     },
   },

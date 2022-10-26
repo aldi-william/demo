@@ -105,10 +105,10 @@ getDataSession();
 
 </script>
 <template>
-    <div class="container-xl grid grid-cols-12 bg-white shadow-xl mb-12">
-      <div
-        class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 sm:px-4 sm:bg-white py-2 flex justify-center items-center z-20 sm:z-0 md:z-0 lg:z-0 xl:z-0 2xl:z-0">
-        <div class="bg-white w-full fixed sm:relative px-4 sm:px-0 py-2 mt-8 sm:mt-0 sm:py-0 border-b border-black">
+    <div class="bg-abu_abu_2">
+      <div class="container-xl grid grid-cols-12 bg-white shadow-xl mb-12">
+      <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 sm:px-4 sm:bg-white py-2 flex justify-center items-center z-20 sm:z-0 md:z-0 lg:z-0 xl:z-0 2xl:z-0">
+        <div class="bg-white w-full fixed sm:relative px-4 sm:px-0 py-2 mt-8 sm:mt-0 sm:py-0 border-b sm:border-none border-black">
           <div class="grid grid-cols-12 gap-2">
             <p class="col-span-2 text-sm sm:text-2xl font-bold">
               <span class="text-blue-500">Status</span>
@@ -119,32 +119,31 @@ getDataSession();
           </div>
         </div>
       </div>  
+      </div>
+      <div class="container-xl pb-20" v-if="products.length < 1">
+          <h1 class="mt-8 text-xl font-bold">Favoritku</h1>
+          <div class="border-b-4 border-blue-400 w-24 mb-4"></div>
+          <img :src="bg_image" alt="bg" class="w-8/12 sm:w-4/12 md:w-4/12 lg:w-4/12 xl:w-4/12 2xl:w-4/12 mx-auto"/>
+          <div class="text-3xl font-bold text-center my-4">
+            <p>Buah Alpukat Buah Kedondong</p>
+            <p>Mobil Favorit Masih kosong</p>
+          </div>
+          <div class="text-md text-center">Yuk Mulai Tambahkan Mobil Favorit kamu, Masuk Dari Menu Navigasi</div>
+          <div class="flex justify-center my-4">
+            <button @click="router.push('/dashboard/bursamobil')" class="bg-tertier text-black border-black border-2 px-4 py-2 shadow-2x rounded-lg">Pergi ke Bursa Mobil</button>
+          </div>
+      </div>
+      <div class="container-xl grid grid-cols-12 gap-2 py-3" v-else>
+        <div class="col-span-12 mt-4"></div>
+        <div v-for="(product,i) in products" :key="i+'products'"
+            class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white">
+            <CardComponentMobil :product="product" @add-fav="favorite" class="hidden sm:block"/>
+            <CardComponentMobilSmartPhone :product="product" @add-fav="favorite" class="block sm:hidden" />
+        </div>
+        <div class="mb-20"></div>
+      </div>
     </div>
     
-  <div class="container-xl pb-20" v-if="products.length < 1">
-      <h1 class="mt-8 text-xl font-bold">Favoritku</h1>
-      <div class="border-b-4 border-blue-400 w-24 mb-4"></div>
-      <img :src="bg_image" alt="bg" class="w-8/12 sm:w-4/12 md:w-4/12 lg:w-4/12 xl:w-4/12 2xl:w-4/12 mx-auto"/>
-      <div class="text-3xl font-bold text-center my-4">
-        <p>Buah Alpukat Buah Kedondong</p>
-        <p>Mobil Favorit Masih kosong</p>
-      </div>
-      <div class="text-md text-center">Yuk Mulai Tambahkan Mobil Favorit kamu, Masuk Dari Menu Navigasi</div>
-      <div class="flex justify-center my-4">
-        <button @click="router.push('/dashboard/bursamobil')" class="bg-tertier text-black border-black border-2 px-4 py-2 shadow-2x rounded-lg">Pergi ke Bursa Mobil</button>
-      </div>
-  </div>
-  <div class="container-xl grid grid-cols-12 gap-2 py-3" v-else>
-    <div class="mt-1">
-
-    </div>
-    <div v-for="(product,i) in products" :key="i+'products'"
-        class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white">
-        <CardComponentMobil :product="product" @add-fav="favorite" class="hidden sm:block"/>
-        <CardComponentMobilSmartPhone :product="product" @add-fav="favorite" class="block sm:hidden" />
-    </div>
-    <div class="mb-20"></div>
-  </div>
 </template>
 <style>
   .container-xl{
