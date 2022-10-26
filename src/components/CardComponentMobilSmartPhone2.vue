@@ -13,9 +13,9 @@ const store = useBursaStore();
 const products = defineProps(['product'])
 </script>
 <template>
-  <div class="bg-white mt-2 h-11/12 rounded-lg p-2">
+  <div class="bg-white mt-2 h-full rounded-lg p-2">
     <div>
-    <div> <img :src="product.car_detail.image_feature1" alt="car" class="w-full h-24 z-10 cursor-pointer"
+    <div> <img :src="product.car_detail.image_feature1" alt="car" class="w-full h-24 z-10 cursor-pointer object-cover"
               @click="$router.push(`/dashboard/detail/${product.id}`);" /></div>
     </div>
     <div class="flex justify-between items-center mt-1">

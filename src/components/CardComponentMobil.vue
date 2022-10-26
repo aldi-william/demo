@@ -8,12 +8,40 @@ import image_star_empty from '../assets/images/star_empty.png';
 import image_api from '../assets/images/icon_api.png';
 import image_mobil from '../assets/images/icon_mobil.png';
 import image_tergenang from '../assets/images/icon_tergenang.png';
+import button_plus from '../assets/images/btn_plus.png';
+import button_minus from '../assets/images/btn_minus.png';
+import { useRoute } from 'vue-router'
 import { ref } from 'vue';
 import { formatPrice, textCapitalize } from '../mixins';
 import { useBursaStore } from '../stores/bursa';
+const route = useRoute();
 const products = defineProps(['product'])
 const isFavorit = ref([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
 const store = useBursaStore();
+const harga = ref(500000);
+const isActive = ref(5);
+const isTawar = ref('awal');
+
+const handle_decrement = () => {
+    if(harga.value <= 500000){
+
+    }else{
+      if(isActive.value === 10 && harga.value !== 1000000){
+        harga.value -= 1000000;
+      }else{
+        harga.value -= 500000;
+      }
+    }
+    
+  }
+  const handle_increment = () => { 
+      if(isActive.value === 5){
+         harga.value += 500000;
+      }else{
+         harga.value += 1000000;
+      } 
+  }
+
 
 
 </script>
@@ -24,7 +52,7 @@ const store = useBursaStore();
             <div class="bg-red-600 absolute bottom-0 right-0 px-4 py-0 rounded-tl-full text-white flex items-start">
               Berlangsung
             </div>
-            <img :src="product.car_detail.image_feature1" alt="car" class="w-full h-64 z-10 cursor-pointer"
+            <img :src="product.car_detail.image_feature1" alt="car" class="w-full h-64 z-10 cursor-pointer object-cover"
               @click="$router.push(`/dashboard/detail/${product.id}`);" />
           </div>
           <div class="grid grid-cols-12 my-2 gap-2">
@@ -66,7 +94,8 @@ const store = useBursaStore();
           </div>
           <div class="flex flex-row my-1 justify-between items-center">
             <div>
-              <h1>Harga Mulai :</h1>
+              <h1 v-if="route.name === 'BursaMobil'">Harga Mulai :</h1>
+              <h1 v-else>Penawaran Terbaru :</h1>
               <h1 class="text-2xl font-bold">Rp. {{ formatPrice(product.open_price) }}</h1>
             </div>
             <div>
@@ -74,5 +103,19 @@ const store = useBursaStore();
                 class="bg-tertier px-4 py-2 shadow-xl text-sm hover:bg-blue-500 hover:text-white">Lihat</button>
             </div>
           </div>
-        </div>
+          <div class="border border-gray-400 p-2 rounded-lg" v-show="route.name === 'Favorit'">
+              <div class="flex flex-row justify-center">
+                  <button><img :src="button_minus" class="h-8 w-8" @click="handle_decrement()"/></button>
+                  <p class="font-bold text-xl mx-4">Rp {{ new Intl.NumberFormat().format(harga) }}</p>
+                  <button><img :src="button_plus" class="h-8 w-8" @click="handle_increment()"/></button>
+              </div>
+              <div class="flex justify-around my-1">
+                <button @click="isActive = 5" class="px-2 py-1 text-white rounded-lg w-1/3 text-xs" :class="isActive === 5 ? 'bg-blue-500 border border-gray-500':'bg-abu_abu_pucat text-gray-400'">Rp 500.000</button>
+                <button @click="isActive = 10" class="px-2 py-1 text-white rounded-lg w-1/3 text-xs" :class="isActive === 10? 'bg-blue-500 border border-gray-500':'bg-abu_abu_pucat text-gray-400'">Rp 1.000.000</button>
+              </div>
+              <div class="flex justify-center pb-2">
+                <button @click="isTawar = 'konfirmasi'" class="bg-tertier px-2 py-1 rounded-xl text-black border border-black w-32 font-bold">Mulai Tawar</button>
+              </div>
+          </div>
+  </div>
 </template>

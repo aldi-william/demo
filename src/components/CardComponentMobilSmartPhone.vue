@@ -42,7 +42,7 @@ const handle_decrement = () => {
   <div class="bg-white h-full">
     <div class="flex border-b border-gray-300 mt-2 p-2">
     <div class="w-1/3"> 
-      <img :src="product.car_detail.image_feature1" alt="car" class="w-full h-20 z-10 cursor-pointer"
+      <img :src="product.car_detail.image_feature1" alt="car" class="w-full h-20 z-10 cursor-pointer object-cover"
               @click="$router.push(`/dashboard/detail/${product.id}`);" />
     </div>
     <div class="w-2/3 ml-2">
@@ -94,7 +94,7 @@ const handle_decrement = () => {
         <button @click="isActive = 5" class="px-2 py-1 text-white rounded-lg w-1/3 text-xs" :class="isActive === 5 ? 'bg-blue-500':'bg-abu_abu_pucat text-gray-400'">Rp 500.000</button>
         <button @click="isActive = 10" class="px-2 py-1 text-white rounded-lg w-1/3 text-xs" :class="isActive === 10? 'bg-blue-500':'bg-abu_abu_pucat text-gray-400'">Rp 1.000.000</button>
       </div>
-      <div class="flex justify-center mb-4">
+      <div class="flex justify-center pb-2">
         <button @click="isTawar = 'konfirmasi'" class="bg-tertier px-2 py-1 rounded-xl text-white w-32 font-bold">Mulai Tawar</button>
       </div>
     </div>
