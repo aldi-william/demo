@@ -50,7 +50,7 @@ const products = defineProps(['product'])
           <div class="flex items-center">
               <p class="text-xs">{{product.car_detail.transmisi}}</p> 
               <img :src="image_bulat" class="w-2 h-2 mx-1"/> 
-              <p class="text-[8px]">{{formatPrice(product.car_detail.km_service_terakhir)}} KM </p>
+              <p class="text-xs">{{formatPrice(product.car_detail.km_service_terakhir)}} KM </p>
           </div>        
           <div class="flex items-center">
             <p class="text-xs">{{product.car_detail.tahun}}</p> 

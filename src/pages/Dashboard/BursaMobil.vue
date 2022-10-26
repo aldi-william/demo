@@ -286,7 +286,7 @@ const favorite = (id:any) =>{
 <style>
 .container-xl {
   max-width: 1200px;
-  width: 98%;
+  width: 100%;
   margin: 0 auto;
 }
 </style>
