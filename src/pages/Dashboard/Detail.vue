@@ -277,7 +277,7 @@ getDetailData();
             :freeMode="true"
             :watchSlidesProgress="true"
             :modules="modules"
-            class="mySwiper rounded-xl"
+            class="mySwiper"
           >
           <swiper-slide v-for="(item, index) in image_cars" :key="index+'image_car'">
             <img :src="item.image">
@@ -290,11 +290,11 @@ getDetailData();
                {{ detailInspection.car_detail ? detailInspection.car_detail.car_brand.name : '' }} {{ detailInspection.car_detail ?detailInspection.car_detail.car_merk.name: '' }} {{ detailInspection.car_detail ? detailInspection.car_detail.car_type.name : '' }}
              </div>
              <div class="bg-white p-4 grid grid-cols-12">
-              <div class="col-span-6">
+              <div class="col-span-7">
                 <p>Harga penawaran :</p>
-                <p class="text-2xl font-bold">Rp {{ detailInspection.car_detail ? formatPrice(detailInspection.car_detail.harga_cash) : 0}}</p>
+                <p class="font-bold">Rp {{ detailInspection.car_detail ? formatPrice(detailInspection.car_detail.harga_cash) : 0}}</p>
               </div>
-              <div class="col-span-6">
+              <div class="col-span-4">
                 <div>Tahun :</div>
                 <div class="font-bold">{{ detailInspection.car_detail ? detailInspection.car_detail.tahun : 0}}</div>
               </div>     
@@ -302,7 +302,7 @@ getDetailData();
              <div class="grid grid-cols-12 rounded-lg p-4 border-gray border-2 my-4 bg-white">
                 <div class="col-span-6 my-1">
                   <p>Lokasi</p>
-                  <p class="font-bold">{{ detailInspection.car_detail ? detailInspection.car_detail.kota : '' }} </p>
+                  <p class="font-bold text-xs">{{ detailInspection.car_detail ? detailInspection.car_detail.kota : '' }} </p>
                 </div>
                 <div class="col-span-6 my-1">
                   <p>Warna Exterior</p>
@@ -802,7 +802,7 @@ getDetailData();
   </div>
   
 </template>
-<style>
+<style scoped>
   .container-xl {
     max-width: 1200px;
     width: 90%;
@@ -862,16 +862,17 @@ getDetailData();
 
 @media only screen and (max-width: 600px) {
   .mySwiper2 {
-    height: 84%;
+    height: 70%;
+    max-height: 170px;
     width: 100%;
   }
 }
 
 .mySwiper {
   height: 20%;
-  max-height: 200px;
+  max-height: 150px;
   box-sizing: border-box;
-  padding: 10px 0;
+  padding-top: 10px;
 }
 
 .mySwiper .swiper-slide {
