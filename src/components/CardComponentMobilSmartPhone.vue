@@ -43,7 +43,7 @@ const handle_decrement = () => {
   <div class="bg-white relative shadow-xl">
     <div class="absolute top-2 left-3">
           <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star"
-              class="w-4 h-4" @click="$emit('addFav', product.id)" />
+              class="w-8 h-8" @click="$emit('addFav', product.id)" />
     </div>
     <div class="flex border-b border-gray-300 px-2 py-1">
         <div class="w-1/3"> 
