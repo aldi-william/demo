@@ -11,7 +11,7 @@ import { ref } from 'vue';
 import { formatPrice, textCapitalize } from '../mixins';
 import { useBursaStore } from '../stores/bursa';
 const store = useBursaStore();
-const products = defineProps(['product'])
+const products = defineProps(['product','status'])
 </script>
 <template>
   <div class="rounded-[3px]">
@@ -63,11 +63,11 @@ const products = defineProps(['product'])
     <div class="flex border-t border-gray-300 bg-blue-300 items-end rounded-b-[3px]">
         <div class="relative flex px-2 py-1 rounded items-center">
           <img :src="image_hammer" alt="hammer" class="w-4 h-4" />
-          <div class="text-black mx-2 right-0 relative text-xs">1000</div>
+          <div class="text-black mx-2 right-0 relative text-xs">{{ status === "Berlangsung" ? 1000 : '-'}}</div>
         </div>
         <div class="relative flex px-2 py-1 rounded items-center">
           <img :src="image_users" alt="users" class="w-4 h-4" />
-          <div class="text-black mx-2 text-xs">1000</div>
+          <div class="text-black mx-2 text-xs">{{ status === "Berlangsung" ? 1000 : '-'}}</div>
         </div>
     </div>
   </div>

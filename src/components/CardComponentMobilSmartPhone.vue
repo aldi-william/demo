@@ -39,29 +39,29 @@ const handle_decrement = () => {
   }
 </script>
 <template>
-  <div class="bg-white h-full">
-    <div class="flex border-b border-gray-300 mt-2 p-2">
-    <div class="w-1/3"> 
-      <img :src="product.car_detail.image_feature1" alt="car" class="w-full h-20 z-10 cursor-pointer object-cover"
-              @click="$router.push(`/dashboard/detail/${product.id}`);" />
-    </div>
-    <div class="w-2/3 ml-2">
-      <div class="flex justify-start items-center">
-        <p class="text-xs px-2 py-1 bg-blue-500 text-white rounded-lg">{{ product.code }}</p>
-        <p class="text-xs px-2 py-1 bg-blue-500 text-white rounded-lg mx-2">TAV</p>
-        <div>
+  <div class="bg-white h-full relative">
+    <div class="absolute top-3 left-3">
           <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star"
               class="w-4 h-4" @click="$emit('addFav', product.id)" />
-        </div>
-      </div>
-      <div>
-        <p class="text-xs font-bold">{{product.car_detail.car_brand.name}} {{product.car_detail.car_merk.name}}
-                {{product.car_detail.car_type.name}}</p>
-        <p class="text-xs">{{product.car_detail.transmisi}} | {{formatPrice(product.car_detail.km_service_terakhir)}} KM</p>
-        <p class="text-xs"> {{product.car_detail.tahun}} | {{ product.car_detail.kota ? textCapitalize(product.car_detail.kota) : ''}} </p>
-        <p class="text-lg">Rp. {{ formatPrice(product.open_price) }}</p>
-      </div>
     </div>
+    <div class="flex border-b border-gray-300 mt-2 p-2">
+        <div class="w-1/3"> 
+          <img :src="product.car_detail.image_feature1" alt="car" class="w-full h-20 z-10 cursor-pointer object-cover"
+                  @click="$router.push(`/dashboard/detail/${product.id}`);" />
+          <div class="flex justify-start items-center mt-1">
+            <p class="text-xs px-2 py-1 bg-white text-black rounded-lg border border-blue-400">{{ product.code }}</p>
+            <p class="text-xs px-2 py-1 bg-white text-black rounded-lg mx-1 border border-blue-400">TAV</p>
+          </div>
+        </div>
+        <div class="w-2/3 ml-4">
+          <div>
+            <p class="text-xs font-bold">{{product.car_detail.car_brand.name}} {{product.car_detail.car_merk.name}}
+                    {{product.car_detail.car_type.name}}</p>
+            <p class="text-xs">{{product.car_detail.transmisi}} | {{formatPrice(product.car_detail.km_service_terakhir)}} KM</p>
+            <p class="text-xs"> {{product.car_detail.tahun}} | {{ product.car_detail.kota ? textCapitalize(product.car_detail.kota) : ''}} </p>
+            <p class="text-lg">Rp. {{ formatPrice(product.open_price) }}</p>
+          </div>
+        </div>
     </div>
     <div class="flex shadow-lg">
       <div class="relative flex px-2 py-1 rounded items-center">
@@ -84,19 +84,20 @@ const handle_decrement = () => {
                 </div>
       </div>
     </div>
-    <div class="bg-gray-300">
-      <div class="flex flex-row justify-around">
-          <button><img :src="button_minus" class="h-4 w-4" @click="handle_decrement()"/></button>
-          <p class="font-bold text-xl">Rp {{ new Intl.NumberFormat().format(harga) }}</p>
-          <button><img :src="button_plus" class="h-4 w-4" @click="handle_increment()"/></button>
+    <div class="bg-gray-300 flex items-center p-2 justify-center">
+      <div class="flex justify-center w-1/2">
+          <div class="flex flex-col w-9/12">
+          <button @click="isActive = 5; handle_increment()" class="px-2 py-1 text-white rounded w-full text-xs mb-1" :class="isActive === 5 ? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">+ Rp 500.000</button>
+          <button @click="isActive = 10; handle_increment()" class="px-2 py-1 text-white rounded w-full text-xs" :class="isActive === 10? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">+ Rp 1.000.000</button>
+          </div>
       </div>
-      <div class="flex justify-around my-1">
-        <button @click="isActive = 5" class="px-2 py-1 text-white rounded-lg w-1/3 text-xs" :class="isActive === 5 ? 'bg-blue-500':'bg-abu_abu_pucat text-gray-400'">Rp 500.000</button>
-        <button @click="isActive = 10" class="px-2 py-1 text-white rounded-lg w-1/3 text-xs" :class="isActive === 10? 'bg-blue-500':'bg-abu_abu_pucat text-gray-400'">Rp 1.000.000</button>
+      <div class="flex justify-center w-1/2">
+        <div class="flex flex-col">
+          <p class="font-bold text-[14px] mb-1">Rp {{ new Intl.NumberFormat().format(harga) }}</p>
+          <button @click="isTawar = 'konfirmasi'" class="bg-tertier px-2 py-1 rounded text-white w-24 font-bold text-xs">Mulai Tawar</button>
+        </div>
       </div>
-      <div class="flex justify-center pb-2">
-        <button @click="isTawar = 'konfirmasi'" class="bg-tertier px-2 py-1 rounded-xl text-white w-32 font-bold">Mulai Tawar</button>
-      </div>
+      
     </div>
   </div>
   

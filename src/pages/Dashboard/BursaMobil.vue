@@ -267,7 +267,7 @@ const favorite = (id:any) =>{
       <div v-for="(product,i) in products" :key="i+'products'"
         class="col-span-6 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-biru_fb">
         <CardComponentMobil :product="product" @add-fav="favorite" class="hidden sm:block" />
-        <CardComponentMobilSmartPhone2 :product="product" @add-fav="favorite" class="block sm:hidden"/>
+        <CardComponentMobilSmartPhone2 :product="product" @add-fav="favorite" class="block sm:hidden" :status="status"/>
       </div>
       <div v-if="products.length < 1" class="col-span-12">
         data belum ada
