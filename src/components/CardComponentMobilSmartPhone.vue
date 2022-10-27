@@ -42,20 +42,23 @@ const handle_decrement = () => {
 </script>
 <template>
   <div class="bg-white relative shadow-xl">
-    <div class="absolute top-2 left-3">
+    <div class="absolute top-2 left-6">
           <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star"
-              class="w-8 h-8" @click="$emit('addFav', product.id)" />
+              class="w-6 h-6" @click="$emit('addFav', product.id)" />
     </div>
-    <div class="flex border-b border-gray-300 px-2 py-1">
-        <div class="w-1/3"> 
-          <img :src="product.car_detail.image_feature1" alt="car" class="w-full h-20 z-10 cursor-pointer object-cover"
+    <div class="flex border-b border-gray-300 py-1">
+        <div class="w-1/3">
+          <div class="flex justify-center z-10">
+            <img :src="product.car_detail.image_feature1" alt="car" class="w-24 h-24  cursor-pointer object-cover"
                   @click="$router.push(`/dashboard/detail/${product.id}`);" />
-          <div class="flex justify-start items-center mt-1">
+          </div> 
+          
+          <div class="flex justify-center items-center mt-1">
             <p class="text-xs px-2 py-1 bg-white text-black rounded-lg border border-blue-400">{{ product.code }}</p>
             <p class="text-xs px-2 py-1 bg-white text-black rounded-lg mx-1 border border-blue-400">TAV</p>
           </div>
         </div>
-        <div class="w-2/3 ml-2">
+        <div class="w-2/3">
           <div>
             <p class="text-lg font-bold truncate">{{product.car_detail.car_brand.name.toUpperCase()}} {{product.car_detail.car_merk.name.toUpperCase()}}
                     {{product.car_detail.car_type.name.toUpperCase()}}</p>
