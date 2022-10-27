@@ -57,7 +57,7 @@ const handle_decrement = () => {
         </div>
         <div class="w-2/3 ml-2">
           <div>
-            <p class="text-xs font-bold truncate">{{product.car_detail.car_brand.name.toUpperCase()}} {{product.car_detail.car_merk.name.toUpperCase()}}
+            <p class="text-lg font-bold truncate">{{product.car_detail.car_brand.name.toUpperCase()}} {{product.car_detail.car_merk.name.toUpperCase()}}
                     {{product.car_detail.car_type.name.toUpperCase()}}</p>
             <div class="text-xs flex items-center">
               <p>{{product.car_detail.transmisi}}</p> 
