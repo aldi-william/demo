@@ -16,10 +16,6 @@ const products = defineProps(['product','status'])
 <template>
   <div class="rounded-[3px]">
     <div class="bg-white mt-2 h-full p-1">
-      <div class="absolute">
-            <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star"
-                class="w-6 h-6" @click="$emit('addFav', product.id)" />
-      </div>
       <div>
             <div> 
               <img :src="product.car_detail.image_feature1" alt="car" class="w-full h-24 z-10 cursor-pointer object-cover"
@@ -30,6 +26,9 @@ const products = defineProps(['product','status'])
           <div class="flex">
             <p class="text-[8px] px-[2px] py-[1px] bg-white text-black rounded-[2px] border border-blue-500">{{ product.code }}</p>
             <p class="text-[8px] px-[2px] py-[1px] bg-white text-black rounded-[2px] border border-blue-500 mx-2">TAV</p>
+            <div>
+                 <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star" class="w-4 h-4" @click="$emit('addFav', product.id)" />
+            </div>
             <div class="flex items-center">
                   <div v-if="product.car_detail.car_inspection" v-tippy="{ content: 'Kecelakaan ringan' }">
                     <img :src="image_mobil" class="w-[14px] h-[10px]" v-if="product.car_detail.car_inspection.accident_free !=='1'"/>
