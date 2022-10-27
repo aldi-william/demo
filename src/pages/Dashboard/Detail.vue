@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { ref, reactive } from 'vue';
+    import { ref, reactive, onMounted } from 'vue';
     import { Swiper, SwiperSlide } from 'swiper/vue';
     import ModalComponent from '../../components/ModalComponent.vue';
 
@@ -96,7 +96,8 @@
         },
         harga_cash: 0,
         image_cars:[]
-      }
+      },
+      favorites: []
     }])
 
     let image_cars:any = ref([]);
@@ -226,11 +227,16 @@ const handle_increment = () => {
       } 
 }
 
+onMounted(() => {
+  store.fetchBursa();
+})
+
 const favorite = (id:any) =>{
   store.addFavorite(id)
   .then(()=>{
     store.fetchBursa();
   })
+  getDetailData()
 }
 
 getDataSession();
@@ -306,7 +312,7 @@ getDetailData();
 
         <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0 relative -top-12 sm:top-0">
              <div class="font-bold py-1 bg-white p-4">
-               {{ detailInspection.car_detail ? detailInspection.car_detail.car_brand.name : '' }} {{ detailInspection.car_detail ?detailInspection.car_detail.car_merk.name: '' }} {{ detailInspection.car_detail ? detailInspection.car_detail.car_type.name : '' }}
+               {{ detailInspection.car_detail ? detailInspection.car_detail.car_brand.name : '' }} {{ detailInspection.car_detail ? detailInspection.car_detail.car_merk.name: '' }} {{ detailInspection.car_detail ? detailInspection.car_detail.car_type.name : '' }}
              </div>
              <div class="bg-white p-4 grid grid-cols-12">
               <div class="col-span-6">
@@ -317,9 +323,9 @@ getDetailData();
                 <div>Tahun :</div>
                 <div class="font-bold">{{ detailInspection.car_detail ? detailInspection.car_detail.tahun : 0}}</div>
               </div>
-              <!-- <div class="col-span-2">
-                <img :src="detailInspection.favorites.length > 0 ? image_star : image_star_empty" alt="star" class="w-8 h-8" @click="favorite(detailInspection.id)" />
-              </div>      -->
+              <div class="col-span-2">
+                <img :src="detailInspection.favorites.length > 0 ? image_star : image_star_empty" alt="star" class="w-8 h-8 cursor-pointer" @click="favorite(detailInspection.id)" />
+              </div>     
              </div>
              <div class="grid grid-cols-12 rounded-lg p-4 border-gray border-2 my-4 bg-white">
                 <div class="col-span-6 my-1">
