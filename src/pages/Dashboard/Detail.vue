@@ -48,11 +48,15 @@
     import image_kelengkapan_putih from '../../assets/images/kelengkapan_putih.png';
     import image_info_biru from '../../assets/images/info_biru.png';
     import image_setir from '../../assets/images/setir.png';
+    import image_star_empty from '../../assets/images/star_empty.png';
     import GetFilterService from '../../services/GetService';
     import GetService from '../../services/GetService';
     import { useRoute } from 'vue-router';
+    import { useBursaStore } from '../../stores/bursa';
     import { formatPrice } from '../../mixins';
     const route = useRoute();
+    // pinia
+    const store = useBursaStore();
     const params = route.params.id as string;
  
     const modules = [FreeMode, Navigation, Thumbs];
@@ -222,6 +226,13 @@ const handle_increment = () => {
       } 
 }
 
+const favorite = (id:any) =>{
+  store.addFavorite(id)
+  .then(()=>{
+    store.fetchBursa();
+  })
+}
+
 getDataSession();
 getDetailData();
 </script>
@@ -235,7 +246,7 @@ getDetailData();
   
   <div class="bg-biru_fb">
     <div class="container-xl pb-20">
-      <div class="container-xl grid grid-cols-12 bg-white shadow-xl mb-12">
+      <div class="grid grid-cols-12 bg-white shadow-xl">
       <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 sm:px-4 sm:bg-white py-2 flex justify-center items-center z-20 sm:z-0 md:z-0 lg:z-0 xl:z-0 2xl:z-0">
         <div class="bg-white w-full fixed sm:relative px-4 sm:px-0 py-2 sm:mt-0 sm:py-0 border-b sm:border-none border-black">
           <div class="grid grid-cols-12 gap-2">
@@ -252,7 +263,7 @@ getDetailData();
        
        <ModalComponent v-show="modal" @close="modal = false"/>
 
-       <div class="flex items-center cursor-pointer my-1" @click="historyback">
+       <div class="flex items-center cursor-pointer my-1 mt-4" @click="historyback">
           <img :src="image_arrow" class="w-4 h-4"/>
           <p class="mx-2">Kembali</p>
        </div>
@@ -292,19 +303,23 @@ getDetailData();
           
           </swiper>
         </div>
-        <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0">
-             <div class="text-3xl font-bold py-1 bg-white p-4">
+
+        <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0 relative -top-12 sm:top-0">
+             <div class="font-bold py-1 bg-white p-4">
                {{ detailInspection.car_detail ? detailInspection.car_detail.car_brand.name : '' }} {{ detailInspection.car_detail ?detailInspection.car_detail.car_merk.name: '' }} {{ detailInspection.car_detail ? detailInspection.car_detail.car_type.name : '' }}
              </div>
              <div class="bg-white p-4 grid grid-cols-12">
-              <div class="col-span-7">
+              <div class="col-span-6">
                 <p>Harga penawaran :</p>
                 <p class="font-bold">Rp {{ detailInspection.car_detail ? formatPrice(detailInspection.car_detail.harga_cash) : 0}}</p>
               </div>
               <div class="col-span-4">
                 <div>Tahun :</div>
                 <div class="font-bold">{{ detailInspection.car_detail ? detailInspection.car_detail.tahun : 0}}</div>
-              </div>     
+              </div>
+              <!-- <div class="col-span-2">
+                <img :src="detailInspection.favorites.length > 0 ? image_star : image_star_empty" alt="star" class="w-8 h-8" @click="favorite(detailInspection.id)" />
+              </div>      -->
              </div>
              <div class="grid grid-cols-12 rounded-lg p-4 border-gray border-2 my-4 bg-white">
                 <div class="col-span-6 my-1">
@@ -360,7 +375,7 @@ getDetailData();
         </div>
         </div>
         
-        <div class="col-span-12 sm:col-span-7 md:col-span-7 lg:col-span-7 xl:col-span-7 2xl:col-span-7 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0">
+        <div class="col-span-12 sm:col-span-7 md:col-span-7 lg:col-span-7 xl:col-span-7 2xl:col-span-7 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0 relative -top-12 sm:top-0">
             <div class="font-bold px-4 py-2 bg-white rounded-lg mb-4">History Arus Lelang</div>
             <div class="grid grid-cols-12 bg-white rounded-lg px-4 py-2 overflow-y-auto h-40">
               <div class="col-span-12 flex flex-row justify-between">
@@ -441,7 +456,7 @@ getDetailData();
               </div>
             </div>
         </div>
-        <div class="col-span-12">
+        <div class="col-span-12 relative -top-12 sm:top-0">
           <div class="text-xl sm:text-3xl font-bold flex flex-col sm:flex-row items-center justify-between">
           <div class="flex items-center">
               <span class="">Detail Laporan Kendaraan</span>
@@ -1030,14 +1045,15 @@ getDetailData();
 @media only screen and (max-width: 600px) {
   .mySwiper2 {
     height: 70%;
-    max-height: 170px;
+    max-height: 350px;
     width: 100%;
   }
+
 }
 
 .mySwiper {
   height: 20%;
-  max-height: 150px;
+  max-height: 50px;
   box-sizing: border-box;
   padding-top: 10px;
 }
