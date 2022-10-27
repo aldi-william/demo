@@ -107,9 +107,9 @@
             <a href="#" class="text-blue-400 hover:text-blue-500" @click="showModal = true">Lupa Password ?</a>
           </div>
 
-          <button class="bg-blue-500 text-white px-4 py-2 w-full mx-auto rounded mb-12" @click="logintodashboard()">Masuk</button>
-          <div class="text-center">Belum memiliki Akun ? Silahkan <a href="https://docs.google.com/forms/d/e/1FAIpQLSeUmuz7mHM__fyJl9WazOxum0_NLmT4-IPHWFqmroCQe2CWdw/viewform" class="hover:text-blue-500 text-blue-400">daftar disini</a></div>
-          <div class="text-center">Ada kendala ? <a href="https://wa.me/6289668303824" class="text-blue-400 hover:text-blue-500">Hubungi Customer Service Lelang</a></div>
+          <button class="bg-blue-500 text-white px-4 py-2 w-full mx-auto rounded" @click="logintodashboard()">Masuk</button>
+          <!-- <div class="text-center">Belum memiliki Akun ? Silahkan <a href="https://docs.google.com/forms/d/e/1FAIpQLSeUmuz7mHM__fyJl9WazOxum0_NLmT4-IPHWFqmroCQe2CWdw/viewform" class="hover:text-blue-500 text-blue-400">daftar disini</a></div>
+          <div class="text-center">Ada kendala ? <a href="https://wa.me/6289668303824" class="text-blue-400 hover:text-blue-500">Hubungi Customer Service Lelang</a></div> -->
         
     </div>
   </div>
