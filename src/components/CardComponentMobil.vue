@@ -81,8 +81,8 @@ const handle_decrement = () => {
           </div>
           <div class="my-1">
             <div class="flex flex-row items-center justify-between">
-              <h1 class="font-bold text-xl">{{product.car_detail.car_brand.name}} {{product.car_detail.car_merk.name}}
-                {{product.car_detail.car_type.name}}</h1>
+              <h1 class="font-bold text-xl">{{product.car_detail.car_brand.name.toUpperCase() }} {{product.car_detail.car_merk.name.toUpperCase()}}
+                {{product.car_detail.car_type.name.toUpperCase()}}</h1>
                 <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star"
               class="w-8 h-8" @click="$emit('addFav', product.id)" />
                 <!-- <img :src="isFavorit[product.id] ? image_star : image_star_empty" alt="star"
@@ -96,7 +96,7 @@ const handle_decrement = () => {
             <div>
               <h1 v-if="route.name === 'BursaMobil'">Harga Mulai :</h1>
               <h1 v-else>Penawaran Terbaru :</h1>
-              <h1 class="text-2xl font-bold">Rp. {{ formatPrice(product.open_price) }}</h1>
+              <h1 class="text-2xl font-bold">Rp {{ formatPrice(product.open_price) }}</h1>
             </div>
             <div>
               <button @click="$router.push(`/dashboard/detail/${product.id}`);"

@@ -19,7 +19,7 @@
   
 </script>
 <template>
-  <div class="bg-biru_fb">
+  <div class="bg-biru_fb relative -top-2">
     <div class="container-xl">
       <h1 class="py-4 text-3xl font-bold">Riwayat Lelang</h1>
       <div class="grid grid-cols-12">

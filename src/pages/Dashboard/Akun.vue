@@ -131,7 +131,7 @@ getData();
 getDataProvince();
 </script>
 <template>
-  <div class="bg-abu_abu_2 py-6 sm:py-0">
+  <div class="bg-abu_abu_2 py-6 sm:py-0 relative -top-2">
     <div class="bg-white sm:pb-24 sm:pt-12 hidden sm:block">
     <div class="container-xl">
     <div class="text-center font-bold text-3xl mb-12">
