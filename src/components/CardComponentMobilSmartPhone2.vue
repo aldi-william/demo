@@ -26,7 +26,7 @@ const products = defineProps(['product','status'])
           <div class="flex">
             <p class="text-[8px] px-[2px] py-[1px] bg-white text-black rounded-[2px] border border-blue-500">{{ product.code }}</p>
             <p class="text-[8px] px-[2px] py-[1px] bg-white text-black rounded-[2px] border border-blue-500 mx-2">TAV</p>
-            <div>
+            <div class="mx-1">
                  <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star" class="w-4 h-4" @click="$emit('addFav', product.id)" />
             </div>
             <div class="flex items-center">
