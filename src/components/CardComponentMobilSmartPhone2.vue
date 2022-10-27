@@ -16,7 +16,7 @@ const products = defineProps(['product','status'])
   <div class="rounded-[3px]">
     <div class="bg-white mt-2 h-full p-1">
       <div>
-            <div> 
+            <div class="flex justify-center"> 
               <img :src="product.car_detail.image_feature1" alt="car" class="w-40 h-40 z-10 cursor-pointer object-cover"
                 @click="$router.push(`/dashboard/detail/${product.id}`);" />
             </div>
