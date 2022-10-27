@@ -191,8 +191,11 @@ const getDetailData = () => {
 }
 
 const visibleRef = ref(false)
-const indexRef = ref(0) 
+const visibleShowInspect = ref(false)
+const indexRef = ref(0)
+const indexRefInspect = ref(0) 
 const imgsRef:any = ref([])
+const imgsRefInspect:any = ref([])
 const harga = ref(500000);
 const isActive = ref(5);
 const isTawar = ref('awal');
@@ -200,33 +203,24 @@ const onHide = () => (visibleRef.value = false)
 const onShow = () => {
       visibleRef.value = true
 }
-const showImg = (index:number) => {
-      image_cars.value.map((items) => {
+const showImg = (index:number, image:any) => {
+      // image_cars.value.map((items) => {
+      //   imgsRef.value.push(items.image)
+      // })
+      image.map((items) => {
         imgsRef.value.push(items.image)
       })
       indexRef.value = index;
       onShow()
 }
 
-const handle_decrement = () => {
-    if(harga.value <= 500000){
-
-    }else{
-      if(isActive.value === 10 && harga.value !== 1000000){
-        harga.value -= 1000000;
-      }else{
-        harga.value -= 500000;
-      }
-    }
-    
-  }
-  const handle_increment = () => { 
+const handle_increment = () => { 
       if(isActive.value === 5){
          harga.value += 500000;
       }else{
          harga.value += 1000000;
       } 
-  }
+}
 
 getDataSession();
 getDetailData();
@@ -238,6 +232,7 @@ getDetailData();
       :index="indexRef"
       @hide="onHide"
     ></vue-easy-lightbox>
+  
   <div class="bg-biru_fb">
     <div class="container-xl pb-20">
        <div class="bg-white py-2">
@@ -264,8 +259,9 @@ getDetailData();
             :thumbs="{ swiper: thumbsSwiper }"
             :modules="modules"
             class="mySwiper2 rounded-xl">
+
             <swiper-slide v-for="(item, index) in image_cars" :key="index+'image_car'">
-              <img :src="item.image" @click="showImg(index)" class="cursor-pointer">
+              <img :src="item.image" @click="showImg(index, image_cars)" class="cursor-pointer">
             </swiper-slide>
 
           </swiper>
@@ -564,18 +560,31 @@ getDetailData();
             </div>
             <div v-if="menu === 'dashboard'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
 
-              <div class="mb-4 cursor-pointer" @click="items.open = !items.open" v-for="(items, index) in dashboard" :key="index+'dashboard'">
+              <div class="mb-4 cursor-pointer" v-for="(items, index) in dashboard" :key="index+'dashboard'">
                 <div v-if="items.name !== 'catatan_dashboard'">
                   <div class="flex flex-row justify-between">
-                      <div class="flex items-center">
-                        <h1 class="font-bold text-md" >{{ items.name }}</h1>
-                        <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
-                      </div>
-                      <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
+                  <div class="flex items-center" @click="items.open = !items.open">
+                    <h1 class="font-bold text-md">{{ items.name }}</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
                   </div>
-                  <div class="flex justify-around my-4" v-show="items.value === 2 && items.open"><img :src="image_setir" class="w-40"/></div>
+                  <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
+                  </div>
+                <div class="flex sm:justify-around my-4" v-show="items.value === 2 && items.open">
+                  <div class="overflow-x-auto">
+                    <div class="flex-none w-full">
+                      <div class="flex w-[1200px] sm:w-full">
+                        <div v-for="(images, index) in items.image" :key="index+'itemsImage'" class="w-[200px] sm:w-full" @click="showImg(index, items.image)">
+                          <img :src="images.image" class="w-40 h-20 object-cover pr-2"/>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                  
+                </div>
+                
                 <div class="border-b border-black w-11/12"></div>
-               </div>
+                </div>
                 
               </div>
  
@@ -586,36 +595,66 @@ getDetailData();
             </div>
             <div v-if="menu === 'instrumen'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
 
-              <div class="mb-4 cursor-pointer" @click="items.open = !items.open" v-for="(items, index) in instrumen" :key="index+'istrumen'">
+              <div class="mb-4 cursor-pointer" v-for="(items, index) in instrumen" :key="index+'jok_trim'">
                 <div v-if="items.name !== 'catatan_instrumen'">
                   <div class="flex flex-row justify-between">
-                  <div class="flex items-center">
-                    <h1 class="font-bold text-md" >{{ items.name }}</h1>
+                  <div class="flex items-center" @click="items.open = !items.open">
+                    <h1 class="font-bold text-md">{{ items.name }}</h1>
                     <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
                   </div>
                   <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
                   </div>
-                  <div class="flex justify-around my-4" v-show="items.value === 2 && items.open"><img :src="image_setir" class="w-40"/></div>
-                  <div class="border-b border-black w-11/12"></div>
+                <div class="flex sm:justify-around my-4" v-show="items.value === 2 && items.open">
+                  <div class="overflow-x-auto">
+                    <div class="flex-none w-full">
+                      <div class="flex w-[1200px] sm:w-full">
+                        <div v-for="(images, index) in items.image" :key="index+'itemsImage'" class="w-[200px] sm:w-full" @click="showImg(index, items.image)">
+                          <img :src="images.image" class="w-40 h-20 object-cover pr-2"/>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                  
+                </div>
+                
+                <div class="border-b border-black w-11/12"></div>
                 </div>
                 
               </div>
+
+
 
               <div>Catatan Instrumen : {{ instrumen[instrumen.length-1].value }}</div>
                 
             </div>
             <div v-if="menu === 'jok-trim'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
 
-              <div class="mb-4 cursor-pointer" @click="items.open = !items.open" v-for="(items, index) in jok_trim" :key="index+'jok_trim'">
+              <div class="mb-4 cursor-pointer" v-for="(items, index) in jok_trim" :key="index+'jok_trim'">
                 <div v-if="items.name !== 'catatan_jok_trim'">
                   <div class="flex flex-row justify-between">
-                  <div class="flex items-center">
-                    <h1 class="font-bold text-md" >{{ items.name }}</h1>
+                  <div class="flex items-center" @click="items.open = !items.open">
+                    <h1 class="font-bold text-md">{{ items.name }}</h1>
                     <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
                   </div>
                   <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
+                  </div>
+                <div class="flex sm:justify-around my-4" v-show="items.value === 2 && items.open">
+                  <div class="overflow-x-auto">
+                    <div class="flex-none w-full">
+                      <div class="flex w-[1200px] sm:w-full">
+                        <div v-for="(images, index) in items.image" :key="index+'itemsImage'" class="w-[200px] sm:w-full" @click="showImg(index, items.image)">
+                          <img :src="images.image" class="w-40 h-20 object-cover pr-2"/>
+                        </div>
+                      </div>
+                      
+                    </div>
+                    
+                    <!-- <div>qkwjelkqwjekqwjelkqjlkejqlwkejlqwkejlqkwjelqkwjelkqwjelkqjwlekqjwlekqjwlekjqw</div> -->
+                  </div>
+                  
                 </div>
-                <div class="flex justify-around my-4" v-show="items.value === 2 && items.open"><img :src="image_setir" class="w-40"/></div>
+                
                 <div class="border-b border-black w-11/12"></div>
                 </div>
                 
@@ -626,17 +665,30 @@ getDetailData();
             </div>
             <div v-if="menu === 'kaca-lampu'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
 
-              <div class="mb-4 cursor-pointer" @click="items.open = !items.open" v-for="(items, index) in kaca_lampu" :key="index+'kaca_lampu'">
+              <div class="mb-4 cursor-pointer" v-for="(items, index) in kaca_lampu" :key="index+'kaca_lampu'">
                 <div v-if="items.name !== 'catatan_kaca_lampu'">
                   <div class="flex flex-row justify-between">
-                    <div class="flex items-center">
-                        <h1 class="font-bold text-md" >{{ items.name }}</h1>
-                        <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
+                  <div class="flex items-center" @click="items.open = !items.open">
+                    <h1 class="font-bold text-md">{{ items.name }}</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
+                  </div>
+                  <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
+                  </div>
+                <div class="flex sm:justify-around my-4" v-show="items.value === 2 && items.open">
+                  <div class="overflow-x-auto">
+                    <div class="flex-none w-full">
+                      <div class="flex w-[1200px] sm:w-full">
+                        <div v-for="(images, index) in items.image" :key="index+'itemsImage'" class="w-[200px] sm:w-full" @click="showImg(index, items.image)">
+                          <img :src="images.image" class="w-40 h-20 object-cover pr-2"/>
+                        </div>
                       </div>
-                      <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
+                      
                     </div>
-                    <div class="flex justify-around my-4" v-show="items.value === 2 && items.open"><img :src="image_setir" class="w-40"/></div>
-                    <div class="border-b border-black w-11/12"></div>
+                  </div>
+                  
+                </div>
+                
+                <div class="border-b border-black w-11/12"></div>
                 </div>
                 
               </div>
@@ -646,18 +698,32 @@ getDetailData();
             </div>
             <div v-if="menu === 'underbody'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
 
-              <div class="mb-4 cursor-pointer" @click="items.open = !items.open" v-for="(items, index) in underbody" :key="index+'underbody'">
+              <div class="mb-4 cursor-pointer" v-for="(items, index) in underbody" :key="index+'under_body'">
                 <div v-if="items.name !== 'catatan_under_body'">
-                    <div class="flex flex-row justify-between">
-                      <div class="flex items-center">
-                        <h1 class="font-bold text-md" >{{ items.name }}</h1>
-                        <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
+                  <div class="flex flex-row justify-between">
+                  <div class="flex items-center" @click="items.open = !items.open">
+                    <h1 class="font-bold text-md">{{ items.name }}</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
+                  </div>
+                  <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
+                  </div>
+                <div class="flex sm:justify-around my-4" v-show="items.value === 2 && items.open">
+                  <div class="overflow-x-auto">
+                    <div class="flex-none w-full">
+                      <div class="flex w-[1200px] sm:w-full">
+                        <div v-for="(images, index) in items.image" :key="index+'itemsImage'" class="w-[200px] sm:w-full" @click="showImg(index, items.image)">
+                          <img :src="images.image" class="w-40 h-20 object-cover pr-2"/>
+                        </div>
                       </div>
-                      <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
+                      
                     </div>
-                    <div class="flex justify-around my-4" v-show="items.value === 2 && items.open"><img :src="image_setir" class="w-40"/></div>
-                    <div class="border-b border-black w-11/12"></div>
+                  </div>
+                  
                 </div>
+                
+                <div class="border-b border-black w-11/12"></div>
+                </div>
+                
               </div>
 
               <div>Catatan Underbody : {{ underbody[underbody.length-1].value }}  </div>
@@ -665,18 +731,32 @@ getDetailData();
             </div>
             <div v-if="menu === 'oli-cairan'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
 
-              <div class="mb-4 cursor-pointer" @click="items.open = !items.open" v-for="(items, index) in oli_cairan" :key="index+'oli_cairan'">
+              <div class="mb-4 cursor-pointer" v-for="(items, index) in oli_cairan" :key="index+'oli_cairan'">
                 <div v-if="items.name !== 'catatan_oli_cairan'">
-                    <div class="flex flex-row justify-between">
-                      <div class="flex items-center">
-                        <h1 class="font-bold text-md" >{{ items.name }}</h1>
-                        <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
+                  <div class="flex flex-row justify-between">
+                  <div class="flex items-center" @click="items.open = !items.open">
+                    <h1 class="font-bold text-md">{{ items.name }}</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
+                  </div>
+                  <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
+                  </div>
+                <div class="flex sm:justify-around my-4" v-show="items.value === 2 && items.open">
+                  <div class="overflow-x-auto">
+                    <div class="flex-none w-full">
+                      <div class="flex w-[1200px] sm:w-full">
+                        <div v-for="(images, index) in items.image" :key="index+'itemsImage'" class="w-[200px] sm:w-full" @click="showImg(index, items.image)">
+                          <img :src="images.image" class="w-40 h-20 object-cover pr-2"/>
+                        </div>
                       </div>
-                      <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
+                      
                     </div>
-                    <div class="flex justify-around my-4" v-show="items.value === 2 && items.open"><img :src="image_setir" class="w-40"/></div>
-                    <div class="border-b border-black w-11/12"></div>
+                  </div>
+                  
                 </div>
+                
+                <div class="border-b border-black w-11/12"></div>
+                </div>
+                
               </div>
 
               <div>Catatan Oli & Cairan : {{ oli_cairan.catatan_oli_cairan }}</div>
@@ -684,18 +764,32 @@ getDetailData();
             </div>
             <div v-if="menu === 'ruangmesin'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
               
-              <div class="mb-4 cursor-pointer" @click="items.open = !items.open" v-for="(items, index) in ruangmesin" :key="index+'ruangmesin'">
+              <div class="mb-4 cursor-pointer" v-for="(items, index) in ruangmesin" :key="index+'ruang_mesin'">
                 <div v-if="items.name !== 'catatan_ruang_mesin'">
                   <div class="flex flex-row justify-between">
-                  <div class="flex items-center">
-                    <h1 class="font-bold text-md" >{{ items.name }}</h1>
+                  <div class="flex items-center" @click="items.open = !items.open">
+                    <h1 class="font-bold text-md">{{ items.name }}</h1>
                     <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
                   </div>
                   <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
+                  </div>
+                <div class="flex sm:justify-around my-4" v-show="items.value === 2 && items.open">
+                  <div class="overflow-x-auto">
+                    <div class="flex-none w-full">
+                      <div class="flex w-[1200px] sm:w-full">
+                        <div v-for="(images, index) in items.image" :key="index+'itemsImage'" class="w-[200px] sm:w-full" @click="showImg(index, items.image)">
+                          <img :src="images.image" class="w-40 h-20 object-cover pr-2"/>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                  
                 </div>
-                <div class="flex justify-around my-4" v-show="items.value === 2 && items.open"><img :src="image_setir" class="w-40"/></div>
+                
                 <div class="border-b border-black w-11/12"></div>
                 </div>
+                
               </div>
 
               <div>Catatan Oli & Cairan : {{ruangmesin.catatan_ruang_mesin}}</div>
@@ -703,34 +797,63 @@ getDetailData();
             </div>
             <div v-if="menu === 'fitur'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
 
-              <div class="mb-4 cursor-pointer" @click="items.open = !items.open" v-for="(items, index) in fitur" :key="index+'fitur'">
-               <div v-if="items.name !== 'catatan_fitur'">
-                    <div class="flex flex-row justify-between">
-                      <div class="flex items-center">
-                        <h1 class="font-bold text-md" >{{ items.name }}</h1>
-                        <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
+              <div class="mb-4 cursor-pointer" v-for="(items, index) in fitur" :key="index+'fitur'">
+                <div v-if="items.name !== 'catatan_fitur'">
+                  <div class="flex flex-row justify-between">
+                  <div class="flex items-center" @click="items.open = !items.open">
+                    <h1 class="font-bold text-md">{{ items.name }}</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
+                  </div>
+                  <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
+                  </div>
+                <div class="flex sm:justify-around my-4" v-show="items.value === 2 && items.open">
+                  <div class="overflow-x-auto">
+                    <div class="flex-none w-full">
+                      <div class="flex w-[1200px] sm:w-full">
+                        <div v-for="(images, index) in items.image" :key="index+'itemsImage'" class="w-[200px] sm:w-full" @click="showImg(index, items.image)">
+                          <img :src="images.image" class="w-40 h-20 object-cover pr-2"/>
+                        </div>
                       </div>
-                      <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
+                      
                     </div>
-                    <div class="flex justify-around my-4" v-show="items.value === 2 && items.open"><img :src="image_setir" class="w-40"/></div>
-                    <div class="border-b border-black w-11/12"></div></div>
+                  </div>
+                  
+                </div>
+                
+                <div class="border-b border-black w-11/12"></div>
+                </div>
+                
               </div>
 
               <div>Catatan Fitur : {{ fitur[fitur.length-1].value }}</div>
 
             </div>
             <div v-if="menu === 'dokumen'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
-              <div class="mb-4 cursor-pointer" @click="items.open = !items.open" v-for="(items, index) in dokumen" :key="index+'dokumen'">
+
+              <div class="mb-4 cursor-pointer" v-for="(items, index) in dokumen" :key="index+'dokumen'">
                 <div v-if="items.name !== 'catatan_dokumen'">
-                    <div class="flex flex-row justify-between">
-                      <div class="flex items-center">
-                        <h1 class="font-bold text-md" >{{ items.name }}</h1>
-                        <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
+                  <div class="flex flex-row justify-between">
+                  <div class="flex items-center" @click="items.open = !items.open">
+                    <h1 class="font-bold text-md">{{ items.name }}</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
+                  </div>
+                  <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
+                  </div>
+                <div class="flex sm:justify-around my-4" v-show="items.value === 2 && items.open">
+                  <div class="overflow-x-auto">
+                    <div class="flex-none w-full">
+                      <div class="flex w-[1200px] sm:w-full">
+                        <div v-for="(images, index) in items.image" :key="index+'itemsImage'" class="w-[200px] sm:w-full" @click="showImg(index, items.image)">
+                          <img :src="images.image" class="w-40 h-20 object-cover pr-2"/>
+                        </div>
                       </div>
-                      <img :src="items.value === 1 ? image_checklist_merah: image_checklist_hijau" class="w-6 mt-2"/>
+                      
                     </div>
-                    <div class="flex justify-around my-4" v-show="items.value === 2 && items.open"><img :src="image_setir" class="w-40"/></div>
-                    <div class="border-b border-black w-11/12"></div>
+                  </div>
+                  
+                </div>
+                
+                <div class="border-b border-black w-11/12"></div>
                 </div>
                 
               </div>
@@ -758,17 +881,31 @@ getDetailData();
 
             </div>
             <div v-if="menu === 'body'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
-              <div class="mb-4 cursor-pointer" @click="items.open = !items.open" v-for="(items, index) in body" :key="index+'dokumen'">
-                <div v-if="items.name !== 'catatan_dokumen'">
-                    <div class="flex flex-row justify-between">
-                      <div class="flex items-center">
-                        <h1 class="font-bold text-md" >{{ items.name }}</h1>
-                        <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
+
+              <div class="mb-4 cursor-pointer" v-for="(items, index) in body" :key="index+'body'">
+                <div v-if="items.name !== 'catatan_body'">
+                  <div class="flex flex-row justify-between">
+                  <div class="flex items-center" @click="items.open = !items.open">
+                    <h1 class="font-bold text-md">{{ items.name }}</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
+                  </div>
+                  <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
+                  </div>
+                <div class="flex sm:justify-around my-4" v-show="items.value === 2 && items.open">
+                  <div class="overflow-x-auto">
+                    <div class="flex-none w-full">
+                      <div class="flex w-[1200px] sm:w-full">
+                        <div v-for="(images, index) in items.image" :key="index+'itemsImage'" class="w-[200px] sm:w-full" @click="showImg(index, items.image)">
+                          <img :src="images.image" class="w-40 h-20 object-cover pr-2"/>
+                        </div>
                       </div>
-                      <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
+                      
                     </div>
-                    <div class="flex justify-around my-4" v-show="items.value === 2 && items.open"><img :src="image_setir" class="w-40"/></div>
-                    <div class="border-b border-black w-11/12"></div>
+                  </div>
+                  
+                </div>
+                
+                <div class="border-b border-black w-11/12"></div>
                 </div>
                 
               </div>
@@ -777,17 +914,31 @@ getDetailData();
 
             </div>
             <div v-if="menu === 'kelengkapan'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
-              <div class="mb-4 cursor-pointer" @click="items.open = !items.open" v-for="(items, index) in kelengkapan" :key="index+'dokumen'">
-                <div v-if="items.name !== 'catatan_dokumen'">
-                    <div class="flex flex-row justify-between">
-                      <div class="flex items-center">
-                        <h1 class="font-bold text-md" >{{ items.name }}</h1>
-                        <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
+
+              <div class="mb-4 cursor-pointer" v-for="(items, index) in kelengkapan" :key="index+'kelengkapan'">
+                <div v-if="items.name !== 'catatan_kelengkapan'">
+                  <div class="flex flex-row justify-between">
+                  <div class="flex items-center" @click="items.open = !items.open">
+                    <h1 class="font-bold text-md">{{ items.name }}</h1>
+                    <img :src="image_arrow_down" class="w-4 h-3 mx-2" v-show="items.value === 2"/>
+                  </div>
+                  <img :src="items.value === 2 ? image_checklist_kuning: (items.value === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2"/>
+                  </div>
+                <div class="flex sm:justify-around my-4" v-show="items.value === 2 && items.open">
+                  <div class="overflow-x-auto">
+                    <div class="flex-none w-full">
+                      <div class="flex w-[1200px] sm:w-full">
+                        <div v-for="(images, index) in items.image" :key="index+'itemsImage'" class="w-[200px] sm:w-full" @click="showImg(index, items.image)">
+                          <img :src="images.image" class="w-40 h-20 object-cover pr-2"/>
+                        </div>
                       </div>
-                      <img :src="items.value === 1 ? image_checklist_merah: image_checklist_hijau" class="w-6 mt-2"/>
+                      
                     </div>
-                    <div class="flex justify-around my-4" v-show="items.value === 2 && items.open"><img :src="image_setir" class="w-40"/></div>
-                    <div class="border-b border-black w-11/12"></div>
+                  </div>
+                  
+                </div>
+                
+                <div class="border-b border-black w-11/12"></div>
                 </div>
                 
               </div>
@@ -803,6 +954,11 @@ getDetailData();
   
 </template>
 <style scoped>
+  div.ex1 {
+    background-color: lightblue;
+    width: 40px;
+    overflow-x: scroll;
+  }
   .container-xl {
     max-width: 1200px;
     width: 90%;

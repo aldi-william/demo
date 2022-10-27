@@ -7,7 +7,6 @@ import image_api from '../assets/images/icon_api.png';
 import image_mobil from '../assets/images/icon_mobil.png';
 import image_tergenang from '../assets/images/icon_tergenang.png';
 import image_bulat from '../assets/images/bulat.png';
-import { ref } from 'vue';
 import { formatPrice, textCapitalize } from '../mixins';
 import { useBursaStore } from '../stores/bursa';
 const store = useBursaStore();
