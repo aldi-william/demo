@@ -75,6 +75,7 @@
     }
 
     const menu = ref('testdrive');
+    const count = ref(0);
     let detailInspection:any = ref([{
       car_detail:{
         transmisi:'',
@@ -174,6 +175,7 @@ const getDetailData = () => {
    GetService.getDetailData(params).then((response:any) => {
       
       detailInspection.value = response.data.data.detail;
+      count.value = detailInspection.value.favorites.length;
       image_cars.value = response.data.data.image_car;
       testdrive.value = response.data.data.test_drive;
       dashboard.value = response.data.data.dashboard;
@@ -324,7 +326,7 @@ getDetailData();
                 <div class="font-bold">{{ detailInspection.car_detail ? detailInspection.car_detail.tahun : 0}}</div>
               </div>
               <div class="col-span-2">
-                <img :src="detailInspection.favorites.length > 0 ? image_star : image_star_empty" alt="star" class="w-8 h-8 cursor-pointer" @click="favorite(detailInspection.id)" />
+                <img :src="count > 0 ? image_star : image_star_empty" alt="star" class="w-8 h-8 cursor-pointer" @click="favorite(detailInspection.id)" />
               </div>     
              </div>
              <div class="grid grid-cols-12 rounded-lg p-4 border-gray border-2 my-4 bg-white">
