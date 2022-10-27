@@ -42,8 +42,6 @@ const handle_decrement = () => {
       } 
   }
 
-
-
 </script>
 <template>
   <div class="rounded shadow-2xl p-4 h-full">
