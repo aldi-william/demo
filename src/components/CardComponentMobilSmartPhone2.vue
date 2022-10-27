@@ -44,8 +44,8 @@ const products = defineProps(['product','status'])
           </div>
       </div>
       <div>
-          <p class="text-[10px] font-bold h-8">{{product.car_detail.car_brand.name}} {{product.car_detail.car_merk.name}}
-                  {{product.car_detail.car_type.name}}</p>
+          <p class="text-[10px] font-bold truncate">{{product.car_detail.car_brand.name.toUpperCase()}} {{product.car_detail.car_merk.name.toUpperCase()}}
+                  {{product.car_detail.car_type.name.toUpperCase()}}</p>
           
           <div class="flex items-center">
               <p class="text-xs">{{product.car_detail.transmisi}}</p> 
@@ -55,9 +55,9 @@ const products = defineProps(['product','status'])
           <div class="flex items-center">
             <p class="text-xs">{{product.car_detail.tahun}}</p> 
             <img :src="image_bulat" class="w-2 h-2 mx-1"/> 
-            <span class="text-[8px]">{{ product.car_detail.kota ? textCapitalize(product.car_detail.kota) : ''}}</span> 
+            <span class="text-xs truncate">{{ product.car_detail.kota ? textCapitalize(product.car_detail.kota) : ''}}</span> 
           </div>
-          <p class="text-[12px] font-bold">Rp. {{ formatPrice(product.open_price) }}</p>
+          <p class="text-[12px] font-bold">Rp {{ formatPrice(product.open_price) }}</p>
       </div>
     </div>
     <div class="flex border-t border-gray-300 bg-blue-300 items-end rounded-b-[3px]">

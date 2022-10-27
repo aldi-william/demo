@@ -6,6 +6,7 @@ import image_users from '../assets/images/user.png';
 import image_api from '../assets/images/icon_api.png';
 import image_mobil from '../assets/images/icon_mobil.png';
 import image_tergenang from '../assets/images/icon_tergenang.png';
+import image_bulat from '../assets/images/bulat.png';
 import button_plus from '../assets/images/btn_plus.png';
 import button_minus from '../assets/images/btn_minus.png';
 import { ref } from 'vue';
@@ -54,13 +55,21 @@ const handle_decrement = () => {
             <p class="text-xs px-2 py-1 bg-white text-black rounded-lg mx-1 border border-blue-400">TAV</p>
           </div>
         </div>
-        <div class="w-2/3 ml-4">
+        <div class="w-2/3 ml-2">
           <div>
-            <p class="text-xs font-bold">{{product.car_detail.car_brand.name}} {{product.car_detail.car_merk.name}}
-                    {{product.car_detail.car_type.name}}</p>
-            <p class="text-xs">{{product.car_detail.transmisi}} | {{formatPrice(product.car_detail.km_service_terakhir)}} KM</p>
-            <p class="text-xs"> {{product.car_detail.tahun}} | {{ product.car_detail.kota ? textCapitalize(product.car_detail.kota) : ''}} </p>
-            <p class="text-lg">Rp. {{ formatPrice(product.open_price) }}</p>
+            <p class="text-xs font-bold truncate">{{product.car_detail.car_brand.name.toUpperCase()}} {{product.car_detail.car_merk.name.toUpperCase()}}
+                    {{product.car_detail.car_type.name.toUpperCase()}}</p>
+            <div class="text-xs flex items-center">
+              <p>{{product.car_detail.transmisi}}</p> 
+              <img :src="image_bulat" class="w-2 h-2 mx-1"/> 
+              <p>{{formatPrice(product.car_detail.km_service_terakhir)}} KM</p>
+            </div>
+            <div class="text-xs truncate flex items-center"> 
+              <p>{{product.car_detail.tahun}}</p> 
+              <img :src="image_bulat" class="w-2 h-2 mx-1"/> 
+              <p>{{ product.car_detail.kota ? textCapitalize(product.car_detail.kota) : ''}}</p> 
+            </div>
+            <p class="text-lg">Rp {{ formatPrice(product.open_price) }}</p>
           </div>
         </div>
     </div>
