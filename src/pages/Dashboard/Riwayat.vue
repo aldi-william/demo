@@ -21,8 +21,8 @@
 <template>
   <div class="bg-biru_fb relative -top-2">
     <div class="container-xl">
-      <h1 class="py-4 text-3xl font-bold">Riwayat Lelang</h1>
-      <div class="grid grid-cols-12">
+      <!-- <h1 class="py-4 text-3xl font-bold">Riwayat Lelang</h1> -->
+      <div class="grid grid-cols-12 pt-4">
         <div @click="riwayat_menu = 'penawaran'" class="col-span-6 cursor-pointer" :class="riwayat_menu === 'penawaran' ? 'border-b-4 border-blue-400':'border-b-2 border-gray-400'">
              <h1 class="sm:text-2xl text-center py-2">Riwayat Penawaran</h1>
         </div>

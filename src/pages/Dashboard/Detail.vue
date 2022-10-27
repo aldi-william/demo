@@ -235,9 +235,20 @@ getDetailData();
   
   <div class="bg-biru_fb">
     <div class="container-xl pb-20">
-       <div class="bg-white py-2">
-        <div class="sm:text-xl text-center">Status Lelang : <span class="text-red-500 font-bold">{{ status }}</span>  || Sisa Waktu : <span class="text-red-500 font-bold">{{ timeToCountdown }}</span></div>
-       </div>
+      <div class="container-xl grid grid-cols-12 bg-white shadow-xl mb-12">
+      <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 sm:px-4 sm:bg-white py-2 flex justify-center items-center z-20 sm:z-0 md:z-0 lg:z-0 xl:z-0 2xl:z-0">
+        <div class="bg-white w-full fixed sm:relative px-4 sm:px-0 py-2 sm:mt-0 sm:py-0 border-b sm:border-none border-black">
+          <div class="grid grid-cols-12 gap-2">
+            <p class="col-span-2 text-sm sm:text-2xl font-bold">
+              <span class="text-blue-500">Status</span>
+            </p>
+            <p class="col-span-4 text-sm sm:text-2xl font-bold">:&nbsp;<span class="text-red-500">{{ status }}</span></p>
+            <p class="col-span-2 text-sm sm:text-2xl font-bold"><span class="text-blue-500">Sisa</span></p>
+            <p class="col-span-4 text-sm sm:text-2xl font-bold">:&nbsp;<span class="text-red-500">{{timeToCountdown}}</span></p>
+          </div>
+        </div>
+      </div>  
+      </div>
        
        <ModalComponent v-show="modal" @close="modal = false"/>
 
