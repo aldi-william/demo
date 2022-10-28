@@ -42,12 +42,8 @@ const handle_decrement = () => {
 </script>
 <template>
   <div class="bg-white relative shadow-xl">
-    <div class="absolute top-2 left-2">
-          <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star"
-              class="w-6 h-6" @click="$emit('addFav', product.id)" />
-    </div>
     <div class="flex border-b border-gray-300 py-1">
-        <div class="w-1/3">
+        <div class="w-1/3 flex items-center justify-center">
           <div class="flex justify-center z-10">
             <img :src="product.car_detail.image_feature1" alt="car" class="w-24 h-24 cursor-pointer object-cover"
                   @click="$router.push(`/dashboard/detail/${product.id}`);" />
@@ -55,8 +51,8 @@ const handle_decrement = () => {
         </div>
         <div class="w-2/3">
           <div class="flex justify-left items-center mt-1">
-            <p class="text-xs px-2 py-1 bg-white text-black rounded-lg border border-blue-400">{{ product.code }}</p>
-            <p class="text-xs px-2 py-1 bg-white text-black rounded-lg mx-1 border border-blue-400">TAV</p>
+            <p class="text-[8px] bg-white text-black border border-blue-400">{{ product.code }}</p>
+            <p class="text-[8px] bg-white text-black mx-1 border border-blue-400">TAV</p>
           </div>
           <div>
             <p class="text-lg font-bold truncate">{{product.car_detail.car_brand.name.toUpperCase()}} {{product.car_detail.car_merk.name.toUpperCase()}}
@@ -71,7 +67,13 @@ const handle_decrement = () => {
               <img :src="image_bulat" class="w-2 h-2 mx-1"/> 
               <p>{{ product.car_detail.kota ? textCapitalize(product.car_detail.kota) : ''}}</p> 
             </div>
-            <p class="text-lg font-bold">Rp {{ formatPrice(product.open_price) }}</p>
+            <div class="text-lg font-bold flex justify-between">
+              <p>Rp {{ formatPrice(product.open_price) }}</p>
+              <div>
+                    <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star"
+                        class="w-6 h-6" @click="$emit('addFav', product.id)" />
+              </div>
+            </div>
           </div>
         </div>
     </div>
@@ -86,26 +88,26 @@ const handle_decrement = () => {
       </div>
       <div class="flex items-center">
                 <div v-if="product.car_detail.car_inspection" v-tippy="{ content: 'Kecelakaan ringan' }">
-                  <img :src="image_mobil" class="w-6 h-3" v-if="product.car_detail.car_inspection.accident_free !=='1'"/>
+                  <img :src="image_mobil" class="w-6 h-3 mr-2" v-if="product.car_detail.car_inspection.accident_free !=='1'"/>
                 </div>
                 <div v-if="product.car_detail.car_inspection" v-tippy="{ content: 'Kecelakaan ringan' }">
-                  <img :src="image_tergenang" class="w-6 h-3 mx-4" v-if="product.car_detail.car_inspection.flood_free !=='1'"/>
+                  <img :src="image_tergenang" class="w-6 h-3 mx-2" v-if="product.car_detail.car_inspection.flood_free !=='1'"/>
                 </div>
                 <div v-if="product.car_detail.car_inspection" v-tippy="{ content: 'Kecelakaan ringan' }">
-                  <img :src="image_api" class="w-6 h-3" v-if="product.car_detail.car_inspection.fire_free !=='1'"/>
+                  <img :src="image_api" class="w-6 h-3 ml-2" v-if="product.car_detail.car_inspection.fire_free !=='1'"/>
                 </div>
       </div>
     </div>
     <div class="bg-white flex items-center p-2 justify-center" v-show="status === 'Berlangsung'">
       <div class="flex justify-center w-1/2">
           <div class="flex flex-col w-9/12">
-          <button @click="isActive = 5; handle_increment()" class="px-2 py-1 text-white rounded w-full text-xs mb-1" :class="isActive === 5 ? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">+ Rp 500.000</button>
+          <button @click="isActive = 5; handle_increment()" class="px-2 py-1 text-white rounded w-full text-xs mb-4" :class="isActive === 5 ? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">+ Rp 500.000</button>
           <button @click="isActive = 10; handle_increment()" class="px-2 py-1 text-white rounded w-full text-xs" :class="isActive === 10? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">+ Rp 1.000.000</button>
           </div>
       </div>
       <div class="flex justify-center w-1/2">
         <div class="flex flex-col">
-          <p class="font-bold text-[14px] mb-1">Rp {{ new Intl.NumberFormat().format(harga) }}</p>
+          <p class="font-bold mb-4">Rp {{ new Intl.NumberFormat().format(harga) }}</p>
           <button @click="isTawar = 'konfirmasi'; harga=500000;" class="bg-tertier px-2 py-1 rounded text-white w-24 font-bold text-xs">Mulai Tawar</button>
         </div>
       </div>
