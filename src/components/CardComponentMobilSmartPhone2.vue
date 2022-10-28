@@ -19,7 +19,7 @@ const products = defineProps(['product','status'])
             <div class="flex justify-center relative"> 
               <img :src="product.car_detail.image_feature1" alt="car" class="w-full h-40 z-10 cursor-pointer object-cover"
                 @click="$router.push(`/dashboard/detail/${product.id}`);" />
-                <div class="mx-1 bg-white absolute z-20 top-2 left-2 rounded-full p-1 flex justify-center items-center">
+                <div class="mx-1 absolute z-20 top-2 left-2 rounded-full flex justify-center items-center">
                   <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star" class="w-8 h-8" @click="$emit('addFav', product.id)" />
                 </div>
             </div>
