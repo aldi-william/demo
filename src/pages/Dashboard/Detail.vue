@@ -254,29 +254,22 @@ getDetailData();
   
   <div class="bg-biru_fb">
     <div class="container-xl pb-20">
-      <div class="grid grid-cols-12 bg-white shadow-xl">
-      <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 sm:px-4 sm:bg-white py-2 flex justify-center items-center z-20 sm:z-0 md:z-0 lg:z-0 xl:z-0 2xl:z-0">
-        <div class="bg-white w-full fixed sm:relative px-4 sm:px-0 py-2 sm:mt-0 sm:py-0 border-black">
-          <div class="grid grid-cols-12 gap-2">
-            <p class="col-span-2 text-sm sm:text-2xl font-bold">
-              <span class="text-blue-500">Status</span>
+      <div class="col-span-12 bg-white flex-col fixed sm:top-20 left-0 top-12 z-20 w-full mx-auto"> 
+            <p class="flex justify-center">
+              <span class="text-blue-500 mr-2">Status :&nbsp;<span class="text-red-500">{{ status }}</span></span>
+              <span class="text-blue-500">Sisa :&nbsp;<span class="text-red-500">{{timeToCountdown}}</span></span>
             </p>
-            <p class="col-span-4 text-sm sm:text-2xl font-bold">:&nbsp;<span class="text-red-500">{{ status }}</span></p>
-            <p class="col-span-2 text-sm sm:text-2xl font-bold"><span class="text-blue-500">Sisa</span></p>
-            <p class="col-span-4 text-sm sm:text-2xl font-bold">:&nbsp;<span class="text-red-500">{{timeToCountdown}}</span></p>
-          </div>
-        </div>
-      </div>  
+            <div class="text-center text-xs">{{ tanggal }}</div>
       </div>
        
        <ModalComponent v-show="modal" @close="modal = false"/>
 
-       <div class="flex items-center cursor-pointer my-1 mt-4" @click="historyback">
+       <div class="flex items-center cursor-pointer my-1 mt-4 relative sm:top-10" @click="historyback">
           <img :src="image_arrow" class="w-4 h-4"/>
           <p class="mx-2">Kembali</p>
        </div>
        
-       <div class="grid grid-cols-12 sm:gap-8 md:gap-8 lg:gap-8 xl:gap-8 2xl:gap-8">
+       <div class="grid grid-cols-12 sm:gap-8 md:gap-8 lg:gap-8 xl:gap-8 2xl:gap-8 relative sm:top-10">
         <div class="col-span-12 sm:col-span-7 md:col-span-7 lg:col-span-7 xl:col-span-7 2xl:col-span-7">
           <swiper
             style="

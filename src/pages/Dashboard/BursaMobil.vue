@@ -164,13 +164,13 @@ const scrollToTop = () => {
 <template>
   <div class="bg-biru_fb" @click.self="closeAll()">
     <div class="container-xl grid grid-cols-12 gap-2 sm:gap-2 relative -top-6 pb-2 mb-0 sm:mb-3 sm:top-2" @click.self="closeAll()">
-      <div class="container-xl col-span-12 bg-white flex-col justify-center fixed  z-20 w-full mx-auto"> 
+      <div class="col-span-12 bg-white flex-col fixed sm:top-20 left-0 top-12 z-20 w-full mx-auto"> 
             <p class="flex justify-center">
               <span class="text-blue-500 mr-2">Status :&nbsp;<span class="text-red-500">{{ status }}</span></span>
               <span class="text-blue-500">Sisa :&nbsp;<span class="text-red-500">{{timeToCountdown}}</span></span>
             </p>
             <div class="text-center text-xs">{{ tanggal }}</div>
-      </div>  
+      </div> 
       <div class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 relative bg-white top-12">
         <input type="text" v-model="filterBursa.search" @keyup="filterQuery"
           placeholder="Cari merek atau model mobil" class="pl-8 pr-4 py-2 w-full border-2 border-gray" />
