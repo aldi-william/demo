@@ -71,7 +71,7 @@ const handle_decrement = () => {
               <img :src="image_bulat" class="w-2 h-2 mx-1"/> 
               <p>{{ product.car_detail.kota ? textCapitalize(product.car_detail.kota) : ''}}</p> 
             </div>
-            <p class="text-lg">Rp {{ formatPrice(product.open_price) }}</p>
+            <p class="text-lg font-bold">Rp {{ formatPrice(product.open_price) }}</p>
           </div>
         </div>
     </div>
