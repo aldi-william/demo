@@ -48,9 +48,9 @@ const handle_decrement = () => {
   <div class="rounded shadow-2xl p-4 h-full">
           <div class="relative overflow-hidden">
             <div class="absolute bg-blue-500 rounded text-white top-3 left-3 px-2">{{ product.code }}</div>
-            <div class="bg-red-600 absolute bottom-0 right-0 px-4 py-0 rounded-tl-full text-white flex items-start">
+            <!-- <div class="bg-red-600 absolute bottom-0 right-0 px-4 py-0 rounded-tl-full text-white flex items-start">
               Berlangsung
-            </div>
+            </div> -->
             <img :src="product.car_detail.image_feature1" alt="car" class="w-full h-64 z-10 cursor-pointer object-cover"
               @click="$router.push(`/dashboard/detail/${product.id}`);" />
           </div>
