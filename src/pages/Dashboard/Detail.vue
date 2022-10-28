@@ -368,7 +368,7 @@ getDetailData();
                   <div class="flex justify-center w-1/2">
                     <div class="flex flex-col">
                       <p class="font-bold text-xl mb-1">Rp {{ new Intl.NumberFormat().format(harga) }}</p>
-                      <button @click="isTawar = 'konfirmasi'" class="bg-tertier px-4 py-2 rounded text-white w-40 font-bold text-sm">Mulai Tawar</button>
+                      <button @click="isTawar = 'konfirmasi'; harga=500000;" class="bg-tertier px-4 py-2 rounded text-white w-40 font-bold text-sm">Mulai Tawar</button>
                     </div>
                   </div>
         
