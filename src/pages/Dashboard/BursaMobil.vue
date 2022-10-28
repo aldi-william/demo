@@ -5,15 +5,8 @@ import image_search from '../../assets/images/icon_search.png';
 import image_calender from '../../assets/images/icon_calender.png';
 import image_location from '../../assets/images/icon_location.png';
 import image_filter from '../../assets/images/icon_filter.png';
-import image_car from '../../assets/images/car.png';
-import image_hammer from '../../assets/images/hammer.png';
-import image_users from '../../assets/images/users.png';
-import image_lonceng from '../../assets/images/lonceng.png';
-import image_star from '../../assets/images/star.png';
-import image_star_empty from '../../assets/images/star_empty.png';
-import image_api from '../../assets/images/icon_api.png';
-import image_mobil from '../../assets/images/icon_mobil.png';
-import image_tergenang from '../../assets/images/icon_tergenang.png';
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 import { useBursaStore } from '../../stores/bursa';
 import { formatdate, formatPrice, textCapitalize } from '../../mixins';
 import VueNumberFormat from 'vue-number-format';
@@ -149,6 +142,7 @@ const tahun = ref([2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2
 getDataSession();
 getDataKota();
 
+const isShowStar = ref(false);
 const favorite = (id:any) =>{
   store.addFavorite(id)
   .then(()=>{
@@ -162,8 +156,8 @@ const scrollToTop = () => {
 
 </script>
 <template>
-  <div class="bg-biru_fb" @click.self="closeAll()">
-    <div class="container-xl grid grid-cols-12 gap-2 sm:gap-2 relative -top-6 pb-2 mb-0 sm:mb-3 sm:top-2" @click.self="closeAll()">
+  <div class="bg-biru_fb h-[200%]" @click.self="closeAll()">
+    <div class="container-xl grid grid-cols-12 gap-2 sm:gap-2 relative -top-6 mb-0 sm:top-2" @click.self="closeAll()">
       <div class="col-span-12 bg-white flex-col fixed sm:top-20 left-0 top-12 z-20 w-full mx-auto"> 
             <p class="flex justify-center">
               <span class="text-blue-500 mr-2">Status :&nbsp;<span class="text-red-500">{{ status }}</span></span>
@@ -250,7 +244,7 @@ const scrollToTop = () => {
       </div>
       <div v-for="(product,i) in products" :key="i+'products'"
         class="col-span-6 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white top-12 relative">
-        <CardComponentMobil :product="product" @add-fav="favorite" class="hidden sm:block" />
+        <CardComponentMobil :product="product" @add-fav="favorite" class="hidden sm:block"/>
         <CardComponentMobilSmartPhone2 :product="product" @add-fav="favorite" class="block sm:hidden" :status="status"/>
       </div>
 

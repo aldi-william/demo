@@ -10,12 +10,13 @@ import image_mobil from '../assets/images/icon_mobil.png';
 import image_tergenang from '../assets/images/icon_tergenang.png';
 import button_plus from '../assets/images/btn_plus.png';
 import button_minus from '../assets/images/btn_minus.png';
+import gif from '../assets/images/svg/200.gif';
 import { useRoute } from 'vue-router'
 import { ref } from 'vue';
 import { formatPrice, textCapitalize } from '../mixins';
 import { useBursaStore } from '../stores/bursa';
 const route = useRoute();
-const products = defineProps(['product'])
+const products = defineProps(['product','isShow','status'])
 const isFavorit = ref([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
 const store = useBursaStore();
 const harga = ref(500000);
@@ -81,8 +82,9 @@ const handle_decrement = () => {
             <div class="flex flex-row items-center justify-between">
               <h1 class="font-bold text-xl">{{product.car_detail.car_brand.name.toUpperCase() }} {{product.car_detail.car_merk.name.toUpperCase()}}
                 {{product.car_detail.car_type.name.toUpperCase()}}</h1>
+                <img :src="gif" class="w-20 h-20" v-show="isShow"/>
                 <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star"
-              class="w-8 h-8 cursor-pointer" @click="$emit('addFav', product.id)" />
+              class="w-8 h-8 cursor-pointer" @click="$emit('addFav', product.id);"/>
                 <!-- <img :src="isFavorit[product.id] ? image_star : image_star_empty" alt="star"
               class="w-8 h-8" @click="isFavorit[i] = !isFavorit[i]" /> -->
               <!-- <img :src="image_lonceng" alt="lonceng" class="w-6 h-6" /> -->
@@ -101,7 +103,7 @@ const handle_decrement = () => {
                 class="bg-tertier px-4 py-2 shadow-xl text-sm hover:bg-blue-500 hover:text-white">Lihat</button>
             </div>
           </div>
-          <div class="border border-gray-400 p-2 rounded-lg" v-show="route.name === 'Favorit'">
+          <div class="border border-gray-400 p-2 rounded-lg" v-show="route.name === 'Favorit' && status === 'Berlangsung'">
               <div class="flex flex-row justify-center">
                   <button><img :src="button_minus" class="h-8 w-8" @click="handle_decrement()"/></button>
                   <p class="font-bold text-xl mx-4">Rp {{ new Intl.NumberFormat().format(harga) }}</p>

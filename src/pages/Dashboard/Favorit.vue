@@ -105,7 +105,7 @@ getDataSession();
 
 </script>
 <template>
-    <div class="bg-abu_abu_2">
+    <div class="bg-abu_abu_2 h-screen">
       <div class="col-span-12 bg-white flex-col fixed sm:top-20 left-0 top-12 z-20 w-full mx-auto"> 
             <p class="flex justify-center">
               <span class="text-blue-500 mr-2">Status :&nbsp;<span class="text-red-500">{{ status }}</span></span>
@@ -130,7 +130,7 @@ getDataSession();
         <div class="col-span-12 sm:mt-0"></div>
         <div v-for="(product,i) in products" :key="i+'products'"
             class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white">
-            <CardComponentMobil :product="product" @add-fav="favorite" class="hidden sm:block"/>
+            <CardComponentMobil :product="product" @add-fav="favorite" class="hidden sm:block" :status="status"/>
             <CardComponentMobilSmartPhone :product="product" @add-fav="favorite" class="block sm:hidden" :status="status" />
         </div>
         <div class="mb-20"></div>

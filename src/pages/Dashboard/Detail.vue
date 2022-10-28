@@ -252,7 +252,7 @@ getDetailData();
       @hide="onHide"
     ></vue-easy-lightbox>
   
-  <div class="bg-biru_fb">
+  <div class="bg-biru_fb h-screen">
     <div class="container-xl pb-20">
       <div class="col-span-12 bg-white flex-col fixed sm:top-20 left-0 top-12 z-20 w-full mx-auto"> 
             <p class="flex justify-center">
@@ -375,7 +375,7 @@ getDetailData();
         </div>
         </div>
         
-        <div class="col-span-12 sm:col-span-7 md:col-span-7 lg:col-span-7 xl:col-span-7 2xl:col-span-7 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0 relative -top-12 sm:top-0">
+        <!-- <div class="col-span-12 sm:col-span-7 md:col-span-7 lg:col-span-7 xl:col-span-7 2xl:col-span-7 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0 relative -top-12 sm:top-0">
             <div class="font-bold px-4 py-2 bg-white rounded-lg mb-4">History Arus Lelang</div>
             <div class="grid grid-cols-12 bg-white rounded-lg px-4 py-2 overflow-y-auto h-40">
               <div class="col-span-12 flex flex-row justify-between">
@@ -455,7 +455,7 @@ getDetailData();
                   </div>
               </div>
             </div>
-        </div>
+        </div> -->
         <div class="col-span-12 relative -top-12 sm:top-0">
           <div class="text-xl sm:text-3xl font-bold flex flex-col sm:flex-row items-center justify-between">
           <div class="flex items-center">
@@ -1039,8 +1039,8 @@ getDetailData();
 }
 
 .mySwiper2 {
-  height: 70%;
-  max-height: 350px;
+  height: 100%;
+  max-height: 500px;
   width: 100%;
 }
 
