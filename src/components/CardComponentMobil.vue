@@ -3,8 +3,8 @@ import image_car from '../assets/images/car.png';
 import image_hammer from '../assets/images/hammer.png';
 import image_users from '../assets/images/users.png';
 import image_lonceng from '../assets/images/lonceng.png';
-import image_star from '../assets/images/star.png';
-import image_star_empty from '../assets/images/star_empty.png';
+import image_star from '../assets/images/bintang.png';
+import image_star_empty from '../assets/images/bintang_empty.png';
 import image_api from '../assets/images/icon_api.png';
 import image_mobil from '../assets/images/icon_mobil.png';
 import image_tergenang from '../assets/images/icon_tergenang.png';
@@ -67,13 +67,13 @@ const handle_decrement = () => {
             </div>
             <div class="col-span-6 flex">
               <div v-if="product.car_detail.car_inspection" v-tippy="{ content: 'Kecelakaan ringan' }">
-                <img :src="image_mobil" class="w-8 h-6" v-if="product.car_detail.car_inspection.accident_free !=='1'"/>
+                <img :src="image_mobil" class="w-8 h-6 mr-2" v-if="product.car_detail.car_inspection.accident_free !=='1'"/>
               </div>
               <div v-if="product.car_detail.car_inspection" v-tippy="{ content: 'Kecelakaan ringan' }">
-                <img :src="image_tergenang" class="w-8 h-6 mx-4" v-if="product.car_detail.car_inspection.flood_free !=='1'"/>
+                <img :src="image_tergenang" class="w-8 h-6 mx-2" v-if="product.car_detail.car_inspection.flood_free !=='1'"/>
               </div>
               <div v-if="product.car_detail.car_inspection" v-tippy="{ content: 'Kecelakaan ringan' }">
-                <img :src="image_api" class="w-8 h-6" v-if="product.car_detail.car_inspection.fire_free !=='1'"/>
+                <img :src="image_api" class="w-8 h-6 ml-2" v-if="product.car_detail.car_inspection.fire_free !=='1'"/>
               </div>
             </div>
           </div>
@@ -82,7 +82,7 @@ const handle_decrement = () => {
               <h1 class="font-bold text-xl">{{product.car_detail.car_brand.name.toUpperCase() }} {{product.car_detail.car_merk.name.toUpperCase()}}
                 {{product.car_detail.car_type.name.toUpperCase()}}</h1>
                 <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star"
-              class="w-8 h-8" @click="$emit('addFav', product.id)" />
+              class="w-8 h-8 cursor-pointer" @click="$emit('addFav', product.id)" />
                 <!-- <img :src="isFavorit[product.id] ? image_star : image_star_empty" alt="star"
               class="w-8 h-8" @click="isFavorit[i] = !isFavorit[i]" /> -->
               <!-- <img :src="image_lonceng" alt="lonceng" class="w-6 h-6" /> -->

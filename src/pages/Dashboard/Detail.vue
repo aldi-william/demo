@@ -15,7 +15,7 @@
     import image_arrow from '../../assets/images/left_arrow.png';
     import image_arrow_down from '../../assets/images/arrow_down.png';
     import image_car from '../../assets/images/car.png';
-    import image_star from '../../assets/images/star.png';
+    import image_star from '../../assets/images/bintang.png';
     import image_person from '../../assets/images/person.png';
     import image_mobil_biru from '../../assets/images/mobil_biru.png';
     import image_mobil_putih from '../../assets/images/mobil_putih.png';
@@ -48,7 +48,7 @@
     import image_kelengkapan_putih from '../../assets/images/kelengkapan_putih.png';
     import image_info_biru from '../../assets/images/info_biru.png';
     import image_setir from '../../assets/images/setir.png';
-    import image_star_empty from '../../assets/images/star_empty.png';
+    import image_star_empty from '../../assets/images/bintang_empty.png';
     import GetFilterService from '../../services/GetService';
     import GetService from '../../services/GetService';
     import { useRoute } from 'vue-router';
@@ -256,7 +256,7 @@ getDetailData();
     <div class="container-xl pb-20">
       <div class="grid grid-cols-12 bg-white shadow-xl">
       <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 sm:px-4 sm:bg-white py-2 flex justify-center items-center z-20 sm:z-0 md:z-0 lg:z-0 xl:z-0 2xl:z-0">
-        <div class="bg-white w-full fixed sm:relative px-4 sm:px-0 py-2 sm:mt-0 sm:py-0 border-b sm:border-none border-black">
+        <div class="bg-white w-full fixed sm:relative px-4 sm:px-0 py-2 sm:mt-0 sm:py-0 border-black">
           <div class="grid grid-cols-12 gap-2">
             <p class="col-span-2 text-sm sm:text-2xl font-bold">
               <span class="text-blue-500">Status</span>
@@ -896,19 +896,21 @@ getDetailData();
 
             </div>
             <div v-if="menu === 'ban'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full bg-white p-4">
-              <table>
+              <table width="100%">
                 <thead>
-                  <tr>
-                    <th class="w-1/2">Posisi Ban</th>
+                  <tr class="bg-blue-500 text-white">
+                    <th class="w-1/2 rounded-tl">Posisi Ban</th>
                     <th class="w-1/4">Tipe Velg</th>
-                    <th class="w-1/4">Ketebalan Ban</th>
+                    <th class="w-1/4 rounded-tr">Ketebalan Ban</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(items, index) in ban" :key="index+'ban'">
-                    <td class="w-1/2">{{ items.name }}</td>
-                    <td class="w-1/4">{{ items.value }} </td>
-                    <td class="w-1/4">{{ items.ketebalan }}</td>
+                  <tr v-for="(items, index) in ban" :key="index+'ban'" class="border border-black text-center">
+                    <td class="w-1/2 border border-black">{{ items.name }}</td>
+                    <td class="w-1/4 border border-black">{{ items.value }} </td>
+                    <td class="w-1/4 border border-black">
+                      <img :src="items.ketebalan === 2 ? image_checklist_kuning: (items.ketebalan === 1 ? image_checklist_hijau: image_checklist_merah)" class="w-6 mt-2 mx-auto"/>
+                    </td>
                   </tr>
                 </tbody>
               </table>
