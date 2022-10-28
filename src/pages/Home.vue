@@ -88,8 +88,13 @@
     
     <p class="text-center my-4 font-bold">Berburu mobil bekas Murah & Berkualitas</p>
   </div>
-  <div class="w-full h-full flex flex-col justify-center py-32 bg-biru_fb" :class="isAbsolute ? 'absolute':''">
-     <div class="mx-auto w-9/12 sm:w-3/12 md:w-3/12 lg:w-3/12 xl:w-3/12 2xl:w-3/12 p-8 rounded-xl bg-white shadow-2xl">
+  <div class="w-full h-full flex flex-col justify-center bg-biru_fb -top-10" :class="isAbsolute ? 'absolute':''">
+     <div class="w-full flex justify-center z-10 relative -top-10" v-show="isAnimated2">
+        <div class="flex">
+          <img :src="logo" class="w-40">
+        </div>
+     </div> 
+     <div class="mx-auto w-11/12 sm:w-3/12 md:w-3/12 lg:w-3/12 xl:w-3/12 2xl:w-3/12 p-8 rounded-xl bg-white shadow-2xl">
           <h1 class="text-center text-3xl font-bold mb-2">Selamat Datang</h1>
           <p class="text-center mb-6 text-lg">Platform LELANG MENANG Mobil Bekas Berkualitas</p>
           <div class="w-full mx-auto">
@@ -103,25 +108,25 @@
           </div>
      
           <div class="w-full mx-auto mb-4 flex flex-col sm:flex-row justify-between">
-            <div><input type="checkbox"/>Ingat Password Saya</div>
+            <div>
+              <input type="checkbox"/>
+              <span class="mx-2">Ingat Password Saya</span>
+            </div>   
+          </div>
+          <button class="bg-blue-500 text-white px-4 py-2 w-full mx-auto rounded" @click="logintodashboard()">Masuk</button>
+          <div class="flex justify-center mt-1">
             <a href="#" class="text-blue-400 hover:text-blue-500" @click="showModal = true">Lupa Password ?</a>
           </div>
-
-          <button class="bg-blue-500 text-white px-4 py-2 w-full mx-auto rounded" @click="logintodashboard()">Masuk</button>
+          
           <!-- <div class="text-center">Belum memiliki Akun ? Silahkan <a href="https://docs.google.com/forms/d/e/1FAIpQLSeUmuz7mHM__fyJl9WazOxum0_NLmT4-IPHWFqmroCQe2CWdw/viewform" class="hover:text-blue-500 text-blue-400">daftar disini</a></div>
           <div class="text-center">Ada kendala ? <a href="https://wa.me/6289668303824" class="text-blue-400 hover:text-blue-500">Hubungi Customer Service Lelang</a></div> -->
         
-    </div>
+     </div>
   </div>
   <div class="w-full bg-white fixed bottom-0 py-4 text-center" v-show="isAnimated2">
     &#169; 2022 | PT. TAV Mobil Indonesia
   </div>
-  <div class="w-full sm:w-1/12 fixed top-0 py-4 text-center" v-show="isAnimated2">
-    <div class="flex justify-center sm:justify-start">
-      <img :src="logo" class="w-40">
-    </div>
-    
-  </div>
+ 
 </template>
 <style>
 .welcome .splash {

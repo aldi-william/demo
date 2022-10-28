@@ -163,34 +163,14 @@ const scrollToTop = () => {
 </script>
 <template>
   <div class="bg-biru_fb" @click.self="closeAll()">
-    <div class="container-xl grid grid-cols-12 gap-2 sm:gap-2 py-3" @click.self="closeAll()">
-      <div
-        class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 sm:px-4 sm:bg-white py-2 flex justify-center items-center z-20 sm:z-0 md:z-0 lg:z-0 xl:z-0 2xl:z-0">
-        <div class="bg-white w-full fixed sm:relative px-4 sm:px-0 py-2 sm:mt-0 sm:py-0">
-          <div class="grid grid-cols-12">
-            <p class="col-span-6 text-sm sm:text-2xl font-bold">
-              <span class="text-blue-500">Status Lelang</span>
+    <div class="container-xl grid grid-cols-12 gap-2 sm:gap-2 relative -top-6 pb-2 mb-0 sm:mb-3 sm:top-3" @click.self="closeAll()">
+      <div class="col-span-12 bg-white flex-col justify-center"> 
+            <p class="flex justify-center">
+              <span class="text-blue-500 mr-2">Status :&nbsp;<span class="text-red-500">{{ status }}</span></span>
+              <span class="text-blue-500">Sisa :&nbsp;<span class="text-red-500">{{timeToCountdown}}</span></span>
             </p>
-            <p class="col-span-6 text-sm sm:text-2xl font-bold">:&nbsp;<span class="text-red-500">{{ status }}</span></p>
-            <p class="col-span-6 text-sm sm:text-2xl font-bold"><span class="text-blue-500">Sisa Waktu</span></p>
-            <p class="col-span-6 text-sm sm:text-2xl font-bold">:&nbsp;<span class="text-red-500">{{timeToCountdown}}</span></p>
-          </div>
-        </div>
-      </div>
-      <div
-        class="col-span-12 sm:col-span-3 md:col-span-3 lg:col-span-3 xl:col-span-3 2xl:col-span-3 bg-white mt-6 sm:mt-0">
-        <div class="px-4 py-2 border-2 border-gray rounded">
-          <div class="flex flex-col py-2">
-            <p class="text-center">1. Sesi Pagi : 09.00 - 11.00 WIB</p>
-            <p class="text-center">2. Sesi Sore : 13.00 - 15.00 WIB</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 bg-white">
-        <div class="flex items-center justify-center py-6 sm:pt-8">
-          <div class="text-center">Hari ini : {{ tanggal }}</div>
-        </div>
-      </div>
+            <div class="text-center text-xs">{{ tanggal }}</div>
+      </div>  
       <div class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 relative bg-white">
         <input type="text" v-model="filterBursa.search" @keyup="filterQuery"
           placeholder="Cari merek atau model mobil" class="pl-8 pr-4 py-2 w-full border-2 border-gray" />

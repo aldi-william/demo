@@ -14,7 +14,10 @@ const products = defineProps(['product','status'])
 </script>
 <template>
   <div class="rounded-[3px]">
-    <div class="bg-white mt-2 h-full p-1">
+    <div class="bg-white mt-2 h-full p-1 relative">
+      <div class="mx-1 bg-white absolute z-20 top-3 rounded-full">
+        <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star" class="w-4 h-4" @click="$emit('addFav', product.id)" />
+      </div>
       <div>
             <div class="flex justify-center"> 
               <img :src="product.car_detail.image_feature1" alt="car" class="w-40 h-40 z-10 cursor-pointer object-cover"
@@ -24,11 +27,9 @@ const products = defineProps(['product','status'])
       <div class="flex justify-between items-center mt-1">
           <div class="flex">
             <p class="text-[8px] px-[2px] py-[1px] bg-white text-black rounded-[2px] border border-blue-500">{{ product.code }}</p>
-            <p class="text-[8px] px-[2px] py-[1px] bg-white text-black rounded-[2px] border border-blue-500 mx-2">TAV</p>
-            <div class="mx-1">
-                 <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star" class="w-4 h-4" @click="$emit('addFav', product.id)" />
-            </div>
-            <div class="flex items-center">
+            <p class="text-[8px] px-[2px] py-[1px] bg-white text-black rounded-[2px] border border-blue-500 mx-2">TAV</p>    
+          </div>
+          <div class="flex items-center justify-end">
                   <div v-if="product.car_detail.car_inspection" v-tippy="{ content: 'Kecelakaan ringan' }">
                     <img :src="image_mobil" class="w-[14px] h-[10px]" v-if="product.car_detail.car_inspection.accident_free !=='1'"/>
                   </div>
@@ -39,7 +40,6 @@ const products = defineProps(['product','status'])
                     <img :src="image_api" class="w-3 h-3" v-if="product.car_detail.car_inspection.fire_free !=='1'"/>
                   </div>
             </div>
-          </div>
       </div>
       <div>
           <p class="text-[10px] font-bold truncate">{{product.car_detail.car_brand.name.toUpperCase()}} {{product.car_detail.car_merk.name.toUpperCase()}}
