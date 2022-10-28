@@ -164,7 +164,7 @@ const scrollToTop = () => {
 <template>
   <div class="bg-biru_fb" @click.self="closeAll()">
     <div class="container-xl grid grid-cols-12 gap-2 sm:gap-2 relative -top-6 pb-2 mb-0 sm:mb-3 sm:top-3" @click.self="closeAll()">
-      <div class="col-span-12 bg-white flex-col justify-center fixed z-20 w-full"> 
+      <div class="container-xl col-span-12 bg-white flex-col justify-center fixed z-20 w-full mx-auto"> 
             <p class="flex justify-center">
               <span class="text-blue-500 mr-2">Status :&nbsp;<span class="text-red-500">{{ status }}</span></span>
               <span class="text-blue-500">Sisa :&nbsp;<span class="text-red-500">{{timeToCountdown}}</span></span>

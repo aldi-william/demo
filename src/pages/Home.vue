@@ -118,7 +118,7 @@
           <div class="w-full mx-auto my-4">
             <p class="text-left">Password</p>
             <input placeholder="Masukan Password" class="px-4 py-2 rounded border border-gray w-full" v-model="dataLogin.password" :type="passwordFieldType"/>
-            <div class="relative">
+            <div class="relative" v-show="isAnimated2">
               <button @click="switchVisibility()" class="absolute -top-[29px] right-4"><img :src="mata_password" class="w-6 h-4"></button>
             </div>
             
