@@ -164,19 +164,19 @@ const scrollToTop = () => {
 <template>
   <div class="bg-biru_fb" @click.self="closeAll()">
     <div class="container-xl grid grid-cols-12 gap-2 sm:gap-2 relative -top-6 pb-2 mb-0 sm:mb-3 sm:top-3" @click.self="closeAll()">
-      <div class="col-span-12 bg-white flex-col justify-center"> 
+      <div class="col-span-12 bg-white flex-col justify-center fixed z-20 w-full"> 
             <p class="flex justify-center">
               <span class="text-blue-500 mr-2">Status :&nbsp;<span class="text-red-500">{{ status }}</span></span>
               <span class="text-blue-500">Sisa :&nbsp;<span class="text-red-500">{{timeToCountdown}}</span></span>
             </p>
             <div class="text-center text-xs">{{ tanggal }}</div>
       </div>  
-      <div class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 relative bg-white">
+      <div class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 relative bg-white top-12">
         <input type="text" v-model="filterBursa.search" @keyup="filterQuery"
           placeholder="Cari merek atau model mobil" class="pl-8 pr-4 py-2 w-full border-2 border-gray" />
         <img :src="image_search" alt="search" class="w-4 h-4 absolute left-2 top-3 flex items-center justify-end" />
       </div>
-      <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative bg-white">
+      <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative bg-white top-12">
         <button class="pl-8 pr-4 py-2 w-full border-2 border-gray text-left" @click="range_harga = !range_harga">Range
           Harga</button>
         <img :src="image_rentang_harga" alt="rentang harga"
@@ -199,7 +199,7 @@ const scrollToTop = () => {
           <button class="text-white bg-blue-500 px-4 py-2 w-full rounded" @click="filterQuery(); range_harga = false;">Terapkan</button>
         </div>
       </div>
-      <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative bg-white">
+      <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative bg-white top-12">
         <button placeholder="Tahun" class="pl-8 pr-4 py-2 w-full border-2 border-gray text-left"
           @click="range_tahun = !range_tahun">Range Tahun</button>
         <img :src="image_calender" alt="calendar" class="w-4 h-4 absolute left-2 top-3 flex items-center justify-end" />
@@ -228,14 +228,14 @@ const scrollToTop = () => {
           <button class="text-white bg-blue-500 px-4 py-2 w-full rounded" @click="filterQuery(); range_tahun = false; filterBursa.minYear = 0; filterBursa.maxYear =0;">Terapkan</button>
         </div>
       </div>
-      <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative">
+      <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative top-12">
         <!-- <select placeholder="Kota" class="">
           <option value="1">Semarang</option>
         </select> -->
         <v-select placeholder="   Lokasi"   :options="arrayKota" label="name" class="bg-white px-2 py-1 outline:none" v-model="filterBursa.city" @update:modelValue="filterQuery" @change="filterQuery"></v-select>
         <img :src="image_location" alt="location" class="w-4 h-4 absolute left-2 top-3 flex items-center justify-end" />
       </div>
-      <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative">
+      <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative top-12">
         <button @click="isShowKm = !isShowKm" class="pl-8 pr-4 py-2 w-full border-2 border-gray bg-white text-left">
           <span v-if="filterBursa.km === 0">Kilometer</span>
           <span v-else>{{ formatPrice(filterBursa.km * 10000) }}</span>
@@ -249,14 +249,14 @@ const scrollToTop = () => {
         </div>
       </div>
       <div v-for="(product,i) in products" :key="i+'products'"
-        class="col-span-6 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white">
+        class="col-span-6 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white top-12 relative">
         <CardComponentMobil :product="product" @add-fav="favorite" class="hidden sm:block" />
         <CardComponentMobilSmartPhone2 :product="product" @add-fav="favorite" class="block sm:hidden" :status="status"/>
       </div>
-      <div v-if="products.length < 1" class="col-span-12">
+      <div v-if="products.length < 1" class="col-span-12 relative top-12">
         data belum ada
       </div>
-      <div class="col-span-12 mb-24 mt-4">
+      <div class="col-span-12 mb-24 mt-4 relative top-12">
         <div class="flex flex-row justify-center">
           <!-- <button @click="decrement()" class="px-4 py-2 rounded border border-gray cursor-pointer bg-white hidden sm:flex">Sebelumnya</button> -->
           <div :class="i === filterBursa.page ? 'bg-yellow-500 text-white':''" class="px-4 py-2 rounded border border-gray hover:bg-blue-500 hover:text-white cursor-pointer bg-white"
