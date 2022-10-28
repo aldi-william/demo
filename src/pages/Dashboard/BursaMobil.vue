@@ -163,8 +163,8 @@ const scrollToTop = () => {
 </script>
 <template>
   <div class="bg-biru_fb" @click.self="closeAll()">
-    <div class="container-xl grid grid-cols-12 gap-2 sm:gap-2 relative -top-6 pb-2 mb-0 sm:mb-3 sm:top-3" @click.self="closeAll()">
-      <div class="container-xl col-span-12 bg-white flex-col justify-center fixed z-20 w-full mx-auto"> 
+    <div class="container-xl grid grid-cols-12 gap-2 sm:gap-2 relative -top-6 pb-2 mb-0 sm:mb-3 sm:top-2" @click.self="closeAll()">
+      <div class="container-xl col-span-12 bg-white flex-col justify-center fixed  z-20 w-full mx-auto"> 
             <p class="flex justify-center">
               <span class="text-blue-500 mr-2">Status :&nbsp;<span class="text-red-500">{{ status }}</span></span>
               <span class="text-blue-500">Sisa :&nbsp;<span class="text-red-500">{{timeToCountdown}}</span></span>
@@ -253,6 +253,7 @@ const scrollToTop = () => {
         <CardComponentMobil :product="product" @add-fav="favorite" class="hidden sm:block" />
         <CardComponentMobilSmartPhone2 :product="product" @add-fav="favorite" class="block sm:hidden" :status="status"/>
       </div>
+
       <div v-if="products.length < 1" class="col-span-12 relative top-12">
         data belum ada
       </div>

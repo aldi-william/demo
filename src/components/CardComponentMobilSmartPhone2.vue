@@ -14,14 +14,14 @@ const products = defineProps(['product','status'])
 </script>
 <template>
   <div class="rounded-[3px]">
-    <div class="bg-white mt-2 h-full p-1 relative">
-      <div class="mx-1 bg-white absolute z-20 top-3 rounded-full">
-        <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star" class="w-4 h-4" @click="$emit('addFav', product.id)" />
-      </div>
+    <div class="bg-white mt-2 h-full p-1">
       <div>
-            <div class="flex justify-center"> 
+            <div class="flex justify-center relative"> 
               <img :src="product.car_detail.image_feature1" alt="car" class="w-40 h-40 z-10 cursor-pointer object-cover"
                 @click="$router.push(`/dashboard/detail/${product.id}`);" />
+                <div class="mx-1 bg-white absolute z-20 top-2 left-2 rounded-full">
+                  <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star" class="w-4 h-4" @click="$emit('addFav', product.id)" />
+                </div>
             </div>
       </div>
       <div class="flex justify-between items-center mt-1">
