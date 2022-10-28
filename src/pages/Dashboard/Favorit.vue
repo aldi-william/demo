@@ -105,14 +105,15 @@ getDataSession();
 
 </script>
 <template>
-    <div class="bg-abu_abu_2 h-screen">
-      <div class="col-span-12 bg-white flex-col fixed sm:top-20 left-0 top-12 z-20 w-full mx-auto"> 
+    <div class="bg-abu_abu_2">
+      <div class="col-span-12 bg-white flex-col pt-2 z-20 w-full mx-auto fixed"> 
             <p class="flex justify-center">
               <span class="text-blue-500 mr-2">Status :&nbsp;<span class="text-red-500">{{ status }}</span></span>
               <span class="text-blue-500">Sisa :&nbsp;<span class="text-red-500">{{timeToCountdown}}</span></span>
             </p>
             <div class="text-center text-xs">{{ tanggal }}</div>
       </div>
+      <div class="pt-10"></div>
       <div class="container-xl pb-20" v-if="products.length < 1">
           <h1 class="mt-8 text-xl font-bold">Favoritku</h1>
           <div class="border-b-4 border-blue-400 w-24 mb-4"></div>
@@ -126,7 +127,7 @@ getDataSession();
             <button @click="router.push('/dashboard/bursamobil')" class="bg-tertier text-black border-black border-2 px-4 py-2 shadow-2x rounded-lg">Pergi ke Bursa Mobil</button>
           </div>
       </div>
-      <div class="container-xl grid grid-cols-12 gap-2 py-3 relative sm:top-10" v-else>
+      <div class="container-xl grid grid-cols-12 gap-2 py-3 pb-40 mt-40" v-else>
         <div class="col-span-12 sm:mt-0"></div>
         <div v-for="(product,i) in products" :key="i+'products'"
             class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white">

@@ -156,7 +156,7 @@ const scrollToTop = () => {
 
 </script>
 <template>
-  <div class="bg-biru_fb h-full" @click.self="closeAll()">
+  <div class="bg-biru_fb" @click.self="closeAll()">
     <div class="container-xl grid grid-cols-12 gap-2 sm:gap-2 relative -top-6 mb-0 sm:top-2" @click.self="closeAll()">
       <div class="col-span-12 bg-white flex-col fixed sm:top-20 left-0 top-12 z-20 w-full mx-auto"> 
             <p class="flex justify-center">
