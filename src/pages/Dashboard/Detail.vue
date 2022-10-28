@@ -282,7 +282,6 @@ getDetailData();
             :thumbs="{ swiper: thumbsSwiper }"
             :modules="modules"
             class="mySwiper2 rounded-xl">
-
             <swiper-slide v-for="(item, index) in image_cars" :key="index+'image_car'">
               <img :src="item.image" @click="showImg(index, image_cars)" class="cursor-pointer">
             </swiper-slide>
