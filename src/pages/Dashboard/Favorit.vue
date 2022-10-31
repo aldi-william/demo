@@ -1,34 +1,19 @@
 <script setup lang="ts">
   import bg_image from '../../assets/images/favorit_bg.png';
-  import image_star from '../../assets/images/star.png';
-  import image_star_empty from '../../assets/images/star_empty.png';
-  import image_car from '../../assets/images/car.png';
-  import image_hammer from '../../assets/images/hammer.png';
-  import image_users from '../../assets/images/users.png';
-  import image_lonceng from '../../assets/images/lonceng.png';
-  import image_api from '../../assets/images/icon_api.png';
-  import image_mobil from '../../assets/images/icon_mobil.png';
-  import image_tergenang from '../../assets/images/icon_tergenang.png';
   import { useRouter } from 'vue-router';
   import { computed, onMounted, ref } from 'vue';
-  import FavoriteService from '../../services/FavoriteService';
   import CardComponentMobil from '../../components/CardComponentMobil.vue';
-import { useFavoriteStore } from '../../stores/favoit';
-import CardComponentMobilSmartPhone from '../../components/CardComponentMobilSmartPhone.vue';
-import GetFilterService from '../../services/GetService';
+  import { useFavoriteStore } from '../../stores/favoit';
+  import CardComponentMobilSmartPhone from '../../components/CardComponentMobilSmartPhone.vue';
+  import GetFilterService from '../../services/GetService';
+  import Bid from '../../services/Bid';
+  import Echo from "laravel-echo";
+  // eslint-disable-next-line no-unused-vars
+  import Pusher from "pusher-js";
+  import axios from "axios";
   const router = useRouter();
   const isFavorit = ref([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
   const isEmpty = ref(false);
-  
-  // const getDataFavorite = () => {
-  //   FavoriteService.getFavoriteData().then((response) => {
-  //     console.log(response)
-  //   }).catch((error) => {
-  //     console.log(error);
-  //   });
-  // }
-
-  // getDataFavorite();
 
   // pinia
 const store = useFavoriteStore();
@@ -49,10 +34,29 @@ let millisecondSeconds = ref(0);
 let totalmilliseconds = ref(0);
 let timeToCountdown = ref('');
 
+let time = ref('');
+
 onMounted(() => {
-  store.fetchFavorite();
+     store.fetchFavorite()
 })
 
+
+const lelang_id = ref(0);
+const price_offer = ref(0);
+const lelang:any = ref({
+  lelang_id: 0,
+  price_offer:0
+})
+
+const bid = (val) => {
+  lelang.value.lelang_id = val[1];
+  lelang.value.price_offer = val[0];
+
+  Bid.postBidding(lelang_id.value).then((resp) => {
+    console.log(resp);
+  })
+}
+      
 const favorite = (id:any) =>{
   store.addFavorite(id)
   .then(()=>{
@@ -131,7 +135,7 @@ getDataSession();
         <div class="col-span-12 sm:mt-0"></div>
         <div v-for="(product,i) in products" :key="i+'products'"
             class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white">
-            <CardComponentMobil :product="product" @add-fav="favorite" class="hidden sm:block" :status="status"/>
+            <CardComponentMobil :product="product" @add-fav="favorite" class="hidden sm:block" :status="status" @bid="bid"/>
             <CardComponentMobilSmartPhone :product="product" @add-fav="favorite" class="block sm:hidden" :status="status" />
         </div>
         <div class="mb-20"></div>

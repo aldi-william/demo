@@ -12,13 +12,20 @@ import button_plus from '../assets/images/btn_plus.png';
 import button_minus from '../assets/images/btn_minus.png';
 import gif from '../assets/images/svg/200.gif';
 import { useRoute } from 'vue-router'
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { formatPrice, textCapitalize } from '../mixins';
-import { useBursaStore } from '../stores/bursa';
+import http from '../../src/api/http-common'
+// import { useBursaStore } from '../stores/bursa';
+import { useFavoriteStore } from '../stores/favoit';
+import Bid from '../services/Bid';
+import Echo from "laravel-echo";
+// eslint-disable-next-line no-unused-vars
+import Pusher from "pusher-js";
+import axios from 'axios';
 const route = useRoute();
 const products = defineProps(['product','isShow','status'])
 const isFavorit = ref([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
-const store = useBursaStore();
+// const storeBursa = useBursaStore();
 const harga = ref(500000);
 const isActive = ref(5);
 const isTawar = ref('awal');
@@ -42,6 +49,41 @@ const handle_decrement = () => {
          harga.value += 1000000;
       } 
   }
+
+const lelang_id = ref(0);
+const price_offer = ref(0);
+const lelang:any = ref({
+  lelang_id: 0,
+  price_offer:0
+})
+
+const bid = (val) => {
+  lelang.value.lelang_id = val[1];
+  lelang.value.price_offer = val[0];
+  console.log(lelang.value)
+  Bid.postBidding(lelang.value).then((resp) => {
+    // console.log(resp);
+  })
+}
+
+const price_winner = ref(0)
+  
+onMounted(() => {
+    // http.get(`https://admin.tavmobil.id/api/lelang/daftar-lelang/${products.product.id}`).then(res => {
+    //   console.log(res)
+    // })
+    let echo:any = new Echo({
+        broadcaster: "pusher",
+        key: "a19e68e554721cca39a0",
+        forceTLS: true,
+        cluster: "ap1",
+    });
+
+    echo.channel('bidding')
+    .listen('BiddingEvent', (e) => {
+      console.log(e,"testing")
+    });
+})
 
 </script>
 <template>
@@ -96,14 +138,15 @@ const handle_decrement = () => {
             <div>
               <h1 v-if="route.name === 'BursaMobil'">Harga Mulai :</h1>
               <h1 v-else>Penawaran Terbaru :</h1>
-              <h1 class="text-2xl font-bold">Rp {{ formatPrice(product.open_price) }}</h1>
+              <div>{{ price_winner }}</div>
+              <h1 class="text-2xl font-bold">Rp {{ formatPrice(product.price_winner) }}</h1>
             </div>
             <div>
               <button @click="$router.push(`/dashboard/detail/${product.id}`);"
                 class="bg-tertier px-4 py-2 shadow-xl text-sm hover:bg-blue-500 hover:text-white">Lihat</button>
             </div>
           </div>
-          <div class="border border-gray-400 p-2 rounded-lg" v-show="route.name === 'Favorit' && status === 'Berlangsung'">
+          <div class="border border-gray-400 p-2 rounded-lg" v-show="route.name === 'Favorit' && status === 'Selanjutnya'">
               <div class="flex flex-row justify-center">
                   <button><img :src="button_minus" class="h-8 w-8" @click="handle_decrement()"/></button>
                   <p class="font-bold text-xl mx-4">Rp {{ new Intl.NumberFormat().format(harga) }}</p>
@@ -114,7 +157,7 @@ const handle_decrement = () => {
                 <button @click="isActive = 10" class="px-2 py-1 text-white rounded-lg w-1/3 text-xs" :class="isActive === 10? 'bg-blue-500 border border-gray-500':'bg-abu_abu_pucat text-gray-400'">Rp 1.000.000</button>
               </div>
               <div class="flex justify-center pb-2">
-                <button @click="isTawar = 'konfirmasi'; harga=500000;" class="bg-tertier px-2 py-1 rounded-xl text-black border border-black w-32 font-bold">Mulai Tawar</button>
+                <button @click="isTawar = 'konfirmasi'; bid([harga, product.id])" class="bg-tertier px-2 py-1 rounded-xl text-black border border-black w-32 font-bold">Mulai Tawar</button>
               </div>
           </div>
   </div>

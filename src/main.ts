@@ -11,7 +11,9 @@ import 'vue-select/dist/vue-select.css';
 import VueEasyLightbox from 'vue-easy-lightbox'
 import VueTippy from 'vue-tippy'
 import 'tippy.js/dist/tippy.css' // optional
-
+import Echo from "laravel-echo";
+import Pusher from "pusher-js";
+window.Pusher = Pusher;
 
 const app = createApp(App)
 
@@ -24,6 +26,13 @@ app.use(VueEasyLightbox)
 app.use(VueTippy, {
   defaultProps: { placement: 'bottom' },
 })
+
+window.Echo = new Echo({
+  broadcaster: 'pusher',
+  key: "a19e68e554721cca39a0",
+  cluster: "ap1",
+  forceTLS: true
+});
 
 
 app.mount('#app')
