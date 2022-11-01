@@ -117,7 +117,7 @@ getDataSession();
             </p>
             <div class="text-center text-xs">{{ tanggal }}</div>
       </div>
-      <div class="pt-10"></div>
+      <div class="pt-1 sm:pt-10"></div>
       <div class="container-xl pb-20" v-if="products.length < 1">
           <h1 class="mt-8 text-xl font-bold">Favoritku</h1>
           <div class="border-b-4 border-blue-400 w-24 mb-4"></div>
