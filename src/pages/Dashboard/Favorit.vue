@@ -110,7 +110,7 @@ getDataSession();
 </script>
 <template>
     <div class="bg-abu_abu_2">
-      <div class="col-span-12 bg-white flex-col pt-2 z-20 w-full mx-auto fixed"> 
+      <div class="col-span-12 bg-white flex-col pt-2 z-20 w-full mx-auto fixed top-10 sm:top-[70px]"> 
             <p class="flex justify-center">
               <span class="text-blue-500 mr-2">Status :&nbsp;<span class="text-red-500">{{ status }}</span></span>
               <span class="text-blue-500">Sisa :&nbsp;<span class="text-red-500">{{timeToCountdown}}</span></span>
