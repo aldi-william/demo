@@ -13,7 +13,7 @@ const store = useBursaStore();
 const products = defineProps(['product','status'])
 </script>
 <template>
-  <div class="rounded-[3px]">
+  <div class="container-xl rounded-[3px]">
     <div class="bg-white h-full">
       <div>
             <div class="flex justify-center relative"> 
@@ -69,5 +69,9 @@ const products = defineProps(['product','status'])
         </div>
     </div>
   </div>
-  
 </template>
+<style>
+.container-xl{
+  width: 96%;
+}
+</style>

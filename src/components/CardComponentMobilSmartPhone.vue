@@ -114,5 +114,5 @@ const handle_decrement = () => {
       
     </div>
   </div>
-  
 </template>
+
