@@ -62,11 +62,11 @@ const bid = (val) => {
   lelang.value.price_offer = val[0];
   console.log(lelang.value)
   Bid.postBidding(lelang.value).then((resp) => {
-    // console.log(resp);
+
   })
 }
 
-const price_winner = ref(0)
+// const price_winner = ref(0)
   
 onMounted(() => {
     // http.get(`https://admin.tavmobil.id/api/lelang/daftar-lelang/${products.product.id}`).then(res => {
@@ -81,7 +81,10 @@ onMounted(() => {
 
     echo.channel('bidding')
     .listen('BiddingEvent', (e) => {
-      console.log(e,"testing")
+      // console.log(e.bidding.price_winner);
+      if (products.product.id == e.bidding.id) {
+        products.product.price_winner = e.bidding.price_winner
+      }
     });
 })
 
@@ -138,7 +141,7 @@ onMounted(() => {
             <div>
               <h1 v-if="route.name === 'BursaMobil'">Harga Mulai :</h1>
               <h1 v-else>Penawaran Terbaru :</h1>
-              <div>{{ price_winner }}</div>
+              <!-- <div>{{ price_winner }}</div> -->
               <h1 class="text-2xl font-bold">Rp {{ formatPrice(product.price_winner) }}</h1>
             </div>
             <div>
@@ -146,7 +149,8 @@ onMounted(() => {
                 class="bg-tertier px-4 py-2 shadow-xl text-sm hover:bg-blue-500 hover:text-white">Lihat</button>
             </div>
           </div>
-          <div class="border border-gray-400 p-2 rounded-lg" v-show="route.name === 'Favorit' && status === 'Berlangsung'">
+          <!-- <div class="border border-gray-400 p-2 rounded-lg" v-show="route.name === 'Favorit' && status === 'Berlangsung'"> -->
+          <div class="border border-gray-400 p-2 rounded-lg">
               <div class="flex flex-row justify-center">
                   <button><img :src="button_minus" class="h-8 w-8" @click="handle_decrement()"/></button>
                   <p class="font-bold text-xl mx-4">Rp {{ new Intl.NumberFormat().format(harga) }}</p>
