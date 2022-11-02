@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import http from "../api/http-common";
-import { IDataFilter } from "../interface/IDataFilter";
+import { IDataFilter } from "../Interface/IDataFilter";
 
 export const useFavoriteStore = defineStore({
   id: "faforite",

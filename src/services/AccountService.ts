@@ -1,12 +1,12 @@
 import http from "../api/http-common";
-import { IDataAccount, IDataPassword } from "../interface/IDataAccount";
+import { IDataAccount, IDataPassword } from "../Interface/IDataAccount";
 
 class GetAccountService {
    getAccountData() {
-      return http.get("/akun/my-account")  
+      return http.get("/akun/my-account")
    }
 
-   postAccountData(data: IDataAccount){
+   postAccountData(data: IDataAccount) {
       let formData = new FormData();
 
       formData.append("image", data.image);
@@ -27,19 +27,19 @@ class GetAccountService {
       });
    }
 
-   getProvince(){
-      return http.get("/akun/get-province") 
+   getProvince() {
+      return http.get("/akun/get-province")
    }
 
-   postCity(data:any){
+   postCity(data: any) {
       return http.post("/akun/get-city", data)
    }
 
-   postDistrict(data:any){
+   postDistrict(data: any) {
       return http.post("/akun/get-district", data)
    }
 
-   postChangePassword(data:IDataPassword){
+   postChangePassword(data: IDataPassword) {
       return http.post("/akun/update-password", data)
    }
 }
