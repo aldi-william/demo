@@ -13,7 +13,7 @@ import VueTippy from 'vue-tippy'
 import 'tippy.js/dist/tippy.css' // optional
 import Echo from "laravel-echo";
 import Pusher from "pusher-js";
-// window.Pusher = Pusher;
+window.Pusher = Pusher;
 
 const app = createApp(App)
 
@@ -27,12 +27,12 @@ app.use(VueTippy, {
   defaultProps: { placement: 'bottom' },
 })
 
-// window.Echo = new Echo({
-//   broadcaster: 'pusher',
-//   key: "a19e68e554721cca39a0",
-//   cluster: "ap1",
-//   forceTLS: true
-// });
+window.Echo = new Echo({
+  broadcaster: 'pusher',
+  key: "a19e68e554721cca39a0",
+  cluster: "ap1",
+  forceTLS: true
+});
 
 
 app.mount('#app')
