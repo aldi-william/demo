@@ -54,6 +54,9 @@
     import { useRoute } from 'vue-router';
     import { useBursaStore } from '../../stores/bursa';
     import { formatPrice } from '../../mixins';
+    import Echo from "laravel-echo";
+    import Bid from '../../services/Bid';
+    
     const route = useRoute();
     // pinia
     const store = useBursaStore();
@@ -76,6 +79,7 @@
 
     const menu = ref('testdrive');
     const count = ref(0);
+    const priceWinner = ref(0);
     let detailInspection:any = ref([{
       car_detail:{
         transmisi:'',
@@ -174,6 +178,7 @@ const myfunc = setInterval(function() {
 const getDetailData = () => {
    GetService.getDetailData(params).then((response:any) => {
       
+      priceWinner.value = response.data.data.detail.price_winner;
       detailInspection.value = response.data.data.detail;
       count.value = detailInspection.value.favorites.length;
       image_cars.value = response.data.data.image_car;
@@ -229,8 +234,39 @@ const handle_increment = () => {
       } 
 }
 
+const lelang_id = ref(0);
+const price_offer = ref(0);
+const lelang: any = ref({
+  lelang_id: 0,
+  price_offer: 0
+})
+
+const bid = (val) => {
+  lelang.value.lelang_id = val[1];
+  lelang.value.price_offer = val[0];
+  console.log(lelang.value)
+  Bid.postBidding(lelang.value).then((resp) => {
+
+  })
+}
+
 onMounted(() => {
+  // http.get(`https://admin.tavmobil.id/api/lelang/daftar-lelang/${products.product.id}`).then(res => {
+  //   console.log(res)
+  // })
   store.fetchBursa();
+  getDetailData();
+  let echo: any = new Echo({
+    broadcaster: "pusher",
+    key: "a19e68e554721cca39a0",
+    forceTLS: true,
+    cluster: "ap1",
+  });
+
+  echo.channel('bidding')
+    .listen('BiddingEvent', (e) => {
+      priceWinner.value = e.bidding.price_winner
+    });
 })
 
 const favorite = (id:any) =>{
@@ -242,7 +278,7 @@ const favorite = (id:any) =>{
 }
 
 getDataSession();
-getDetailData();
+// getDetailData();
 </script>
 <template>
   <vue-easy-lightbox
@@ -304,6 +340,7 @@ getDetailData();
           </swiper>
         </div>
 
+
         <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0 relative -top-12 sm:top-0">
              <div class="font-bold py-1 bg-white p-4">
                {{ detailInspection.car_detail ? detailInspection.car_detail.car_brand.name : '' }} {{ detailInspection.car_detail ? detailInspection.car_detail.car_merk.name: '' }} {{ detailInspection.car_detail ? detailInspection.car_detail.car_type.name : '' }}
@@ -311,7 +348,7 @@ getDetailData();
              <div class="bg-white p-4 grid grid-cols-12">
               <div class="col-span-6">
                 <p>Harga penawaran :</p>
-                <p class="font-bold">Rp {{ detailInspection.car_detail ? formatPrice(detailInspection.car_detail.harga_cash) : 0}}</p>
+                <p class="font-bold">Rp {{ detailInspection.car_detail ? formatPrice(priceWinner) : 0}}</p>
               </div>
               <div class="col-span-4">
                 <div>Tahun :</div>
@@ -367,7 +404,7 @@ getDetailData();
                   <div class="flex justify-center w-1/2">
                     <div class="flex flex-col">
                       <p class="font-bold text-xl mb-1">Rp {{ new Intl.NumberFormat().format(harga) }}</p>
-                      <button @click="isTawar = 'konfirmasi'; harga=500000;" class="bg-tertier px-4 py-2 rounded text-white w-40 font-bold text-sm">Mulai Tawar</button>
+                      <button @click="isTawar = 'konfirmasi'; bid([harga, detailInspection.id])" class="bg-tertier px-4 py-2 rounded text-white w-40 font-bold text-sm">Mulai Tawar</button>
                     </div>
                   </div>
         
