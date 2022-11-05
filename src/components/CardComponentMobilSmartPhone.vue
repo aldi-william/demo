@@ -9,9 +9,11 @@ import image_tergenang from '../assets/images/icon_tergenang.png';
 import image_bulat from '../assets/images/bintang_pembatas.png';
 import button_plus from '../assets/images/btn_plus.png';
 import button_minus from '../assets/images/btn_minus.png';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { formatPrice, textCapitalize } from '../mixins';
 import { useBursaStore } from '../stores/bursa';
+import Bid from '../services/Bid';
+import Echo from "laravel-echo";
 const store = useBursaStore();
 const products = defineProps(['product','status'])
 
@@ -39,6 +41,42 @@ const handle_decrement = () => {
          harga.value += 1000000;
       } 
   }
+
+  const lelang: any = ref({
+  lelang_id: 0,
+  price_offer: 0
+})
+
+  const bid = (val) => {
+  lelang.value.lelang_id = val[1];
+  lelang.value.price_offer = val[0];
+  console.log(lelang.value)
+  Bid.postBidding(lelang.value).then((resp) => {
+
+  })
+}
+
+// const price_winner = ref(0)
+
+onMounted(() => {
+  // http.get(`https://admin.tavmobil.id/api/lelang/daftar-lelang/${products.product.id}`).then(res => {
+  //   console.log(res)
+  // })
+  let echo: any = new Echo({
+    broadcaster: "pusher",
+    key: "a19e68e554721cca39a0",
+    forceTLS: true,
+    cluster: "ap1",
+  });
+
+  echo.channel('bidding')
+    .listen('BiddingEvent', (e) => {
+      // console.log(e.bidding.price_winner);
+      if (products.product.id == e.bidding.id) {
+        products.product.price_winner = e.bidding.price_winner
+      }
+    });
+})
 </script>
 <template>
   <div class="bg-white relative shadow-xl">
@@ -68,7 +106,7 @@ const handle_decrement = () => {
               <p>{{ product.car_detail.kota ? textCapitalize(product.car_detail.kota) : ''}}</p> 
             </div>
             <div class="text-lg font-bold flex justify-between">
-              <p>Rp {{ formatPrice(product.open_price) }}</p>
+              <p>Rp {{ formatPrice(product.price_winner) }}</p>
               <div>
                     <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star"
                         class="w-6 h-6" @click="$emit('addFav', product.id)" />
@@ -108,7 +146,7 @@ const handle_decrement = () => {
       <div class="flex justify-center w-1/2">
         <div class="flex flex-col">
           <p class="font-bold mb-4">Rp {{ new Intl.NumberFormat().format(harga) }}</p>
-          <button @click="isTawar = 'konfirmasi'; harga=500000;" class="bg-tertier px-2 py-1 rounded text-white w-24 font-bold text-xs">Mulai Tawar</button>
+          <button @click="isTawar = 'konfirmasi'; bid([harga, product.id])" class="bg-tertier px-2 py-1 rounded text-white w-24 font-bold text-xs">Mulai Tawar</button>
         </div>
       </div>
       
