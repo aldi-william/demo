@@ -37,7 +37,7 @@ let timeToCountdown = ref('');
 let time = ref('');
 
 onMounted(() => {
-     store.fetchFavorite()
+  store.fetchFavorite()
 })
 
 

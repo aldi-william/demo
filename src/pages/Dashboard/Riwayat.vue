@@ -13,7 +13,9 @@
   import image_tergenang from '../../assets/images/icon_tergenang.png';
   import image_api from '../../assets/images/icon_api.png';
   import download from '../../assets/images/download.png';
+  import RiwayatPenawaranComponent from '../../components/RiwayatPenawaranComponent.vue';
   const menu = ref('semua');
+  
   const riwayat_menu = ref('penawaran');
   const isFavorit = ref([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
   
@@ -37,97 +39,53 @@
                     <button @click="menu = 'semua'" :class="menu === 'semua' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2  rounded-lg mb-4 text-sm font-bold">Semua (9)</button>
              </div>
              <div class="w-96 sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                    <button @click="menu = 'menang'" :class="menu === 'menang' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mr-0 px-4 py-2 text-blue-500 bg-white rounded-lg mb-4 text-sm font-bold">Menang (3)</button>
+                    <button @click="menu = 'menang'" :class="menu === 'menang' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2  rounded-lg mb-4 text-sm font-bold">Menang (3)</button>
              </div>
              <div class="w-96 sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                    <button @click="menu = 'kalah'" :class="menu === 'kalah' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mr-0 px-4 py-2 text-blue-500 bg-white rounded-lg mb-4 text-sm font-bold">Kalah (3)</button>
+                    <button @click="menu = 'kalah'" :class="menu === 'kalah' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2  rounded-lg mb-4 text-sm font-bold">Kalah (3)</button>
              </div>
              <div class="w-96 sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                    <button @click="menu = 'ditolak'" :class="menu === 'ditolak' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mr-0 px-4 py-2 text-blue-500 bg-white rounded-lg mb-4 text-sm font-bold">Penawaran Ditolak (3)</button>
+                    <button @click="menu = 'ditolak'" :class="menu === 'ditolak' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2  rounded-lg mb-4 text-sm font-bold">Penawaran Ditolak (3)</button>
              </div>
              <div class="w-96 sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                   <button @click="menu = 'diterima'" :class="menu === 'diterima' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mr-0 md:mr-0 lg:mr-0 xl:mr-0 2xl:mr-0 px-4 py-2 text-blue-500 bg-white rounded-lg mb-4 text-sm font-bold">Penawaran Diterima (0)</button>
+                   <button @click="menu = 'diterima'" :class="menu === 'diterima' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mr-0 md:mr-0 lg:mr-0 xl:mr-0 2xl:mr-0 px-4 py-2 rounded-lg mb-4 text-sm font-bold">Penawaran Diterima (0)</button>
              </div>
              <div class="w-96 sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                   <button @click="menu = 'proses'" :class="menu === 'proses' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mr-0 md:mr-0 lg:mr-0 xl:mr-0 2xl:mr-0 px-4 py-2 text-blue-500 bg-white rounded-lg mb-4 text-sm font-bold">Dalam Proses (0)</button>
+                   <button @click="menu = 'proses'" :class="menu === 'proses' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mr-0 md:mr-0 lg:mr-0 xl:mr-0 2xl:mr-0 px-4 py-2 rounded-lg mb-4 text-sm font-bold">Dalam Proses (0)</button>
              </div>
              <div class="w-96 sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'siap'" :class="menu === 'siap' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mr-0 px-4 py-2 text-blue-500 bg-white rounded-lg mb-4 text-sm font-bold">Siap Diambil(0)</button>
+                  <button @click="menu = 'siap'" :class="menu === 'siap' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2  rounded-lg mb-4 text-sm font-bold">Siap Diambil(0)</button>
              </div>
              <div class="w-96 sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                 <button @click="menu = 'sudah'" :class="menu === 'sudah' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 px-4 py-2 text-blue-500 bg-white rounded-lg mb-4 text-sm font-bold">Sudah Diambil(0)</button>
+                 <button @click="menu = 'sudah'" :class="menu === 'sudah' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 px-4 py-2 rounded-lg mb-4 text-sm font-bold">Sudah Diambil(0)</button>
              </div>
              
             </div>
               
           </div>
           <div v-if="menu === 'semua'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
-              <div class="grid grid-cols-12 gap-2 overflow-y-auto h-screen mb-8">
-                  <div class="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-6 xl:col-span-6 2xl:col-span-6">
-                      <input class="px-4 py-2 rounded-md w-full border-2 border-gray" type="text" placeholder="Cari Merek dan Model Mobil">
-                  </div>
-                  <div class="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-6 xl:col-span-6 2xl:col-span-6">
-                    <select class="px-4 py-2 rounded-md w-full border-2 border-gray">
-                      <option value="-">Rentang Waktu</option>
-                      <option value="1">Tampilkan Semua</option>
-                      <option value="1">7 Hari Terakhir</option>
-                      <option value="1">14 Hari Terakhir</option>
-                      <option value="1">1 Bulan Terakhir</option>
-                      <option value="1">6 Bulan Terakhir</option>
-                      <option value="1">1 Tahun Terakhir</option>
-                    </select>
-                  </div>
-                  <div class="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-6 xl:col-span-6 2xl:col-span-6 z-10 bg-white" v-for="i in 9" :key="i">
-                    <div class="rounded shadow-2xl p-4">
-                      <div class="relative overflow-hidden">
-                        <div class="absolute bg-blue-500 rounded text-white top-3 left-3">#143779</div>
-                        
-                        <div class="bg-green-600 absolute bottom-0 right-0 px-4 py-0 rounded-tl-full text-white flex items-start">
-                          Anda Menang
-                        </div>
-                        <img :src="image_car" alt="car" class="w-full z-10" @click="$router.push(`/dashboard/detail/${i}`);"/>
-                      </div>
-                      <div class="grid grid-cols-12 my-2 gap-2">
-                          <div class="col-span-4 bg-abu_abu relative flex px-2 py-1 rounded items-center">
-                            <img :src="image_hammer" alt="hammer" class="w-6 h-6"/>
-                            <div class="text-white mx-2 right-0 relative">1000</div>
-                          </div>
-                          <div class="col-span-4 bg-abu_abu relative flex px-2 py-1 rounded items-center">
-                            <img :src="image_users" alt="users" class="w-6 h-6"/>
-                            <div class="text-white mx-2">1000</div>
-                          </div>
-                          <div class="col-span-4">
-                              <h1 class="text-sm text-center bg-blue-500 text-white rounded-lg px-2 py-1 w-20 float-right">TAV</h1>
-                          </div>
-                          <div class="col-span-6 flex">
-                            <img :src="image_mobil" class="w-12 h-6"/>
-                            <img  :src="image_tergenang" class="w-12 h-6 mx-4"/>
-                            <img  :src="image_api" class="w-12 h-6"/>
-                          </div>
-                      </div>
-                      <div class="my-1">
-                          <div class="flex flex-row items-center justify-between">
-                            <h1 class="font-bold text-xl">Suzuki Ertiga Sport</h1>
-                            <img :src="isFavorit[i] ? image_star : image_star_empty" alt="star" class="w-8 h-8" @click="isFavorit[i] = !isFavorit[i]"/>
-                            <!-- <img :src="image_lonceng" alt="lonceng" class="w-6 h-6"/> -->
-                          </div>
-                          <p>2019 | Matic | 30.000 KM | Semarang </p>
-                      </div>
-                      <div class="flex flex-row my-1 justify-between items-center">
-                        <div>
-                          <h1>Harga Mulai :</h1>
-                          <h1 class="text-2xl font-bold">Rp. 1.090.000.000</h1>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- <div class="bg-blue-500">
-                      <div class="flex flex-row justify-between items-center p-4 shadow-xl">
-                          <h1 class="text-white">9 September 2022</h1>
-                          <h1 class="text-white">01:30:20</h1>
-                      </div>
-                    </div>       -->
-                  </div>
-              </div>
+            <RiwayatPenawaranComponent slug="/all"></RiwayatPenawaranComponent>
+          </div>
+          <div v-if="menu === 'menang'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
+            <RiwayatPenawaranComponent slug="/winner"></RiwayatPenawaranComponent>
+          </div>
+          <div v-if="menu === 'kalah'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
+            <RiwayatPenawaranComponent slug="/lose"></RiwayatPenawaranComponent>
+          </div>
+          <div v-if="menu === 'ditolak'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
+            <RiwayatPenawaranComponent slug="/status?data=cancel"></RiwayatPenawaranComponent>
+          </div>
+          <div v-if="menu === 'diterima'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
+            <RiwayatPenawaranComponent slug="/status?data=confirm"></RiwayatPenawaranComponent>
+          </div>
+          <div v-if="menu === 'proses'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
+            <RiwayatPenawaranComponent slug="/status?data=waiting"></RiwayatPenawaranComponent>
+          </div>
+          <div v-if="menu === 'siap'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
+            <RiwayatPenawaranComponent slug="/status?data=ready"></RiwayatPenawaranComponent>
+          </div>
+          <div v-if="menu === 'sudah'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
+            <RiwayatPenawaranComponent slug="/status?data=taken"></RiwayatPenawaranComponent>
           </div>
           
       </div>
@@ -135,16 +93,16 @@
           <div class="col-span-12 bg-blue-500 mt-6 sm:my-12 md:my-12 lg:my-12 xl:my-12 2xl:my-12 p-4 sm:p-8 md:p-8 lg:p-8 xl:p-8 2xl:p-8 rounded-lg sm:h-screen w-full sm:w-4/12 md:w-4/12 lg:w-4/12 xl:w-4/12 2xl:w-4/12">
               <div class="flex sm:flex-col overflow-x-scroll sm:w-full sm:overflow-visible md:overflow-visible lg:overflow-visible xl:overflow-visible 2xl:overflow-visible">
               <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'semua'" :class="menu === 'semua' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2 text-blue-500 bg-white rounded-lg mb-4 text-sm font-bold">7 Hari Terakhir</button>            
+                  <button @click="menu = 'semua'" :class="menu === 'semua' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2 rounded-lg mb-4 text-sm font-bold">7 Hari Terakhir</button>            
               </div>
               <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                 <button @click="menu = 'menang'" :class="menu === 'menang' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2 text-blue-500 bg-white rounded-lg mb-4 text-sm font-bold">30 Hari Terakhir</button>
+                 <button @click="menu = 'menang'" :class="menu === 'menang' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2 rounded-lg mb-4 text-sm font-bold">30 Hari Terakhir</button>
               </div>
               <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                 <button @click="menu = 'kalah'" :class="menu === 'kalah' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2 text-blue-500 bg-white rounded-lg mb-4 text-sm font-bold">3 Bulan Terakhir</button>
+                 <button @click="menu = 'kalah'" :class="menu === 'kalah' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2 rounded-lg mb-4 text-sm font-bold">3 Bulan Terakhir</button>
               </div>
               <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                 <button @click="menu = 'ditolak'" :class="menu === 'ditolak' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2 text-blue-500 bg-white rounded-lg mb-4 text-sm font-bold">1 Tahun Terakhir</button>
+                 <button @click="menu = 'ditolak'" :class="menu === 'ditolak' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2 rounded-lg mb-4 text-sm font-bold">1 Tahun Terakhir</button>
               </div>
             </div>
           </div>

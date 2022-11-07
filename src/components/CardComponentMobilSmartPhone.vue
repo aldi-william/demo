@@ -17,6 +17,7 @@ import Echo from "laravel-echo";
 const store = useBursaStore();
 const products = defineProps(['product','status'])
 
+
 const isFavorit = ref([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
 const harga = ref(500000);
 const isActive = ref(5);
