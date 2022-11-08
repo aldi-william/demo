@@ -2,6 +2,7 @@
 import { computed, onMounted, ref } from 'vue';
 import download from '../assets/images/download.png';
 import { useTransaksiStore } from "../stores/transaksi";
+import { formatPrice } from '../mixins';
 const menu = ref('week');
 
 const store = useTransaksiStore();
@@ -50,7 +51,7 @@ onMounted(() => {
                 <tr v-for="payment in payments" :key="payment.id+'table'">
                   <td>{{payment.created_at}}</td>
                   <td>{{`${payment.lelang_mobil.car_detail.car_brand.name} ${payment.lelang_mobil.car_detail.car_merk.name} ${payment.lelang_mobil.car_detail.car_type.name}`}}</td>
-                  <td>Rp. 110,000,000.00</td>
+                  <td>{{payment.paid}}</td>
                   <td>
                     <div class="border border-black text-white bg-green-600 px-2 py-1 rounded-full" v-if="payment.status === 1">Berhasil</div>
                     <div class="border border-black text-white bg-red-600 px-2 py-1 rounded-full" v-else>Ditolak</div>
