@@ -45,12 +45,12 @@ onMounted(() => {
                   
                       <div v-for="(product,i) in products" :key="i+'products'" class="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-6 xl:col-span-6 2xl:col-span-6 z-10 bg-white">
                         <div v-if="slug.slug == '/all' || slug.slug == '/lose'">
-                            <CardComponentMobil v-if="product.lelang_mobil" :product="product.lelang_mobil" @add-fav="favorite" class="hidden sm:block"/>
-                            <CardComponentMobilSmartPhone v-if="product.lelang_mobil" :product="product.lelang_mobil" @add-fav="favorite" class="hidden sm:block"/>
+                            <CardComponentMobil v-if="product.lelang_mobil" :product="product.lelang_mobil" @add-fav="favorite" class="hidden sm:block" />
+                            <CardComponentMobilSmartPhone v-if="product.lelang_mobil" :product="product.lelang_mobil" @add-fav="favorite" class="block sm:hidden"/>
                           </div>
                           <div v-else>
                             <CardComponentMobil v-if="!product.lelang_mobil" :product="product" @add-fav="favorite" class="hidden sm:block"/>
-                            <CardComponentMobilSmartPhone v-if="!product.lelang_mobil" :product="product" @add-fav="favorite" class="hidden sm:block"/>
+                            <CardComponentMobilSmartPhone v-if="!product.lelang_mobil" :product="product" @add-fav="favorite" class="block sm:hidden"/>
                           </div>
                         </div>
                     </div>

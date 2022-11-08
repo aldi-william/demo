@@ -14,6 +14,7 @@
   import image_api from '../../assets/images/icon_api.png';
   import download from '../../assets/images/download.png';
   import RiwayatPenawaranComponent from '../../components/RiwayatPenawaranComponent.vue';
+  import RiwayatTransaksiComponent from '../../components/RiwayatTransaksiComponent.vue';
   const menu = ref('semua');
   
   const riwayat_menu = ref('penawaran');
@@ -90,61 +91,7 @@
           
       </div>
       <div class="grid grid-cols-12 sm:flex md:flex lg:flex xl:flex 2xl:flex sm:flex-row md:flex-row lg:flex-row xl:flex-row 2xl:flex-row" v-if="riwayat_menu === 'transaksi'">
-          <div class="col-span-12 bg-blue-500 mt-6 sm:my-12 md:my-12 lg:my-12 xl:my-12 2xl:my-12 p-4 sm:p-8 md:p-8 lg:p-8 xl:p-8 2xl:p-8 rounded-lg sm:h-screen w-full sm:w-4/12 md:w-4/12 lg:w-4/12 xl:w-4/12 2xl:w-4/12">
-              <div class="flex sm:flex-col overflow-x-scroll sm:w-full sm:overflow-visible md:overflow-visible lg:overflow-visible xl:overflow-visible 2xl:overflow-visible">
-              <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'semua'" :class="menu === 'semua' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2 rounded-lg mb-4 text-sm font-bold">7 Hari Terakhir</button>            
-              </div>
-              <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                 <button @click="menu = 'menang'" :class="menu === 'menang' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2 rounded-lg mb-4 text-sm font-bold">30 Hari Terakhir</button>
-              </div>
-              <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                 <button @click="menu = 'kalah'" :class="menu === 'kalah' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2 rounded-lg mb-4 text-sm font-bold">3 Bulan Terakhir</button>
-              </div>
-              <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                 <button @click="menu = 'ditolak'" :class="menu === 'ditolak' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2 rounded-lg mb-4 text-sm font-bold">1 Tahun Terakhir</button>
-              </div>
-            </div>
-          </div>
-          <div v-if="menu === 'semua'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
-                <div class="outer-table">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Tanggal</th>
-                          <th>Nama Mobil</th>
-                          <th>Total Pembayaran</th>
-                          <th>Status</th>
-                          <th>Metode Pembayaran</th>
-                          <th>Tanda Terima</th>
-                          <th>Catatan TAV</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr v-for="i in 5" :key="i+'table'">
-                          <td>01 Sep 2022 10:06:14</td>
-                          <td>SUZUKI ERTIGA SPORT 2019 Matic</td>
-                          <td>Rp. 110,000,000.00</td>
-                          <td>
-                            <div class="border border-black text-white bg-green-600 px-2 py-1 rounded-full" v-if="i % 2 === 0">Berhasil</div>
-                            <div class="border border-black text-white bg-red-600 px-2 py-1 rounded-full" v-else>Ditolak</div>
-                          </td>
-                          <td>
-                            <p>Pembayaran Langsung</p>
-                            <a href="#" class="text-blue-600">Bukti Pembayaran</a>
-                          </td>
-                          <td>
-                            <div class="flex items-center justify-center">
-                              <a href="#" class="text-blue-600"> Unduh</a>
-                              <img :src="download" class="w-6"/>
-                            </div>
-                          </td>
-                          <td>-</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                </div> 
-          </div>  
+          <RiwayatTransaksiComponent/>
       </div>
     </div>
   </div>
