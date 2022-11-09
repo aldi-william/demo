@@ -68,7 +68,7 @@ onMounted(() => {
                   </td>
                   <td>
                     <div class="flex items-center justify-center">
-                      <a v-bind:href="'http://tav.test/payment/' +payment.id" class="text-blue-600"> Unduh</a>
+                      <a v-bind:href="'https://admin.tavmobil.id/payment/' +payment.id" class="text-blue-600"> Unduh</a>
                       <img :src="download" class="w-6"/>
                     </div>
                   </td>
