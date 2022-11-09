@@ -9,14 +9,14 @@ export const useTransaksiStore = defineStore({
   }),
   getters: {},
   actions: {
-    async fetchTransaksi() {
+    async fetchTransaksi(slug: any) {
 
       const token = localStorage.getItem('isLogin')
 
 
       //set axios header dengan type Authorization + Bearer token
       http.defaults.headers.common['Authorization'] = `Bearer ${token}`
-      await http.get(`/history/payment`)
+      await http.get(`/history/payment?filter=${slug}`)
         .then(resp => {
           this.data = resp.data.data.data
         })
