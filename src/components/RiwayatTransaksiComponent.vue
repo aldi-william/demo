@@ -63,7 +63,8 @@ onMounted(() => {
                   </td>
                   <td>
                     <p>{{payment.methode}}</p>
-                    <a href="{{payment.image}}" class="text-blue-600" v-if="payment.image != null">Bukti Pembayaran</a>
+                    <!-- <a href="{{payment.image}}" class="text-blue-600" v-if="payment.image != null">Bukti Pembayaran</a> -->
+                    <img :src="payment.image" class="p-1" v-if="payment.image != null" />
                     <p v-else>-</p>
                   </td>
                   <td>
