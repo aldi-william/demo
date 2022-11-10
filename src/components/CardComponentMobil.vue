@@ -152,7 +152,8 @@ onMounted(() => {
           class="bg-tertier px-4 py-2 shadow-xl text-sm hover:bg-blue-500 hover:text-white">Lihat</button>
       </div>
     </div>
-    <div class="border border-gray-400 p-2 rounded-lg" v-show="route.name === 'Favorit' && status === 'Berlangsung'">
+    <!-- <div class="border border-gray-400 p-2 rounded-lg" v-show="route.name === 'Favorit' && status === 'Berlangsung'"> -->
+    <div class="border border-gray-400 p-2 rounded-lg">
       <div class="flex flex-row justify-center">
         <button><img :src="button_minus" class="h-8 w-8" @click="handle_decrement()" /></button>
         <p class="font-bold text-xl mx-4">Rp {{ new Intl.NumberFormat().format(harga) }}</p>
