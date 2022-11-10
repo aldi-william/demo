@@ -51,7 +51,7 @@ const handle_decrement = () => {
   const bid = (val) => {
   lelang.value.lelang_id = val[1];
   lelang.value.price_offer = val[0];
-  console.log(lelang.value)
+  // console.log(lelang.value)
   Bid.postBidding(lelang.value).then((resp) => {
 
   })
@@ -72,7 +72,7 @@ onMounted(() => {
 
   echo.channel('bidding')
     .listen('BiddingEvent', (e) => {
-      console.log(e.bidding.price_winner);
+      // console.log(e.bidding.price_winner);
       if (products.product.id == e.bidding.id) {
         products.product.price_winner = e.bidding.price_winner
       }
