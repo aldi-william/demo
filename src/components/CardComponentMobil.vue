@@ -81,7 +81,7 @@ onMounted(() => {
 
   echo.channel('bidding')
     .listen('BiddingEvent', (e) => {
-      // console.log(e.bidding.price_winner);
+      console.log(e.bidding.price_winner);
       if (products.product.id == e.bidding.id) {
         products.product.price_winner = e.bidding.price_winner
       }
