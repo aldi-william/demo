@@ -265,7 +265,7 @@ const scrollToTop = () => {
 <style>
 .container-xl {
   max-width: 1200px;
-  width: 100%;
+  width: 96.2%;
   margin: 0 auto;
 }
 </style>

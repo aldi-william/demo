@@ -100,24 +100,24 @@
     
     <p class="text-center my-4 font-bold">Berburu mobil bekas Murah & Berkualitas</p>
   </div>
-  <div class="w-full h-full flex flex-col justify-center layer -top-10" :class="isAbsolute ? 'absolute':''">
+  <div class="w-full h-full flex flex-col justify-center layer -top-10 bg-slate-300" :class="isAbsolute ? 'absolute':''">
      
-     <div class="mx-auto w-11/12 sm:w-3/12 md:w-3/12 lg:w-3/12 xl:w-3/12 2xl:w-3/12 p-8 rounded-xl bg-white shadow-2xl">
+     <div class="mx-auto w-11/12 sm:w-3/12 md:w-3/12 lg:w-3/12 xl:w-3/12 2xl:w-3/12 p-8 rounded-xl">
           <div class="w-full flex justify-center z-10" v-show="isAnimated2">
               <div class="flex">
                 <img :src="logo" class="w-40">
               </div>
           </div> 
-          <h1 class="text-center text-3xl font-bold mb-2">Selamat Datang</h1>
+          <h1 class="text-center text-3xl font-bold mb-2">SELAMAT DATANG</h1>
           <p class="text-center mb-6 text-lg">Platform LELANG MENANG Mobil Bekas Berkualitas</p>
           <div class="w-full mx-auto">
               <p class="text-left">Username</p>
-              <input placeholder="Masukan No. WhatsApp" class="px-4 py-2 rounded border border-gray w-full" v-model="dataLogin.no_whatsapp" type="number"/>
+              <input placeholder="Masukan No. WhatsApp" class="bg-white px-4 py-2 rounded border border-black w-full" v-model="dataLogin.no_whatsapp" type="number"/>
           </div>
      
           <div class="w-full mx-auto my-4">
             <p class="text-left">Password</p>
-            <input placeholder="Masukan Password" class="px-4 py-2 rounded border border-gray w-full" v-model="dataLogin.password" :type="passwordFieldType"/>
+            <input placeholder="Masukan Password" class="bg-white px-4 py-2 rounded border border-black w-full" v-model="dataLogin.password" :type="passwordFieldType"/>
             <div class="relative" v-show="isAnimated2">
               <button @click="switchVisibility()" class="absolute -top-[29px] right-4"><img :src="mata_password" class="w-6 h-4"></button>
             </div>
@@ -150,7 +150,7 @@
 .layer{
   background: url('../assets/images/layer.png');
   background-repeat: repeat;
-  background-size: 50%;
+  background-size: 10%;
 }
 
 .welcome .splash {

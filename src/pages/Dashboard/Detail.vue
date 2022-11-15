@@ -358,6 +358,23 @@ getDataSession();
                 <img :src="count > 0 ? image_star : image_star_empty" alt="star" class="w-8 h-8 cursor-pointer" @click="favorite(detailInspection.id)" />
               </div>     
              </div>
+             <div class="mt-4 col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 border-2 border-gray px-4 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0 bg-gray-200 rounded-lg">
+                  <div class="flex items-center p-2 justify-center" v-show="status === 'Berlangsung'">
+                        <div class="flex justify-center w-1/2">
+                            <div class="flex flex-col w-9/12">
+                            <button @click="isActive = 5; handle_increment()" class="px-2 py-1 text-white rounded w-full text-xl mb-1" :class="isActive === 5 ? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">+ Rp 500.000</button>
+                            <button @click="isActive = 10; handle_increment()" class="px-2 py-1 text-white rounded w-full text-xl" :class="isActive === 10? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">+ Rp 1.000.000</button>
+                            </div>
+                        </div>
+                        <div class="flex justify-center w-1/2">
+                          <div class="flex flex-col">
+                            <p class="font-bold text-xl mb-1">Rp {{ new Intl.NumberFormat().format(harga) }}</p>
+                            <button @click="isTawar = 'konfirmasi'; bid([harga, detailInspection.id])" class="bg-tertier px-4 py-2 rounded text-white w-40 font-bold text-sm">Mulai Tawar</button>
+                          </div>
+                        </div>
+              
+                  </div>
+             </div>
              <div class="grid grid-cols-12 rounded-lg p-4 border-gray border-2 my-4 bg-white">
                 <div class="col-span-6 my-1">
                   <p>Lokasi</p>
@@ -393,23 +410,7 @@ getDataSession();
                 </div>
                 
              </div>
-             <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 border-2 border-gray px-4 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0 bg-gray-200 rounded-lg">
-            <div class="flex items-center p-2 justify-center" v-show="status === 'Berlangsung'">
-                  <div class="flex justify-center w-1/2">
-                      <div class="flex flex-col w-9/12">
-                      <button @click="isActive = 5; handle_increment()" class="px-2 py-1 text-white rounded w-full text-xl mb-1" :class="isActive === 5 ? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">+ Rp 500.000</button>
-                      <button @click="isActive = 10; handle_increment()" class="px-2 py-1 text-white rounded w-full text-xl" :class="isActive === 10? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">+ Rp 1.000.000</button>
-                      </div>
-                  </div>
-                  <div class="flex justify-center w-1/2">
-                    <div class="flex flex-col">
-                      <p class="font-bold text-xl mb-1">Rp {{ new Intl.NumberFormat().format(harga) }}</p>
-                      <button @click="isTawar = 'konfirmasi'; bid([harga, detailInspection.id])" class="bg-tertier px-4 py-2 rounded text-white w-40 font-bold text-sm">Mulai Tawar</button>
-                    </div>
-                  </div>
-        
-            </div>
-        </div>
+             
         </div>
         
         <!-- <div class="col-span-12 sm:col-span-7 md:col-span-7 lg:col-span-7 xl:col-span-7 2xl:col-span-7 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0 relative -top-12 sm:top-0">
