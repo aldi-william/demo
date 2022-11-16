@@ -64,7 +64,7 @@ const products = defineProps(['product','status'])
           <div class="text-black mx-2 right-0 relative text-xs">{{ status === "Berlangsung" ? 1000 : '-'}}</div>
         </div>
         <div class="relative flex px-2 py-1 rounded items-center">
-          <img :src="image_users" alt="users" class="w-4 h-4" />
+          <img :src="image_users" alt="users" class="w-6 h-4" />
           <div class="text-black mx-2 text-xs">{{ status === "Berlangsung" ? 1000 : '-'}}</div>
         </div>
     </div>
