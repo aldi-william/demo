@@ -22,10 +22,10 @@
   
 </script>
 <template>
-  <div class="bg-biru_fb relative -top-2">
+  <div class="bg-biru_fb relative sm:-top-2 -top-6">
     <div class="container-xl">
       <!-- <h1 class="py-4 text-3xl font-bold">Riwayat Lelang</h1> -->
-      <div class="grid grid-cols-12 pt-4">
+      <div class="grid grid-cols-12 sm:pt-4">
         <div @click="riwayat_menu = 'penawaran'" class="col-span-6 cursor-pointer" :class="riwayat_menu === 'penawaran' ? 'border-b-4 border-blue-400':'border-b-2 border-gray-400'">
              <h1 class="sm:text-2xl text-center py-2">Riwayat Penawaran</h1>
         </div>
@@ -37,28 +37,28 @@
           <div class="col-span-12 bg-blue-500 mt-6 sm:my-12 md:my-12 lg:my-12 xl:my-12 2xl:my-12 p-4 sm:p-8 md:p-8 lg:p-8 xl:p-8 2xl:p-8 rounded-lg sm:h-screen w-full sm:w-4/12 md:w-4/12 lg:w-4/12 xl:w-4/12 2xl:w-4/12">
             <div class="flex sm:flex-col overflow-x-scroll sm:w-full sm:overflow-visible md:overflow-visible lg:overflow-visible xl:overflow-visible 2xl:overflow-visible">
              <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                    <button @click="menu = 'semua'" :class="menu === 'semua' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2  rounded-lg mb-4 text-sm font-bold">Semua (9)</button>
+                    <button @click="menu = 'semua'" :class="menu === 'semua' ? 'bg-white text-blue-500':'text-white bg-blue-500 border border-white'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2  rounded-lg mb-4 text-sm font-bold">Semua (9)</button>
              </div>
              <div class="w-96 sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                    <button @click="menu = 'menang'" :class="menu === 'menang' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2  rounded-lg mb-4 text-sm font-bold">Menang (3)</button>
+                    <button @click="menu = 'menang'" :class="menu === 'menang' ? 'bg-white text-blue-500':'text-white bg-blue-500 border border-white'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2  rounded-lg mb-4 text-sm font-bold">Menang (3)</button>
              </div>
              <div class="w-96 sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                    <button @click="menu = 'kalah'" :class="menu === 'kalah' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2  rounded-lg mb-4 text-sm font-bold">Kalah (3)</button>
+                    <button @click="menu = 'kalah'" :class="menu === 'kalah' ? 'bg-white text-blue-500':'text-white bg-blue-500 border border-white'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2  rounded-lg mb-4 text-sm font-bold">Kalah (3)</button>
              </div>
              <div class="w-96 sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                    <button @click="menu = 'ditolak'" :class="menu === 'ditolak' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2  rounded-lg mb-4 text-sm font-bold">Penawaran Ditolak (3)</button>
+                    <button @click="menu = 'ditolak'" :class="menu === 'ditolak' ? 'bg-white text-blue-500':'text-white bg-blue-500 border border-white'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2  rounded-lg mb-4 text-sm font-bold">Penawaran Ditolak (3)</button>
              </div>
              <div class="w-96 sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                   <button @click="menu = 'diterima'" :class="menu === 'diterima' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mr-0 md:mr-0 lg:mr-0 xl:mr-0 2xl:mr-0 px-4 py-2 rounded-lg mb-4 text-sm font-bold">Penawaran Diterima (0)</button>
+                   <button @click="menu = 'diterima'" :class="menu === 'diterima' ? 'bg-white text-blue-500':'text-white bg-blue-500 border border-white'" class="w-60 mr-4 sm:mr-0 md:mr-0 lg:mr-0 xl:mr-0 2xl:mr-0 px-4 py-2 rounded-lg mb-4 text-sm font-bold">Penawaran Diterima (0)</button>
              </div>
              <div class="w-96 sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                   <button @click="menu = 'proses'" :class="menu === 'proses' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mr-0 md:mr-0 lg:mr-0 xl:mr-0 2xl:mr-0 px-4 py-2 rounded-lg mb-4 text-sm font-bold">Dalam Proses (0)</button>
+                   <button @click="menu = 'proses'" :class="menu === 'proses' ? 'bg-white text-blue-500':'text-white bg-blue-500 border border-white'" class="w-60 mr-4 sm:mr-0 md:mr-0 lg:mr-0 xl:mr-0 2xl:mr-0 px-4 py-2 rounded-lg mb-4 text-sm font-bold">Dalam Proses (0)</button>
              </div>
              <div class="w-96 sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'siap'" :class="menu === 'siap' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2  rounded-lg mb-4 text-sm font-bold">Siap Diambil(0)</button>
+                  <button @click="menu = 'siap'" :class="menu === 'siap' ? 'bg-white text-blue-500':'text-white bg-blue-500 border border-white'" class="w-60 mr-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto px-4 py-2  rounded-lg mb-4 text-sm font-bold">Siap Diambil(0)</button>
              </div>
              <div class="w-96 sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                 <button @click="menu = 'sudah'" :class="menu === 'sudah' ? 'bg-white text-blue-500':'text-white bg-blue-500'" class="w-60 px-4 py-2 rounded-lg mb-4 text-sm font-bold">Sudah Diambil(0)</button>
+                 <button @click="menu = 'sudah'" :class="menu === 'sudah' ? 'bg-white text-blue-500':'text-white bg-blue-500 border border-white'" class="w-60 px-4 py-2 rounded-lg mb-4 text-sm font-bold">Sudah Diambil(0)</button>
              </div>
              
             </div>

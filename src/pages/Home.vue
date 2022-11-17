@@ -52,7 +52,7 @@
             isLoading.value = false;
             Swal.fire({
               title: 'Invalid!',
-              text: 'Mohon Maaf Username atau Password Anda SALAH / Belum Terdaftar',
+              text: 'Mohon Maaf Username atau Password Anda SALAH / Belum Terdaftar / Masa Aktif Habis',
               icon: 'error',
               confirmButtonText: 'OK'
             })
@@ -150,7 +150,7 @@
 .layer{
   background: url('../assets/images/layer.png');
   background-repeat: repeat;
-  background-size: 10%;
+  background-size: 25%;
 }
 
 .welcome .splash {

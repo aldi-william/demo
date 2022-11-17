@@ -362,14 +362,14 @@ getDataSession();
                   <div class="flex items-center p-2 justify-center" v-show="status === 'Berlangsung'">
                         <div class="flex justify-center w-1/2">
                             <div class="flex flex-col w-9/12">
-                            <button @click="isActive = 5; handle_increment()" class="px-2 py-1 text-white rounded w-full text-xl mb-1" :class="isActive === 5 ? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">+ Rp 500.000</button>
-                            <button @click="isActive = 10; handle_increment()" class="px-2 py-1 text-white rounded w-full text-xl" :class="isActive === 10? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">+ Rp 1.000.000</button>
+                            <button @click="isActive = 5; handle_increment()" class="px-2 py-1 text-white rounded w-full sm:text-xl text-[10px] mb-1" :class="isActive === 5 ? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">+ Rp 500.000</button>
+                            <button @click="isActive = 10; handle_increment()" class="px-2 py-1 text-white rounded w-full sm:text-xl text-[10px]" :class="isActive === 10? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">+ Rp 1.000.000</button>
                             </div>
                         </div>
                         <div class="flex justify-center w-1/2">
                           <div class="flex flex-col">
-                            <p class="font-bold text-xl mb-1">Rp {{ new Intl.NumberFormat().format(harga) }}</p>
-                            <button @click="isTawar = 'konfirmasi'; bid([harga, detailInspection.id])" class="bg-tertier px-4 py-2 rounded text-white w-40 font-bold text-sm">Mulai Tawar</button>
+                            <p class="font-bold sm:text-xl text-[16px] mb-1">Rp {{ new Intl.NumberFormat().format(harga) }}</p>
+                            <button @click="isTawar = 'konfirmasi'; bid([harga, detailInspection.id]); harga=500000;" class="bg-tertier sm:px-4 px-2 sm:py-2 py-1 rounded text-white sm:w-40 font-bold text-sm">Mulai Tawar</button>
                           </div>
                         </div>
               

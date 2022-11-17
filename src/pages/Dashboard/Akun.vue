@@ -72,14 +72,14 @@ const sendDataAccount = () => {
         title: 'Success!',
         text: 'Data Berhasil Diubah',
         icon: 'success',
-        confirmButtonText: 'Cool'
+        confirmButtonText: 'OK'
     })
   }).catch((error:any) => {
     Swal.fire({
               title: 'Error!',
-              text: 'Mohon Maaf Data yang Anda Masukan Salah',
+              text: 'Mohon Maaf Password yang Anda Masukan Salah',
               icon: 'error',
-              confirmButtonText: 'Cool'
+              confirmButtonText: 'OK'
     })
     console.log(error)
   })
