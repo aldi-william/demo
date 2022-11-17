@@ -124,56 +124,44 @@
 
     let status = ref('');
     let tanggal = ref('');
-    let session_end = ref('');
-    let hours = ref('');
-    let minutes = ref('');
-    let seconds = ref('');
-    let millisecondHours = ref(0);
-    let millisecondMinutes = ref(0);
-    let millisecondSeconds = ref(0);
-    let totalmilliseconds = ref(0);
+    let session_end = ref();
     let timeToCountdown = ref('');
+    let waiting = ref(false);
 
     const getDataSession = () => {
         GetFilterService.getSession().then((response:any) => {
-            tanggal.value = response.data.data.date;
-            session_end.value = response.data.data.session_end;
-            status.value = response.data.data.status;
-            hours.value = session_end.value.split(':')[0];
-            minutes.value = session_end.value.split(':')[1];
-            seconds.value = session_end.value.split(':')[2];
-            millisecondHours.value = parseInt(hours.value) * 60 * 60 * 1000;
-            millisecondMinutes.value = parseInt(minutes.value) * 60 * 1000;
-            millisecondSeconds.value = parseInt(seconds.value) * 1000;
-            totalmilliseconds.value = millisecondHours.value + millisecondMinutes.value + millisecondSeconds.value;
+          tanggal.value = response.data.data.date;
+          session_end.value = new Date(response.data.data.session_end).getTime();
+          status.value = response.data.data.status;
+          waiting.value = false
         }).catch((error:any) => {
             console.log(error)
         })
    }
 
-const myfunc = setInterval(function() {
-  var now = new Date();
-  var hours = now.getHours();
-  var minutes = now.getMinutes();
-  var seconds = now.getSeconds();
-  var millisecondHours = hours * 60 * 60 * 1000;
-  var millisecondMinutes = minutes * 60 * 1000;
-  var millisecondSeconds = seconds * 1000;
-  var total = millisecondHours + millisecondMinutes + millisecondSeconds;
-  var timeleft = totalmilliseconds.value - total;
+   const myfunc = setInterval(function() {
 
-  let secondsLeft = Math.floor(timeleft / 1000);
-  let minutesLeft = Math.floor(secondsLeft / 60);
-  let hoursLeft = Math.floor(minutesLeft / 60);
-  secondsLeft = secondsLeft % 60;
-  minutesLeft = minutesLeft % 60;
-  hoursLeft = hoursLeft % 24;
-  timeToCountdown.value = hoursLeft + ':' + minutesLeft + ':' + secondsLeft;
-  if(timeToCountdown.value == '0:0:0') {
-    clearInterval(myfunc)
-    getDataSession();
-  }
-}, 1000)
+// Dapatkan tanggal dan waktu hari ini
+let now = new Date().getTime();
+  
+// Temukan jarak antara sekarang dan tanggal hitung mundur
+let distance = session_end.value - now;
+  
+// Perhitungan waktu untuk jam, menit dan detik
+let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  
+// Keluarkan hasil dalam elemen dengan id = "demo"
+timeToCountdown.value =hours + ":"
++ minutes + ":" + seconds
+  
+//Jika hitungan mundur selesai, tulis beberapa teks
+if (distance < 0) {
+  clearInterval(myfunc);
+  getDataSession()
+}
+}, 1000);
 
 const getDetailData = () => {
    GetService.getDetailData(params).then((response:any) => {
@@ -293,7 +281,7 @@ getDataSession();
       <div class="col-span-12 bg-white flex-col fixed sm:top-20 left-0 top-12 z-20 w-full mx-auto"> 
             <p class="flex justify-center">
               <span class="text-blue-500 mr-2">Status :&nbsp;<span class="text-red-500">{{ status }}</span></span>
-              <span class="text-blue-500">Sisa :&nbsp;<span class="text-red-500">{{timeToCountdown}}</span></span>
+              <span class="text-blue-500">Sisa :&nbsp;<span class="text-red-500">{{waiting?'waiting...':timeToCountdown}}</span></span>
             </p>
             <div class="text-center text-xs">{{ tanggal }}</div>
       </div>
