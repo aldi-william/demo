@@ -250,6 +250,8 @@ const bid = (val) => {
   })
 }
 
+
+const splash = ref(false);
 onMounted(() => {
   // http.get(`https://admin.tavmobil.id/api/lelang/daftar-lelang/${products.product.id}`).then(res => {
   //   console.log(res)
@@ -265,7 +267,11 @@ onMounted(() => {
 
   echo.channel('bidding')
     .listen('BiddingEvent', (e) => {
-      priceWinner.value = e.bidding.price_winner
+      priceWinner.value = e.bidding.price_winner;
+      setTimeout(() => {
+         splash.value = false;
+      }, 100)
+        splash.value = true;
     });
 })
 
@@ -318,8 +324,12 @@ getDataSession();
             :thumbs="{ swiper: thumbsSwiper }"
             :modules="modules"
             class="mySwiper2 rounded-xl">
+
             <swiper-slide v-for="(item, index) in image_cars" :key="index+'image_car'">
-              <img :src="item.image" @click="showImg(index, image_cars)" class="cursor-pointer">
+              <img :src="item.image" @click="showImg(index, image_cars)" class="cursor-pointer"/>
+              <div :class="splash ? 'absolute top-0 z-50 color-blue h-screen w-screen':''">
+
+              </div>
             </swiper-slide>
 
           </swiper>
@@ -1138,6 +1148,14 @@ getDataSession();
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: gray; 
+}
+
+.color-blue{
+  background: rgba(93, 93, 239, 0.9);
+}
+
+.index{
+  z-index: 999;
 }
 
 </style>

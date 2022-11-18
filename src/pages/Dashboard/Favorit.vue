@@ -119,8 +119,6 @@ getDataSession();
       </div>
       <div class="pt-1 sm:pt-10"></div>
       <div class="container-xl pb-20" v-if="products.length < 1">
-          <h1 class="mt-8 text-xl font-bold">Favoritku</h1>
-          <div class="border-b-4 border-blue-400 w-24 mb-4"></div>
           <img :src="bg_image" alt="bg" class="w-8/12 sm:w-4/12 md:w-4/12 lg:w-4/12 xl:w-4/12 2xl:w-4/12 mx-auto"/>
           <div class="text-3xl font-bold text-center my-4">
             <p>Buah Alpukat Buah Kedondong</p>

@@ -152,23 +152,18 @@ onMounted(() => {
           class="bg-tertier px-4 py-2 shadow-xl text-sm hover:bg-blue-500 hover:text-white">Lihat</button>
       </div>
     </div>
-    <div class="border border-gray-400 p-2 rounded-lg" v-show="route.name === 'Favorit' && status === 'Berlangsung'">
-      <div class="flex flex-row justify-center">
-        <button><img :src="button_minus" class="h-8 w-8" @click="handle_decrement()" /></button>
-        <p class="font-bold text-xl mx-4">Rp {{ new Intl.NumberFormat().format(harga) }}</p>
-        <button><img :src="button_plus" class="h-8 w-8" @click="handle_increment()" /></button>
+    <div class="bg-gray-200 flex items-center p-2 justify-center" v-show="route.name === 'Favorit' && status === 'Berlangsung'">
+      <div class="flex justify-center w-1/2">
+          <div class="flex flex-col w-9/12">
+          <button @click="isActive = 5; handle_increment()" class="px-2 py-1 text-white rounded w-full text-xs mb-4" :class="isActive === 5 ? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">+ Rp 500.000</button>
+          <button @click="isActive = 10; handle_increment()" class="px-2 py-1 text-white rounded w-full text-xs" :class="isActive === 10? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">+ Rp 1.000.000</button>
+          </div>
       </div>
-      <div class="flex justify-around my-1">
-        <button @click="isActive = 5" class="px-2 py-1 text-white rounded-lg w-1/3 text-xs"
-          :class="isActive === 5 ? 'bg-blue-500 border border-gray-500' : 'bg-abu_abu_pucat text-gray-400'">Rp
-          500.000</button>
-        <button @click="isActive = 10" class="px-2 py-1 text-white rounded-lg w-1/3 text-xs"
-          :class="isActive === 10 ? 'bg-blue-500 border border-gray-500' : 'bg-abu_abu_pucat text-gray-400'">Rp
-          1.000.000</button>
-      </div>
-      <div class="flex justify-center pb-2">
-        <button @click="isTawar = 'konfirmasi'; bid([harga, product.id])"
-          class="bg-tertier px-2 py-1 rounded-xl text-black border border-black w-32 font-bold">Mulai Tawar</button>
+      <div class="flex justify-center w-1/2">
+        <div class="flex flex-col">
+          <p class="font-bold mb-4">Rp {{ new Intl.NumberFormat().format(harga) }}</p>
+          <button @click="isTawar = 'konfirmasi'; bid([harga, product.id]); harga=500000;" class="bg-tertier px-2 py-1 rounded text-white w-24 font-bold text-xs">Mulai Tawar</button>
+        </div>
       </div>
     </div>
   </div>

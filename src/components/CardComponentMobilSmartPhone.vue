@@ -147,7 +147,7 @@ onMounted(() => {
       <div class="flex justify-center w-1/2">
         <div class="flex flex-col">
           <p class="font-bold mb-4">Rp {{ new Intl.NumberFormat().format(harga) }}</p>
-          <button @click="isTawar = 'konfirmasi'; bid([harga, product.id])" class="bg-tertier px-2 py-1 rounded text-white w-24 font-bold text-xs">Mulai Tawar</button>
+          <button @click="isTawar = 'konfirmasi'; bid([harga, product.id]); harga=500000;" class="bg-tertier px-2 py-1 rounded text-white w-24 font-bold text-xs">Mulai Tawar</button>
         </div>
       </div>
       

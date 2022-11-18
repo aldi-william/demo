@@ -190,7 +190,11 @@ const scrollToTop = () => {
             <div class="bg-biru rounded-l px-4 py-2 border border-black">Rp</div>
               <VueNumberFormat v-model:value="filterBursa.lowPrice" :options="{ precision: 0, decimal: ',', thousand: '.', prefix: '', isInteger: true }" class="px-4 py-2 border border-black"></VueNumberFormat> 
           </div>
-          <button class="text-white bg-blue-500 px-4 py-2 w-full rounded" @click="filterQuery(); range_harga = false;">Terapkan</button>
+          <div class="flex justify-between">
+            <button class="text-white bg-blue-500 px-4 py-2 w-32 mr-2 rounded" @click="filterBursa.heightPrice=0; filterBursa.lowPrice=0;">Reset</button>
+            <button class="text-white bg-blue-500 px-4 py-2 w-32 ml-2 rounded" @click="filterQuery(); range_harga = false;">Terapkan</button>
+          </div>
+          
         </div>
       </div>
       <div class="col-span-6 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-2 2xl:col-span-2 relative bg-white top-12">

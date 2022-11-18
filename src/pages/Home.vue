@@ -150,7 +150,15 @@
 .layer{
   background: url('../assets/images/layer.png');
   background-repeat: repeat;
-  background-size: 25%;
+  background-size: 60%;
+}
+
+@media only screen and (max-width: 600px) {
+  .layer{
+    background: url('../assets/images/layer.png');
+    background-repeat: repeat;
+    background-size: 210%;
+  }
 }
 
 .welcome .splash {
