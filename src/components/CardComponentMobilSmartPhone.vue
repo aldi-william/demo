@@ -58,7 +58,8 @@ const handle_decrement = () => {
 }
 
 // const price_winner = ref(0)
-
+const countPeople = ref(0);
+const countBidding = ref(0);
 onMounted(() => {
   // http.get(`https://admin.tavmobil.id/api/lelang/daftar-lelang/${products.product.id}`).then(res => {
   //   console.log(res)
@@ -72,9 +73,12 @@ onMounted(() => {
 
   echo.channel('bidding')
     .listen('BiddingEvent', (e) => {
+      console.log(e);
       // console.log(e.bidding.price_winner);
       if (products.product.id == e.bidding.id) {
         products.product.price_winner = e.bidding.price_winner
+        countPeople.value = e.bidding.CountPeople
+        countBidding.value = e.bidding.countBidding
       }
     });
 })
@@ -119,11 +123,11 @@ onMounted(() => {
     <div class="flex shadow-lg bg-blue-300">
       <div class="relative flex px-2 py-1 rounded items-center">
         <img :src="image_hammer" alt="hammer" class="w-6 h-6" />
-        <div class="text-black mx-2 right-0 relative">1000</div>
+        <div class="text-black mx-2 right-0 relative">{{ countBidding }}</div>
       </div>
       <div class="relative flex px-2 py-1 rounded items-center">
         <img :src="image_users" alt="users" class="w-8 h-6" />
-        <div class="text-black mx-2">1000</div>
+        <div class="text-black mx-2">{{ countPeople }}</div>
       </div>
       <div class="flex items-center">
                 <div v-if="product.car_detail.car_inspection" v-tippy="{ content: 'Kecelakaan ringan' }">
