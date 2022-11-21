@@ -86,8 +86,8 @@ onMounted(() => {
       // console.log(e.bidding.price_winner);
       if (products.product.id == e.bidding.id) {
         products.product.price_winner = e.bidding.price_winner
-        countPeople.value = e.bidding.CountPeople
-        countBidding.value = e.bidding.countBidding
+        products.product.countPeople.value = e.bidding.CountPeople
+        products.product.countBidding.value = e.bidding.countBidding
       }
     });
 })
@@ -106,11 +106,11 @@ onMounted(() => {
     <div class="grid grid-cols-12 my-2 gap-2">
       <div class="col-span-4 bg-abu_abu relative flex px-2 py-1 rounded items-center">
         <img :src="image_hammer" alt="hammer" class="w-6 h-6" />
-        <div class="text-white mx-2 right-0 relative">{{ countBidding }}</div>
+        <div class="text-white mx-2 right-0 relative">{{ products.product.countBidding }}</div>
       </div>
       <div class="col-span-4 bg-abu_abu relative flex px-2 py-1 rounded items-center">
         <img :src="image_users" alt="users" class="w-6 h-6" />
-        <div class="text-white mx-2">{{ countPeople }}</div>
+        <div class="text-white mx-2">{{ products.product.countPeople }}</div>
       </div>
       <div class="col-span-4">
         <h1 class="text-sm text-center bg-blue-500 text-white rounded-lg px-2 py-1 w-20 float-right">TAV</h1>

@@ -9,8 +9,34 @@ import image_tergenang from '../assets/images/icon_tergenang.png';
 import image_bulat from '../assets/images/bintang_pembatas.png';
 import { formatPrice, textCapitalize } from '../mixins';
 import { useBursaStore } from '../stores/bursa';
+import { ref, onMounted } from 'vue';
+import Bid from '../services/Bid';
+import Echo from "laravel-echo";
 const store = useBursaStore();
 const products = defineProps(['product','status'])
+
+
+
+onMounted(() => {
+  // http.get(`https://admin.tavmobil.id/api/lelang/daftar-lelang/${products.product.id}`).then(res => {
+  //   console.log(res)
+  // })
+  let echo: any = new Echo({
+    broadcaster: "pusher",
+    key: "a19e68e554721cca39a0",
+    forceTLS: true,
+    cluster: "ap1",
+  });
+  echo.channel('bidding')
+    .listen('BiddingEvent', (e) => {
+      // console.log(e.bidding.price_winner);
+      if (products.product.id == e.bidding.id) {
+        products.product.price_winner = e.bidding.price_winner
+        products.product.countPeople.value = e.bidding.CountPeople
+        products.product.countBidding.value = e.bidding.countBidding
+      }
+    });
+})
 </script>
 <template>
   <div class="container-xl rounded-[3px]">
@@ -61,11 +87,11 @@ const products = defineProps(['product','status'])
     <div class="flex border-t border-gray-300 bg-blue-300 items-end rounded-b-[3px]">
         <div class="relative flex px-2 py-1 rounded items-center">
           <img :src="image_hammer" alt="hammer" class="w-4 h-4" />
-          <div class="text-black mx-2 right-0 relative text-xs">{{ status === "Berlangsung" ? 1000 : '-'}}</div>
+          <div class="text-black mx-2 right-0 relative text-xs">{{ status === "Berlangsung" ? products.product.countBidding : '-'}}</div>
         </div>
         <div class="relative flex px-2 py-1 rounded items-center">
           <img :src="image_users" alt="users" class="w-6 h-4" />
-          <div class="text-black mx-2 text-xs">{{ status === "Berlangsung" ? 1000 : '-'}}</div>
+          <div class="text-black mx-2 text-xs">{{ status === "Berlangsung" ? products.product.countPeople : '-'}}</div>
         </div>
     </div>
   </div>
