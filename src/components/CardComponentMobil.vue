@@ -86,8 +86,8 @@ onMounted(() => {
       // console.log(e.bidding.price_winner);
       if (products.product.id == e.bidding.id) {
         products.product.price_winner = e.bidding.price_winner
-        products.product.countPeople.value = e.bidding.CountPeople
-        products.product.countBidding.value = e.bidding.countBidding
+        products.product.CountPeople = e.bidding.CountPeople
+        products.product.countBidding = e.bidding.countBidding
       }
     });
 })
@@ -106,11 +106,11 @@ onMounted(() => {
     <div class="grid grid-cols-12 my-2 gap-2">
       <div class="col-span-4 bg-abu_abu relative flex px-2 py-1 rounded items-center">
         <img :src="image_hammer" alt="hammer" class="w-6 h-6" />
-        <div class="text-white mx-2 right-0 relative">{{ products.product.countBidding }}</div>
+        <div class="text-white mx-2 right-0 relative">{{ product.countBidding }}</div>
       </div>
       <div class="col-span-4 bg-abu_abu relative flex px-2 py-1 rounded items-center">
         <img :src="image_users" alt="users" class="w-6 h-6" />
-        <div class="text-white mx-2">{{ products.product.countPeople }}</div>
+        <div class="text-white mx-2">{{ product.CountPeople }}</div>
       </div>
       <div class="col-span-4">
         <h1 class="text-sm text-center bg-blue-500 text-white rounded-lg px-2 py-1 w-20 float-right">TAV</h1>
@@ -156,7 +156,7 @@ onMounted(() => {
           class="bg-tertier px-4 py-2 shadow-xl text-sm hover:bg-blue-500 hover:text-white">Lihat</button>
       </div>
     </div>
-    <div class="bg-gray-200 flex items-center p-2 justify-center" v-show="route.name === 'Favorit' && status === 'Berlangsung'">
+    <div class="bg-gray-200 flex items-center p-2 justify-center">
       <div class="flex justify-center w-1/2">
           <div class="flex flex-col w-9/12">
           <button @click="isActive = 5; handle_increment()" class="px-2 py-1 text-white rounded w-full text-xs mb-4" :class="isActive === 5 ? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">+ Rp 500.000</button>

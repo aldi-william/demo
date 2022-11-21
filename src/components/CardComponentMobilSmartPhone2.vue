@@ -31,9 +31,10 @@ onMounted(() => {
     .listen('BiddingEvent', (e) => {
       // console.log(e.bidding.price_winner);
       if (products.product.id == e.bidding.id) {
+        console.log(e)
         products.product.price_winner = e.bidding.price_winner
-        products.product.countPeople.value = e.bidding.CountPeople
-        products.product.countBidding.value = e.bidding.countBidding
+        products.product.CountPeople = e.bidding.CountPeople
+        products.product.countBidding = e.bidding.countBidding
       }
     });
 })
@@ -87,11 +88,11 @@ onMounted(() => {
     <div class="flex border-t border-gray-300 bg-blue-300 items-end rounded-b-[3px]">
         <div class="relative flex px-2 py-1 rounded items-center">
           <img :src="image_hammer" alt="hammer" class="w-4 h-4" />
-          <div class="text-black mx-2 right-0 relative text-xs">{{ status === "Berlangsung" ? products.product.countBidding : '-'}}</div>
+          <div class="text-black mx-2 right-0 relative text-xs">{{ status === "Berlangsung" ? product.countBidding : '-'}}</div>
         </div>
         <div class="relative flex px-2 py-1 rounded items-center">
           <img :src="image_users" alt="users" class="w-6 h-4" />
-          <div class="text-black mx-2 text-xs">{{ status === "Berlangsung" ? products.product.countPeople : '-'}}</div>
+          <div class="text-black mx-2 text-xs">{{ status === "Berlangsung" ? product.CountPeople : '-'}}</div>
         </div>
     </div>
   </div>
