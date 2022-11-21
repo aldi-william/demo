@@ -156,7 +156,7 @@ onMounted(() => {
           class="bg-tertier px-4 py-2 shadow-xl text-sm hover:bg-blue-500 hover:text-white">Lihat</button>
       </div>
     </div>
-    <div class="bg-gray-200 flex items-center p-2 justify-center">
+    <div class="bg-gray-200 flex items-center p-2 justify-center" v-show="route.name === 'Favorit' && status === 'Berlangsung'">
       <div class="flex justify-center w-1/2">
           <div class="flex flex-col w-9/12">
           <button @click="isActive = 5; handle_increment()" class="px-2 py-1 text-white rounded w-full text-xs mb-4" :class="isActive === 5 ? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">+ Rp 500.000</button>
