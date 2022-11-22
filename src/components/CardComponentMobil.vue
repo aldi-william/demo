@@ -24,7 +24,6 @@ import Pusher from "pusher-js";
 import axios from 'axios';
 const route = useRoute();
 const products = defineProps(['product', 'isShow', 'status'])
-const isFavorit = ref([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
 // const storeBursa = useBursaStore();
 const harga = ref(500000);
 const isActive = ref(5);
@@ -68,7 +67,7 @@ const bid = (val) => {
 }
 
 // const price_winner = ref(0)
-
+let splash_id = ref(0);
 onMounted(() => {
   // http.get(`https://admin.tavmobil.id/api/lelang/daftar-lelang/${products.product.id}`).then(res => {
   //   console.log(res)
@@ -79,23 +78,32 @@ onMounted(() => {
     forceTLS: true,
     cluster: "ap1",
   });
-
-  let countPeople = ref(0);
-  let countBidding = ref(0);
+  
+  
   echo.channel('bidding')
     .listen('BiddingEvent', (e) => {
       // console.log(e.bidding.price_winner);
+      console.log(e)
       if (products.product.id == e.bidding.id) {
+        splash_id.value = e.bidding.id;
         products.product.price_winner = e.bidding.price_winner
         products.product.CountPeople = e.bidding.CountPeople
         products.product.countBidding = e.bidding.countBidding
+        products.product.Splash = true;
+        setTimeout(() => {
+          products.product.Splash = e.bidding.Splash;
+        }, 100) 
       }
+      
     });
 })
 
 </script>
 <template>
   <div class="rounded shadow-2xl p-4 h-full">
+    <div>
+      {{ product.id }}
+    </div>
     <div class="relative overflow-hidden">
       <div class="absolute bg-blue-500 rounded text-white top-3 left-3 px-2">{{ product.code }}</div>
       <!-- <div class="bg-red-600 absolute bottom-0 right-0 px-4 py-0 rounded-tl-full text-white flex items-start">
@@ -103,6 +111,8 @@ onMounted(() => {
             </div> -->
       <img :src="product.car_detail.image_feature1" alt="car" class="w-full h-64 z-10 cursor-pointer object-cover"
         @click="$router.push(`/dashboard/detail/${product.id}`);" />
+      <div :class="product.id == splash_id && product.Splash ? 'absolute top-0 z-50 color-blue h-screen w-screen':''">   
+      </div>
     </div>
     <div class="grid grid-cols-12 my-2 gap-2">
       <div class="col-span-4 bg-abu_abu relative flex px-2 py-1 rounded items-center">
@@ -175,3 +185,8 @@ onMounted(() => {
     </div>
   </div>
 </template>
+<style scoped>
+.color-blue{
+  background: rgba(93, 93, 239, 0.9);
+}
+</style>
