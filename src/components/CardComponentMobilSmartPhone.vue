@@ -14,6 +14,8 @@ import { formatPrice, textCapitalize } from '../mixins';
 import { useBursaStore } from '../stores/bursa';
 import Bid from '../services/Bid';
 import Echo from "laravel-echo";
+import { useRoute } from 'vue-router'
+const route = useRoute();
 const store = useBursaStore();
 const products = defineProps(['product','status'])
 
@@ -117,7 +119,7 @@ onMounted(() => {
               <p>{{ product.car_detail.kota ? textCapitalize(product.car_detail.kota) : ''}}</p> 
             </div>
             <div class="text-lg font-bold flex justify-between">
-              <p>Rp {{ formatPrice(product.price_winner) }}</p>
+              <p>Rp {{ route.name === 'Riyawat' ? formatPrice(product.price_offer) : formatPrice(product.price_winner) }}</p>
               <div>
                     <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star"
                         class="w-6 h-6" @click="$emit('addFav', product.id)" />
