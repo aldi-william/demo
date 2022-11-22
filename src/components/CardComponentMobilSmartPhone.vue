@@ -60,6 +60,7 @@ const handle_decrement = () => {
 // const price_winner = ref(0)
 const countPeople = ref(0);
 const countBidding = ref(0);
+let splash_id = ref(0);
 onMounted(() => {
   // http.get(`https://admin.tavmobil.id/api/lelang/daftar-lelang/${products.product.id}`).then(res => {
   //   console.log(res)
@@ -73,12 +74,15 @@ onMounted(() => {
 
   echo.channel('bidding')
     .listen('BiddingEvent', (e) => {
-      console.log(e);
       // console.log(e.bidding.price_winner);
       if (products.product.id == e.bidding.id) {
         products.product.price_winner = e.bidding.price_winner
         products.product.CountPeople = e.bidding.CountPeople
         products.product.countBidding = e.bidding.countBidding
+        products.product.Splash = true;
+        setTimeout(() => {
+          products.product.Splash = e.bidding.Splash;
+        }, 100)
       }
     });
 })
@@ -90,6 +94,8 @@ onMounted(() => {
           <div class="flex justify-center z-10">
             <img :src="product.car_detail.image_feature1" alt="car" class="w-24 h-24 cursor-pointer object-cover"
                   @click="$router.push(`/dashboard/detail/${product.id}`);" />
+            <div :class="product.id == splash_id && product.Splash ? 'absolute top-0 z-50 color-blue h-screen w-screen':''">   
+            </div>
           </div>    
         </div>
         <div class="w-2/3">
@@ -158,4 +164,9 @@ onMounted(() => {
     </div>
   </div>
 </template>
+<style scoped>
+.color-blue{
+  background: rgba(93, 93, 239, 0.9);
+}
+</style>
 
