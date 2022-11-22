@@ -154,8 +154,8 @@ onMounted(() => {
     </div>
     <div class="flex flex-row my-1 justify-between items-center">
       <div>
-        <h1 v-if="route.name === 'BursaMobil'">Harga Mulai :</h1>
-        <h1 v-else>Penawaran Terbaru :</h1>
+        <!-- <h1 v-if="route.name === 'BursaMobil'">Harga Mulai :</h1>
+        <h1 v-else>Penawaran Terbaru :</h1> -->
         <!-- <div>{{ price_winner }}</div> -->
         <h1 class="text-2xl font-bold">Rp {{ formatPrice(product.price_winner) }}</h1>
       </div>
