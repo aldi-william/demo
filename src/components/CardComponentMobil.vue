@@ -157,7 +157,7 @@ onMounted(() => {
         <!-- <h1 v-if="route.name === 'BursaMobil'">Harga Mulai :</h1>
         <h1 v-else>Penawaran Terbaru :</h1> -->
         <!-- <div>{{ price_winner }}</div> -->
-        <h1 class="text-2xl font-bold">Rp {{ route.name === 'Riyawat' ? formatPrice(product.price_offer) : formatPrice(product.price_winner) }}</h1>
+        <h1 class="text-2xl font-bold">Rp {{ route.name === 'Riyawat' ? formatPrice(product.price_winner) : formatPrice(product.price_winner) }}</h1>
       </div>
       <div>
         <button @click="$router.push(`/dashboard/detail/${product.id}`);"

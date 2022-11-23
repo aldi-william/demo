@@ -78,6 +78,7 @@ onMounted(() => {
     .listen('BiddingEvent', (e) => {
       // console.log(e.bidding.price_winner);
       if (products.product.id == e.bidding.id) {
+        splash_id.value = e.bidding.id;
         products.product.price_winner = e.bidding.price_winner
         products.product.CountPeople = e.bidding.CountPeople
         products.product.countBidding = e.bidding.countBidding
@@ -93,10 +94,10 @@ onMounted(() => {
   <div class="bg-white relative shadow-xl">
     <div class="flex border-b border-gray-300 py-1">
         <div class="w-1/3 flex items-center justify-center">
-          <div class="flex justify-center z-10">
+          <div class="flex justify-center z-10 relative">
             <img :src="product.car_detail.image_feature1" alt="car" class="w-24 h-24 cursor-pointer object-cover"
                   @click="$router.push(`/dashboard/detail/${product.id}`);" />
-            <div :class="product.id == splash_id && product.Splash ? 'absolute top-0 z-50 color-blue h-screen w-screen':''">   
+            <div :class="product.id == splash_id && product.Splash ? 'absolute top-0 z-50 color-blue h-full w-full':''">   
             </div>
           </div>    
         </div>
@@ -119,7 +120,7 @@ onMounted(() => {
               <p>{{ product.car_detail.kota ? textCapitalize(product.car_detail.kota) : ''}}</p> 
             </div>
             <div class="text-lg font-bold flex justify-between">
-              <p>Rp {{ route.name === 'Riyawat' ? formatPrice(product.price_offer) : formatPrice(product.price_winner) }}</p>
+              <p>Rp {{ route.name === 'Riyawat' ? formatPrice(product.price_winner) : formatPrice(product.price_winner) }}</p>
               <div>
                     <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star"
                         class="w-6 h-6" @click="$emit('addFav', product.id)" />

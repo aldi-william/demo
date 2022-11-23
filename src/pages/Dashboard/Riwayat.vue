@@ -82,7 +82,7 @@
             <RiwayatPenawaranComponent slug="/all"></RiwayatPenawaranComponent>
           </div>
           <div v-if="menu === 'menang'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
-            <RiwayatPenawaranComponent slug="/winner"></RiwayatPenawaranComponent>
+            <RiwayatPenawaranComponent slug="/status?data=winner"></RiwayatPenawaranComponent>
           </div>
           <div v-if="menu === 'kalah'" class="col-span-12 my-12 sm:ml-8 md:ml-8 lg:ml-8 xl:ml-8 2xl:ml-8 sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full">
             <RiwayatPenawaranComponent slug="/lose"></RiwayatPenawaranComponent>
