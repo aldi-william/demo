@@ -100,9 +100,48 @@
     
     <p class="text-center my-4 font-bold">Berburu mobil bekas Murah & Berkualitas</p>
   </div>
-  <div class="w-full h-full flex flex-col justify-center layer -top-10 bg-slate-300" :class="isAbsolute ? 'absolute':''">
-     
+  <div class="hidden sm:block w-full h-full flex flex-col justify-center layer -top-10 bg-slate-300" :class="isAbsolute ? 'absolute':''">  
      <div class="ml-auto mr-64 w-11/12 sm:w-3/12 md:w-3/12 lg:w-3/12 xl:w-3/12 2xl:w-3/12 p-8 rounded-xl">
+          <div class="w-full flex justify-center z-10" v-show="isAnimated2">
+              <div class="flex">
+                <img :src="logo" class="w-40">
+              </div>
+          </div> 
+          <h1 class="text-center text-3xl font-bold mb-2">SELAMAT DATANG</h1>
+          <p class="text-center mb-6 text-lg">Platform LELANG MENANG Mobil Bekas Berkualitas</p>
+          <div class="w-full mx-auto">
+              <p class="text-left">Username</p>
+              <input placeholder="Masukan No. WhatsApp" class="bg-white px-4 py-2 rounded border border-black w-full" v-model="dataLogin.no_whatsapp" type="number"/>
+          </div>
+     
+          <div class="w-full mx-auto my-4">
+            <p class="text-left">Password</p>
+            <input placeholder="Masukan Password" class="bg-white px-4 py-2 rounded border border-black w-full" v-model="dataLogin.password" :type="passwordFieldType"/>
+            <div class="relative" v-show="isAnimated2">
+              <button @click="switchVisibility()" class="absolute -top-[29px] right-4"><img :src="mata_password" class="w-6 h-4"></button>
+            </div>
+            
+          </div>
+     
+          <div class="w-full mx-auto mb-4 flex flex-col sm:flex-row justify-between">
+            <div>
+              <input type="checkbox"/>
+              <span class="mx-2">Ingat Password Saya</span>
+            </div>   
+          </div>
+          <button class="bg-blue-500 text-white px-4 py-2 w-full mx-auto rounded" @click="logintodashboard()">Masuk</button>
+          <div class="flex justify-center mt-1">
+            <a href="#" class="text-blue-400 hover:text-blue-500" @click="showModal = true">Lupa Password ?</a>
+          </div>
+          
+          <!-- <div class="text-center">Belum memiliki Akun ? Silahkan <a href="https://docs.google.com/forms/d/e/1FAIpQLSeUmuz7mHM__fyJl9WazOxum0_NLmT4-IPHWFqmroCQe2CWdw/viewform" class="hover:text-blue-500 text-blue-400">daftar disini</a></div>
+          <div class="text-center">Ada kendala ? <a href="https://wa.me/6289668303824" class="text-blue-400 hover:text-blue-500">Hubungi Customer Service Lelang</a></div> -->
+        
+     </div>
+  </div>
+  <div class="block sm:hidden w-full h-full flex flex-col justify-center layer2 -top-10 bg-slate-300" :class="isAbsolute ? 'absolute':''">
+     
+     <div class="mx-auto sm:ml-auto sm:mr-64 w-11/12 sm:w-3/12 md:w-3/12 lg:w-3/12 xl:w-3/12 2xl:w-3/12 p-8 rounded-xl">
           <div class="w-full flex justify-center z-10" v-show="isAnimated2">
               <div class="flex">
                 <img :src="logo" class="w-40">
@@ -153,13 +192,13 @@
   background-size: 100% 100%;
 }
 
-@media only screen and (max-width: 600px) {
-  .layer2{
+
+.layer2{
     background: url('../assets/images/layer_mobile.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
-  }
 }
+
 
 .welcome .splash {
   height: 0px;
