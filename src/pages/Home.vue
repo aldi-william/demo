@@ -102,7 +102,7 @@
   </div>
   <div class="w-full h-full flex flex-col justify-center layer -top-10 bg-slate-300" :class="isAbsolute ? 'absolute':''">
      
-     <div class="mx-auto w-11/12 sm:w-3/12 md:w-3/12 lg:w-3/12 xl:w-3/12 2xl:w-3/12 p-8 rounded-xl">
+     <div class="ml-auto mr-64 w-11/12 sm:w-3/12 md:w-3/12 lg:w-3/12 xl:w-3/12 2xl:w-3/12 p-8 rounded-xl">
           <div class="w-full flex justify-center z-10" v-show="isAnimated2">
               <div class="flex">
                 <img :src="logo" class="w-40">
@@ -148,16 +148,16 @@
 <style>
 
 .layer{
-  background: url('../assets/images/layer.png');
-  background-repeat: repeat;
-  background-size: 60%;
+  background: url('../assets/images/layer_desktop.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 @media only screen and (max-width: 600px) {
-  .layer{
-    background: url('../assets/images/layer.png');
-    background-repeat: repeat;
-    background-size: 210%;
+  .layer2{
+    background: url('../assets/images/layer_mobile.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
   }
 }
 
