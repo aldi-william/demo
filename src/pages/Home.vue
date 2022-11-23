@@ -119,7 +119,7 @@
             <p class="text-left">Password</p>
             <input placeholder="Masukan Password" class="bg-white px-4 py-2 rounded border border-black w-full" v-model="dataLogin.password" :type="passwordFieldType"/>
             <div class="relative" v-show="isAnimated2">
-              <button @click="switchVisibility()" class="absolute -top-[10px] right-4"><img :src="mata_password" class="w-6 h-4"></button>
+              <button @click="switchVisibility()" class="absolute -top-[29px] right-4"><img :src="mata_password" class="w-6 h-4"></button>
             </div>
             
           </div>
@@ -132,7 +132,7 @@
           </div>
           <button class="bg-blue-500 text-white px-4 py-2 w-full mx-auto rounded" @click="logintodashboard()">Masuk</button>
           <div class="flex justify-center mt-1">
-            <a href="#" class="text-blue-400 hover:text-blue-500" @click="showModal = true">Lupa Password ?</a>
+            <a href="#" class="text-white" @click="showModal = true">Lupa Password ?</a>
           </div>
           
           <!-- <div class="text-center">Belum memiliki Akun ? Silahkan <a href="https://docs.google.com/forms/d/e/1FAIpQLSeUmuz7mHM__fyJl9WazOxum0_NLmT4-IPHWFqmroCQe2CWdw/viewform" class="hover:text-blue-500 text-blue-400">daftar disini</a></div>
