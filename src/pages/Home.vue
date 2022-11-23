@@ -108,15 +108,15 @@
                 <img :src="logo" class="w-40">
               </div>
           </div> 
-          <h1 class="text-center text-xl font-bold mb-2">SELAMAT DATANG</h1>
-          <p class="text-center mb-6 text-lg">Platform LELANG MENANG Mobil Bekas Berkualitas</p>
+          <h1 class="text-center text-xl font-bold mb-2 text-white">SELAMAT DATANG</h1>
+          <p class="text-center mb-6 text-lg text-white">Platform LELANG MENANG Mobil Bekas Berkualitas</p>
           <div class="w-full mx-auto">
-              <p class="text-left">Username</p>
+              <p class="text-left text-white">Username</p>
               <input placeholder="Masukan No. WhatsApp" class="bg-white px-4 py-2 rounded border border-black w-full" v-model="dataLogin.no_whatsapp" type="number"/>
           </div>
      
           <div class="w-full mx-auto my-4">
-            <p class="text-left">Password</p>
+            <p class="text-left text-white">Password</p>
             <input placeholder="Masukan Password" class="bg-white px-4 py-2 rounded border border-black w-full" v-model="dataLogin.password" :type="passwordFieldType"/>
             <div class="relative" v-show="isAnimated2">
               <button @click="switchVisibility()" class="absolute -top-[29px] right-4"><img :src="mata_password" class="w-6 h-4"></button>
@@ -127,7 +127,7 @@
           <div class="w-full mx-auto mb-4 flex flex-col sm:flex-row justify-between">
             <div>
               <input type="checkbox"/>
-              <span class="mx-2">Ingat Password Saya</span>
+              <span class="mx-2 text-white">Ingat Password Saya</span>
             </div>   
           </div>
           <button class="bg-blue-500 text-white px-4 py-2 w-full mx-auto rounded" @click="logintodashboard()">Masuk</button>
