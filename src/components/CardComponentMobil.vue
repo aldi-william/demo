@@ -114,11 +114,11 @@ onMounted(() => {
     <div class="grid grid-cols-12 my-2 gap-2">
       <div class="col-span-4 bg-abu_abu relative flex px-2 py-1 rounded items-center">
         <img :src="image_hammer" alt="hammer" class="w-6 h-6" />
-        <div class="text-white mx-2 right-0 relative">{{ product.countBidding }}</div>
+        <div class="text-white mx-2 right-0 relative">{{ status === 'Berlangsung' ? product.countBidding : '-' }}</div>
       </div>
       <div class="col-span-4 bg-abu_abu relative flex px-2 py-1 rounded items-center">
         <img :src="image_users" alt="users" class="w-6 h-6" />
-        <div class="text-white mx-2">{{ product.CountPeople }}</div>
+        <div class="text-white mx-2">{{ status === 'Berlangsung' ? product.CountPeople : '-' }}</div>
       </div>
       <div class="col-span-4">
         <h1 class="text-sm text-center bg-blue-500 text-white rounded-lg px-2 py-1 w-20 float-right">TAV</h1>

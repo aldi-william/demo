@@ -132,11 +132,11 @@ onMounted(() => {
     <div class="flex shadow-lg bg-blue-300">
       <div class="relative flex px-2 py-1 rounded items-center">
         <img :src="image_hammer" alt="hammer" class="w-6 h-6" />
-        <div class="text-black mx-2 right-0 relative">{{ product.countBidding }}</div>
+        <div class="text-black mx-2 right-0 relative">{{ status === 'Berlangsung' ? product.countBidding : '-' }}</div>
       </div>
       <div class="relative flex px-2 py-1 rounded items-center">
         <img :src="image_users" alt="users" class="w-8 h-6" />
-        <div class="text-black mx-2">{{ product.CountPeople }}</div>
+        <div class="text-black mx-2">{{ status === 'Berlangsung' ? product.CountPeople : 0 }}</div>
       </div>
       <div class="flex items-center">
                 <div v-if="product.car_detail.car_inspection" v-tippy="{ content: 'Kecelakaan ringan' }">

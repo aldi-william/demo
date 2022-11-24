@@ -198,6 +198,7 @@ const imgsRef:any = ref([])
 const imgsRefInspect:any = ref([])
 const harga = ref(500000);
 const isActive = ref(5);
+const isActiveMin = ref(5);
 const isTawar = ref('awal');
 const onHide = () => (visibleRef.value = false)
 const onShow = () => {
@@ -271,6 +272,19 @@ const favorite = (id:any) =>{
   getDetailData()
 }
 
+const handle_decrement = () => {
+  if (harga.value <= 500000) {
+
+  } else {
+    if (isActive.value === 10 && harga.value !== 1000000) {
+      harga.value -= 1000000;
+    } else {
+      harga.value -= 500000;
+    }
+  }
+
+}
+
 getDataSession();
 // getDetailData();
 </script>
@@ -312,7 +326,6 @@ getDataSession();
             :thumbs="{ swiper: thumbsSwiper }"
             :modules="modules"
             class="mySwiper2 rounded-xl">
-
             <swiper-slide v-for="(item, index) in image_cars" :key="index+'image_car'">
               <img :src="item.image" @click="showImg(index, image_cars)" class="cursor-pointer"/>
               <div :class="splash ? 'absolute top-0 z-50 color-blue h-screen w-screen':''">
@@ -358,18 +371,21 @@ getDataSession();
              </div>
              <div class="mt-4 col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 border-2 border-gray px-4 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0 bg-gray-200 rounded-lg">
                   <div class="flex items-center p-2 justify-center" v-show="status === 'Berlangsung'">
-                        <div class="flex justify-center w-1/2">
-                            <div class="flex flex-col w-9/12">
-                            <button @click="isActive = 5; handle_increment()" class="px-2 py-1 text-white rounded w-full sm:text-xl text-[10px] mb-1" :class="isActive === 5 ? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">+ Rp 500.000</button>
-                            <button @click="isActive = 10; handle_increment()" class="px-2 py-1 text-white rounded w-full sm:text-xl text-[10px]" :class="isActive === 10? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">+ Rp 1.000.000</button>
-                            </div>
-                        </div>
-                        <div class="flex justify-center w-1/2">
-                          <div class="flex flex-col">
-                            <p class="font-bold sm:text-xl text-[16px] mb-1">Rp {{ new Intl.NumberFormat().format(harga) }}</p>
-                            <button @click="isTawar = 'konfirmasi'; bid([harga, detailInspection.id]); harga=500000;" class="bg-tertier sm:px-4 px-2 sm:py-2 py-1 rounded text-white sm:w-40 font-bold text-sm">Mulai Tawar</button>
-                          </div>
-                        </div>
+                    <div class="flex justify-center w-1/2">
+                      <div class="flex flex-col w-9/12">
+                      <button @click="isActive = 5; handle_increment()" class="px-2 py-1 text-white rounded w-full text-xs mb-4" :class="isActive === 5 ? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">+ Rp 500.000</button>
+                      <button @click="isActive = 10; handle_increment()" class="px-2 py-1 text-white rounded w-full text-xs" :class="isActive === 10? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">+ Rp 1.000.000</button>
+                      <p class="font-bold mt-4 mx-auto">Rp {{ new Intl.NumberFormat().format(harga) }}</p>
+                      </div>
+                  </div>
+                  <div class="flex justify-center w-1/2">
+                    
+                    <div class="flex flex-col w-9/12">
+                      <button @click="isActiveMin = 5; handle_decrement()" class="px-2 py-1 text-white rounded w-full text-xs mb-4" :class="isActiveMin === 5 ? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">- Rp 500.000</button>
+                      <button @click="isActiveMin = 10; handle_decrement()" class="px-2 py-1 text-white rounded w-full text-xs" :class="isActiveMin === 10? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">- Rp 1.000.000</button>
+                      <button @click="isTawar = 'konfirmasi'; bid([harga, detailInspection.id]); harga=500000;" class="bg-tertier px-2 py-1 rounded text-white w-24 font-bold text-xs mt-4 mx-auto">Mulai Tawar</button>
+                    </div>
+                  </div>
               
                   </div>
              </div>
@@ -408,7 +424,6 @@ getDataSession();
                 </div>
                 
              </div>
-             
         </div>
         
         <!-- <div class="col-span-12 sm:col-span-7 md:col-span-7 lg:col-span-7 xl:col-span-7 2xl:col-span-7 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0 relative -top-12 sm:top-0">
