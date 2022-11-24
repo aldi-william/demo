@@ -22,6 +22,7 @@ import Echo from "laravel-echo";
 // eslint-disable-next-line no-unused-vars
 import Pusher from "pusher-js";
 import axios from 'axios';
+import ModalComponent from "./ModalComponent.vue"
 const route = useRoute();
 const products = defineProps(['product', 'isShow', 'status'])
 // const storeBursa = useBursaStore();
@@ -29,6 +30,7 @@ const harga = ref(500000);
 const isActive = ref(5);
 const isActiveMin = ref(5);
 const isTawar = ref('awal');
+const isModalShow = ref(false);
 
 const handle_decrement = () => {
   if (harga.value <= 500000) {
@@ -60,7 +62,6 @@ const lelang: any = ref({
 const bid = (val) => {
   lelang.value.lelang_id = val[1];
   lelang.value.price_offer = val[0];
-  console.log(lelang.value)
   Bid.postBidding(lelang.value).then((resp) => {
     
   })
@@ -100,7 +101,8 @@ onMounted(() => {
 
 </script>
 <template>
-  <div class="rounded shadow-2xl p-4 h-full">
+  <div>
+    <div class="rounded shadow-2xl p-4 h-full">
     <div class="relative overflow-hidden">
       <div class="absolute bg-blue-500 rounded text-white top-3 left-3 px-2">{{ product.code }}</div>
       <!-- <div class="bg-red-600 absolute bottom-0 right-0 px-4 py-0 rounded-tl-full text-white flex items-start">
@@ -176,11 +178,14 @@ onMounted(() => {
         <div class="flex flex-col w-9/12">
           <button @click="isActiveMin = 5; handle_decrement()" class="px-2 py-1 text-white rounded w-full text-xs mb-4" :class="isActiveMin === 5 ? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">- Rp 500.000</button>
           <button @click="isActiveMin = 10; handle_decrement()" class="px-2 py-1 text-white rounded w-full text-xs" :class="isActiveMin === 10? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">- Rp 1.000.000</button>
-          <button @click="isTawar = 'konfirmasi'; bid([harga, product.id]); harga=500000;" class="bg-tertier px-2 py-1 rounded text-white w-24 font-bold text-xs mt-4 mx-auto">Mulai Tawar</button>
+          <button @click="$emit('mulaiTawar'); $emit('initData', [product.price_winner, harga, product.id]); " class="bg-tertier px-2 py-1 rounded text-white w-24 font-bold text-xs mt-4 mx-auto">Mulai Tawar</button>
         </div>
       </div>
     </div>
+    </div>
   </div>
+  
+  
 </template>
 <style scoped>
 .color-blue{

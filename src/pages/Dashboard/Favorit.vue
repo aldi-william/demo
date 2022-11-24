@@ -6,6 +6,7 @@
   import { useFavoriteStore } from '../../stores/favoit';
   import CardComponentMobilSmartPhone from '../../components/CardComponentMobilSmartPhone.vue';
   import GetFilterService from '../../services/GetService';
+  import ModalComponent from '../../components/ModalComponent.vue';
   import Bid from '../../services/Bid';
   import Echo from "laravel-echo";
   // eslint-disable-next-line no-unused-vars
@@ -34,7 +35,7 @@ onMounted(() => {
   store.fetchFavorite()
 })
 
-
+const isModalShow = ref(false);
 const lelang_id = ref(0);
 const price_offer = ref(0);
 const lelang:any = ref({
@@ -94,6 +95,16 @@ const myfunc = setInterval(function() {
   }
   }, 1000);
 
+
+let start_price = ref(0);
+let harga_tawaran = ref(0);
+let product_id = ref(0);
+const startPrice = (val:Number) => {
+  start_price.value = val[0];
+  harga_tawaran.value = val[1];
+  product_id.value = val[2];
+}
+
 getDataSession();
 
 </script>
@@ -122,13 +133,13 @@ getDataSession();
         <div class="col-span-12 sm:mt-0"></div>
         <div v-for="(product,i) in products" :key="i+'products'"
             class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white">
-            <CardComponentMobil :product="product" @add-fav="favorite" class="hidden sm:block" :status="status" @bid="bid"/>
+            <CardComponentMobil :product="product" @add-fav="favorite"  @mulai-tawar="isModalShow = true" @init-data="startPrice" class="hidden sm:block" :status="status" @bid="bid"/>
             <CardComponentMobilSmartPhone :product="product" @add-fav="favorite" class="block sm:hidden" :status="status" />
         </div>
         <div class="mb-20"></div>
       </div>
     </div>
-    
+    <ModalComponent v-show="isModalShow" @close="isModalShow = false" class="z-50" :start_price="start_price" :price_offer="harga_tawaran" :product_id="product_id"/>
 </template>
 <style>
   .container-xl{
