@@ -306,7 +306,7 @@ getDataSession();
             <div class="text-center text-xs">{{ tanggal }}</div>
       </div>
        
-       <ModalComponent v-show="modal" @close="modal = false"/>
+       <ModalComponent v-show="modal" @close="modal = false" :start_price="priceWinner" :price_offer="harga" :product_id="detailInspection.id"/>
 
        <div class="flex items-center cursor-pointer my-1 mt-4 relative sm:top-10" @click="historyback">
           <img :src="image_arrow" class="w-4 h-4"/>
@@ -383,7 +383,7 @@ getDataSession();
                     <div class="flex flex-col w-9/12">
                       <button @click="isActiveMin = 5; handle_decrement()" class="px-2 py-1 text-white rounded w-full text-xs mb-4" :class="isActiveMin === 5 ? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">- Rp 500.000</button>
                       <button @click="isActiveMin = 10; handle_decrement()" class="px-2 py-1 text-white rounded w-full text-xs" :class="isActiveMin === 10? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">- Rp 1.000.000</button>
-                      <button @click="isTawar = 'konfirmasi'; bid([harga, detailInspection.id]); harga=500000;" class="bg-tertier px-2 py-1 rounded text-white w-24 font-bold text-xs mt-4 mx-auto">Mulai Tawar</button>
+                      <button @click="modal = true" class="bg-tertier px-2 py-1 rounded text-white w-24 font-bold text-xs mt-4 mx-auto">Mulai Tawar</button>
                     </div>
                   </div>
               
