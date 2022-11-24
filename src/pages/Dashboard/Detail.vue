@@ -276,7 +276,7 @@ const handle_decrement = () => {
   if (harga.value <= 500000) {
 
   } else {
-    if (isActive.value === 10 && harga.value !== 1000000) {
+    if (isActiveMin.value === 10 && harga.value !== 1000000) {
       harga.value -= 1000000;
     } else {
       harga.value -= 500000;

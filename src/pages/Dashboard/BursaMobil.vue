@@ -237,11 +237,14 @@ const scrollToTop = () => {
           <button class="border bg-blue-500 text-white px-4 py-2 rounded w-full" @click="filterQuery(); isShowKm = false;">Terapkan</button>
         </div>
       </div> -->
-      <div v-for="(product,i) in products" :key="i+'products'"
+      <div class="mx-2 grid grid-cols-12 col-span-12 gap-2">
+        <div v-for="(product,i) in products" :key="i+'products'"
         class="col-span-6 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 z-10 bg-white top-12 relative">
         <CardComponentMobil :product="product" @add-fav="favorite" class="hidden sm:block"/>
-        <CardComponentMobilSmartPhone2 :product="product" @add-fav="favorite" class="block sm:hidden" :status="status"/>
+        <CardComponentMobilSmartPhone2 :product="product" @add-fav="favorite" class="block sm:hidden" :status="status"/>      
+       </div>
       </div>
+      
 
       <div v-if="products.length < 1" class="col-span-12 relative top-12">
         data belum ada
@@ -260,7 +263,7 @@ const scrollToTop = () => {
 <style>
 .container-xl {
   max-width: 1200px;
-  width: 96.2%;
+  width: 100%;
   margin: 0 auto;
 }
 </style>
