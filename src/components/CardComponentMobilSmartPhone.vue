@@ -23,13 +23,14 @@ const products = defineProps(['product','status'])
 const isFavorit = ref([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
 const harga = ref(500000);
 const isActive = ref(5);
+const isActiveMin = ref(5);
 const isTawar = ref('awal');
 
 const handle_decrement = () => {
     if(harga.value <= 500000){
 
     }else{
-      if(isActive.value === 10 && harga.value !== 1000000){
+      if(isActiveMin.value === 10 && harga.value !== 1000000){
         harga.value -= 1000000;
       }else{
         harga.value -= 500000;
@@ -155,12 +156,14 @@ onMounted(() => {
           <div class="flex flex-col w-9/12">
           <button @click="isActive = 5; handle_increment()" class="px-2 py-1 text-white rounded w-full text-xs mb-4" :class="isActive === 5 ? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">+ Rp 500.000</button>
           <button @click="isActive = 10; handle_increment()" class="px-2 py-1 text-white rounded w-full text-xs" :class="isActive === 10? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">+ Rp 1.000.000</button>
+          <p class="font-bold mt-4 mx-auto">Rp {{ new Intl.NumberFormat().format(harga) }}</p>
           </div>
       </div>
       <div class="flex justify-center w-1/2">
-        <div class="flex flex-col">
-          <p class="font-bold mb-4">Rp {{ new Intl.NumberFormat().format(harga) }}</p>
-          <button @click="$emit('mulaiTawar'); $emit('initData', [product.price_winner, harga, product.id]);" class="bg-tertier px-2 py-1 rounded text-white w-24 font-bold text-xs">Mulai Tawar</button>
+        <div class="flex flex-col w-9/12">
+          <button @click="isActiveMin = 5; handle_decrement()" class="px-2 py-1 text-white rounded w-full text-xs mb-4" :class="isActiveMin === 5 ? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">- Rp 500.000</button>
+          <button @click="isActiveMin = 10; handle_decrement()" class="px-2 py-1 text-white rounded w-full text-xs" :class="isActiveMin === 10? 'text-black border border-black':'bg-abu_abu_pucat text-gray-400'">- Rp 1.000.000</button>
+          <button @click="$emit('mulaiTawar'); $emit('initData', [product.price_winner, harga, product.id]); " class="bg-tertier px-2 py-1 rounded text-white w-24 font-bold text-xs mt-4 mx-auto">Mulai Tawar</button>
         </div>
       </div>
       
