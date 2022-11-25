@@ -31,6 +31,7 @@ onMounted(() => {
     .listen('BiddingEvent', (e) => {
       // console.log(e.bidding.price_winner);
       if (products.product.id == e.bidding.id) {
+        console.log(e);
         splash_id.value = e.bidding.id;
         products.product.price_winner = e.bidding.price_winner
         products.product.CountPeople = e.bidding.CountPeople
@@ -46,14 +47,14 @@ onMounted(() => {
 <template>
   <div class="container-xl">
     <div class="bg-white h-full">
-      <div>
+      <div class="relative">
             <div class="flex justify-center relative"> 
               <img :src="product.car_detail.image_feature1" alt="car" class="w-full h-40 z-10 cursor-pointer object-cover"
                 @click="$router.push(`/dashboard/detail/${product.id}`);" />
                 <div class="mx-1 absolute z-20 top-2 left-2 rounded-full flex justify-center items-center">
                   <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star" class="w-8 h-8" @click="$emit('addFav', product.id)" />
                 </div>
-                <div :class="product.id == splash_id && product.Splash ? 'absolute top-0 z-50 color-blue h-screen w-screen':''">   
+                <div :class="product.id == splash_id && product.Splash ? 'absolute top-0 z-50 color-blue h-full w-full':''">   
                 </div>
             </div>
       </div>
@@ -88,7 +89,7 @@ onMounted(() => {
             <img :src="image_bulat" class="w-2 h-2 mx-1"/> 
             <span class="text-xs truncate">{{ product.car_detail.kota ? textCapitalize(product.car_detail.kota) : ''}}</span> 
           </div>
-          <p class="text-[12px] font-bold">Rp {{ formatPrice(product.open_price) }}</p>
+          <p class="text-[12px] font-bold">Rp {{ formatPrice(product.price_winner) }}</p>
       </div>
     </div>
     <div class="flex border-t border-gray-300 bg-blue-300 items-end">
@@ -106,5 +107,8 @@ onMounted(() => {
 <style>
 .container-xl{
   width: 100%;
+}
+.color-blue{
+  background: rgba(93, 93, 239, 0.9);
 }
 </style>
