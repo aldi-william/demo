@@ -44,8 +44,8 @@ onMounted(() => {
                   </div>
                   
                   <div v-for="(product,i) in products" :key="i+'products'" class="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-6 xl:col-span-6 2xl:col-span-6 z-10 bg-white">
-                    <CardComponentMobil v-if="!product.lelang_mobil" :product="product" @add-fav="favorite" class="hidden sm:block"/>
-                    <CardComponentMobilSmartPhone v-if="!product.lelang_mobil" :product="product" @add-fav="favorite" class="block sm:hidden"/>
+                    <CardComponentMobil v-if="!product.lelang_mobil" :product="product" @add-fav="favorite" class="hidden sm:block" status="Berlangsung"/>
+                    <CardComponentMobilSmartPhone v-if="!product.lelang_mobil" :product="product" @add-fav="favorite" class="block sm:hidden" status="Berlangsung"/>
                   </div>
   </div>
 </template>
