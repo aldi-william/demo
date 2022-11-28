@@ -107,7 +107,7 @@
             </div> 
           </div>
           <div class="w-full sm:w-9/12 absolute sm:right-0 pl-6 mt-10 sm:mt-0" v-for="(items, index) in slug.length" :key="index+'Riwayat'">
-            <div v-if="menu === index" class="absolute left-0 sm:left-6">
+            <div v-if="menu === index" class="absolute left-0 sm:relative">
                 <RiwayatPenawaranComponent :slug="slug[index].slug"></RiwayatPenawaranComponent>
             </div>
           </div>
