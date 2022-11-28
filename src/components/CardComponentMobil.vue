@@ -1,28 +1,18 @@
 <script setup lang="ts">
-import image_car from '../assets/images/car.png';
 import image_hammer from '../assets/images/hammer.png';
 import image_users from '../assets/images/users.png';
-import image_lonceng from '../assets/images/lonceng.png';
 import image_star from '../assets/images/bintang.png';
 import image_star_empty from '../assets/images/bintang_empty.png';
 import image_api from '../assets/images/icon_api.png';
 import image_mobil from '../assets/images/icon_mobil.png';
 import image_tergenang from '../assets/images/icon_tergenang.png';
-import button_plus from '../assets/images/btn_plus.png';
-import button_minus from '../assets/images/btn_minus.png';
 import gif from '../assets/images/svg/200.gif';
 import { useRoute } from 'vue-router'
 import { ref, onMounted } from 'vue';
 import { formatPrice, textCapitalize } from '../mixins';
-import http from '../../src/api/http-common'
-// import { useBursaStore } from '../stores/bursa';
-import { useFavoriteStore } from '../stores/favoit';
 import Bid from '../services/Bid';
 import Echo from "laravel-echo";
 // eslint-disable-next-line no-unused-vars
-import Pusher from "pusher-js";
-import axios from 'axios';
-import ModalComponent from "./ModalComponent.vue"
 const route = useRoute();
 const products = defineProps(['product', 'isShow', 'status'])
 // const storeBursa = useBursaStore();
@@ -52,8 +42,6 @@ const handle_increment = () => {
   }
 }
 
-const lelang_id = ref(0);
-const price_offer = ref(0);
 const lelang: any = ref({
   lelang_id: 0,
   price_offer: 0
@@ -67,12 +55,13 @@ const bid = (val) => {
   })
 }
 
-// const price_winner = ref(0)
+const showFavorite = ref(false);
 let splash_id = ref(0);
 onMounted(() => {
-  // http.get(`https://admin.tavmobil.id/api/lelang/daftar-lelang/${products.product.id}`).then(res => {
-  //   console.log(res)
-  // })
+  console.log(products.product.favorites)
+  if((products.product.favorites).length > 0){
+    showFavorite.value = true;
+  }
   let echo: any = new Echo({
     broadcaster: "pusher",
     key: "a19e68e554721cca39a0",
@@ -83,8 +72,6 @@ onMounted(() => {
   
   echo.channel('bidding')
     .listen('BiddingEvent', (e) => {
-      // console.log(e.bidding.price_winner);
-      console.log(e)
       if (products.product.id == e.bidding.id) {
         splash_id.value = e.bidding.id;
         products.product.price_winner = e.bidding.price_winner
@@ -145,7 +132,7 @@ onMounted(() => {
           {{ product.car_detail.car_merk.name.toUpperCase() }}
           {{ product.car_detail.car_type.name.toUpperCase() }}</h1>
         <img :src="gif" class="w-20 h-20" v-show="isShow" />
-        <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star"
+        <img :src="showFavorite ? image_star : image_star_empty" alt="star"
           class="w-8 h-8 cursor-pointer" @click="$emit('addFav', product.id);" />
         <!-- <img :src="isFavorit[product.id] ? image_star : image_star_empty" alt="star"
               class="w-8 h-8" @click="isFavorit[i] = !isFavorit[i]" /> -->

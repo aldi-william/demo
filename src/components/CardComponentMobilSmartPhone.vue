@@ -7,8 +7,6 @@ import image_api from '../assets/images/icon_api.png';
 import image_mobil from '../assets/images/icon_mobil.png';
 import image_tergenang from '../assets/images/icon_tergenang.png';
 import image_bulat from '../assets/images/bintang_pembatas.png';
-import button_plus from '../assets/images/btn_plus.png';
-import button_minus from '../assets/images/btn_minus.png';
 import { onMounted, ref } from 'vue';
 import { formatPrice, textCapitalize } from '../mixins';
 import { useBursaStore } from '../stores/bursa';
@@ -18,8 +16,6 @@ import { useRoute } from 'vue-router'
 const route = useRoute();
 const store = useBursaStore();
 const products = defineProps(['product','status'])
-
-
 const isFavorit = ref([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
 const harga = ref(500000);
 const isActive = ref(5);
@@ -64,10 +60,15 @@ const handle_decrement = () => {
 const countPeople = ref(0);
 const countBidding = ref(0);
 let splash_id = ref(0);
+const showFavorite = ref(false);
 onMounted(() => {
   // http.get(`https://admin.tavmobil.id/api/lelang/daftar-lelang/${products.product.id}`).then(res => {
   //   console.log(res)
   // })
+  if((products.product.favorites).length > 0){
+    showFavorite.value = true;
+  }
+
   let echo: any = new Echo({
     broadcaster: "pusher",
     key: "a19e68e554721cca39a0",
@@ -123,7 +124,7 @@ onMounted(() => {
             <div class="text-lg font-bold flex justify-between">
               <p>Rp {{ route.name === 'Riyawat' ? formatPrice(product.price_winner) : formatPrice(product.price_winner) }}</p>
               <div>
-                    <img :src="product.favorites.length > 0 ? image_star : image_star_empty" alt="star"
+                    <img :src="showFavorite ? image_star : image_star_empty" alt="star"
                         class="w-6 h-6" @click="$emit('addFav', product.id)" />
               </div>
             </div>

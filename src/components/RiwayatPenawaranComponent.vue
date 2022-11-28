@@ -27,11 +27,11 @@ onMounted(() => {
 </script>
 <template>
   
-  <div class="grid grid-cols-12 gap-2 overflow-y-auto h-screen mb-8">
-                  <div class="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-6 xl:col-span-6 2xl:col-span-6">
+  <div class="grid grid-cols-12 gap-2 overflow-y-auto mb-8" :class="products.length >=3 ? 'h-screen':'h-[500px]'">
+                  <div class="col-span-12 sm:col-span-6">
                       <input class="px-4 py-2 rounded-md w-full border-2 border-gray" type="text" placeholder="Cari Merek dan Model Mobil">
                   </div>
-                  <div class="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-6 xl:col-span-6 2xl:col-span-6">
+                  <div class="col-span-12 sm:col-span-6">
                     <select class="px-4 py-2 rounded-md w-full border-2 border-gray">
                       <option value="-">Rentang Waktu</option>
                       <option value="1">Tampilkan Semua</option>
@@ -43,7 +43,7 @@ onMounted(() => {
                     </select>
                   </div>
                   
-                  <div v-for="(product,i) in products" :key="i+'products'" class="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-6 xl:col-span-6 2xl:col-span-6 z-10 bg-white">
+                  <div v-for="(product,i) in products" :key="i+'products'" class="col-span-12 sm:col-span-6 bg-white">
                     <CardComponentMobil v-if="!product.lelang_mobil" :product="product" @add-fav="favorite" class="hidden sm:block" status="Berlangsung"/>
                     <CardComponentMobilSmartPhone v-if="!product.lelang_mobil" :product="product" @add-fav="favorite" class="block sm:hidden" status="Berlangsung"/>
                   </div>
