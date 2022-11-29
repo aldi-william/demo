@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted } from "vue-demi"
+import { computed, onMounted, reactive, ref } from "vue";
 import { useHistoryStore } from "../stores/history";
 import CardComponentMobil from '../components/CardComponentMobil.vue';
 import CardComponentMobilSmartPhone from '../components/CardComponentMobilSmartPhone.vue';
@@ -21,15 +21,29 @@ const favorite = (id:any) =>{
   })
 }
 
+let query = reactive({
+  search:'',
+});
+function filterQuery() {
+  store.fetchHistory(`${slug.slug}?q=${query.search}`);
+  console.log(`${slug.slug}?q=${query.search}`)
+}
+
+
 onMounted(() => {
-  store.fetchHistory(slug.slug)
+  if(query.search !== ''){
+    store.fetchHistory(`${slug.slug}?q=${query.search}`);
+  }else{
+    store.fetchHistory(slug.slug)
+  }
+  
 })
 </script>
 <template>
   
   <div class="grid grid-cols-12 gap-2 overflow-y-auto mb-8" :class="products.length >=3 ? 'h-screen':'h-[500px]'">
                   <div class="col-span-12 sm:col-span-6">
-                      <input class="px-4 py-2 rounded-md w-full border-2 border-gray" type="text" placeholder="Cari Merek dan Model Mobil">
+                      <input class="px-4 py-2 rounded-md w-full border-2 border-gray" type="text" placeholder="Cari Merek dan Model Mobil" v-model="query.search" @keyup="filterQuery">
                   </div>
                   <div class="col-span-12 sm:col-span-6">
                     <select class="px-4 py-2 rounded-md w-full border-2 border-gray">

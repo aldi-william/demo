@@ -13,26 +13,8 @@ export const useHistoryStore = defineStore({
   }),
   getters: {},
   actions: {
-    // async decrementPage() {
-    //   if(this.page < 2){
-    //     this.page = 1;
-    //   }else {
-    //     this.page = this.page - 1;
-    //   }
-
-    // },
-    // async incrementPage() {
-    //   if(this.page > this.totalPage){
-    //     this.page = this.totalPage
-    //   }else{
-    //     this.page = this.page + 1;
-    //   }
-    // },
     async fetchHistory(slug: any) {
-
       const token = localStorage.getItem('isLogin')
-
-
       //set axios header dengan type Authorization + Bearer token
       http.defaults.headers.common['Authorization'] = `Bearer ${token}`
       await http.get(`/history${slug}`)
@@ -49,7 +31,6 @@ export const useHistoryStore = defineStore({
     async addFavorite(id: any) {
       return new Promise((resolve, reject) => {
         const token = localStorage.getItem('isLogin')
-
         //set axios header dengan type Authorization + Bearer token
         http.defaults.headers.common['Authorization'] = `Bearer ${token}`
         http.post(`/akun/favorite/${id}`)

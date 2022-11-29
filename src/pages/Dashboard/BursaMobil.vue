@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, onMounted, reactive, watch } from 'vue';
+import { computed, ref, onMounted, reactive } from 'vue';
 import image_rentang_harga from '../../assets/images/icon_rentang_harga.png';
 import image_search from '../../assets/images/icon_search.png';
 import image_calender from '../../assets/images/icon_calender.png';
