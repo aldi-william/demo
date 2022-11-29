@@ -42,30 +42,37 @@
     {
       name: 'Semua',
       slug: '/all',
+      count: semua
     },
     {
       name: 'Menang',
       slug: '/status?data=winner',
+      count: winner
     },
     {
-      name: 'Ditolak',
+      name: 'Penawaran Ditolak',
       slug: '/status?data=cancel',
+      count: cancel
     },
     {
-      name: 'Diterima',
+      name: 'Penawaran Diterima',
       slug: '/status?data=confirm',
+      count: confirm
     },
     {
-      name: 'Proses',
-      slug: '/status?data=waiting'
+      name: 'Dalam Proses',
+      slug: '/status?data=waiting',
+      count: waiting
     },
     {
-      name: 'Siap Kirim',
-      slug: '/status?data=ready'
+      name: 'Siap Diambil',
+      slug: '/status?data=ready',
+      count: ready
     },
     {
-      name: 'Sudah Dikirim',
-      slug: '/status?data=taken'
+      name: 'Sudah Diambil',
+      slug: '/status?data=taken',
+      count: taken
     }
   ]);
 </script>
@@ -83,27 +90,9 @@
       <div v-if="riwayat_menu === 'penawaran'" class="sm:flex relative mt-10">
           <div class="w-full sm:w-3/12 overflow-x-scroll bg-blue-500 rounded-lg pt-6 sm:py-8 sm:h-screen h-full">
             <div class="flex sm:flex-col mx-10">
-             <div class="mr-4 sm:mr-0">
-                    <button @click="menu = 0" :class="menu === 0 ? 'bg-white text-blue-500':'text-white bg-blue-500 border border-white'" class="px-4 py-2 rounded w-60 sm:w-full mb-4">Semua ({{ semua }})</button>
+             <div class="mr-4 sm:mr-0" v-for="(items,index) in 7" :key="index+'button'">
+                    <button @click="menu = index" :class="menu === index ? 'bg-white text-blue-500':'text-white bg-blue-500 border border-white'" class="px-4 py-2 rounded w-60 sm:w-full mb-4">{{ slug[index].name }} ({{ slug[index].count }})</button>
              </div>
-             <div class="mr-4 sm:mr-0">
-                    <button @click="menu = 1" :class="menu === 1 ? 'bg-white text-blue-500':'text-white bg-blue-500 border border-white'" class="px-4 py-2 rounded w-60 sm:w-full mb-4">Menang ({{ winner }})</button>
-             </div>
-             <div class="mr-4 sm:mr-0">
-                    <button @click="menu = 2" :class="menu === 2 ? 'bg-white text-blue-500':'text-white bg-blue-500 border border-white'" class="px-4 py-2 rounded w-60 sm:w-full mb-4">Penawaran Ditolak ({{ cancel }})</button>
-             </div>
-             <div class="mr-4 sm:mr-0">
-                   <button @click="menu = 3" :class="menu === 3 ? 'bg-white text-blue-500':'text-white bg-blue-500 border border-white'" class="px-4 py-2 rounded w-60 sm:w-full mb-4">Penawaran Diterima ({{ confirm }})</button>
-             </div>
-             <div class="mr-4 sm:mr-0">
-                   <button @click="menu = 4" :class="menu === 4 ? 'bg-white text-blue-500':'text-white bg-blue-500 border border-white'" class="px-4 py-2 rounded w-60 sm:w-full mb-4">Dalam Proses ({{ waiting }})</button>
-             </div>
-             <div class="mr-4 sm:mr-0">
-                  <button @click="menu = 5" :class="menu === 5 ? 'bg-white text-blue-500':'text-white bg-blue-500 border border-white'" class="px-4 py-2 rounded w-60 sm:w-full mb-4">Siap Diambil({{ ready }})</button>
-             </div>
-             <div class="mr-4 sm:mr-0">
-                 <button @click="menu = 6" :class="menu === 6 ? 'bg-white text-blue-500':'text-white bg-blue-500 border border-white'" class="px-4 py-2 rounded w-60 sm:w-full mb-4">Sudah Diambil({{ taken }})</button>
-             </div>  
             </div> 
           </div>
           <div class="w-full sm:w-9/12 absolute sm:right-0 pl-6 mt-10 sm:mt-0" v-for="(items, index) in slug.length" :key="index+'Riwayat'">
