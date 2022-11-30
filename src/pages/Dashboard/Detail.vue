@@ -334,6 +334,7 @@ getDataSession();
             </swiper-slide>
 
           </swiper>
+
           <swiper
             @swiper="setThumbsSwiper"
             :loop="true"
@@ -352,7 +353,7 @@ getDataSession();
         </div>
 
 
-        <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0 relative -top-2 sm:top-0">
+        <div class="col-span-12 sm:col-span-5 md:col-span-5 lg:col-span-5 xl:col-span-5 2xl:col-span-5 mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 2xl:mb-0 relative -top-8 sm:top-0">
              <div class="font-bold py-1 bg-white p-4">
                {{ detailInspection.car_detail ? detailInspection.car_detail.car_brand.name : '' }} {{ detailInspection.car_detail ? detailInspection.car_detail.car_merk.name: '' }} {{ detailInspection.car_detail ? detailInspection.car_detail.car_type.name : '' }}
              </div>
@@ -1098,7 +1099,7 @@ getDataSession();
 @media only screen and (max-width: 600px) {
   .mySwiper2 {
     height: 70%;
-    max-height: 150px;
+    max-height: 275px;
     width: 100%;
   }
 
@@ -1106,7 +1107,7 @@ getDataSession();
 
 .mySwiper {
   height: 20%;
-  max-height: 100px;
+  max-height: 50px;
   box-sizing: border-box;
   padding-top: 10px;
 }

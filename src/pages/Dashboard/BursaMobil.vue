@@ -113,13 +113,14 @@ let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 let seconds = Math.floor((distance % (1000 * 60)) / 1000);
   
 // Keluarkan hasil dalam elemen dengan id = "demo"
-timeToCountdown.value =hours + ":"
+timeToCountdown.value = hours + ":"
 + minutes + ":" + seconds
   
 //Jika hitungan mundur selesai, tulis beberapa teks
 if (distance < 0) {
   clearInterval(myfunc);
-  getDataSession()
+  location.reload();
+  getDataSession();
 }
 }, 1000);
 
