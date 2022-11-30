@@ -32,8 +32,9 @@ const downloadPDF = (paymentID) => {
   axios.get(`https://admin.tavmobil.id/api/lelang/history/pdf/${paymentID}`,{
     headers: {
       'Authorization': `Bearer ${localStorage.getItem('isLogin')}`,
-      'Accept': 'application/pdf'
+      'Accept': 'application/pdf',
     },
+    responseType: 'blob'
   }).then((response) => {
     const url = window.URL.createObjectURL(new Blob([response.data]));
     const link = document.createElement('a');
