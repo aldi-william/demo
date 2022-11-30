@@ -1096,18 +1096,11 @@ getDataSession();
   width: 100%;
 }
 
-@media only screen and (max-width: 600px) {
-  .mySwiper2 {
-    height: 70%;
-    max-height: 275px;
-    width: 100%;
-  }
 
-}
 
 .mySwiper {
   height: 20%;
-  max-height: 50px;
+  max-height: 100px;
   box-sizing: border-box;
   padding-top: 10px;
 }
@@ -1120,6 +1113,21 @@ getDataSession();
 
 .mySwiper .swiper-slide-thumb-active {
   opacity: 1;
+}
+
+@media only screen and (max-width: 600px) {
+  .mySwiper2 {
+    height: 70%;
+    max-height: 275px;
+    width: 100%;
+  }
+
+  .mySwiper {
+    height: 20%;
+    max-height: 50px;
+    box-sizing: border-box;
+    padding-top: 10px;
+  }
 }
 
 .swiper-slide img {
