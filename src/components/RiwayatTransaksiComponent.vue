@@ -2,7 +2,7 @@
 import { computed, onMounted, ref } from 'vue';
 import download from '../assets/images/download.png';
 import { useTransaksiStore } from "../stores/transaksi";
-import { formatPrice } from '../mixins';
+import axios from "axios";
 const menu = ref('week');
 
 const store = useTransaksiStore();
@@ -18,6 +18,33 @@ const uri = (slug:any)=>{
 onMounted(() => {
   store.fetchTransaksi(menu.value)
 })
+
+const downloadPDF = (paymentID) => {
+  // DownloadService.getDownloadData(paymentID).then((response) => {
+  //   const url = window.URL.createObjectURL(new Blob([response.data]));
+  //   const link = document.createElement('a');
+  //   link.href = url;
+  //   link.setAttribute('download', 'file.pdf');
+  //   document.body.appendChild(link);
+  //   link.click();
+  // });
+
+  axios.get(`https://admin.tavmobil.id/api/lelang/history/pdf/${paymentID}`,{
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('isLogin')}`,
+      'Accept': 'application/pdf'
+    },
+  }).then((response) => {
+    const url = window.URL.createObjectURL(new Blob([response.data]));
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'file.pdf');
+    document.body.appendChild(link);
+    link.click();
+  });
+
+}
+
 </script>
 
 <template>
@@ -69,7 +96,7 @@ onMounted(() => {
                   </td>
                   <td>
                     <div class="flex items-center justify-center">
-                      <a v-bind:href="'https://admin.tavmobil.id/api/lelang/history/pdf/' +payment.id" class="text-blue-600"> Unduh</a>
+                      <button @click="downloadPDF(payment.id)" class="text-blue-600"> Unduh</button>
                       <img :src="download" class="w-6"/>
                     </div>
                   </td>
