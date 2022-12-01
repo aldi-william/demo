@@ -51,7 +51,7 @@
     },
     {
       name: 'Penawaran Ditolak',
-      slug: '/status?data=cancel',
+      slug: '/cancel',
       count: cancel
     },
     {

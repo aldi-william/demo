@@ -535,79 +535,79 @@ getDataSession();
               <div class="flex sm:flex-col overflow-x-scroll sm:w-full sm:overflow-visible md:overflow-visible lg:overflow-visible xl:overflow-visible 2xl:overflow-visible">
               
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'testdrive'" :class="menu === 'testdrive' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2  rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <button @click="menu = 'testdrive'" :class="menu === 'testdrive' ? 'text-blue-500 bg-white':'border border-white text-white bg-blue-500'" class="w-48 px-4 py-2  rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
                     <img :src="menu === 'testdrive' ? image_mobil_biru : image_mobil_putih" class="w-6 mx-2"/>Test Drive({{testdrive.length-1}})
                   </button>
                 </div>
 
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'dashboard'" :class="menu === 'dashboard'? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2  rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <button @click="menu = 'dashboard'" :class="menu === 'dashboard'? 'text-blue-500 bg-white':'border border-white text-white bg-blue-500'" class="w-48 px-4 py-2  rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
                     <img :src="menu === 'dashboard' ? image_spedo_biru: image_spedo_putih " class="w-6 mx-2" />Dashboard({{Object.keys(dashboard).length-1}})
                   </button>
                 </div>
 
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'instrumen'" :class="menu === 'instrumen' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2  rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <button @click="menu = 'instrumen'" :class="menu === 'instrumen' ? 'text-blue-500 bg-white':'border border-white text-white bg-blue-500'" class="w-48 px-4 py-2  rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
                     <img :src="menu === 'instrumen' ? image_tri_speedo_biru: image_tri_speedo_putih" class="w-6 mx-2" />Instrumen({{Object.keys(instrumen).length-1}})
                   </button>
                 </div>
 
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'jok-trim'" :class="menu === 'jok-trim' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <button @click="menu = 'jok-trim'" :class="menu === 'jok-trim' ? 'text-blue-500 bg-white':'border border-white text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
                     <img :src="menu === 'jok-trim' ? image_sofa_biru : image_sofa_putih" class="w-6 mx-2" />Jok & Trim({{Object.keys(jok_trim).length-1}})
                   </button>
                 </div>
 
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'kaca-lampu'" :class="menu === 'kaca-lampu' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <button @click="menu = 'kaca-lampu'" :class="menu === 'kaca-lampu' ? 'text-blue-500 bg-white':'border border-white text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
                     <img :src="menu === 'kaca-lampu' ? image_terompet_biru : image_terompet_putih " class="w-6 mx-2" />Kaca & Lampu({{Object.keys(kaca_lampu).length-1}})
                   </button>
                 </div>
 
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'underbody'" :class="menu === 'underbody' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <button @click="menu = 'underbody'" :class="menu === 'underbody' ? 'text-blue-500 bg-white':'border border-white text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
                     <img :src="menu === 'underbody' ? image_tank_biru : image_tank_putih" class="w-6 mx-2" />Under Body({{Object.keys(underbody).length-1}})
                   </button>
                 </div>
 
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'oli-cairan'" :class="menu === 'oli-cairan' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <button @click="menu = 'oli-cairan'" :class="menu === 'oli-cairan' ? 'text-blue-500 bg-white':'border border-white text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
                     <img :src="menu === 'oli-cairan' ? image_teko_biru : image_teko_putih" class="w-6 mx-2" />Oli & Cairan({{Object.keys(oli_cairan).length-1}})
                   </button>
                 </div>
 
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'ruangmesin'" :class="menu === 'ruangmesin' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <button @click="menu = 'ruangmesin'" :class="menu === 'ruangmesin' ? 'text-blue-500 bg-white':'border border-white text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
                     <img :src="menu === 'ruangmesin' ? image_gear_biru : image_gear_putih " class="w-6 mx-2" />Ruang Mesin({{Object.keys(ruangmesin).length-1}})
                   </button>
                 </div>
 
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'fitur'" :class="menu === 'fitur' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <button @click="menu = 'fitur'" :class="menu === 'fitur' ? 'text-blue-500 bg-white':'border border-white text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
                     <img :src="menu === 'fitur' ? image_bintang_biru : image_bintang_putih " class="w-6 mx-2" />Fitur({{Object.keys(fitur).length-1}})
                   </button>
                 </div>
 
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'dokumen'" :class="menu === 'dokumen' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <button @click="menu = 'dokumen'" :class="menu === 'dokumen' ? 'text-blue-500 bg-white':'border border-white text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
                     <img :src="menu === 'dokumen' ? image_buku_biru : image_buku_putih " class="w-6 mx-2" />Dokumen({{Object.keys(dokumen).length-1}})
                   </button>
                 </div>
 
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'ban'" :class="menu === 'ban' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <button @click="menu = 'ban'" :class="menu === 'ban' ? 'text-blue-500 bg-white':'border border-white text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
                     <img :src="menu === 'ban' ? image_ban_biru : image_ban_putih " class="w-6 mx-2" />Ban({{Object.keys(ban).length-1}})
                   </button>
                 </div>
 
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'body'" :class="menu === 'body' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <button @click="menu = 'body'" :class="menu === 'body' ? 'text-blue-500 bg-white':'border border-white text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
                     <img :src="menu === 'body' ? image_body_biru : image_body_putih " class="w-6 mx-2" />Body({{Object.keys(body).length-1}})
                   </button>
                 </div>
 
                 <div class="w-full sm:w-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40">
-                  <button @click="menu = 'kelengkapan'" :class="menu === 'kelengkapan' ? 'text-blue-500 bg-white':'text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
+                  <button @click="menu = 'kelengkapan'" :class="menu === 'kelengkapan' ? 'text-blue-500 bg-white':'border border-white text-white bg-blue-500'" class="w-48 px-4 py-2 rounded-lg mb-4 text-sm font-bold flex items-center justify-start">
                     <img :src="menu === 'kelengkapan' ? image_kelengkapan_biru : image_kelengkapan_putih " class="w-6 mx-2" />Kelengkapan({{Object.keys(kelengkapan).length-1}})
                   </button>
                 </div>

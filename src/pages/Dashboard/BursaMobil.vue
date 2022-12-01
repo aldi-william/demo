@@ -146,6 +146,21 @@ const scrollToTop = () => {
     window.scrollTo(0,0);
 }
 
+const reset = () => {
+  const filterBursa = reactive({
+      search: "",
+      lowPrice: 0,
+      heightPrice: 0,
+      minYear: 0,
+      maxYear: 0,
+      city:'',
+      km:0,
+      page:1,
+      currentPage:1,
+      totalPage:1
+  })
+}
+
 </script>
 <template>
   <div class="bg-biru_fb" @click.self="closeAll()">
@@ -214,8 +229,11 @@ const scrollToTop = () => {
               </select>
             </div>
           </div>
-
-          <button class="text-white bg-blue-500 px-4 py-2 w-full rounded" @click="filterQuery(); range_tahun = false; filterBursa.minYear = 0; filterBursa.maxYear =0;">Terapkan</button>
+          <div class="flex justify-between">
+            <button class="text-white bg-blue-500 px-4 py-2 mr-1 w-24 rounded" @click="filterBursa.minYear=0; filterBursa.maxYear=0; filterQuery();">Reset</button>
+            <button class="text-white bg-blue-500 px-4 py-2 ml-1 w-24 rounded" @click="filterQuery(); range_tahun = false; filterBursa.minYear = 0; filterBursa.maxYear =0;">Terapkan</button>
+          </div>
+          
         </div>
       </div>
       <div class="col-span-12 sm:col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 2xl:col-span-4 relative top-12">
